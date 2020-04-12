@@ -1,1 +1,11 @@
-hey script kidy! go learn some coding :)
+User-agent: *
+Sitemap: http://localhost:2368/sitemap.xml
+Disallow: /ghost/
+Disallow: /p/
+
+You are allowed to do whatever you want scryptkidy :)
+=================
+
+allow: /
+
+=================
