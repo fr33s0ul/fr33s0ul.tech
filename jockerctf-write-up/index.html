@@ -8,7 +8,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=735fe3e099">
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=8ef14f4f44">
 
     <link rel="shortcut icon" href="../favicon.png" type="image/png">
     <link rel="canonical" href="index.html">
@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://fr33s0ul.tech/jockerctf-write-up/">
     <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/joker.jpg">
     <meta property="article:published_time" content="2020-04-07T16:31:26.000Z">
-    <meta property="article:modified_time" content="2020-04-10T16:00:31.000Z">
+    <meta property="article:modified_time" content="2020-04-17T15:07:06.000Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="JockerCTF | write-up">
     <meta name="twitter:description" content="Hello world, I hope you are all well and safe home from the pandemic, today's challenge is a CTF by Tryhackme it's rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole. Let's get started with some enumeration ... root@kali:">
@@ -70,7 +70,7 @@
     "headline": "JockerCTF | write-up",
     "url": "https://fr33s0ul.tech/jockerctf-write-up/",
     "datePublished": "2020-04-07T16:31:26.000Z",
-    "dateModified": "2020-04-10T16:00:31.000Z",
+    "dateModified": "2020-04-17T15:07:06.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/joker.jpg",
@@ -218,7 +218,7 @@ Service Info: Host: localhost; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 7.18 seconds
-</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-17.31.50.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-17.32.05.png" class="kg-image"></figure><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/12qASHliHqDPSo" width="328" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/joker-12qASHliHqDPSo"></a></p><!--kg-card-end: html--><p>well well well, we have three ports <strong>ssh</strong> on 22 and some <strong>apache</strong> on 80 and 8080, It seems that we need credentials to access something in port 8080.</p><p>we'll dig more in port 80 and see if we have any interesting directories and files.</p><pre><code>root@kali:~# dirb http://10.10.215.43/
+</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-17.31.50.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-17.32.05.png" class="kg-image"></figure><p>well well well, we have three ports <strong>ssh</strong> on 22 and some <strong>apache</strong> on 80 and 8080, It seems that we need credentials to access something in port 8080.</p><p>we'll dig more in port 80 and see if we have any interesting directories and files.</p><pre><code>root@kali:~# dirb http://10.10.215.43/
 
 -----------------
 DIRB v2.22    
@@ -371,7 +371,7 @@ $ lxc config device add joker mydevice disk source=/ path=/mnt/root recursive=tr
 $ lxc start joker
 $ lxc exec ignite /bin/sh
 whoami
-root</code></pre><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/p8EJ11ZuJlIxG" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/reaction-p8EJ11ZuJlIxG"></a></p><!--kg-card-end: html--><p>That's it for today, stay safe, and HAPPY HACKING!</p><figure class="kg-card kg-embed-card"><blockquote class="wp-embedded-content"><a href="https://www.hackingarticles.in/lxd-privilege-escalation/">Lxd Privilege Escalation</a></blockquote>
+root</code></pre><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/13Iz0UAOQlWYU" width="480" height="280" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/batman-13Iz0UAOQlWYU"></a></p><!--kg-card-end: html--><p>That's it for today, stay safe, and HAPPY HACKING!</p><figure class="kg-card kg-embed-card"><blockquote class="wp-embedded-content"><a href="https://www.hackingarticles.in/lxd-privilege-escalation/">Lxd Privilege Escalation</a></blockquote>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
 		/*! This file is auto-generated */
@@ -512,7 +512,7 @@ root</code></pre><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
     </script>
-    <script src="../assets/built/casper.js?v=735fe3e099"></script>
+    <script src="../assets/built/casper.js?v=8ef14f4f44"></script>
 
     <script>
         // Parse the URL parameter

