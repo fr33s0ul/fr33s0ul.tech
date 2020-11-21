@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://fr33s0ul.tech/yearoftherabbit-ctf-write-up/">
     <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg">
     <meta property="article:published_time" content="2020-04-22T09:47:00.000Z">
-    <meta property="article:modified_time" content="2020-04-22T10:58:52.000Z">
+    <meta property="article:modified_time" content="2020-11-21T15:24:51.000Z">
     <meta property="article:tag" content="CTF">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -71,7 +71,7 @@
     "headline": "YearOfTheRabbit | CTF write-up",
     "url": "https://fr33s0ul.tech/yearoftherabbit-ctf-write-up/",
     "datePublished": "2020-04-22T09:47:00.000Z",
-    "dateModified": "2020-04-22T10:58:52.000Z",
+    "dateModified": "2020-11-21T15:24:51.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg",
@@ -223,7 +223,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 11.42 seconds
 root@kali:~# 
-</code></pre><figcaption><strong>FTP</strong> on port 21, <strong>SSH</strong> on 22, and 80 running <strong>HTTP</strong></figcaption></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-09.27.14.png" class="kg-image"></figure><pre><code>root@kali:~# gobuster dir -u http://10.10.104.51/ -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt 
+</code></pre><figcaption><strong>FTP</strong> on port 21, <strong>SSH</strong> on 22, and 80 running <strong>HTTP</strong></figcaption></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-09.27.14.png" class="kg-image" alt></figure><pre><code>root@kali:~# gobuster dir -u http://10.10.104.51/ -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt 
 ===============================================================
 Gobuster v3.0.1
 by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
@@ -243,7 +243,7 @@ by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
 2020/04/10 08:29:08 Finished
 ===============================================================
 root@kali:~# 
-</code></pre><p>After discovering some directories, we notice that we have two files one an mp4 video titled RickRolled and a style.css, trying to access the video will send us to the official clip in Youtube which I think it's an old meme. Going back to style.css something is interesting is over there. It's another directory that will lead us to a message asking to deactivate javascript, to do it go to about:config in Firefox and search for javascript and change the value from true to false and try again.<br>we notice that we've been redirected quickly to another page, trying once again but this time we will turn burpsuite up and intercept the requests and analyse them and see what we are dealing with.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-09.44.08.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-15-at-13.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-09-1.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-09--1-.png" class="kg-image"></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-21-at-18.png" class="kg-image"><figcaption>We notice a hidden directory is getting called by a php file called intermediary.php</figcaption></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-21-at-18--1-.png" class="kg-image"></figure><p>visiting the site will lead us to a picture, and more steganography this time. We will successfully be able to get an FTP username and a password list.</p><pre><code>root@kali:~# exiftool Hot_Babe.png 
+</code></pre><p>After discovering some directories, we notice that we have two files one an mp4 video titled RickRolled and a style.css, trying to access the video will send us to the official clip in Youtube which I think it's an old meme. Going back to style.css something is interesting is over there. It's another directory that will lead us to a message asking to deactivate javascript, to do it go to about:config in Firefox and search for javascript and change the value from true to false and try again.<br>we notice that we've been redirected quickly to another page, trying once again but this time we will turn burpsuite up and intercept the requests and analyse them and see what we are dealing with.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-09.44.08.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-15-at-13.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-09-1.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-09--1-.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-21-at-18.png" class="kg-image" alt><figcaption>We notice a hidden directory is getting called by a php file called intermediary.php</figcaption></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-21-at-18--1-.png" class="kg-image" alt></figure><p>visiting the site will lead us to a picture, and more steganography this time. We will successfully be able to get an FTP username and a password list.</p><pre><code>root@kali:~# exiftool Hot_Babe.png 
 ExifTool Version Number         : 11.80
 File Name                       : Hot_Babe.png
 Directory                       : .
@@ -382,7 +382,7 @@ local: Eli's_Creds.txt remote: Eli's_Creds.txt
 ftp&gt; exit
 221 Goodbye.
 root@kali:~#
-</code></pre><p>Login into the FTPuser we will find a file called Eli's_Creds.txt that are encoded to BrainF**k, decoding it will give us access to the user Eli in the machine.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-21-at-18--2-.png" class="kg-image"></figure><pre><code>root@kali:~# ssh eli@10.10.63.165
+</code></pre><p>Login into the FTPuser we will find a file called Eli's_Creds.txt that are encoded to BrainF**k, decoding it will give us access to the user Eli in the machine.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-21-at-18--2-.png" class="kg-image" alt></figure><pre><code>root@kali:~# ssh eli@10.10.63.165
 The authenticity of host '10.10.63.165 (10.10.63.165)' can't be established.
 ECDSA key fingerprint is SHA256:ISBm3muLdVA/w4A1cm7QOQQOCSMRlPdDp/x8CNpbJc8.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
@@ -475,7 +475,7 @@ uid=0(root) gid=0(root) groups=0(root)
 root.txt
 # cat root.txt
 THM{****************************************}
-#</code></pre><p>and we are root, we can get the root flag at the /root directory.</p><p>Happy Hacking!</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/eCqFYAVjjDksg" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/funny-meme-hacker-eCqFYAVjjDksg"></a></p><!--kg-card-end: html-->
+#</code></pre><p>and we are root, we can get the root flag at the /root directory.</p><p>Happy Hacking!</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/eCqFYAVjjDksg" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/funny-meme-hacker-eCqFYAVjjDksg"></a></p><!--kg-card-end: html--><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
                 </div>
             </section>
 

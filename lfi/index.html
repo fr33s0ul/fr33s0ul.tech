@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://fr33s0ul.tech/lfi/">
     <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/653aa50b92574882f.png">
     <meta property="article:published_time" content="2020-04-17T19:48:26.000Z">
-    <meta property="article:modified_time" content="2020-04-17T19:51:54.000Z">
+    <meta property="article:modified_time" content="2020-11-21T15:24:37.000Z">
     <meta property="article:tag" content="CTF">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -71,7 +71,7 @@
     "headline": "Local file inclusion | write-up",
     "url": "https://fr33s0ul.tech/lfi/",
     "datePublished": "2020-04-17T19:48:26.000Z",
-    "dateModified": "2020-04-17T19:51:54.000Z",
+    "dateModified": "2020-11-21T15:24:37.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/653aa50b92574882f.png",
@@ -79,7 +79,7 @@
         "height": 402
     },
     "keywords": "CTF",
-    "description": "Hello everyone, here&#x27;s a quick write-up about LFI that I really recommend for\npeople just starting in the field. It&#x27;s created by a user called falconfeast\n[https://tryhackme.com/p/falconfeast] feel free to visit his room.\n\nTryHackMe | Hacking TrainingAn online platform for learning and teaching cyber\nsecurity, all through your browser.TryHackMe [https://tryhackme.com]&gt; Enumeration \nroot@kali:~# nmap -sC -sV 10.10.104.39\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 19:00 UTC\nNmap scan re",
+    "description": "Hello everyone, here&#x27;s a quick write-up about LFI that I really recommend for\npeople just starting in the field. It&#x27;s created by a user called falconfeast\n[https://tryhackme.com/p/falconfeast] feel free to visit his room.\n\nTryHackMe | Hacking TrainingAn online platform for learning and teaching cyber\nsecurity, all through your browser.TryHackMe [https://tryhackme.com/room/lfi]&gt; \nEnumeration \nroot@kali:~# nmap -sC -sV 10.10.104.39\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 19:00 UTC\nNm",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://fr33s0ul.tech/"
@@ -201,7 +201,7 @@
 
             <section class="post-full-content">
                 <div class="post-content">
-                    <p>Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called <a href="https://tryhackme.com/p/falconfeast"><strong>falconfeast</strong></a><strong> </strong>feel free to visit his room.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | Hacking Training</div><div class="kg-bookmark-description">An online platform for learning and teaching cyber security, all through your browser.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png"><span class="kg-bookmark-publisher">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://tryhackme.com/img/favicon.png"></div></a></figure><blockquote>Enumeration </blockquote><pre><code>root@kali:~# nmap -sC -sV 10.10.104.39
+                    <p>Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called <a href="https://tryhackme.com/p/falconfeast"><strong>falconfeast</strong></a><strong> </strong>feel free to visit his room.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/room/lfi"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | Hacking Training</div><div class="kg-bookmark-description">An online platform for learning and teaching cyber security, all through your browser.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png"><span class="kg-bookmark-publisher">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://tryhackme.com/img/favicon.png"></div></a></figure><blockquote>Enumeration </blockquote><pre><code>root@kali:~# nmap -sC -sV 10.10.104.39
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-17 19:00 UTC
 Nmap scan report for ip-10-10-104-39.eu-west-1.compute.internal (10.10.104.39)
 Host is up (0.00079s latency).
@@ -240,7 +240,7 @@ GENERATED WORDS: 4612
 -----------------
 END_TIME: Fri Apr 17 19:25:08 2020
 DOWNLOADED: 4612 - FOUND: 1
-root@kali:~#</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-17-at-20.08.52.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-17-at-20.42.18.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-17-at-20.10.15.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/sc.png" class="kg-image"></figure><p>I next tried to see if the user falcon have access to <strong>/etc/shadow </strong>and yes ... </p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/rlL4XHR60GPew" width="480" height="341" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/transparent-rlL4XHR60GPew"></a></p>
+root@kali:~#</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-17-at-20.08.52.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-17-at-20.42.18.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-17-at-20.10.15.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/sc.png" class="kg-image" alt></figure><p>I next tried to see if the user falcon have access to <strong>/etc/shadow </strong>and yes ... </p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/rlL4XHR60GPew" width="480" height="341" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/transparent-rlL4XHR60GPew"></a></p>
 <!--kg-card-end: html--><p>Let's decrypt the hash and see if we have any luck on this one</p><pre><code>root@kali:~# john hash --wordlist=/usr/share/wordlists/rockyou.txt 
 Created directory: /root/.john
 Using default input encoding: UTF-8
@@ -353,7 +353,7 @@ drwxr-xr-x  3 root root 4096 Jan 28 23:11 .local
 -rw-r--r--  1 root root  148 Aug 17  2015 .profile
 -rw-r--r--  1 root root   21 Jan 29 19:52 root.txt
 # 
-</code></pre><p>and we are root ! Enjoy your flags.</p><p>Happy Hacking!</p>
+</code></pre><p>and we are root ! Enjoy your flags.</p><p>Happy Hacking!</p><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
                 </div>
             </section>
 

@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://fr33s0ul.tech/kenobi-ctf-write-up/">
     <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/Animated-GIF-downsized_large.gif">
     <meta property="article:published_time" content="2020-04-07T11:40:35.000Z">
-    <meta property="article:modified_time" content="2020-04-13T11:40:17.000Z">
+    <meta property="article:modified_time" content="2020-11-21T15:23:04.000Z">
     <meta property="article:tag" content="CTF">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -71,7 +71,7 @@
     "headline": "Kenobi | CTF write-up",
     "url": "https://fr33s0ul.tech/kenobi-ctf-write-up/",
     "datePublished": "2020-04-07T11:40:35.000Z",
-    "dateModified": "2020-04-13T11:40:17.000Z",
+    "dateModified": "2020-11-21T15:23:04.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/Animated-GIF-downsized_large.gif",
@@ -270,7 +270,7 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 13.60 seconds
-</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-12.41.57.png" class="kg-image"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-12.54.46.png" class="kg-image"></figure><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/8McNH1aXZnVyE" width="480" height="258" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/its-a-trap-admiral-ackbar-8McNH1aXZnVyE"></a></p><!--kg-card-end: html--><pre><code>root@kali:~# gobuster dir -u http://10.10.68.87/ -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt 
+</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-12.41.57.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-07-at-12.54.46.png" class="kg-image" alt></figure><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/8McNH1aXZnVyE" width="480" height="258" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/its-a-trap-admiral-ackbar-8McNH1aXZnVyE"></a></p><!--kg-card-end: html--><pre><code>root@kali:~# gobuster dir -u http://10.10.68.87/ -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt 
 ===============================================================
 Gobuster v3.0.1
 by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
@@ -498,7 +498,7 @@ root@kenobi:/tmp# cat /root/
 root@kenobi:/tmp# cat /root/root.txt 
 **************************1f02
 root@kenobi:/tmp# 
-</code></pre><p>/usr/bin/menu runs as root it does curl server status and kernel version with uname or ifconfig, so i created a curl file and pushed to it a bin bash call gave it permission to be executable and exported the path were the file exists.</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/sQL9UPichyoFO" width="480" height="252" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/reaction-sQL9UPichyoFO"></a></p><!--kg-card-end: html--><p>Happy Hacking!</p>
+</code></pre><p>/usr/bin/menu runs as root it does curl server status and kernel version with uname or ifconfig, so i created a curl file and pushed to it a bin bash call gave it permission to be executable and exported the path were the file exists.</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/sQL9UPichyoFO" width="480" height="252" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/reaction-sQL9UPichyoFO"></a></p><!--kg-card-end: html--><p>Happy Hacking!</p><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
                 </div>
             </section>
 
