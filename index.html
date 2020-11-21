@@ -8,10 +8,10 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="assets/built/screen.css?v=61f9bf62bc">
+    <link rel="stylesheet" type="text/css" href="assets/built/screen.css?v=0a4893ecd9">
 
     <meta name="description" content="Cybersecurity, Technology, and CTFs">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="canonical" href="index.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
@@ -40,12 +40,9 @@
         "url": "https://fr33s0ul.tech/",
         "logo": {
             "@type": "ImageObject",
-            "url": {
-                "@type": "ImageObject",
-                "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
-                "width": 300,
-                "height": 41
-            }
+            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+            "width": 300,
+            "height": 41
         }
     },
     "url": "https://fr33s0ul.tech/",
@@ -63,7 +60,7 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.13">
+    <meta name="generator" content="Ghost 3.38">
     <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="rss/index.html">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111725042-2"></script>
@@ -118,9 +115,10 @@
         <div class="site-nav-left">
                 <a class="site-nav-logo" href="index.html"><img src="content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul"></a>
             <div class="site-nav-content">
-                    <ul class="nav" role="menu">
-    <li class="nav-home nav-current" role="menuitem"><a href="index.html">Home</a></li>
-    <li class="nav-whoami" role="menuitem"><a href="whoami/">whoami</a></li>
+                    <ul class="nav">
+    <li class="nav-home nav-current"><a href="index.html">Home</a></li>
+    <li class="nav-whoami"><a href="whoami/">whoami</a></li>
+    <li class="nav-whispers"><a href="whispers/">Whispers</a></li>
 </ul>
 
             </div>
@@ -914,9 +912,10 @@
         <div class="site-nav-left">
                 <a class="site-nav-logo" href="index.html"><img src="content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul"></a>
             <div class="site-nav-content">
-                    <ul class="nav" role="menu">
-    <li class="nav-home nav-current" role="menuitem"><a href="index.html">Home</a></li>
-    <li class="nav-whoami" role="menuitem"><a href="whoami/">whoami</a></li>
+                    <ul class="nav">
+    <li class="nav-home nav-current"><a href="index.html">Home</a></li>
+    <li class="nav-whoami"><a href="whoami/">whoami</a></li>
+    <li class="nav-whispers"><a href="whispers/">Whispers</a></li>
 </ul>
 
             </div>
@@ -953,7 +952,7 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
     </script>
-    <script src="assets/built/casper.js?v=61f9bf62bc"></script>
+    <script src="assets/built/casper.js?v=0a4893ecd9"></script>
 
     <script>
         // Parse the URL parameter
@@ -969,14 +968,19 @@
 
         // Give the parameter a variable name
         var action = getParameterByName('action');
+        var success = getParameterByName('success');
 
         $(document).ready(function () {
-            if (action == 'subscribe') {
-                $('body').addClass("subscribe-success");
+            if (action == 'subscribe' && (success === null || success === 'true')) {
+                $('body').addClass('subscribe-success');
             }
 
-            $('.subscribe-success-message .subscribe-close').click(function () {
-                $('.subscribe-success-message').addClass('close');
+            if (action == 'subscribe' && success === 'false') {
+                $('body').addClass('subscribe-failure');
+            }
+
+            $('.subscribe-notification .subscribe-close-button').click(function () {
+                $('.subscribe-notification').addClass('close');
             });
 
             // Reset form on opening subscrion overlay
