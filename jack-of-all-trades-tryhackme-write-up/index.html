@@ -23,6 +23,8 @@
     <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/jackinthebox.jpg">
     <meta property="article:published_time" content="2020-04-12T16:51:08.000Z">
     <meta property="article:modified_time" content="2020-04-12T17:20:22.000Z">
+    <meta property="article:tag" content="CTF">
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jack-of-All-Trades TryHackMe | write-up">
     <meta name="twitter:description" content="Hello everyone, today's machine is so fun to break, I enjoyed every step I practised, Jack-of-All-Trades CTF challenge box was created for the Securi-Tay conference run on the 28th of February, 2020 by the Hacksoc. Let's start with some enumeration! root@kali:~# nmap -sC -sV 10.10.37.180 Starting">
@@ -30,6 +32,8 @@
     <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/jackinthebox.jpg">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="fr33s0ul">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="CTF">
     <meta name="twitter:site" content="@fr33soul_">
     <meta name="twitter:creator" content="@fr33soul_">
     <meta property="og:image:width" content="1000">
@@ -74,6 +78,7 @@
         "width": 1000,
         "height": 1000
     },
+    "keywords": "CTF",
     "description": "Hello everyone, today&#x27;s machine is so fun to break, I enjoyed every step I\npractised, Jack-of-All-Trades CTF challenge box was created for the Securi-Tay\nconference run on the 28th of February, 2020 by the Hacksoc\n[https://hacksoc.co.uk/].\n\nLet&#x27;s start with some enumeration!\n\nroot@kali:~# nmap -sC -sV 10.10.37.180\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-12 13:15 UTC\nNmap scan report for ip-10-10-37-180.eu-west-1.compute.internal (10.10.37.180)\nHost is up (0.00079s latency).\nNot shown:",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -95,7 +100,7 @@
 </script>
 
 </head>
-<body class="post-template">
+<body class="post-template tag-ctf">
 
     <div class="site-wrapper">
 
@@ -113,6 +118,8 @@
     <li class="nav-home"><a href="../">Home</a></li>
     <li class="nav-whoami"><a href="../whoami/">whoami</a></li>
     <li class="nav-whispers"><a href="../whispers/">Whispers</a></li>
+    <li class="nav-ai"><a href="../tag/ai/">Ai</a></li>
+    <li class="nav-ctf"><a href="../tag/ctf/">CTF</a></li>
 </ul>
 
                     <span class="nav-post-title ">Jack-of-All-Trades TryHackMe | write-up</span>
@@ -136,10 +143,13 @@
 <main id="site-main" class="site-main outer">
     <div class="inner">
 
-        <article class="post-full post ">
+        <article class="post-full post tag-ctf ">
 
             <header class="post-full-header">
 
+                <section class="post-full-tags">
+                    <a href="../tag/ctf/">CTF</a>
+                </section>
 
                 <h1 class="post-full-title">Jack-of-All-Trades TryHackMe | write-up</h1>
 
@@ -283,8 +293,42 @@ jack@jack-of-all-trades:~$</code></pre><p>And we have the root flag! Happy hacki
 <aside class="read-next outer">
     <div class="inner">
         <div class="read-next-feed">
+                <article class="read-next-card">
+                    <header class="read-next-card-header">
+                        <h3><span>More in</span> <a href="../tag/ctf/">CTF</a></h3>
+                    </header>
+                    <div class="read-next-card-content">
+                        <ul>
+                            <li>
+                                <h4><a href="../yearoftherabbit-ctf-write-up/">YearOfTheRabbit | CTF write-up</a></h4>
+                                <div class="read-next-card-meta">
+                                    <p><time datetime="2020-04-22">22 Apr 2020</time> –
+                                        9 min read</p>
+                                </div>
+                            </li>
+                            <li>
+                                <h4><a href="../dogcat-thm-write-up/">dogcat | THM write-up</a></h4>
+                                <div class="read-next-card-meta">
+                                    <p><time datetime="2020-04-19">19 Apr 2020</time> –
+                                        6 min read</p>
+                                </div>
+                            </li>
+                            <li>
+                                <h4><a href="../lfi/">Local file inclusion | write-up</a></h4>
+                                <div class="read-next-card-meta">
+                                    <p><time datetime="2020-04-17">17 Apr 2020</time> –
+                                        6 min read</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <footer class="read-next-card-footer">
+                        <a href="../tag/ctf/">See all 15 posts
+                            →</a>
+                    </footer>
+                </article>
 
-                <article class="post-card post ">
+                <article class="post-card post tag-ctf ">
 
     <a class="post-card-image-link" href="../bebop-drone-lovers-ctf/">
         <img class="post-card-image" srcset="../content/images/size/w300/2020/04/Dr63yPm.png 300w,
@@ -298,6 +342,7 @@ jack@jack-of-all-trades:~$</code></pre><p>And we have the root flag! Happy hacki
         <a class="post-card-content-link" href="../bebop-drone-lovers-ctf/">
 
             <header class="post-card-header">
+                    <div class="post-card-primary-tag">CTF</div>
                 <h2 class="post-card-title">bebop | drone lovers CTF</h2>
             </header>
 
@@ -330,7 +375,7 @@ jack@jack-of-all-trades:~$</code></pre><p>And we have the root flag! Happy hacki
 
 </article>
 
-                <article class="post-card post ">
+                <article class="post-card post tag-ctf ">
 
     <a class="post-card-image-link" href="../blueprint-tryhackme-write-up/">
         <img class="post-card-image" srcset="../content/images/size/w300/2020/04/blueprint.jpg 300w,
@@ -344,6 +389,7 @@ jack@jack-of-all-trades:~$</code></pre><p>And we have the root flag! Happy hacki
         <a class="post-card-content-link" href="../blueprint-tryhackme-write-up/">
 
             <header class="post-card-header">
+                    <div class="post-card-primary-tag">CTF</div>
                 <h2 class="post-card-title">BluePrint TryHackMe | write-up</h2>
             </header>
 

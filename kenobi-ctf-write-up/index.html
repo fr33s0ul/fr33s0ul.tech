@@ -23,6 +23,8 @@
     <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/Animated-GIF-downsized_large.gif">
     <meta property="article:published_time" content="2020-04-07T11:40:35.000Z">
     <meta property="article:modified_time" content="2020-04-13T11:40:17.000Z">
+    <meta property="article:tag" content="CTF">
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Kenobi | CTF write-up">
     <meta name="twitter:description" content="today's CTF we will cover a Kenobi made by www.tryhackme.com the theme of the machine is star-wars  ...  Let's enumerate this machine and see what we're dealing with root@kali:~# nmap -sC -sV 10.10.68.87 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36 UTC">
@@ -30,6 +32,8 @@
     <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/Animated-GIF-downsized_large.gif">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="fr33s0ul">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="CTF">
     <meta name="twitter:site" content="@fr33soul_">
     <meta name="twitter:creator" content="@fr33soul_">
     <meta property="og:image:width" content="480">
@@ -74,6 +78,7 @@
         "width": 480,
         "height": 276
     },
+    "keywords": "CTF",
     "description": "today&#x27;s CTF we will cover a Kenobi made by www.tryhackme.com the theme of the\nmachine is star-wars  ...\n\n [https://giphy.com/gifs/cat-star-wars-9gISqB3tncMmY]\n\nLet&#x27;s enumerate this machine and see what we&#x27;re dealing with\n\nroot@kali:~# nmap -sC -sV 10.10.68.87\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-07 11:36 UTC\nNmap scan report for ip-10-10-68-87.eu-west-1.compute.internal (10.10.68.87)\nHost is up (0.00093s latency).\nNot shown: 993 closed ports\nPORT     STATE SERVICE     VERSION\n21/tc",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -95,7 +100,7 @@
 </script>
 
 </head>
-<body class="post-template">
+<body class="post-template tag-ctf">
 
     <div class="site-wrapper">
 
@@ -113,6 +118,8 @@
     <li class="nav-home"><a href="../">Home</a></li>
     <li class="nav-whoami"><a href="../whoami/">whoami</a></li>
     <li class="nav-whispers"><a href="../whispers/">Whispers</a></li>
+    <li class="nav-ai"><a href="../tag/ai/">Ai</a></li>
+    <li class="nav-ctf"><a href="../tag/ctf/">CTF</a></li>
 </ul>
 
                     <span class="nav-post-title ">Kenobi | CTF write-up</span>
@@ -136,10 +143,13 @@
 <main id="site-main" class="site-main outer">
     <div class="inner">
 
-        <article class="post-full post ">
+        <article class="post-full post tag-ctf ">
 
             <header class="post-full-header">
 
+                <section class="post-full-tags">
+                    <a href="../tag/ctf/">CTF</a>
+                </section>
 
                 <h1 class="post-full-title">Kenobi | CTF write-up</h1>
 
@@ -502,8 +512,42 @@ root@kenobi:/tmp#
 <aside class="read-next outer">
     <div class="inner">
         <div class="read-next-feed">
+                <article class="read-next-card">
+                    <header class="read-next-card-header">
+                        <h3><span>More in</span> <a href="../tag/ctf/">CTF</a></h3>
+                    </header>
+                    <div class="read-next-card-content">
+                        <ul>
+                            <li>
+                                <h4><a href="../yearoftherabbit-ctf-write-up/">YearOfTheRabbit | CTF write-up</a></h4>
+                                <div class="read-next-card-meta">
+                                    <p><time datetime="2020-04-22">22 Apr 2020</time> –
+                                        9 min read</p>
+                                </div>
+                            </li>
+                            <li>
+                                <h4><a href="../dogcat-thm-write-up/">dogcat | THM write-up</a></h4>
+                                <div class="read-next-card-meta">
+                                    <p><time datetime="2020-04-19">19 Apr 2020</time> –
+                                        6 min read</p>
+                                </div>
+                            </li>
+                            <li>
+                                <h4><a href="../lfi/">Local file inclusion | write-up</a></h4>
+                                <div class="read-next-card-meta">
+                                    <p><time datetime="2020-04-17">17 Apr 2020</time> –
+                                        6 min read</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <footer class="read-next-card-footer">
+                        <a href="../tag/ctf/">See all 15 posts
+                            →</a>
+                    </footer>
+                </article>
 
-                <article class="post-card post ">
+                <article class="post-card post tag-ctf ">
 
     <a class="post-card-image-link" href="../jockerctf-write-up/">
         <img class="post-card-image" srcset="../content/images/size/w300/2020/04/joker.jpg 300w,
@@ -517,6 +561,7 @@ root@kenobi:/tmp#
         <a class="post-card-content-link" href="../jockerctf-write-up/">
 
             <header class="post-card-header">
+                    <div class="post-card-primary-tag">CTF</div>
                 <h2 class="post-card-title">JockerCTF | write-up</h2>
             </header>
 
@@ -549,7 +594,7 @@ root@kenobi:/tmp#
 
 </article>
 
-                <article class="post-card post ">
+                <article class="post-card post tag-ctf ">
 
     <a class="post-card-image-link" href="../toolsrus-ctf-write-up/">
         <img class="post-card-image" srcset="../content/images/size/w300/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 300w,
@@ -563,6 +608,7 @@ root@kenobi:/tmp#
         <a class="post-card-content-link" href="../toolsrus-ctf-write-up/">
 
             <header class="post-card-header">
+                    <div class="post-card-primary-tag">CTF</div>
                 <h2 class="post-card-title">ToolsRus CTF | write-up</h2>
             </header>
 
