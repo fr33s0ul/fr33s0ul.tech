@@ -1,37 +1,38 @@
-
+<!DOCTYPE html>
+<html ⚡>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
     <title>YearOfTheRabbit | CTF write-up</title>
 
-    <link rel="icon" href="../../favicon.png" type="image/png">
-    <link rel="canonical" href="../index.html">
-    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="icon" href="../../favicon.png" type="image/png" />
+    <link rel="canonical" href="../index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
     
-    <meta property="og:site_name" content="fr33s0ul">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="YearOfTheRabbit | CTF write-up">
-    <meta property="og:description" content="TryHackMe | Year of the RabbitTime to enter the warren...TryHackMeHello everyone, Today's challenge is full of surprises and I would suggest you be patient while doing it, and make sure not to get into the rabbit holes, this challenge is made by MuirlandOracle. Hope you enjoy this write-up let's get">
-    <meta property="og:url" content="https://fr33s0ul.tech/yearoftherabbit-ctf-write-up/">
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg">
-    <meta property="article:published_time" content="2020-04-22T09:47:00.000Z">
-    <meta property="article:modified_time" content="2020-11-21T15:24:51.000Z">
-    <meta property="article:tag" content="CTF">
+    <meta property="og:site_name" content="fr33s0ul" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="YearOfTheRabbit | CTF write-up" />
+    <meta property="og:description" content="TryHackMe | Year of the RabbitTime to enter the warren...TryHackMeHello everyone, Today&#x27;s challenge is full of surprises and I would suggest you be patient while doing it, and make sure not to get into the rabbit holes, this challenge is made by MuirlandOracle. Hope you enjoy this write-up let&#x27;s get" />
+    <meta property="og:url" content="https://fr33s0ul.tech/yearoftherabbit-ctf-write-up/" />
+    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg" />
+    <meta property="article:published_time" content="2020-04-22T09:47:00.000Z" />
+    <meta property="article:modified_time" content="2020-11-21T15:24:51.000Z" />
+    <meta property="article:tag" content="CTF" />
     
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="YearOfTheRabbit | CTF write-up">
-    <meta name="twitter:description" content="TryHackMe | Year of the RabbitTime to enter the warren...TryHackMeHello everyone, Today's challenge is full of surprises and I would suggest you be patient while doing it, and make sure not to get into the rabbit holes, this challenge is made by MuirlandOracle. Hope you enjoy this write-up let's get">
-    <meta name="twitter:url" content="https://fr33s0ul.tech/yearoftherabbit-ctf-write-up/">
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg">
-    <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="fr33s0ul">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="CTF">
-    <meta name="twitter:site" content="@fr33soul_">
-    <meta name="twitter:creator" content="@fr33soul_">
-    <meta property="og:image:width" content="310">
-    <meta property="og:image:height" content="310">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="YearOfTheRabbit | CTF write-up" />
+    <meta name="twitter:description" content="TryHackMe | Year of the RabbitTime to enter the warren...TryHackMeHello everyone, Today&#x27;s challenge is full of surprises and I would suggest you be patient while doing it, and make sure not to get into the rabbit holes, this challenge is made by MuirlandOracle. Hope you enjoy this write-up let&#x27;s get" />
+    <meta name="twitter:url" content="https://fr33s0ul.tech/yearoftherabbit-ctf-write-up/" />
+    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="fr33s0ul" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="CTF" />
+    <meta name="twitter:site" content="@fr33soul_" />
+    <meta name="twitter:creator" content="@fr33soul_" />
+    <meta property="og:image:width" content="310" />
+    <meta property="og:image:height" content="310" />
     
     <script type="application/ld+json">
 {
@@ -81,8 +82,8 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.38">
-    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../../rss/index.html">
+    <meta name="generator" content="Ghost 3.38" />
+    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../../rss/index.html" />
 
     <style amp-custom>
     *,
@@ -652,7 +653,7 @@
 
 <body class="amp-template">
     <header class="page-header">
-        <a href="../../">
+        <a href="../../index.html">
                 <amp-img class="site-icon" src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
         </a>
     </header>
@@ -714,7 +715,7 @@ by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
 2020/04/10 08:29:08 Finished
 ===============================================================
 root@kali:~# 
-</code></pre><p>After discovering some directories, we notice that we have two files one an mp4 video titled RickRolled and a style.css, trying to access the video will send us to the official clip in Youtube which I think it's an old meme. Going back to style.css something is interesting is over there. It's another directory that will lead us to a message asking to deactivate javascript, to do it go to about:config in Firefox and search for javascript and change the value from true to false and try again.<br>we notice that we've been redirected quickly to another page, trying once again but this time we will turn burpsuite up and intercept the requests and analyse them and see what we are dealing with.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>We notice a hidden directory is getting called by a php file called intermediary.php</figcaption></figure><figure class="kg-card kg-image-card"></figure><p>visiting the site will lead us to a picture, and more steganography this time. We will successfully be able to get an FTP username and a password list.</p><pre><code>root@kali:~# exiftool Hot_Babe.png 
+</code></pre><p>After discovering some directories, we notice that we have two files one an mp4 video titled RickRolled and a style.css, trying to access the video will send us to the official clip in Youtube which I think it's an old meme. Going back to style.css something is interesting is over there. It's another directory that will lead us to a message asking to deactivate javascript, to do it go to about:config in Firefox and search for javascript and change the value from true to false and try again.<br />we notice that we've been redirected quickly to another page, trying once again but this time we will turn burpsuite up and intercept the requests and analyse them and see what we are dealing with.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>We notice a hidden directory is getting called by a php file called intermediary.php</figcaption></figure><figure class="kg-card kg-image-card"></figure><p>visiting the site will lead us to a picture, and more steganography this time. We will successfully be able to get an FTP username and a password list.</p><pre><code>root@kali:~# exiftool Hot_Babe.png 
 ExifTool Version Number         : 11.80
 File Name                       : Hot_Babe.png
 Directory                       : .
@@ -956,8 +957,9 @@ THM{****************************************}
             <amp-img class="site-icon" src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
         <h3>fr33s0ul</h3>
             <p>Cybersecurity, Technology, and CTFs</p>
-        <p><a href="../../">Read more posts →</a></p>
-        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"></rect><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"></path><rect y="34" width="84" height="17" rx="4"></rect><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"></path><rect x="67" width="17" height="17" rx="4"></rect></g></g></svg> Published with Ghost</a>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
     </footer>
     
 </body>
+</html>

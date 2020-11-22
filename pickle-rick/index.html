@@ -1,43 +1,44 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <title>Pickle Rick CTF | write-up</title>
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=0a4893ecd9">
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=f12a2fbdf2" />
 
-    <link rel="icon" href="../favicon.png" type="image/png">
-    <link rel="canonical" href="index.html">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <link rel="amphtml" href="amp/index.html">
+    <link rel="icon" href="../favicon.png" type="image/png" />
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
     
-    <meta property="og:site_name" content="fr33s0ul">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Pickle Rick CTF | write-up">
-    <meta property="og:description" content="Hello again, today we'll cover another CTF made by Tryhackme.com such a cool box I enjoyed every second of it, I hope you do and let's start our challenge with some enumeration.  nmap -sC -sV &amp;lt;target-machine&amp;gt;it looks like we don't have much to break, two ports.">
-    <meta property="og:url" content="https://fr33s0ul.tech/pickle-rick/">
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/rick_morty-2.jpg">
-    <meta property="article:published_time" content="2020-04-02T15:41:21.000Z">
-    <meta property="article:modified_time" content="2020-11-21T15:22:24.000Z">
-    <meta property="article:tag" content="CTF">
+    <meta property="og:site_name" content="fr33s0ul" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Pickle Rick CTF | write-up" />
+    <meta property="og:description" content="Hello again, today we&#x27;ll cover another CTF made by Tryhackme.com such a cool box I enjoyed every second of it, I hope you do and let&#x27;s start our challenge with some enumeration.  nmap -sC -sV &amp;lt;target-machine&amp;gt;it looks like we don&#x27;t have much to break, two ports." />
+    <meta property="og:url" content="https://fr33s0ul.tech/pickle-rick/" />
+    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/rick_morty-2.jpg" />
+    <meta property="article:published_time" content="2020-04-02T15:41:21.000Z" />
+    <meta property="article:modified_time" content="2020-11-21T15:22:24.000Z" />
+    <meta property="article:tag" content="CTF" />
     
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pickle Rick CTF | write-up">
-    <meta name="twitter:description" content="Hello again, today we'll cover another CTF made by Tryhackme.com such a cool box I enjoyed every second of it, I hope you do and let's start our challenge with some enumeration.  nmap -sC -sV &amp;lt;target-machine&amp;gt;it looks like we don't have much to break, two ports.">
-    <meta name="twitter:url" content="https://fr33s0ul.tech/pickle-rick/">
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/rick_morty-1.jpg">
-    <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="fr33s0ul">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="CTF">
-    <meta name="twitter:site" content="@fr33soul_">
-    <meta name="twitter:creator" content="@fr33soul_">
-    <meta property="og:image:width" content="1000">
-    <meta property="og:image:height" content="714">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pickle Rick CTF | write-up" />
+    <meta name="twitter:description" content="Hello again, today we&#x27;ll cover another CTF made by Tryhackme.com such a cool box I enjoyed every second of it, I hope you do and let&#x27;s start our challenge with some enumeration.  nmap -sC -sV &amp;lt;target-machine&amp;gt;it looks like we don&#x27;t have much to break, two ports." />
+    <meta name="twitter:url" content="https://fr33s0ul.tech/pickle-rick/" />
+    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/rick_morty-1.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="fr33s0ul" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="CTF" />
+    <meta name="twitter:site" content="@fr33soul_" />
+    <meta name="twitter:creator" content="@fr33soul_" />
+    <meta property="og:image:width" content="1000" />
+    <meta property="og:image:height" content="714" />
     
     <script type="application/ld+json">
 {
@@ -87,8 +88,8 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.38">
-    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html">
+    <meta name="generator" content="Ghost 3.38" />
+    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111725042-2"></script>
 <script>
@@ -112,14 +113,14 @@
         <nav class="site-nav">
     <div class="site-nav-left-wrapper">
         <div class="site-nav-left">
-                <a class="site-nav-logo" href="../"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul"></a>
+                <a class="site-nav-logo" href="../index.html"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul" /></a>
             <div class="site-nav-content">
                     <ul class="nav">
-    <li class="nav-home"><a href="../">Home</a></li>
-    <li class="nav-whoami"><a href="../whoami/">whoami</a></li>
-    <li class="nav-whispers"><a href="../whispers/">Whispers</a></li>
-    <li class="nav-ai"><a href="../tag/ai/">Ai</a></li>
-    <li class="nav-ctf"><a href="../tag/ctf/">CTF</a></li>
+    <li class="nav-home"><a href="../index.html">Home</a></li>
+    <li class="nav-whoami"><a href="../whoami/index.html">whoami</a></li>
+    <li class="nav-whispers"><a href="../whispers/index.html">Whispers</a></li>
+    <li class="nav-ai"><a href="../tag/ai/index.html">Ai</a></li>
+    <li class="nav-ctf"><a href="../tag/ctf/index.html">CTF</a></li>
 </ul>
 
                     <span class="nav-post-title ">Pickle Rick CTF | write-up</span>
@@ -128,10 +129,10 @@
     </div>
     <div class="site-nav-right">
             <div class="social-links">
-                    <a class="social-link social-link-tw" href="https://twitter.com/fr33soul_" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+                    <a class="social-link social-link-tw" href="https://twitter.com/fr33soul_" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 </a>
             </div>
-                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://fr33s0ul.tech/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://fr33s0ul.tech/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
 </a>
 
     </div>
@@ -148,7 +149,7 @@
             <header class="post-full-header">
 
                 <section class="post-full-tags">
-                    <a href="../tag/ctf/">CTF</a>
+                    <a href="../tag/ctf/index.html">CTF</a>
                 </section>
 
                 <h1 class="post-full-title">Pickle Rick CTF | write-up</h1>
@@ -162,25 +163,28 @@
                             <li class="author-list-item">
 
                                 <div class="author-card">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
                                     <div class="author-info">
-                                        <h2>fr33s0ul</h2>
-                                        <p>Read <a href="../author/fr33s0ul/">more posts</a> by this author.</p>
+                                        <div class="bio">
+                                            <h2>fr33s0ul</h2>
+                                            <p>A humble person interested to technology since first 3 way handshake, Having one goal from all of this, Sharing knowledge for the sake of change to a better humanity.</p>
+                                            <p><a href="../author/fr33s0ul/index.html">More posts</a> by fr33s0ul.</p>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <a href="../author/fr33s0ul/" class="author-avatar">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                                <a href="../author/fr33s0ul/index.html" class="author-avatar">
+                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
                                 </a>
 
                             </li>
                         </ul>
 
                         <section class="post-full-byline-meta">
-                            <h4 class="author-name"><a href="../author/fr33s0ul/">fr33s0ul</a></h4>
+                            <h4 class="author-name"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></h4>
                             <div class="byline-meta-content">
                                 <time class="byline-meta-date" datetime="2020-04-02">2 Apr 2020</time>
-                                <span class="byline-reading-time"><span class="bull">•</span> 3 min read</span>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 3 min read</span>
                             </div>
                         </section>
 
@@ -191,17 +195,22 @@
             </header>
 
             <figure class="post-full-image">
-                <img srcset="../content/images/size/w300/2020/04/rick_morty.jpg 300w,
+                <img
+                    srcset="../content/images/size/w300/2020/04/rick_morty.jpg 300w,
                            ../content/images/size/w600/2020/04/rick_morty.jpg 600w,
                           ../content/images/size/w1000/2020/04/rick_morty.jpg 1000w,
-                         ../content/images/size/w2000/2020/04/rick_morty.jpg 2000w" sizes="(max-width: 800px) 400px,
+                         ../content/images/size/w2000/2020/04/rick_morty.jpg 2000w"
+                    sizes="(max-width: 800px) 400px,
                         (max-width: 1170px) 1170px,
-                            2000px" src="../content/images/size/w2000/2020/04/rick_morty.jpg" alt="Pickle Rick CTF | write-up">
+                            2000px"
+                    src="../content/images/size/w2000/2020/04/rick_morty.jpg"
+                    alt="Pickle Rick CTF | write-up"
+                />
             </figure>
 
             <section class="post-full-content">
                 <div class="post-content">
-                    <hr><p>Hello again, today we'll cover another CTF made by Tryhackme.com such a cool box I enjoyed every second of it, I hope you do and let's start our challenge with some enumeration.</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/9zXWAIcr6jycE" width="480" height="338" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/rick-pickle-9zXWAIcr6jycE"></a></p><!--kg-card-end: html--><blockquote>nmap -sC -sV <strong>&lt;target-machine&gt;</strong></blockquote><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-16.50.12-1.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.02.37.png" class="kg-image" alt></figure><p>it looks like we don't have much to break, two ports. 22 for ssh and 80 http, So first what I usually do is give a quick check to the source code of the site in case something is hidden there, and after we have an idea about what we are dealing with, let's check for some directories</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.02.49-1.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.06.28.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.14.10.png" class="kg-image" alt></figure><p>That is such a weird robots.txt file! it may be something useful for us, so we will keep it aside and it is weird that we have a username without login panel let's nikto the hell of this box</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.06.35.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.07.01.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.15.21.png" class="kg-image" alt></figure><p>after finding the login page first what I tried was the famous quote from Rick Wabbalubbadubdub!!!! and we got a command panel that connects us as the user www-data</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/l41lI4bYmcsPJX9Go" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/rickandmorty-adult-swim-rick-and-morty-l41lI4bYmcsPJX9Go"></a></p><!--kg-card-end: html--><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.16.51.png" class="kg-image" alt></figure><p>so when we <strong>ls -la </strong>we notice that there are two files Sup3rwhatever.txt and clue.txt let's try and open them in the browser.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.31.44.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.32.22.png" class="kg-image" alt></figure><p>the first file is our first <strong>flag</strong>, the second file tells us to look around the system, for my case I tried to get a reverse shell because that command prompt wasn't satisfying, well guess what every time you'll get a reverse one it will shutdown no matter how much you'll try so don't dig hard in that rabbit hole, and the second thing the command panel we have filters the queries and if one of them is <strong>cat</strong>, <strong>head</strong>, <strong>tail</strong>, whatever ... it won't work, lucky us we still have access to <strong>find </strong>and<strong> less </strong>that's all we need 🙃 after digging in directories with ls -la /stuff/that/linux/have. </p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.59.31.png" class="kg-image" alt></figure><p>here we go we have the second ingredients for rick, later when I was trying many commands to find files and try to use any process to access the root directory, I thought about the first thing I try to priv escalate which is <strong>sudo -l</strong> and yep we had it all in front of our eyes</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-18.03.26.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-18.03.47.png" class="kg-image" alt></figure><p>and that's it you are root and you have the third file that contains the last flag for the machine and everything is done the headaches are gone, but to be honest, it is a very cute challenge not hard at all, little bit of twists, but that's the beauty of it you better get used to it.</p><p>Happy hacking!</p><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
+                    <hr><p>Hello again, today we'll cover another CTF made by Tryhackme.com such a cool box I enjoyed every second of it, I hope you do and let's start our challenge with some enumeration.</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/9zXWAIcr6jycE" width="480" height="338" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/rick-pickle-9zXWAIcr6jycE"></a></p><!--kg-card-end: html--><blockquote>nmap -sC -sV <strong>&lt;target-machine&gt;</strong></blockquote><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-16.50.12-1.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.02.37.png" class="kg-image" alt></figure><p>it looks like we don't have much to break, two ports. 22 for ssh and 80 http, So first what I usually do is give a quick check to the source code of the site in case something is hidden there, and after we have an idea about what we are dealing with, let's check for some directories</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.02.49-1.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.06.28.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.14.10.png" class="kg-image" alt></figure><p>That is such a weird robots.txt file! it may be something useful for us, so we will keep it aside and it is weird that we have a username without login panel let's nikto the hell of this box</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.06.35.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.07.01.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.15.21.png" class="kg-image" alt></figure><p>after finding the login page first what I tried was the famous quote from Rick Wabbalubbadubdub!!!! and we got a command panel that connects us as the user www-data</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/l41lI4bYmcsPJX9Go" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/rickandmorty-adult-swim-rick-and-morty-l41lI4bYmcsPJX9Go"></a></p><!--kg-card-end: html--><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.16.51.png" class="kg-image" alt></figure><p>so when we <strong>ls -la </strong>we notice that there are two files Sup3rwhatever.txt and clue.txt let's try and open them in the browser.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.31.44.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.32.22.png" class="kg-image" alt></figure><p>the first file is our first <strong>flag</strong>, the second file tells us to look around the system, for my case I tried to get a reverse shell because that command prompt wasn't satisfying, well guess what every time you'll get a reverse one it will shutdown no matter how much you'll try so don't dig hard in that rabbit hole, and the second thing the command panel we have filters the queries and if one of them is <strong>cat</strong>, <strong>head</strong>, <strong>tail</strong>, whatever ... it won't work, lucky us we still have access to <strong>find </strong>and<strong> less </strong>that's all we need 🙃 after digging in directories with ls -la /stuff/that/linux/have. </p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-17.59.31.png" class="kg-image" alt></figure><p>here we go we have the second ingredients for rick, later when I was trying many commands to find files and try to use any process to access the root directory, I thought about the first thing I try to priv escalate which is <strong>sudo -l</strong> and yep we had it all in front of our eyes</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-18.03.26.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-02-at-18.03.47.png" class="kg-image" alt></figure><p>and that's it you are root and you have the third file that contains the last flag for the machine and everything is done the headaches are gone, but to be honest, it is a very cute challenge not hard at all, little bit of twists, but that's the beauty of it you better get used to it.</p><p>Happy hacking!</p><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
                 </div>
             </section>
 
@@ -217,26 +226,26 @@
         <div class="read-next-feed">
                 <article class="read-next-card">
                     <header class="read-next-card-header">
-                        <h3><span>More in</span> <a href="../tag/ctf/">CTF</a></h3>
+                        <h3><span>More in</span> <a href="../tag/ctf/index.html">CTF</a></h3>
                     </header>
                     <div class="read-next-card-content">
                         <ul>
                             <li>
-                                <h4><a href="../yearoftherabbit-ctf-write-up/">YearOfTheRabbit | CTF write-up</a></h4>
+                                <h4><a href="../yearoftherabbit-ctf-write-up/index.html">YearOfTheRabbit | CTF write-up</a></h4>
                                 <div class="read-next-card-meta">
                                     <p><time datetime="2020-04-22">22 Apr 2020</time> –
                                         9 min read</p>
                                 </div>
                             </li>
                             <li>
-                                <h4><a href="../dogcat-thm-write-up/">dogcat | THM write-up</a></h4>
+                                <h4><a href="../dogcat-thm-write-up/index.html">dogcat | THM write-up</a></h4>
                                 <div class="read-next-card-meta">
                                     <p><time datetime="2020-04-19">19 Apr 2020</time> –
                                         6 min read</p>
                                 </div>
                             </li>
                             <li>
-                                <h4><a href="../lfi/">Local file inclusion | write-up</a></h4>
+                                <h4><a href="../lfi/index.html">Local file inclusion | write-up</a></h4>
                                 <div class="read-next-card-meta">
                                     <p><time datetime="2020-04-17">17 Apr 2020</time> –
                                         6 min read</p>
@@ -245,23 +254,29 @@
                         </ul>
                     </div>
                     <footer class="read-next-card-footer">
-                        <a href="../tag/ctf/">See all 15 posts
+                        <a href="../tag/ctf/index.html">See all 15 posts
                             →</a>
                     </footer>
                 </article>
 
                 <article class="post-card post tag-ctf ">
 
-    <a class="post-card-image-link" href="../ghostcat-write-up/">
-        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/HJI.png 300w,
+    <a class="post-card-image-link" href="../ghostcat-write-up/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/04/HJI.png 300w,
                    ../content/images/size/w600/2020/04/HJI.png 600w,
                   ../content/images/size/w1000/2020/04/HJI. png 1000w,
-                 ../content/images/size/w2000/2020/04/HJI. png 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/HJI.png" alt="Retro | write-up">
+                 ../content/images/size/w2000/2020/04/HJI. png 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            loading="lazy"
+            src="../content/images/size/w600/2020/04/HJI.png"
+            alt="Retro | write-up"
+        />
     </a>
 
     <div class="post-card-content">
 
-        <a class="post-card-content-link" href="../ghostcat-write-up/">
+        <a class="post-card-content-link" href="../ghostcat-write-up/index.html">
 
             <header class="post-card-header">
                     <div class="post-card-primary-tag">CTF</div>
@@ -282,14 +297,14 @@
                         fr33s0ul
                     </div>
             
-                    <a href="../author/fr33s0ul/" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
                     </a>
                 </li>
             </ul>
             <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-03">3 Apr 2020</time> <span class="bull">•</span> 4 min read</span>
+                <span><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-04-03">3 Apr 2020</time> <span class="bull">&bull;</span> 4 min read</span>
             </div>
         </footer>
 
@@ -299,16 +314,22 @@
 
                 <article class="post-card post tag-ctf ">
 
-    <a class="post-card-image-link" href="../cherryblossom-ctf-write-up/">
-        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/cherryCTF-1.png 300w,
+    <a class="post-card-image-link" href="../cherryblossom-ctf-write-up/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/04/cherryCTF-1.png 300w,
                    ../content/images/size/w600/2020/04/cherryCTF-1.png 600w,
                   ../content/images/size/w1000/2020/04/cherryCTF-1. png 1000w,
-                 ../content/images/size/w2000/2020/04/cherryCTF-1. png 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/cherryCTF-1.png" alt="CherryBlossom CTF | write-up">
+                 ../content/images/size/w2000/2020/04/cherryCTF-1. png 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            loading="lazy"
+            src="../content/images/size/w600/2020/04/cherryCTF-1.png"
+            alt="CherryBlossom CTF | write-up"
+        />
     </a>
 
     <div class="post-card-content">
 
-        <a class="post-card-content-link" href="../cherryblossom-ctf-write-up/">
+        <a class="post-card-content-link" href="../cherryblossom-ctf-write-up/index.html">
 
             <header class="post-card-header">
                     <div class="post-card-primary-tag">CTF</div>
@@ -329,14 +350,14 @@
                         fr33s0ul
                     </div>
             
-                    <a href="../author/fr33s0ul/" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
                     </a>
                 </li>
             </ul>
             <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-01">1 Apr 2020</time> <span class="bull">•</span> 5 min read</span>
+                <span><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-04-01">1 Apr 2020</time> <span class="bull">&bull;</span> 5 min read</span>
             </div>
         </footer>
 
@@ -352,9 +373,9 @@
 
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="../">fr33s0ul</a> © 2020</section>
+                <section class="copyright"><a href="../index.html">fr33s0ul</a> &copy; 2020</section>
                 <nav class="site-footer-nav">
-                    <a href="../">Latest Posts</a>
+                    <a href="../index.html">Latest Posts</a>
                     
                     <a href="https://twitter.com/fr33soul_" target="_blank" rel="noopener">Twitter</a>
                     <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
@@ -365,9 +386,12 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
     </script>
-    <script src="../assets/built/casper.js?v=0a4893ecd9"></script>
+    <script src="../assets/built/casper.js?v=f12a2fbdf2"></script>
 
     <script>
         // Parse the URL parameter
@@ -445,3 +469,4 @@
     
 
 </body>
+</html>
