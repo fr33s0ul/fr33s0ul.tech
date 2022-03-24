@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark-mode">
 <head>
 
+    <title>CherryBlossom CTF | write-up</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-    <title>CherryBlossom CTF | write-up</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=8ba882e352" />
+    <style>
+        :root {
+            --button-bg-color: #ffffff;
+            --button-text-color: var(--color-darkgrey);
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=7717a9b749" />
 
     <link rel="icon" href="../favicon.png" type="image/png" />
     <link rel="canonical" href="index.html" />
@@ -20,23 +26,23 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="CherryBlossom CTF | write-up" />
     <meta property="og:description" content="Hello all, this is my first write-up at this page If you see anything not right or have any corrections I would be very happy getting some feedback, anyways let&#x27;s start our write-up, Today we&#x27;ll review a CTF challenge on TryHackme CherryBlossom. This challenge is rated hard and it focuses" />
-    <meta property="og:url" content="https://fr33s0ul.tech/cherryblossom-ctf-write-up/" />
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/cherryCTF-1-2.png" />
+    <meta property="og:url" content="http://localhost:2368/cherryblossom-ctf-write-up/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/04/cherryCTF-1-2.png" />
     <meta property="article:published_time" content="2020-04-01T13:42:48.000Z" />
-    <meta property="article:modified_time" content="2020-11-21T15:21:47.000Z" />
+    <meta property="article:modified_time" content="2022-03-24T15:42:58.000Z" />
     <meta property="article:tag" content="CTF" />
     
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="CherryBlossom CTF | write-up" />
     <meta name="twitter:description" content="Hello all, this is my first write-up at this page If you see anything not right or have any corrections I would be very happy getting some feedback, anyways let&#x27;s start our write-up, Today we&#x27;ll review a CTF challenge on TryHackme CherryBlossom. This challenge is rated hard and it focuses" />
-    <meta name="twitter:url" content="https://fr33s0ul.tech/cherryblossom-ctf-write-up/" />
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/cherryCTF-1-1.png" />
+    <meta name="twitter:url" content="http://localhost:2368/cherryblossom-ctf-write-up/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/04/cherryCTF-1-1.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="fr33s0ul" />
     <meta name="twitter:label2" content="Filed under" />
     <meta name="twitter:data2" content="CTF" />
-    <meta name="twitter:site" content="@fr3350u1" />
-    <meta name="twitter:creator" content="@fr33soul_" />
+    <meta name="twitter:site" content="@fr33s0ul_Ninja" />
+    <meta name="twitter:creator" content="@fr33s0ul_Ninja" />
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="600" />
     
@@ -47,10 +53,10 @@
     "publisher": {
         "@type": "Organization",
         "name": "fr33s0ul",
-        "url": "https://fr33s0ul.tech/",
+        "url": "http://localhost:2368/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+            "url": "http://localhost:2368/content/images/2020/03/logo.gif",
             "width": 300,
             "height": 41
         }
@@ -60,22 +66,22 @@
         "name": "fr33s0ul",
         "image": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
             "width": 600,
             "height": 594
         },
-        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "url": "http://localhost:2368/author/fr33s0ul/",
         "sameAs": [
-            "https://twitter.com/fr33soul_"
+            "https://twitter.com/fr33s0ul_Ninja"
         ]
     },
     "headline": "CherryBlossom CTF | write-up",
-    "url": "https://fr33s0ul.tech/cherryblossom-ctf-write-up/",
+    "url": "http://localhost:2368/cherryblossom-ctf-write-up/",
     "datePublished": "2020-04-01T13:42:48.000Z",
-    "dateModified": "2020-11-21T15:21:47.000Z",
+    "dateModified": "2022-03-24T15:42:58.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/cherryCTF-1.png",
+        "url": "http://localhost:2368/content/images/2020/04/cherryCTF-1.png",
         "width": 1156,
         "height": 1156
     },
@@ -83,13 +89,16 @@
     "description": "Hello all, this is my first write-up at this page If you see anything not right\nor have any corrections I would be very happy getting some feedback, anyways\nlet&#x27;s start our write-up, Today we&#x27;ll review a CTF challenge on TryHackme\n[https://tryhackme.com/] CherryBlossom. This challenge is rated hard and it\nfocuses on file manipulation and cryptography.\n\n&gt; First of all, we will start enumerating the machine\nnmap -sC -sV {target-host}\n\nwe can see that there are three open ports 22 for SSH and 139-4",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://fr33s0ul.tech/"
+        "@id": "http://localhost:2368/"
     }
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.38" />
+    <meta name="generator" content="Ghost 4.41" />
     <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html" />
+    
+    <script defer src="../public/cards.min.js?v=7717a9b749"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css?v=7717a9b749">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111725042-2"></script>
 <script>
@@ -99,23 +108,30 @@
 
   gtag('config', 'UA-111725042-2');
 </script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc3b35649b48a82"></script>
+
+<style>:root {--ghost-accent-color: #15171A;}</style>
 
 </head>
 <body class="post-template tag-ctf">
+<div class="viewport">
 
-    <div class="site-wrapper">
+    <header id="gh-head" class="gh-head has-cover">
+        <nav class="gh-head-inner inner gh-container">
 
-        
-
-<header class="site-header">
-    <div class="outer site-nav-main">
-    <div class="inner">
-        <nav class="site-nav">
-    <div class="site-nav-left-wrapper">
-        <div class="site-nav-left">
-                <a class="site-nav-logo" href="../index.html"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul" /></a>
-            <div class="site-nav-content">
-                    <ul class="nav">
+            <div class="gh-head-brand">
+                <a class="gh-head-logo" href="../index.html">
+                        <img src="../content/images/size/w600/2020/03/logo.gif" alt="fr33s0ul" />
+                </a>
+                <a class="gh-burger" role="button">
+                    <div class="gh-burger-box">
+                        <div class="gh-burger-inner"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="gh-head-menu">
+                <ul class="nav">
     <li class="nav-home"><a href="../index.html">Home</a></li>
     <li class="nav-whoami"><a href="../whoami/index.html">whoami</a></li>
     <li class="nav-whispers"><a href="../whispers/index.html">Whispers</a></li>
@@ -123,309 +139,265 @@
     <li class="nav-ctf"><a href="../tag/ctf/index.html">CTF</a></li>
 </ul>
 
-                    <span class="nav-post-title ">CherryBlossom CTF | write-up</span>
             </div>
-        </div>
-    </div>
-    <div class="site-nav-right">
-            <div class="social-links">
-                    <a class="social-link social-link-tw" href="https://twitter.com/fr3350u1" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+            <div class="gh-head-actions">
+                <div class="gh-social">
+                        <a class="gh-social-twitter" href="https://twitter.com/fr33s0ul_Ninja" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 </a>
-            </div>
-                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://fr33s0ul.tech/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
-</a>
-
-    </div>
-</nav>
-    </div>
-</div></header>
-
-
-<main id="site-main" class="site-main outer">
-    <div class="inner">
-
-        <article class="post-full post tag-ctf ">
-
-            <header class="post-full-header">
-
-                <section class="post-full-tags">
-                    <a href="../tag/ctf/index.html">CTF</a>
-                </section>
-
-                <h1 class="post-full-title">CherryBlossom CTF | write-up</h1>
-
-
-                <div class="post-full-byline">
-
-                    <section class="post-full-byline-content">
-
-                        <ul class="author-list">
-                            <li class="author-list-item">
-
-                                <div class="author-card">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
-                                    <div class="author-info">
-                                        <div class="bio">
-                                            <h2>fr33s0ul</h2>
-                                            <p>A humble person interested to technology since first 3 way handshake, Having one goal from all of this, Sharing knowledge for the sake of change to a better humanity.</p>
-                                            <p><a href="../author/fr33s0ul/index.html">More posts</a> by fr33s0ul.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <a href="../author/fr33s0ul/index.html" class="author-avatar">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
-                                </a>
-
-                            </li>
-                        </ul>
-
-                        <section class="post-full-byline-meta">
-                            <h4 class="author-name"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></h4>
-                            <div class="byline-meta-content">
-                                <time class="byline-meta-date" datetime="2020-04-01">1 Apr 2020</time>
-                                <span class="byline-reading-time"><span class="bull">&bull;</span> 5 min read</span>
-                            </div>
-                        </section>
-
-                    </section>
-
-
                 </div>
-            </header>
 
-            <figure class="post-full-image">
+                    <a class="gh-head-button" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="site-content">
+        
+
+
+
+<main id="site-main" class="site-main">
+    <article class="article post tag-ctf image-small">
+
+        <header class="article-header gh-canvas">
+
+            <section class="article-tag">
+                <a href="../tag/ctf/index.html">CTF</a>
+            </section>
+
+            <h1 class="article-title">CherryBlossom CTF | write-up</h1>
+
+
+            <div class="article-byline">
+                <section class="article-byline-content">
+                    <ul class="author-list">
+                        <li class="author-list-item">
+                            <a href="../author/fr33s0ul/index.html" class="author-avatar">
+                                <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="article-byline-meta">
+                        <h4 class="author-name"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></h4>
+                        <div class="byline-meta-content">
+                            <time class="byline-meta-date" datetime="2020-04-01">Apr 1, 2020</time>
+                            <span class="byline-reading-time"><span class="bull">&bull;</span> 5 min read</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <figure class="article-image">
                 <img
                     srcset="../content/images/size/w300/2020/04/cherryCTF-1.png 300w,
                            ../content/images/size/w600/2020/04/cherryCTF-1.png 600w,
                           ../content/images/size/w1000/2020/04/cherryCTF-1. png 1000w,
                          ../content/images/size/w2000/2020/04/cherryCTF-1. png 2000w"
-                    sizes="(max-width: 800px) 400px,
-                        (max-width: 1170px) 1170px,
-                            2000px"
+                    sizes="(min-width: 1400px) 1400px, 92vw"
                     src="../content/images/size/w2000/2020/04/cherryCTF-1.png"
                     alt="CherryBlossom CTF | write-up"
                 />
             </figure>
+        </header>
 
-            <section class="post-full-content">
-                <div class="post-content">
-                    <p>Hello all, this is my first write-up at this page If you see anything not right or have any corrections I would be very happy getting some feedback, anyways let's start our write-up, Today we'll review a CTF challenge on <a href="https://tryhackme.com/">TryHackme</a> CherryBlossom. This challenge is rated hard and it focuses on file manipulation and cryptography.</p><blockquote>First of all, we will start enumerating the machine</blockquote><!--kg-card-begin: markdown--><p>nmap -sC -sV <strong>{target-host}</strong></p>
-<!--kg-card-end: markdown--><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.03.30.png" class="kg-image" alt></figure><p>we can see that there are three open ports 22 for SSH and 139-445 used by Samba, so far we have nothing except the samba, let's move on and scan the smb</p><!--kg-card-begin: markdown--><p>nmap --script smb-enum-shares -vv <strong>{target-host}</strong></p>
-<!--kg-card-end: markdown--><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.19.45.png" class="kg-image" alt></figure><p>and here we have something, an Anonymous file shared which means we can dig in with anonymous account and we may find something interesting.</p><!--kg-card-begin: markdown--><p>smbclient \\<strong>{target-host}</strong>\Anonymous</p>
-<!--kg-card-end: markdown--><p>we found a text file <strong>journal.txt </strong>and when we open it, it contains a huge base64.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.19.58.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.20.49.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.21.41.png" class="kg-image" alt></figure><p>Decoding it provides us with an image, Let's save it as a png. After checking it with the command <strong>file</strong>, it is a PNG.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.21.51.png" class="kg-image" alt></figure><p>Normally, in Steganography challenges Jpeg are commonly  used, Steghide won't be able to work on this PNG which means we will need to use another tool called <a href="https://github.com/dhsdshdhk/stegpy">stegpy</a>, It's easy to install all you have to do is <strong>pip3 install stegpy </strong>and let's see what's hidden there</p><!--kg-card-begin: markdown--><p>stegpy <strong>{file}</strong></p>
-<!--kg-card-end: markdown--><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.13.52.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.14.17.png" class="kg-image" alt></figure><p>we got a zip file! Unluckily, it look like our file is corrupted, Let's check the hex of the file to see if something is wrong with the tag </p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.15.47.png" class="kg-image" alt></figure><p>as it is provided in the picture it doesn't look fine, let's change it to what it's supposed to be <strong>50 4B 03 04</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.16.34.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.17.14.png" class="kg-image" alt></figure><p>exit and save, it works! if you have the password 😶, Let's move on and extract that hash from the file, I will use fcrackzip to decrypt it but feel free to use whatever you like.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.20.13-1.png" class="kg-image" alt></figure><p>after decrypting the zip file, found an Encrypted Cherrytree document, one of the good ways to store data and diaries ... , if we use the command <strong>file</strong> to check it, it will tell us that it's a 7z file, so let's <strong>7z2john</strong> this baby file.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.24.06.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.30.06-1.png" class="kg-image" alt></figure><p>the diaries and privacy he had is shared with us, So let's have a look at what we've got there.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.41.42.png" class="kg-image" alt></figure><p>I exported the most interesting thing he had a wordlist called cherry-bolossm 🍒 and we got a username , this is getting fun now. Let's brute force the user <strong>lily </strong>password with the wordlist we exported from the file.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.53.16.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.02.25.png" class="kg-image" alt></figure><p>Welcome, Lily! 😊 what a fun way we got this user, let's not get lost now and focus on our box.</p><p>There's no user flag because there's another user that holds the flag and then the root! we got to pivot 😎 the username is <strong>Johan</strong>. Let's browse on this machine.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.03.31.png" class="kg-image" alt></figure><p>the <strong>shadow.bak</strong>  can be read by us which means we have something to get us to Mr Johan.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.04.08-2.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.06.37.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.08.38.png" class="kg-image" alt></figure><p>Et Voila, we decrypted the hash successfully and jumped from user lily to johan with the command:</p><blockquote>sudo -u johan</blockquote><p>we typed the password we got and we have the user flag, now what. We need to get root priv, the first thing I do when I'm trying to privesc <strong>sudo -l </strong>to see if the user is allowed to use anything as root and try to gain access with the power he got.</p><p>when I tried to type the password we got prompted to johan, which is weird and very unusual unsafe unwhatever, all I know is that we have a <strong>pwdfeedback (pasword feedback) </strong>issue which means we are using a vulnerable version of sudo, found out we have a (CVE-2019-18634) <strong>sudo buffer overflow</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.19.57.png" class="kg-image" alt></figure><p>tried what I read about in that CVE and our sudo version burped a Segmentation fault, which means we have a bufferoverflow over here ...</p><blockquote>talking about bufferoverflow if you don't understand the vulnerability here's a very good video linked</blockquote><figure class="kg-card kg-embed-card"><iframe width="480" height="270" src="https://www.youtube.com/embed/1S0aBV-Waeo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.25.54.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.26.21.png" class="kg-image" alt></figure><p>I downloaded the exploit coded in C language, gave it permission to be executed and boom we got a root user, all we have to do now is go to /root/ directory and the file root.txt fill contain our flag and here you go you are no longer upset with your low privileges. </p><p>I really enjoyed this machine, learned many things the diary thing encryption, cryptography 101, backups are bad with wrong permissions, and png can contain files, ... and mostly to not forget and make it clear for anyone who comes and ask me if the bufferoverflow ...  YES, they do still exist!!</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/S3Ot3hZ5bcy8o" width="480" height="375" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/jack-nicholson-nodding-anger-management-S3Ot3hZ5bcy8o"></a></p><!--kg-card-end: html--><p>The bufferoverflow thing continues to be a feature of the security landscape as long as we are still using C language. This is in no small part due to the significant issue of legacy code. An awful lot of C code still exists, including the kernel of every major operating system and popular libraries such as OpenSSL. Even if the doctors, I mean the developers want to use a safe language such as C#, they may need to depend on a third-party library written in C.</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/ekvv0VTMS1fRNI6SW5" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/drivetribe-edd-drive-tribe-china-ekvv0VTMS1fRNI6SW5"></a></p><!--kg-card-end: html--><p>Happy hacking! </p><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
-                </div>
-            </section>
+        <section class="gh-content gh-canvas">
+            <p>Hello all, this is my first write-up at this page If you see anything not right or have any corrections I would be very happy getting some feedback, anyways let's start our write-up, Today we'll review a CTF challenge on <a href="https://tryhackme.com/">TryHackme</a> CherryBlossom. This challenge is rated hard and it focuses on file manipulation and cryptography.</p><blockquote>First of all, we will start enumerating the machine</blockquote><!--kg-card-begin: markdown--><p>nmap -sC -sV <strong>{target-host}</strong></p>
+<!--kg-card-end: markdown--><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.03.30.png" class="kg-image" alt loading="lazy"></figure><p>we can see that there are three open ports 22 for SSH and 139-445 used by Samba, so far we have nothing except the samba, let's move on and scan the smb</p><!--kg-card-begin: markdown--><p>nmap --script smb-enum-shares -vv <strong>{target-host}</strong></p>
+<!--kg-card-end: markdown--><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.19.45.png" class="kg-image" alt loading="lazy"></figure><p>and here we have something, an Anonymous file shared which means we can dig in with anonymous account and we may find something interesting.</p><!--kg-card-begin: markdown--><p>smbclient \\<strong>{target-host}</strong>\Anonymous</p>
+<!--kg-card-end: markdown--><p>we found a text file <strong>journal.txt </strong>and when we open it, it contains a huge base64.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.19.58.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.20.49.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.21.41.png" class="kg-image" alt loading="lazy"></figure><p>Decoding it provides us with an image, Let's save it as a png. After checking it with the command <strong>file</strong>, it is a PNG.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-11.21.51.png" class="kg-image" alt loading="lazy"></figure><p>Normally, in Steganography challenges Jpeg are commonly  used, Steghide won't be able to work on this PNG which means we will need to use another tool called <a href="https://github.com/dhsdshdhk/stegpy">stegpy</a>, It's easy to install all you have to do is <strong>pip3 install stegpy </strong>and let's see what's hidden there</p><!--kg-card-begin: markdown--><p>stegpy <strong>{file}</strong></p>
+<!--kg-card-end: markdown--><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.13.52.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.14.17.png" class="kg-image" alt loading="lazy"></figure><p>we got a zip file! Unluckily, it look like our file is corrupted, Let's check the hex of the file to see if something is wrong with the tag </p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.15.47.png" class="kg-image" alt loading="lazy"></figure><p>as it is provided in the picture it doesn't look fine, let's change it to what it's supposed to be <strong>50 4B 03 04</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.16.34.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.17.14.png" class="kg-image" alt loading="lazy"></figure><p>exit and save, it works! if you have the password 😶, Let's move on and extract that hash from the file, I will use fcrackzip to decrypt it but feel free to use whatever you like.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.20.13-1.png" class="kg-image" alt loading="lazy"></figure><p>after decrypting the zip file, found an Encrypted Cherrytree document, one of the good ways to store data and diaries ... , if we use the command <strong>file</strong> to check it, it will tell us that it's a 7z file, so let's <strong>7z2john</strong> this baby file.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.24.06.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.30.06-1.png" class="kg-image" alt loading="lazy"></figure><p>the diaries and privacy he had is shared with us, So let's have a look at what we've got there.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.41.42.png" class="kg-image" alt loading="lazy"></figure><p>I exported the most interesting thing he had a wordlist called cherry-bolossm 🍒 and we got a username , this is getting fun now. Let's brute force the user <strong>lily </strong>password with the wordlist we exported from the file.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-12.53.16.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.02.25.png" class="kg-image" alt loading="lazy"></figure><p>Welcome, Lily! 😊 what a fun way we got this user, let's not get lost now and focus on our box.</p><p>There's no user flag because there's another user that holds the flag and then the root! we got to pivot 😎 the username is <strong>Johan</strong>. Let's browse on this machine.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.03.31.png" class="kg-image" alt loading="lazy"></figure><p>the <strong>shadow.bak</strong>  can be read by us which means we have something to get us to Mr Johan.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.04.08-2.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.06.37.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.08.38.png" class="kg-image" alt loading="lazy"></figure><p>Et Voila, we decrypted the hash successfully and jumped from user lily to johan with the command:</p><blockquote>sudo -u johan</blockquote><p>we typed the password we got and we have the user flag, now what. We need to get root priv, the first thing I do when I'm trying to privesc <strong>sudo -l </strong>to see if the user is allowed to use anything as root and try to gain access with the power he got.</p><p>when I tried to type the password we got prompted to johan, which is weird and very unusual unsafe unwhatever, all I know is that we have a <strong>pwdfeedback (pasword feedback) </strong>issue which means we are using a vulnerable version of sudo, found out we have a (CVE-2019-18634) <strong>sudo buffer overflow</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.19.57.png" class="kg-image" alt loading="lazy"></figure><p>tried what I read about in that CVE and our sudo version burped a Segmentation fault, which means we have a bufferoverflow over here ...</p><blockquote>talking about bufferoverflow if you don't understand the vulnerability here's a very good video linked</blockquote><figure class="kg-card kg-embed-card"><iframe width="480" height="270" src="https://www.youtube.com/embed/1S0aBV-Waeo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.25.54.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-01-at-13.26.21.png" class="kg-image" alt loading="lazy"></figure><p>I downloaded the exploit coded in C language, gave it permission to be executed and boom we got a root user, all we have to do now is go to /root/ directory and the file root.txt fill contain our flag and here you go you are no longer upset with your low privileges. </p><p>I really enjoyed this machine, learned many things the diary thing encryption, cryptography 101, backups are bad with wrong permissions, and png can contain files, ... and mostly to not forget and make it clear for anyone who comes and ask me if the bufferoverflow ...  YES, they do still exist!!</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/S3Ot3hZ5bcy8o" width="480" height="375" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/jack-nicholson-nodding-anger-management-S3Ot3hZ5bcy8o"></a></p><!--kg-card-end: html--><p>The bufferoverflow thing continues to be a feature of the security landscape as long as we are still using C language. This is in no small part due to the significant issue of legacy code. An awful lot of C code still exists, including the kernel of every major operating system and popular libraries such as OpenSSL. Even if the doctors, I mean the developers want to use a safe language such as C#, they may need to depend on a third-party library written in C.</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/ekvv0VTMS1fRNI6SW5" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/drivetribe-edd-drive-tribe-china-ekvv0VTMS1fRNI6SW5"></a></p><!--kg-card-end: html--><p>Happy hacking! </p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2022/03/crypto-coins-3.png" class="kg-image" alt loading="lazy" width="250" height="79"><figcaption>Crypto donations are appreciated for more free content and exciting topics <strong>0x684c21519d43E415506c1750c08FA0A97621FFEF</strong></figcaption></figure>
+        </section>
 
 
-            
-            <script>talkyardServerUrl='https://comments-for-fr33s0ul-tech.talkyard.net';</script>
-<script async defer src="https://c1.ty-cdn.net/-/talkyard-comments.min.js"></script>
-<div class="talkyard-comments" data-discussion-id="5e8498785a6fba01623b5688" style="margin-top: 45px;">
-<noscript>Please enable Javascript to view comments.</noscript>
-</div>
-            
-
-        </article>
-
-    </div>
+    </article>
 </main>
 
-<aside class="read-next outer">
-    <div class="inner">
-        <div class="read-next-feed">
-                <article class="read-next-card">
-                    <header class="read-next-card-header">
-                        <h3><span>More in</span> <a href="../tag/ctf/index.html">CTF</a></h3>
-                    </header>
-                    <div class="read-next-card-content">
-                        <ul>
-                            <li>
-                                <h4><a href="../yearoftherabbit-ctf-write-up/index.html">YearOfTheRabbit | CTF write-up</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-04-22">22 Apr 2020</time> –
-                                        9 min read</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4><a href="../dogcat-thm-write-up/index.html">dogcat | THM write-up</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-04-19">19 Apr 2020</time> –
-                                        6 min read</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4><a href="../lfi/index.html">Local file inclusion | write-up</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-04-17">17 Apr 2020</time> –
-                                        6 min read</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <footer class="read-next-card-footer">
-                        <a href="../tag/ctf/index.html">See all 15 posts
-                            →</a>
-                    </footer>
-                </article>
 
-                <article class="post-card post tag-ctf ">
+    <section class="footer-cta cta-alt">
+        <div class="inner">
+            <h2>Sign up for more like this.</h2>
+            <a class="footer-cta-button" href="index.html#/portal" data-portal>
+                <div class="footer-cta-input">Enter your email</div>
+                <span>Subscribe</span>
+            </a>
+        </div>
+    </section>
 
-    <a class="post-card-image-link" href="../pickle-rick/index.html">
+
+
+
+            <aside class="read-more-wrap">
+                <div class="read-more inner">
+                        
+<article class="post-card post ">
+
+    <a class="post-card-image-link" href="../that-path-to-ai-8-hacking-ai-with-adv-machine-learning/index.html">
         <img class="post-card-image"
-            srcset="../content/images/size/w300/2020/04/rick_morty.jpg 300w,
-                   ../content/images/size/w600/2020/04/rick_morty.jpg 600w,
-                  ../content/images/size/w1000/2020/04/rick_morty.jpg 1000w,
-                 ../content/images/size/w2000/2020/04/rick_morty.jpg 2000w"
-            sizes="(max-width: 1000px) 400px, 700px"
+            srcset="../content/images/size/w300/2020/11/aiHackss-1.gif 300w,
+                   ../content/images/size/w600/2020/11/aiHackss-1. gif 600w,
+                  ../content/images/size/w1000/2020/11/aiHackss-1. gif 1000w,
+                 ../content/images/size/w2000/2020/11/aiHackss-1. gif 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="../content/images/size/w600/2020/11/aiHackss-1.gif"
+            alt="That path to Ai: #8 Hacking Ai with Adv machine learning"
             loading="lazy"
-            src="../content/images/size/w600/2020/04/rick_morty.jpg"
-            alt="Pickle Rick CTF | write-up"
         />
     </a>
 
     <div class="post-card-content">
 
-        <a class="post-card-content-link" href="../pickle-rick/index.html">
-
+        <a class="post-card-content-link" href="../that-path-to-ai-8-hacking-ai-with-adv-machine-learning/index.html">
             <header class="post-card-header">
-                    <div class="post-card-primary-tag">CTF</div>
-                <h2 class="post-card-title">Pickle Rick CTF | write-up</h2>
+                <h2 class="post-card-title">That path to Ai: #8 Hacking Ai with Adv machine learning</h2>
             </header>
-
-            <section class="post-card-excerpt">
-                    <p>Hello again, today we'll cover another CTF made by Tryhackme.com such a cool box I enjoyed every second of it, I hope you do and let's start our challenge</p>
-            </section>
-
+            <div class="post-card-excerpt">
+                <p>Adversarial machine learning Adversarial machine learning exploits how artificial intelligence algorithms work to disrupt the conduct of artificial intelligence algorithms. In the past years, adversarial machine learning has become an active zone of research as the job of AI continues to grow in vast numbers of the applications we use.</p>
+            </div>
         </a>
 
         <footer class="post-card-meta">
             <ul class="author-list">
                 <li class="author-list-item">
-            
-                    <div class="author-name-tooltip">
-                        fr33s0ul
-                    </div>
-            
                     <a href="../author/fr33s0ul/index.html" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
                     </a>
                 </li>
             </ul>
             <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-02">2 Apr 2020</time> <span class="bull">&bull;</span> 3 min read</span>
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 3 min read</span>
             </div>
         </footer>
 
     </div>
 
 </article>
+                        
+<article class="post-card post ">
 
-        </div>
-    </div>
-</aside>
+    <a class="post-card-image-link" href="../that-path-to-ai-7/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/11/dnn.png 300w,
+                   ../content/images/size/w600/2020/11/dnn.png 600w,
+                  ../content/images/size/w1000/2020/11/dnn. png 1000w,
+                 ../content/images/size/w2000/2020/11/dnn. png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="../content/images/size/w600/2020/11/dnn.png"
+            alt="That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon"
+            loading="lazy"
+        />
+    </a>
 
+    <div class="post-card-content">
 
+        <a class="post-card-content-link" href="../that-path-to-ai-7/index.html">
+            <header class="post-card-header">
+                <h2 class="post-card-title">That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon</h2>
+            </header>
+            <div class="post-card-excerpt">
+                <p>Convolutional Neural Networks (CNNs) A Convolutional Neural Networks (CNNs) is a Deep Learning algorithm which can take in an input picture, appoint significance (learnable weights and biases) to different articles in the image and have the option to separate one from the other. The pre-processing required in a CNNs; it</p>
+            </div>
+        </a>
 
-
-        <footer class="site-footer outer">
-            <div class="site-footer-content inner">
-                <section class="copyright"><a href="../index.html">fr33s0ul</a> &copy; 2020</section>
-                <nav class="site-footer-nav">
-                    <a href="../index.html">Latest Posts</a>
-                    
-                    <a href="https://twitter.com/fr3350u1" target="_blank" rel="noopener">Twitter</a>
-                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
-                </nav>
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 3 min read</span>
             </div>
         </footer>
 
     </div>
 
+</article>
+                        
+<article class="post-card post ">
 
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
-    </script>
-    <script src="../assets/built/casper.js?v=8ba882e352"></script>
+    <a class="post-card-image-link" href="../that-path-to-ai-6/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/11/Dimensionality.png 300w,
+                   ../content/images/size/w600/2020/11/Dimensionality.png 600w,
+                  ../content/images/size/w1000/2020/11/Dimensionality. png 1000w,
+                 ../content/images/size/w2000/2020/11/Dimensionality. png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="../content/images/size/w600/2020/11/Dimensionality.png"
+            alt="That path to Ai: #6 Dimensionality reduction / and ens learning to improve classifi..."
+            loading="lazy"
+        />
+    </a>
 
-    <script>
-        // Parse the URL parameter
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
+    <div class="post-card-content">
 
-        // Give the parameter a variable name
-        var action = getParameterByName('action');
-        var success = getParameterByName('success');
+        <a class="post-card-content-link" href="../that-path-to-ai-6/index.html">
+            <header class="post-card-header">
+                <h2 class="post-card-title">That path to Ai: #6 Dimensionality reduction / and ens learning to improve classifi...</h2>
+            </header>
+            <div class="post-card-excerpt">
+                <p>Dimensionality reduction is a set of machine learning-based indicative models. They are useful to execute data manipulation; it decreases the dimensionality of a dataset. It is instrumental in cases where the issue becomes intractable, and the quantity of variables increases, then dimensionality reduction leads to choosing significant variables. Low variance</p>
+            </div>
+        </a>
 
-        $(document).ready(function () {
-            if (action == 'subscribe' && (success === null || success === 'true')) {
-                $('body').addClass('subscribe-success');
-            }
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 4 min read</span>
+            </div>
+        </footer>
 
-            if (action == 'subscribe' && success === 'false') {
-                $('body').addClass('subscribe-failure');
-            }
+    </div>
 
-            $('.subscribe-notification .subscribe-close-button').click(function () {
-                $('.subscribe-notification').addClass('close');
-            });
+</article>
+                </div>
+            </aside>
 
-            // Reset form on opening subscrion overlay
-            $('.subscribe-button').click(function() {
-                $('.subscribe-overlay form').removeClass();
-                $('.subscribe-email').val('');
-            });
-        });
-    </script>
 
-    <script>
-    $(document).ready(function () {
-        // FitVids - start
-        var $postContent = $(".post-full-content");
-        $postContent.fitVids();
-        // FitVids - end
 
-        // Replace nav with title on scroll - start
-        Casper.stickyNavTitle({
-            navSelector: '.site-nav-main',
-            titleSelector: '.post-full-title',
-            activeClass: 'nav-post-title-active'
-        });
-        // Replace nav with title on scroll - end
+    </div>
 
-        // Hover on avatar
-        var hoverTimeout;
-        $('.author-list-item').hover(function () {
-            var $this = $(this);
+    <footer class="site-footer outer">
+        <div class="inner">
+            <section class="copyright"><a href="../index.html">fr33s0ul</a> &copy; 2022</section>
+            <nav class="site-footer-nav">
+                
+            </nav>
+            <div><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
+        </div>
+    </footer>
 
-            clearTimeout(hoverTimeout);
+</div>
 
-            $('.author-card').removeClass('hovered');
-            $(this).children('.author-card').addClass('hovered');
 
-        }, function () {
-            var $this = $(this);
-
-            hoverTimeout = setTimeout(function () {
-                $this.children('.author-card').removeClass('hovered');
-            }, 800);
-        });
+<script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+</script>
+<script src="../assets/built/casper.js?v=7717a9b749"></script>
+<script>
+$(document).ready(function () {
+    // Mobile Menu Trigger
+    $('.gh-burger').click(function () {
+        $('body').toggleClass('gh-head-open');
     });
+    // FitVids - Makes video embeds responsive
+    $(".gh-content").fitVids();
+});
 </script>
 
 
-    
 
 </body>
 </html>

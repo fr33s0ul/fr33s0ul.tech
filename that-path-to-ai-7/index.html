@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark-mode">
 <head>
 
+    <title>That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-    <title>That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=8ba882e352" />
+    <style>
+        :root {
+            --button-bg-color: #ffffff;
+            --button-text-color: var(--color-darkgrey);
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=7717a9b749" />
 
     <link rel="icon" href="../favicon.png" type="image/png" />
     <link rel="canonical" href="index.html" />
@@ -20,23 +26,23 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon" />
     <meta property="og:description" content="Convolutional Neural Networks (CNNs) A Convolutional Neural Networks (CNNs) is a Deep Learning algorithm which can take in an input picture, appoint significance (learnable weights and biases) to different articles in the image and have the option to separate one from the other. The pre-processing required in a CNNs; it" />
-    <meta property="og:url" content="https://fr33s0ul.tech/that-path-to-ai-7/" />
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/11/dnn.png" />
+    <meta property="og:url" content="http://localhost:2368/that-path-to-ai-7/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/11/dnn.png" />
     <meta property="article:published_time" content="2020-11-21T14:33:57.000Z" />
-    <meta property="article:modified_time" content="2020-11-21T15:26:10.000Z" />
+    <meta property="article:modified_time" content="2022-03-24T15:33:09.000Z" />
     <meta property="article:tag" content="Ai" />
     
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon" />
     <meta name="twitter:description" content="Convolutional Neural Networks (CNNs) A Convolutional Neural Networks (CNNs) is a Deep Learning algorithm which can take in an input picture, appoint significance (learnable weights and biases) to different articles in the image and have the option to separate one from the other. The pre-processing required in a CNNs; it" />
-    <meta name="twitter:url" content="https://fr33s0ul.tech/that-path-to-ai-7/" />
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/11/dnn.png" />
+    <meta name="twitter:url" content="http://localhost:2368/that-path-to-ai-7/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/11/dnn.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="fr33s0ul" />
     <meta name="twitter:label2" content="Filed under" />
     <meta name="twitter:data2" content="Ai" />
-    <meta name="twitter:site" content="@fr3350u1" />
-    <meta name="twitter:creator" content="@fr33soul_" />
+    <meta name="twitter:site" content="@fr33s0ul_Ninja" />
+    <meta name="twitter:creator" content="@fr33s0ul_Ninja" />
     <meta property="og:image:width" content="767" />
     <meta property="og:image:height" content="769" />
     
@@ -47,10 +53,10 @@
     "publisher": {
         "@type": "Organization",
         "name": "fr33s0ul",
-        "url": "https://fr33s0ul.tech/",
+        "url": "http://localhost:2368/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+            "url": "http://localhost:2368/content/images/2020/03/logo.gif",
             "width": 300,
             "height": 41
         }
@@ -60,22 +66,22 @@
         "name": "fr33s0ul",
         "image": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
             "width": 600,
             "height": 594
         },
-        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "url": "http://localhost:2368/author/fr33s0ul/",
         "sameAs": [
-            "https://twitter.com/fr33soul_"
+            "https://twitter.com/fr33s0ul_Ninja"
         ]
     },
     "headline": "That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon",
-    "url": "https://fr33s0ul.tech/that-path-to-ai-7/",
+    "url": "http://localhost:2368/that-path-to-ai-7/",
     "datePublished": "2020-11-21T14:33:57.000Z",
-    "dateModified": "2020-11-21T15:26:10.000Z",
+    "dateModified": "2022-03-24T15:33:09.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/11/dnn.png",
+        "url": "http://localhost:2368/content/images/2020/11/dnn.png",
         "width": 767,
         "height": 769
     },
@@ -83,13 +89,16 @@
     "description": "Convolutional Neural Networks (CNNs)\n\nA Convolutional Neural Networks (CNNs) is a Deep Learning algorithm which can\ntake in an input picture, appoint significance (learnable weights and biases) to\ndifferent articles in the image and have the option to separate one from the\nother. The pre-processing required in a CNNs; it is a lot of lower when\ncontrasted with different classification algorithms. While in crude methods\nchannels are hand-built, with enough training, CNNs can become familiar with\nt",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://fr33s0ul.tech/"
+        "@id": "http://localhost:2368/"
     }
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.38" />
+    <meta name="generator" content="Ghost 4.41" />
     <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html" />
+    
+    <script defer src="../public/cards.min.js?v=7717a9b749"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css?v=7717a9b749">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111725042-2"></script>
 <script>
@@ -99,23 +108,30 @@
 
   gtag('config', 'UA-111725042-2');
 </script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc3b35649b48a82"></script>
+
+<style>:root {--ghost-accent-color: #15171A;}</style>
 
 </head>
 <body class="post-template tag-ai">
+<div class="viewport">
 
-    <div class="site-wrapper">
+    <header id="gh-head" class="gh-head has-cover">
+        <nav class="gh-head-inner inner gh-container">
 
-        
-
-<header class="site-header">
-    <div class="outer site-nav-main">
-    <div class="inner">
-        <nav class="site-nav">
-    <div class="site-nav-left-wrapper">
-        <div class="site-nav-left">
-                <a class="site-nav-logo" href="../index.html"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul" /></a>
-            <div class="site-nav-content">
-                    <ul class="nav">
+            <div class="gh-head-brand">
+                <a class="gh-head-logo" href="../index.html">
+                        <img src="../content/images/size/w600/2020/03/logo.gif" alt="fr33s0ul" />
+                </a>
+                <a class="gh-burger" role="button">
+                    <div class="gh-burger-box">
+                        <div class="gh-burger-inner"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="gh-head-menu">
+                <ul class="nav">
     <li class="nav-home"><a href="../index.html">Home</a></li>
     <li class="nav-whoami"><a href="../whoami/index.html">whoami</a></li>
     <li class="nav-whispers"><a href="../whispers/index.html">Whispers</a></li>
@@ -123,150 +139,93 @@
     <li class="nav-ctf"><a href="../tag/ctf/index.html">CTF</a></li>
 </ul>
 
-                    <span class="nav-post-title ">That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon</span>
             </div>
-        </div>
-    </div>
-    <div class="site-nav-right">
-            <div class="social-links">
-                    <a class="social-link social-link-tw" href="https://twitter.com/fr3350u1" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+            <div class="gh-head-actions">
+                <div class="gh-social">
+                        <a class="gh-social-twitter" href="https://twitter.com/fr33s0ul_Ninja" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 </a>
-            </div>
-                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://fr33s0ul.tech/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
-</a>
-
-    </div>
-</nav>
-    </div>
-</div></header>
-
-
-<main id="site-main" class="site-main outer">
-    <div class="inner">
-
-        <article class="post-full post tag-ai ">
-
-            <header class="post-full-header">
-
-                <section class="post-full-tags">
-                    <a href="../tag/ai/index.html">Ai</a>
-                </section>
-
-                <h1 class="post-full-title">That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon</h1>
-
-
-                <div class="post-full-byline">
-
-                    <section class="post-full-byline-content">
-
-                        <ul class="author-list">
-                            <li class="author-list-item">
-
-                                <div class="author-card">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
-                                    <div class="author-info">
-                                        <div class="bio">
-                                            <h2>fr33s0ul</h2>
-                                            <p>A humble person interested to technology since first 3 way handshake, Having one goal from all of this, Sharing knowledge for the sake of change to a better humanity.</p>
-                                            <p><a href="../author/fr33s0ul/index.html">More posts</a> by fr33s0ul.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <a href="../author/fr33s0ul/index.html" class="author-avatar">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
-                                </a>
-
-                            </li>
-                        </ul>
-
-                        <section class="post-full-byline-meta">
-                            <h4 class="author-name"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></h4>
-                            <div class="byline-meta-content">
-                                <time class="byline-meta-date" datetime="2020-11-21">21 Nov 2020</time>
-                                <span class="byline-reading-time"><span class="bull">&bull;</span> 3 min read</span>
-                            </div>
-                        </section>
-
-                    </section>
-
-
                 </div>
-            </header>
 
-            <figure class="post-full-image">
+                    <a class="gh-head-button" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="site-content">
+        
+
+
+
+<main id="site-main" class="site-main">
+    <article class="article post tag-ai image-small">
+
+        <header class="article-header gh-canvas">
+
+            <section class="article-tag">
+                <a href="../tag/ai/index.html">Ai</a>
+            </section>
+
+            <h1 class="article-title">That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon</h1>
+
+
+            <div class="article-byline">
+                <section class="article-byline-content">
+                    <ul class="author-list">
+                        <li class="author-list-item">
+                            <a href="../author/fr33s0ul/index.html" class="author-avatar">
+                                <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="article-byline-meta">
+                        <h4 class="author-name"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></h4>
+                        <div class="byline-meta-content">
+                            <time class="byline-meta-date" datetime="2020-11-21">Nov 21, 2020</time>
+                            <span class="byline-reading-time"><span class="bull">&bull;</span> 3 min read</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <figure class="article-image">
                 <img
                     srcset="../content/images/size/w300/2020/11/dnn.png 300w,
                            ../content/images/size/w600/2020/11/dnn.png 600w,
                           ../content/images/size/w1000/2020/11/dnn. png 1000w,
                          ../content/images/size/w2000/2020/11/dnn. png 2000w"
-                    sizes="(max-width: 800px) 400px,
-                        (max-width: 1170px) 1170px,
-                            2000px"
+                    sizes="(min-width: 1400px) 1400px, 92vw"
                     src="../content/images/size/w2000/2020/11/dnn.png"
                     alt="That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon"
                 />
             </figure>
+        </header>
 
-            <section class="post-full-content">
-                <div class="post-content">
-                    <p><strong>Convolutional Neural Networks (CNNs)</strong></p><p>A Convolutional Neural Networks (CNNs) is a Deep Learning algorithm which can take in an input picture, appoint significance (learnable weights and biases) to different articles in the image and have the option to separate one from the other. The pre-processing required in a CNNs; it is a lot of lower when contrasted with different classification algorithms. While in crude methods channels are hand-built, with enough training, CNNs can become familiar with these channels/qualities.</p><p>The design of CNNs closely resembles that of the connectivity pattern of Neurons in the Human Brain. Furthermore, it was roused by the association of the Visual Cortex. Singular neurons react to upgrades just in a confined district of the visual field known as the Receptive Field. An assortment of such areas covers to cover the whole optical zone.</p><p><br></p><p><strong>Recurrent Neural Networks (RNNs)</strong></p><p>Recurrent Neural Networks (RNNs) is a neural network intended for breaking down streams of data by methods for shrouded units. In a portion of the applications like text processing, speech recognition and DNA sequences, the output relies upon the past calculations. Since RNNs manage consecutive data, they are appropriate for the wellbeing informatics area where gigantic measures of successive data are accessible to process</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/H7qgtMjj7HtpJ2i3Om" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/trippy-trip-eternal-H7qgtMjj7HtpJ2i3Om"></a></p><!--kg-card-end: html--><p><strong>Feature engineering in machine learning</strong></p><p>all machine learning algorithms utilise some input data to make yields. This input data includes features, which are, for the most part as organised sections. Algorithms require features with some particular trademark to work appropriately. Here, the requirement for feature engineering emerges. feature engineering endeavours mostly have two objectives:</p><ul><li>Setting up the best possible input dataset, viable with the machine learning algorithm necessities.</li><li>Improve the exhibition of machine learning models.</li></ul><p>Making new features gives a more profound comprehension of the data and the results in more significant experiences. We are keen on making it more straightforward for a machine learning model. However, a few features can be generated, so the data visualisation prepared for individuals without a data-related foundation can be more processable. Nonetheless, the idea of straightforwardness for the machine learning models is a confounded thing as various models regularly require multiple methodologies for the different types of data.</p><p><strong>Imputation</strong></p><p>Missing values are one of the most widely recognised issues that can happen when attempting to set up a dataset for machine learning. These are some of the techniques used to fix the data.</p><ul><li><strong>Drop rows/columns: </strong>The most basic solution to the missing values is to drop the rows or the whole column. There is not an ideal limit for dropping yet 70% of the dataset will be still available.</li><li><strong>Numerical Imputation: </strong>Imputation is a more best alternative as opposed to dropping the data; in this way, it preserves the data size. If there are just a couple of invalid data values, an ideal approach to fix this issue is by replacing the missing values with the mean or median depending on the data type.</li><li><strong>Categorical Imputation: </strong>In this type of imputation any missing value gets a replacement with the highest occurred value in the column.</li><li><strong>Transformations: </strong>transformation (Logarithm transform or log transform) is one of the most utilised mathematical transformation in feature engineering. It is incredibly beneficial because of its effectiveness to deal with diagonal data, after the transformation the appropriation turns out to be realistic and close to standard data. Its disadvantage, the data that apply log transform must have just positive values.</li><li><strong>Label Encoding: </strong>Label encoding change categories to numbers. Despite the chance of encoding both nominal and ordinal data, label encoding functions admirably with ordinal data. Likewise, this method is valuable when using tree-based algorithms, for example, decision trees, among others.</li><li><strong>Time-series:</strong> The time series methods of imputation expect the adjoining perceptions will resemble the missing data. These methods function admirably when that supposition is legitimate. However, these techniques will not generally produce good results, mainly on account of substantial seasonality. Sometimes the data contain a feature as a timestamp and there is no choice only to use it, it is hard to acquire any significant data except if it turns out essential data.</li></ul><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
-                </div>
-            </section>
+        <section class="gh-content gh-canvas">
+            <p><strong>Convolutional Neural Networks (CNNs)</strong></p><p>A Convolutional Neural Networks (CNNs) is a Deep Learning algorithm which can take in an input picture, appoint significance (learnable weights and biases) to different articles in the image and have the option to separate one from the other. The pre-processing required in a CNNs; it is a lot of lower when contrasted with different classification algorithms. While in crude methods channels are hand-built, with enough training, CNNs can become familiar with these channels/qualities.</p><p>The design of CNNs closely resembles that of the connectivity pattern of Neurons in the Human Brain. Furthermore, it was roused by the association of the Visual Cortex. Singular neurons react to upgrades just in a confined district of the visual field known as the Receptive Field. An assortment of such areas covers to cover the whole optical zone.</p><p><br></p><p><strong>Recurrent Neural Networks (RNNs)</strong></p><p>Recurrent Neural Networks (RNNs) is a neural network intended for breaking down streams of data by methods for shrouded units. In a portion of the applications like text processing, speech recognition and DNA sequences, the output relies upon the past calculations. Since RNNs manage consecutive data, they are appropriate for the wellbeing informatics area where gigantic measures of successive data are accessible to process</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/H7qgtMjj7HtpJ2i3Om" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/trippy-trip-eternal-H7qgtMjj7HtpJ2i3Om"></a></p><!--kg-card-end: html--><p><strong>Feature engineering in machine learning</strong></p><p>all machine learning algorithms utilise some input data to make yields. This input data includes features, which are, for the most part as organised sections. Algorithms require features with some particular trademark to work appropriately. Here, the requirement for feature engineering emerges. feature engineering endeavours mostly have two objectives:</p><ul><li>Setting up the best possible input dataset, viable with the machine learning algorithm necessities.</li><li>Improve the exhibition of machine learning models.</li></ul><p>Making new features gives a more profound comprehension of the data and the results in more significant experiences. We are keen on making it more straightforward for a machine learning model. However, a few features can be generated, so the data visualisation prepared for individuals without a data-related foundation can be more processable. Nonetheless, the idea of straightforwardness for the machine learning models is a confounded thing as various models regularly require multiple methodologies for the different types of data.</p><p><strong>Imputation</strong></p><p>Missing values are one of the most widely recognised issues that can happen when attempting to set up a dataset for machine learning. These are some of the techniques used to fix the data.</p><ul><li><strong>Drop rows/columns: </strong>The most basic solution to the missing values is to drop the rows or the whole column. There is not an ideal limit for dropping yet 70% of the dataset will be still available.</li><li><strong>Numerical Imputation: </strong>Imputation is a more best alternative as opposed to dropping the data; in this way, it preserves the data size. If there are just a couple of invalid data values, an ideal approach to fix this issue is by replacing the missing values with the mean or median depending on the data type.</li><li><strong>Categorical Imputation: </strong>In this type of imputation any missing value gets a replacement with the highest occurred value in the column.</li><li><strong>Transformations: </strong>transformation (Logarithm transform or log transform) is one of the most utilised mathematical transformation in feature engineering. It is incredibly beneficial because of its effectiveness to deal with diagonal data, after the transformation the appropriation turns out to be realistic and close to standard data. Its disadvantage, the data that apply log transform must have just positive values.</li><li><strong>Label Encoding: </strong>Label encoding change categories to numbers. Despite the chance of encoding both nominal and ordinal data, label encoding functions admirably with ordinal data. Likewise, this method is valuable when using tree-based algorithms, for example, decision trees, among others.</li><li><strong>Time-series:</strong> The time series methods of imputation expect the adjoining perceptions will resemble the missing data. These methods function admirably when that supposition is legitimate. However, these techniques will not generally produce good results, mainly on account of substantial seasonality. Sometimes the data contain a feature as a timestamp and there is no choice only to use it, it is hard to acquire any significant data except if it turns out essential data.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2022/03/crypto-coins-3.png" class="kg-image" alt loading="lazy" width="250" height="79"><figcaption>Crypto donations are appreciated for more free content and exciting topics <strong>0x684c21519d43E415506c1750c08FA0A97621FFEF</strong></figcaption></figure><p></p>
+        </section>
 
 
-            
-            <script>talkyardServerUrl='https://comments-for-fr33s0ul-tech.talkyard.net';</script>
-<script async defer src="https://c1.ty-cdn.net/-/talkyard-comments.min.js"></script>
-<div class="talkyard-comments" data-discussion-id="5fb9230cacdc4c57eae2df10" style="margin-top: 45px;">
-<noscript>Please enable Javascript to view comments.</noscript>
-</div>
-            
-
-        </article>
-
-    </div>
+    </article>
 </main>
 
-<aside class="read-next outer">
-    <div class="inner">
-        <div class="read-next-feed">
-                <article class="read-next-card">
-                    <header class="read-next-card-header">
-                        <h3><span>More in</span> <a href="../tag/ai/index.html">Ai</a></h3>
-                    </header>
-                    <div class="read-next-card-content">
-                        <ul>
-                            <li>
-                                <h4><a href="../that-path-to-ai-8-hacking-ai-with-adv-machine-learning/index.html">That path to Ai: #8 Hacking Ai with Adv machine learning</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-11-21">21 Nov 2020</time> –
-                                        2 min read</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4><a href="../that-path-to-ai-6/index.html">That path to Ai: #6 Dimensionality reduction / and ens learning to improve classifi...</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-11-21">21 Nov 2020</time> –
-                                        4 min read</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4><a href="../that-path-to-ai-5/index.html">That path to Ai: #5 Performance evaluation</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-11-21">21 Nov 2020</time> –
-                                        3 min read</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <footer class="read-next-card-footer">
-                        <a href="../tag/ai/index.html">See all 7 posts
-                            →</a>
-                    </footer>
-                </article>
 
-                <article class="post-card post tag-ai ">
+    <section class="footer-cta cta-alt">
+        <div class="inner">
+            <h2>Sign up for more like this.</h2>
+            <a class="footer-cta-button" href="index.html#/portal" data-portal>
+                <div class="footer-cta-input">Enter your email</div>
+                <span>Subscribe</span>
+            </a>
+        </div>
+    </section>
+
+
+
+
+            <aside class="read-more-wrap">
+                <div class="read-more inner">
+                        
+<article class="post-card post ">
 
     <a class="post-card-image-link" href="../that-path-to-ai-8-hacking-ai-with-adv-machine-learning/index.html">
         <img class="post-card-image"
@@ -274,52 +233,43 @@
                    ../content/images/size/w600/2020/11/aiHackss-1. gif 600w,
                   ../content/images/size/w1000/2020/11/aiHackss-1. gif 1000w,
                  ../content/images/size/w2000/2020/11/aiHackss-1. gif 2000w"
-            sizes="(max-width: 1000px) 400px, 700px"
-            loading="lazy"
+            sizes="(max-width: 1000px) 400px, 800px"
             src="../content/images/size/w600/2020/11/aiHackss-1.gif"
             alt="That path to Ai: #8 Hacking Ai with Adv machine learning"
+            loading="lazy"
         />
     </a>
 
     <div class="post-card-content">
 
         <a class="post-card-content-link" href="../that-path-to-ai-8-hacking-ai-with-adv-machine-learning/index.html">
-
             <header class="post-card-header">
-                    <div class="post-card-primary-tag">Ai</div>
                 <h2 class="post-card-title">That path to Ai: #8 Hacking Ai with Adv machine learning</h2>
             </header>
-
-            <section class="post-card-excerpt">
-                    <p>Adversarial machine learning Adversarial machine learning exploits how artificial intelligence algorithms work to disrupt the conduct of artificial intelligence algorithms. In the past years, adversarial machine learning has become an</p>
-            </section>
-
+            <div class="post-card-excerpt">
+                <p>Adversarial machine learning Adversarial machine learning exploits how artificial intelligence algorithms work to disrupt the conduct of artificial intelligence algorithms. In the past years, adversarial machine learning has become an active zone of research as the job of AI continues to grow in vast numbers of the applications we use.</p>
+            </div>
         </a>
 
         <footer class="post-card-meta">
             <ul class="author-list">
                 <li class="author-list-item">
-            
-                    <div class="author-name-tooltip">
-                        fr33s0ul
-                    </div>
-            
                     <a href="../author/fr33s0ul/index.html" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
                     </a>
                 </li>
             </ul>
             <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-11-21">21 Nov 2020</time> <span class="bull">&bull;</span> 2 min read</span>
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 3 min read</span>
             </div>
         </footer>
 
     </div>
 
 </article>
-
-                <article class="post-card post tag-ai ">
+                        
+<article class="post-card post ">
 
     <a class="post-card-image-link" href="../that-path-to-ai-6/index.html">
         <img class="post-card-image"
@@ -327,153 +277,123 @@
                    ../content/images/size/w600/2020/11/Dimensionality.png 600w,
                   ../content/images/size/w1000/2020/11/Dimensionality. png 1000w,
                  ../content/images/size/w2000/2020/11/Dimensionality. png 2000w"
-            sizes="(max-width: 1000px) 400px, 700px"
-            loading="lazy"
+            sizes="(max-width: 1000px) 400px, 800px"
             src="../content/images/size/w600/2020/11/Dimensionality.png"
             alt="That path to Ai: #6 Dimensionality reduction / and ens learning to improve classifi..."
+            loading="lazy"
         />
     </a>
 
     <div class="post-card-content">
 
         <a class="post-card-content-link" href="../that-path-to-ai-6/index.html">
-
             <header class="post-card-header">
-                    <div class="post-card-primary-tag">Ai</div>
                 <h2 class="post-card-title">That path to Ai: #6 Dimensionality reduction / and ens learning to improve classifi...</h2>
             </header>
-
-            <section class="post-card-excerpt">
-                    <p>Dimensionality reduction is a set of machine learning-based indicative models. They are useful to execute data manipulation; it decreases the dimensionality of a dataset. It is instrumental in cases where</p>
-            </section>
-
+            <div class="post-card-excerpt">
+                <p>Dimensionality reduction is a set of machine learning-based indicative models. They are useful to execute data manipulation; it decreases the dimensionality of a dataset. It is instrumental in cases where the issue becomes intractable, and the quantity of variables increases, then dimensionality reduction leads to choosing significant variables. Low variance</p>
+            </div>
         </a>
 
         <footer class="post-card-meta">
             <ul class="author-list">
                 <li class="author-list-item">
-            
-                    <div class="author-name-tooltip">
-                        fr33s0ul
-                    </div>
-            
                     <a href="../author/fr33s0ul/index.html" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
                     </a>
                 </li>
             </ul>
             <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-11-21">21 Nov 2020</time> <span class="bull">&bull;</span> 4 min read</span>
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 4 min read</span>
             </div>
         </footer>
 
     </div>
 
 </article>
-        </div>
-    </div>
-</aside>
+                        
+<article class="post-card post ">
 
+    <a class="post-card-image-link" href="../that-path-to-ai-5/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/11/godsperf.jpg 300w,
+                   ../content/images/size/w600/2020/11/godsperf.jpg 600w,
+                  ../content/images/size/w1000/2020/11/godsperf.jpg 1000w,
+                 ../content/images/size/w2000/2020/11/godsperf.jpg 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="../content/images/size/w600/2020/11/godsperf.jpg"
+            alt="That path to Ai: #5 Performance evaluation"
+            loading="lazy"
+        />
+    </a>
 
+    <div class="post-card-content">
 
+        <a class="post-card-content-link" href="../that-path-to-ai-5/index.html">
+            <header class="post-card-header">
+                <h2 class="post-card-title">That path to Ai: #5 Performance evaluation</h2>
+            </header>
+            <div class="post-card-excerpt">
+                <p>Now that we covered a fair amount of the components and instruments involving in the AI systems, it is the time to talk a little about performance evaluation and its importance. Performance evaluation is an essential step in a methodological operation. Because after finishing the whole machine learning model, testing</p>
+            </div>
+        </a>
 
-        <footer class="site-footer outer">
-            <div class="site-footer-content inner">
-                <section class="copyright"><a href="../index.html">fr33s0ul</a> &copy; 2020</section>
-                <nav class="site-footer-nav">
-                    <a href="../index.html">Latest Posts</a>
-                    
-                    <a href="https://twitter.com/fr3350u1" target="_blank" rel="noopener">Twitter</a>
-                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
-                </nav>
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 3 min read</span>
             </div>
         </footer>
 
     </div>
 
+</article>
+                </div>
+            </aside>
 
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
-    </script>
-    <script src="../assets/built/casper.js?v=8ba882e352"></script>
 
-    <script>
-        // Parse the URL parameter
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
 
-        // Give the parameter a variable name
-        var action = getParameterByName('action');
-        var success = getParameterByName('success');
+    </div>
 
-        $(document).ready(function () {
-            if (action == 'subscribe' && (success === null || success === 'true')) {
-                $('body').addClass('subscribe-success');
-            }
+    <footer class="site-footer outer">
+        <div class="inner">
+            <section class="copyright"><a href="../index.html">fr33s0ul</a> &copy; 2022</section>
+            <nav class="site-footer-nav">
+                
+            </nav>
+            <div><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
+        </div>
+    </footer>
 
-            if (action == 'subscribe' && success === 'false') {
-                $('body').addClass('subscribe-failure');
-            }
+</div>
 
-            $('.subscribe-notification .subscribe-close-button').click(function () {
-                $('.subscribe-notification').addClass('close');
-            });
 
-            // Reset form on opening subscrion overlay
-            $('.subscribe-button').click(function() {
-                $('.subscribe-overlay form').removeClass();
-                $('.subscribe-email').val('');
-            });
-        });
-    </script>
-
-    <script>
-    $(document).ready(function () {
-        // FitVids - start
-        var $postContent = $(".post-full-content");
-        $postContent.fitVids();
-        // FitVids - end
-
-        // Replace nav with title on scroll - start
-        Casper.stickyNavTitle({
-            navSelector: '.site-nav-main',
-            titleSelector: '.post-full-title',
-            activeClass: 'nav-post-title-active'
-        });
-        // Replace nav with title on scroll - end
-
-        // Hover on avatar
-        var hoverTimeout;
-        $('.author-list-item').hover(function () {
-            var $this = $(this);
-
-            clearTimeout(hoverTimeout);
-
-            $('.author-card').removeClass('hovered');
-            $(this).children('.author-card').addClass('hovered');
-
-        }, function () {
-            var $this = $(this);
-
-            hoverTimeout = setTimeout(function () {
-                $this.children('.author-card').removeClass('hovered');
-            }, 800);
-        });
+<script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+</script>
+<script src="../assets/built/casper.js?v=7717a9b749"></script>
+<script>
+$(document).ready(function () {
+    // Mobile Menu Trigger
+    $('.gh-burger').click(function () {
+        $('body').toggleClass('gh-head-open');
     });
+    // FitVids - Makes video embeds responsive
+    $(".gh-content").fitVids();
+});
 </script>
 
 
-    
 
 </body>
 </html>

